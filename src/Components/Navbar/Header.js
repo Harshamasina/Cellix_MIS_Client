@@ -1,59 +1,59 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Link, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
-import { useEffect } from 'react';
-import HamburgerMenu from 'react-hamburger-menu';
+import Home from "../Body/Home/Home";
+import Patents from "../Body/PatentsLifeCycle/Patents";
+import Firms from "../Body/Firms/Firms";
+import Login from "../Body/Login/Login";
+import Logo from './Logo';
+import './Header.css';
+import NewPatents from '../Body/NewPatents/NewPatents';
 
-const Header = () => {
-    const [onScroll, setOnScroll] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            setOnScroll(window.scrollY > 50);
-        });
-    }, []);
-    return(
-        <div>
-            <Navbar
-                bg={onScroll ? 'dark' : 'light'}
-                variant={onScroll ? 'dark' : 'light'} 
-                expand="md"
-                style={{width: '100%', position: 'fixed', zIndex: 100}}
-                className={`main-header ${onScroll ? 'on-scroll-header' : ''}`}
-                onToggle={() => setMenuOpen(!menuOpen)}
-            >
-                <Container>
-                    <Navbar.Brand href="#home"> 
-                        Cellix Bio MIS
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbar" bsPrefix="navbar-toggler hamburger-menu">
-                        <HamburgerMenu
-                            isOpen={menuOpen}
-                            menuClicked={() => null}
-                            width={30}
-                            height={25}
-                            strokeWidth={1.5}
-                            rotate={0}
-                            color={onScroll ? 'white' : 'black'}
-                            borderRadius={0}
-                            animationDuration={0.6}
-                        />  
-                    </Navbar.Toggle>
-                    <Navbar.Collapse id='navbar'>
-                        <Nav className="ms-auto">
-                            <Nav.Link href='#home'>HOME</Nav.Link>
-                            <Nav.Link href='#patent'>PATENTS</Nav.Link>
-                            <Nav.Link href='#firms'>FIRMS</Nav.Link>
-                            <Nav.Link href='#login'>LOGIN</Nav.Link>
-                            <Nav.Link href='#Register'>REGISTER</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </div>
-    );
-}
 
-export default Header;
+function NavBar() {
+        const [changeNavbar, setChangeNavbar] = useState(false);
+        const changeBackground = () => {
+            if(window.scrollY >= 80){
+                setChangeNavbar(true);
+            }else{
+                setChangeNavbar(false);
+            }
+        }
+        window.addEventListener('scroll', changeBackground);
+        return (
+            <>
+                <div>
+                
+                    <Navbar collapseOnSelect  variant={"dark"} expand="lg" className={changeNavbar ? 'color-nav-scroll' : 'color-nav'}>
+                        <Logo></Logo>
+                        <Navbar.Brand href="#"> </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle'/>
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav
+                                className="ms-auto my-2 my-xxl-0 gap-2 me-3"
+                                style={{ maxHeight: '100%',fontSize:'17px'}}
+                                responsive-navbar-nav
+                            >
+                                <Nav.Link className='navbar_link' as={Link} to="/home" eventKey="0">Home</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/patents" eventKey="1">Patents</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="2">New Entry</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="3">Firms</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/login" eventKey="4">Login</Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
+                </div>
+                
+                <div>
+                    <Routes>
+                        <Route path='/home' element={<Home></Home>}></Route>
+                        <Route path='/patents' element={<Patents></Patents>}></Route>
+                        <Route path='/newpatent' element={<NewPatents></NewPatents>}></Route>
+                        <Route path='/firms' element={<Firms></Firms>}></Route>
+                        <Route path='/login' element={<Login></Login>}></Route>
+                    </Routes>
+                </div>
+            </>
+        );
+    }
+export default NavBar;

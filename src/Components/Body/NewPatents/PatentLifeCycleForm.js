@@ -173,6 +173,7 @@ const PatentLifeCycleForm = () => {
                                 <input 
                                     type="file" 
                                     placeholder="Enter NPE Invoice"
+                                    multiple
                                 >
                                 </input>
                             </div>
@@ -180,7 +181,8 @@ const PatentLifeCycleForm = () => {
                             <div className="input-box">
                                 <span className="details">NPE Prosecution history</span>
                                 <input 
-                                    type="file" 
+                                    type="file"
+                                    multiple
                                     placeholder="Enter NPE Prosecution history"
                                 >  
                                 </input>

@@ -1,9 +1,7 @@
-import PatentLifeCycleForm from "./PatentLifeCycleForm";
-
 const Patents = () => {
     return(
         <div>
-            <PatentLifeCycleForm></PatentLifeCycleForm>
+            <h1>Patents</h1>
         </div>
     );
 }
