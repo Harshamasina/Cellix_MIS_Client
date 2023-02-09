@@ -6,6 +6,29 @@ body{
   overflow-x: hidden;
 }
 
+::selection {
+  color: #f2f2f2;
+  background: #0E6E59;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey;
+  /* background: #4e545f; */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0E6E59;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #15B39D;
+  width: 15px;
+}
+
 .main-header{
   padding: 1rem 0;
   transition: box-shadow ease .3s, background ease .3s, padding ease .5s;
@@ -160,7 +183,23 @@ body{
   transition: all 0.3s ease;
 }
 
+.patent-details .input-box select{
+  height: 200px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
 .patent-details .input-box input:focus{
+  border-color: #0e6e59;
+}
+
+.patent-details .input-box select:focus{
   border-color: #0e6e59;
 }
 

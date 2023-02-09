@@ -6,7 +6,6 @@ import Home from "../Body/Home/Home";
 import Patents from "../Body/PatentsLifeCycle/Patents";
 import Firms from "../Body/Firms/Firms";
 import Login from "../Body/Login/Login";
-import Register from "../Body/Register/Register";
 
 const Header1 = () => {
     const navRef = useRef();
@@ -23,7 +22,6 @@ const Header1 = () => {
                     <Link to="/patents">Patents</Link>
                     <Link to="/firms">Firms</Link>
                     <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
                     <button
                         className="nav-btn nav-close-btn"
                         onClick={showNavbar}>
@@ -40,7 +38,6 @@ const Header1 = () => {
                     <Route path='/patents' element={<Patents></Patents>}></Route>
                     <Route path='/firms' element={<Firms></Firms>}></Route>
                     <Route path='/login' element={<Login></Login>}></Route>
-                    <Route path='/register' element={<Register></Register>}></Route>
                 </Routes>
             </div>
         </div>
