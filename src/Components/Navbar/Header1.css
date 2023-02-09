@@ -65,7 +65,7 @@ nav {
 	}
 
 	header nav {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
 		height: 100%;
@@ -75,7 +75,7 @@ nav {
 		align-items: center;
 		justify-content: center;
 		gap: 1.5rem;
-		background-color: var(--mainColor);
+		background: var(--mainColor);
 		transition: 1s;
 		transform: translateY(-100vh);
 	}
