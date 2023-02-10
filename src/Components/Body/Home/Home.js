@@ -5,7 +5,7 @@ const Home = () => {
     return(
         <div>
             <div>
-                <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
+                <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={2}>
                     <div className='ParallaxContainer'>
                         <div className="ParallaxDiv">
                             <div className='HomePageContent'>

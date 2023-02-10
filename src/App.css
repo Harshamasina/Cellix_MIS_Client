@@ -160,10 +160,16 @@ body{
 
 .form .patent-details .input-box{
   margin-bottom: 15px;
-  width: calc(100% / 4 - 20px);
+  width: calc(100% / 5 - 20px);
 }
 
 .form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.details{
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
@@ -181,7 +187,7 @@ body{
   transition: all 0.3s ease;
 }
 
-.patent-details .input-box select{
+/* .patent-details .input-box select{
   height: 200px;
   width: 100%;
   outline: none;
@@ -191,15 +197,15 @@ body{
   border: 1px solid #ccc;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
-}
+} */
 
 .patent-details .input-box input:focus{
   border-color: #0e6e59;
 }
 
-.patent-details .input-box select:focus{
+/* .patent-details .input-box select:focus{
   border-color: #0e6e59;
-}
+} */
 
 .form .button input{
   width: 20%;
@@ -211,20 +217,28 @@ body{
   font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
   margin-left: 45%;
   align-items: center;
   top: 5% !important;
   text-align: center;
-  background: linear-gradient(135deg, #0e6e59, #034c3c);
+  background: #006653;
+  transition: 0.4s;
 }
 
 .form .button input:hover{
-  /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #0e6e59, #034c3c);
+  transform: scale(1.1);
+  background: #009579
 }
 
-
+.select-box select {
+  height: 20vh;
+  width: 10vw;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
 
 @media(max-width: 584px){
   .patentForm{
@@ -268,7 +282,7 @@ body{
 	text-align: center;
 	font-size: 8vh;
 	width: 100%;
-	color: #ffffff;
+	color: #15B39D;
 }
 
 .HomePageContent h2{
@@ -276,4 +290,76 @@ body{
 	font-size: 6vh;
 	width: 100%;
 	color: #15B39D;
+}
+
+.FirmPageContent h1{
+  text-align: center;
+	font-size: 10vh;
+	width: 100%;
+	color: #15B39D;
+}
+
+.Login-Container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.Login-Container .loginform{
+  padding: 2rem;
+}
+
+.loginform header{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+ .loginform input{
+   height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   outline: none;
+ }
+
+ .loginform input:focus{
+   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+
+.loginform p{
+  font-size: 16px;
+  color: #009579;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.loginform p:hover{
+  text-decoration: underline;
+}
+
+.loginform input.loginbutton{
+  color: #fff;
+  background: #009579;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.loginform input.loginbutton:hover{
+  background: #006653;
+  transform: scale(1.05);
 }

@@ -2,7 +2,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Link, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 import Home from "../Body/Home/Home";
-import Patents from "../Body/PatentsLifeCycle/Patents";
+import Patents from "../Body/Patents/Patents";
 import Firms from "../Body/Firms/Firms";
 import Login from "../Body/Login/Login";
 import Logo from './Logo';
@@ -51,6 +51,7 @@ function NavBar() {
                         <Route path='/newpatent' element={<NewPatents></NewPatents>}></Route>
                         <Route path='/firms' element={<Firms></Firms>}></Route>
                         <Route path='/login' element={<Login></Login>}></Route>
+                        <Route path='/' element={<Home></Home>}></Route>
                     </Routes>
                 </div>
             </>
