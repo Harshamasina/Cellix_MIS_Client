@@ -2,7 +2,7 @@ import { Parallax } from 'react-parallax';
 
 const Login = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
-    const ForgotPasword = () => {
+    const ForgotPassword = () => {
         return(
             window.alert("Please Contact Admin")
         );
@@ -37,7 +37,7 @@ const Login = () => {
                         placeholder='Enter your Password'
                     >
                     </input>
-                    <p to="/" onClick={ForgotPasword}>Forgot Password</p>
+                    <p to="/" onClick={ForgotPassword}>Forgot Password</p>
                     <input 
                         type="submit" 
                         className="loginbutton" 

@@ -68,12 +68,12 @@ const PatentLifeCycleForm = () => {
         ref_no: "",
         prv_dof: "",
         prv_appno: "",
-        prv_dl: "",
+        pct_dl: "",
         pct_dof: "",
         pct_appno: "",
         pct_isa: "",
         pct_18: "",
-        pct_22_24: "",
+        pct_22_md: "",
         pct_30_31: "",
         npe_country: [],
         npe_appno: "",
@@ -100,7 +100,7 @@ const PatentLifeCycleForm = () => {
         setCountry(Array.isArray(e) ? e.map(x => x.value) : []);
     }
     console.log(patent);
-    console.log(country);
+    // console.log(country);
     return(
         <div>
             <div className="patentForm">
@@ -129,6 +129,7 @@ const PatentLifeCycleForm = () => {
                                     name="prv_dof"
                                     value={patent.prv_dof}
                                     onChange={handleInputs}
+                                    min="1997-01-01" max="2030-12-31"
                                 >
                                 </input>
                             </div>
@@ -147,12 +148,12 @@ const PatentLifeCycleForm = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PRV Deadline</span>
+                                <span className="details">PCT Deadline</span>
                                 <input 
                                     type="date" 
-                                    placeholder="Enter PRV Deadline"
+                                    placeholder="Enter PCT Deadline"
                                     autoComplete="off"
-                                    name="prv_dl"
+                                    name="pct_dl"
                                     value={patent.prv_dl}
                                     onChange={handleInputs}
                                 >
@@ -199,10 +200,10 @@ const PatentLifeCycleForm = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PCT 18 Date</span>
+                                <span className="details">PCT Publication Date</span>
                                 <input 
                                     type="date" 
-                                    placeholder="Enter PCT 18 Date"
+                                    placeholder="Enter PCT Publication Date"
                                     autoComplete="off"
                                     name="pct_18"
                                     value={patent.pct_18}
@@ -212,12 +213,12 @@ const PatentLifeCycleForm = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PCT 22/24 Date</span>
+                                <span className="details">PCT Month Date</span>
                                 <input 
                                     type="date" 
-                                    placeholder="Enter PCT 22/24 Date"
+                                    placeholder="Enter PCT Month Date"
                                     autoComplete="off"
-                                    name="pct_22_24"
+                                    name="pct_22_md"
                                     value={patent.pct_22_24}
                                     onChange={handleInputs}
                                 >
@@ -236,7 +237,8 @@ const PatentLifeCycleForm = () => {
                                 >
                                 </input>
                             </div>
-
+                        </div>
+                        <div className="patent-details">
                             <div className="input-box">
                                 <span className="details">NPE Application Number</span>
                                 <input 
