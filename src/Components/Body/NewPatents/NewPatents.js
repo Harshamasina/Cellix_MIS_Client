@@ -1,7 +1,6 @@
 // import PatentLifeCycleForm from "./PatentLifeCycleForm";
 import { Parallax } from 'react-parallax';
 import MultiNPEForm from './MultiNPEForm';
-// import PatentStepForm from './MultipStepForm/PatentStepForm';
 
 const NewPatents = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Policy.jpg";
@@ -19,7 +18,6 @@ const NewPatents = () => {
                 </Parallax>
             </div>
             {/* <PatentLifeCycleForm></PatentLifeCycleForm> */}
-            {/* <PatentStepForm></PatentStepForm> */}
             <MultiNPEForm></MultiNPEForm>
         </div>
     );

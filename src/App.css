@@ -253,7 +253,7 @@ body{
   border-color: #0e6e59;
 } */
 
-.form .button input{
+.button input{
   width: 20%;
   padding: 15px 25px 15px 25px;
   border-radius: 5px;
@@ -270,9 +270,10 @@ body{
   text-align: center;
   background: #006653;
   transition: 0.4s;
+  margin-bottom: 5%;
 }
 
-.form .button input:hover{
+.button input:hover{
   transform: scale(1.1);
   background: #009579
 }

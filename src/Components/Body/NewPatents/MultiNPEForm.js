@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@mui/material";
 
 const MultiNPEForm = () => {
 
@@ -365,14 +366,27 @@ const MultiNPEForm = () => {
                                 </form>
                             </div>
                         </div>
-                        <div class="form-group col-md-2 mt-2">
+                        <div>
                             {
                                 NPEData.length!==1 &&
-                                <button  className="btn btn-danger mx-1" onClick = {() => handleRemove(i)}>Remove NPE Country</button>
+                                <Button 
+                                    variant="contained" 
+                                    color="error" 
+                                    onClick = {() => handleRemove(i)}
+                                    className="mx-lg-2"
+                                >
+                                Remove NPE Country
+                                </Button>
                             }
                             { 
                                 NPEData.length - 1 === i &&
-                                <button  className="btn btn-success" onClick = { handleClick }>Add NEW NPE Country</button>
+                                <Button 
+                                    variant="contained"  
+                                    color="success" 
+                                    onClick = { handleClick }
+                                >
+                                Add NEW NPE Country
+                                </Button>
                             }
                         </div>
                     </div>
