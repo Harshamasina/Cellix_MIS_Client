@@ -10,6 +10,20 @@ const MultiNPEForm = () => {
         npe_firms: "",
         npe_fer_i: "",
         npe_fer_f: "",
+        npe_us_fa: "",
+        npe_us_foa: "",
+        npe_us_soa: "",
+        npe_us_rc: "",
+        npe_us_rr: "",
+        npe_in_appeal: "",
+        npe_in_hearing: "",
+        npe_in_ser: "",
+        npe_ep_161: "",
+        npe_ep_desc: "",
+        npe_ep_pub: "",
+        npe_ep_ser: "",
+        npe_ep_tac: "",
+        npe_ep_val: "",
         npe_grant: "",
         npe_patent: "",
         npe_if: "",
@@ -38,6 +52,20 @@ const MultiNPEForm = () => {
             npe_firms: "",
             npe_fer_i: "",
             npe_fer_f: "",
+            npe_us_fa: "",
+            npe_us_foa: "",
+            npe_us_soa: "",
+            npe_us_rc: "",
+            npe_us_rr: "",
+            npe_in_appeal: "",
+            npe_in_hearing: "",
+            npe_in_ser: "",
+            npe_ep_161: "",
+            npe_ep_desc: "",
+            npe_ep_pub: "",
+            npe_ep_ser: "",
+            npe_ep_tac: "",
+            npe_ep_val: "",
             npe_grant: "",
             npe_patent: "",
             npe_if: "",
@@ -50,13 +78,13 @@ const MultiNPEForm = () => {
         ref_no: "",
         prv_dof: "",
         prv_appno: "",
-        pct_dl: "",
         pct_dof: "",
         pct_appno: "",
         pct_isa: "",
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
+        pct_dl: "",
     });
 
     let pname, pvalue;
@@ -69,8 +97,7 @@ const MultiNPEForm = () => {
 
     console.log(PRVPCTData);
     console.log(NPEData);
-    // const patentData = PRVPCTData.concat(NPEData);
-    // console.log(patentData);
+
     return(
         <div>
             <div className="patentForm">
@@ -111,19 +138,6 @@ const MultiNPEForm = () => {
                                     autoComplete="off"
                                     name="prv_appno"
                                     value={PRVPCTData.prv_appno}
-                                    onChange={handlepInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">PCT Deadline</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PCT Deadline"
-                                    autoComplete="off"
-                                    name="pct_dl"
-                                    value={PRVPCTData.prv_dl}
                                     onChange={handlepInputs}
                                 >
                                 </input>
@@ -182,7 +196,7 @@ const MultiNPEForm = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PCT Month Date</span>
+                                <span className="details">PCT 22 Month Date</span>
                                 <input 
                                     type="date" 
                                     placeholder="Enter PCT Month Date"
@@ -202,6 +216,20 @@ const MultiNPEForm = () => {
                                     autoComplete="off"
                                     name="pct_30_31"
                                     value={PRVPCTData.pct_30_31}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            
+                            <div className="input-box">
+                                <span className="details">PCT Deadline</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT Deadline"
+                                    autoComplete="off"
+                                    name="pct_dl"
+                                    value={PRVPCTData.prv_dl}
                                     onChange={handlepInputs}
                                 >
                                 </input>
@@ -304,6 +332,188 @@ const MultiNPEForm = () => {
                                         </div>
 
                                         <div className="input-box">
+                                            <span className="details">United States(US)</span>
+                                            <span className="details">NPE First Office Action Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Request for Examination Date"
+                                                autoComplete="off"
+                                                name="npe_us_foa"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">United States(US)</span>
+                                            <span className="details">NPE Second Office Action Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Second office Action"
+                                                autoComplete="off"
+                                                name="npe_us_soa"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">United States(US)</span>
+                                            <span className="details">NPE request for Continuation</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Request for Continuation"
+                                                autoComplete="off"
+                                                name="npe_us_rc"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">United States(US)</span>
+                                            <span className="details">NPE Response to Examination Report</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Response to Examination Report"
+                                                autoComplete="off"
+                                                name="npe_us_rr"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">United States(US)</span>
+                                            <span className="details">NPE Final Action</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Final Action"
+                                                autoComplete="off"
+                                                name="npe_us_fa"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">India(IN)</span>
+                                            <span className="details">NPE India Appeal Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Final Action"
+                                                autoComplete="off"
+                                                name="npe_in_appeal"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">India(IN)</span>
+                                            <span className="details">NPE India Hearing Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Hearing Date"
+                                                autoComplete="off"
+                                                name="npe_in_hearing"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">India(IN)</span>
+                                            <span className="details">NPE India Second Examination Report</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Hearing Date"
+                                                autoComplete="off"
+                                                name="npe_in_ser"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE Rule 161</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Rule 161"
+                                                autoComplete="off"
+                                                name="npe_ep_161"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE Europe Granted / Rejected</span>
+                                            <select
+                                                name="npe_ep_desc"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                                <option defaultValue disabled>Select NPE Status</option>
+                                                <option value="1">Granted</option>
+                                                <option value="0">Rejected</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE claim to publication Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE claim to publication Date"
+                                                autoComplete="off"
+                                                name="npe_ep_pub"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE Europe Second Examination Report</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Europe Second Examination Report"
+                                                autoComplete="off"
+                                                name="npe_ep_ser"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE translation of accepted Claim </span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE translation of accepted claim "
+                                                autoComplete="off"
+                                                name="npe_ep_tac"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">Europe(EP)</span>
+                                            <span className="details">NPE Validation</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Validation"
+                                                autoComplete="off"
+                                                name="npe_ep_val"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
                                             <span className="details">NPE Grant Date</span>
                                             <input 
                                                 type="date" 
@@ -384,6 +594,7 @@ const MultiNPEForm = () => {
                                     variant="contained"  
                                     color="success" 
                                     onClick = { handleClick }
+                                    className="m-lg-3"
                                 >
                                 Add NEW NPE Country
                                 </Button>

@@ -141,7 +141,7 @@ body{
   background: #fff;
   padding: 25px 30px;
   border-radius: 5px;
-  margin-left: 5%;
+  margin-left: 8%;
 }
 
 .patentForm .title{
@@ -160,7 +160,7 @@ body{
 
 .form .patent-details .input-box{
   margin-bottom: 15px;
-  width: calc(100% / 5 - 20px);
+  width: calc(100% / 4 - 20px);
 }
 
 .form .input-box span.details{
@@ -233,8 +233,8 @@ body{
   margin-left: 39%;
 }
 
-/* .patent-details .input-box select{
-  height: 200px;
+.patent-details .input-box select{
+  height: 45%;
   width: 100%;
   outline: none;
   font-size: 16px;
@@ -243,7 +243,7 @@ body{
   border: 1px solid #ccc;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
-} */
+}
 
 .patent-details .input-box input:focus{
   border-color: #0e6e59;
