@@ -1,0 +1,394 @@
+import { useState } from "react";
+
+const MultiNPEForm = () => {
+
+    const [NPEData, setNPEData] = useState([{
+        npe_country: "",
+        npe_appno: "",
+        npe_dof: "",
+        npe_firms: "",
+        npe_fer_i: "",
+        npe_fer_f: "",
+        npe_grant: "",
+        npe_patent: "",
+        npe_if: "",
+        npe_annuity: "",
+        npe_rfe: ""
+    }]);
+
+    const handleInputs = (e, index) => {
+        const {name, value} = e.target;
+        const data = [...NPEData];
+        data[index][name] = value;
+        setNPEData(data);
+    }
+
+    const handleRemove = index => {
+        const list=[...NPEData];
+        list.splice(index,1);
+        setNPEData(list);
+    }
+
+    const handleClick = () => {
+        setNPEData([...NPEData, {
+            npe_country: "",
+            npe_appno: "",
+            npe_dof: "",
+            npe_firms: "",
+            npe_fer_i: "",
+            npe_fer_f: "",
+            npe_grant: "",
+            npe_patent: "",
+            npe_if: "",
+            npe_annuity: "",
+            npe_rfe: ""
+        }]);
+    }
+
+    const [PRVPCTData, setPRVPCTData] = useState({
+        ref_no: "",
+        prv_dof: "",
+        prv_appno: "",
+        pct_dl: "",
+        pct_dof: "",
+        pct_appno: "",
+        pct_isa: "",
+        pct_18: "",
+        pct_22_md: "",
+        pct_30_31: "",
+    });
+
+    let pname, pvalue;
+    const handlepInputs = (e) => {
+        // console.log(e);
+        pname=e.target.name;
+        pvalue=e.target.value;
+        setPRVPCTData({...PRVPCTData, [pname]:pvalue});
+    };
+
+    console.log(PRVPCTData);
+    console.log(NPEData);
+    // const patentData = PRVPCTData.concat(NPEData);
+    // console.log(patentData);
+    return(
+        <div>
+            <div className="patentForm">
+                <div className="content">
+                    <form method="#" className="form">
+                        <div className="patent-details">
+                            <div className="input-box">
+                                <span className="details">Reference Number</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter Reference Number"
+                                    autoComplete="off"
+                                    name="ref_no"
+                                    value={PRVPCTData.ref_no}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PRV Date of Filing</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PRV Date of Filing"
+                                    autoComplete="off"
+                                    name="prv_dof"
+                                    value={PRVPCTData.prv_dof}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PRV Application Number</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="PRV Application Number"
+                                    autoComplete="off"
+                                    name="prv_appno"
+                                    value={PRVPCTData.prv_appno}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Deadline</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT Deadline"
+                                    autoComplete="off"
+                                    name="pct_dl"
+                                    value={PRVPCTData.prv_dl}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Date of Filing</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT Date of Filing"
+                                    autoComplete="off"
+                                    name="pct_dof"
+                                    value={PRVPCTData.pct_dof}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Number</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter PCT Number"
+                                    autoComplete="off"
+                                    name="pct_appno"
+                                    value={PRVPCTData.pct_appno}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT ISA Date</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT ISA Date"
+                                    autoComplete="off"
+                                    name="pct_isa"
+                                    value={PRVPCTData.pct_isa}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Publication Date</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT Publication Date"
+                                    autoComplete="off"
+                                    name="pct_18"
+                                    value={PRVPCTData.pct_18}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Month Date</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT Month Date"
+                                    autoComplete="off"
+                                    name="pct_22_md"
+                                    value={PRVPCTData.pct_22_24}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT 30/31 Date</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="PCT 30/31 Date"
+                                    autoComplete="off"
+                                    name="pct_30_31"
+                                    value={PRVPCTData.pct_30_31}
+                                    onChange={handlepInputs}
+                                >
+                                </input>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            { 
+                NPEData.map( (x,i) => {
+                return(
+                    <div>
+                        <div className="patentForm">
+                            <div className="content">
+                                <form method="#" className="form">
+                                    <div className="patent-details">
+                                        <div className="input-box">
+                                            <span className="details">NPE Country</span>
+                                            <select 
+                                                name="npe_country"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                                <option defaultValue disabled>Select Country</option>
+                                                <option value="US">United States (US)</option>
+                                                <option value="AU">Australia (AU)</option>
+                                                <option value="BR">Brazil (BR)</option>
+                                                <option value="CA">Canada (CA)</option>
+                                                <option value="CN">China (CN)</option>
+                                                <option value="EP">Europe (EP)</option>
+                                                <option value="IN">India (IN)</option>
+                                                <option value="IL">Israel (IL)</option>
+                                                <option value="JP">Japan (JP)</option>
+                                                <option value="MX">Mexico (MX)</option>
+                                                <option value="NZ">New Zealand (NZ)</option>
+                                                <option value="RU">Russia (RU)</option>
+                                                <option value="SG">Singapore (SG)</option>
+                                                <option value="ZA">South Africa (ZA)</option>
+                                                <option value="KR">South Korea (KR)</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Application Number</span>
+                                            <input 
+                                                type="text" 
+                                                placeholder="Enter NPE Application Number"
+                                                autoComplete="off"
+                                                name="npe_appno"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Date of Filing</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Date of Filing"
+                                                autoComplete="off"
+                                                name="npe_dof"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Firms</span>
+                                            <input 
+                                                type="text" 
+                                                placeholder="Enter NPE Firms"
+                                                autoComplete="off"
+                                                name="npe_firms"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE FER Issue Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE FER Issue Date"
+                                                autoComplete="off"
+                                                name="npe_fer_i"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE FER Final Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE FER Final Date"
+                                                autoComplete="off"
+                                                name="npe_fer_f"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Grant Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="NPE Grant Date"
+                                                autoComplete="off"
+                                                name="npe_grant"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Patent Number</span>
+                                            <input 
+                                                type="text" 
+                                                placeholder="Enter NPE Patent Number"
+                                                autoComplete="off"
+                                                name="npe_patent"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Issue Fee Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Issue Fee Date"
+                                                autoComplete="off"
+                                                name="npe_if"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Annuities Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Annuities Date"
+                                                autoComplete="off"
+                                                name="npe_annuity"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+
+                                        <div className="input-box">
+                                            <span className="details">NPE Request for Examination Date</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter NPE Request for Examination Date"
+                                                autoComplete="off"
+                                                name="npe_rfe"
+                                                onChange={ e => handleInputs(e,i)}
+                                            >
+                                            </input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 mt-2">
+                            {
+                                NPEData.length!==1 &&
+                                <button  className="btn btn-danger mx-1" onClick = {() => handleRemove(i)}>Remove NPE Country</button>
+                            }
+                            { 
+                                NPEData.length - 1 === i &&
+                                <button  className="btn btn-success" onClick = { handleClick }>Add NEW NPE Country</button>
+                            }
+                        </div>
+                    </div>
+                    );
+                } )
+            }
+                <div className="button">
+                    <input 
+                        type="submit"
+                        name="Register Patent"
+                        value="Register Patent"
+                    >
+                    </input>
+                </div>
+        </div>
+    );
+}
+
+export default MultiNPEForm;

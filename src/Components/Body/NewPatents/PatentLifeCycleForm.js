@@ -1,69 +1,6 @@
 import { useState } from "react";
-import Select from 'react-select';
 
 const PatentLifeCycleForm = () => {
-    const data = [
-        {
-            value: "US",
-            label: "United States"
-        },
-        {
-            value: "AU",
-            label: "Australia (AU)"
-        },
-        {
-            value: "BR",
-            label: "Brazil (BR)"
-        },
-        {
-            value: "CA",
-            label: "Canada (CA)"
-        },
-        {
-            value: "CN",
-            label: "China (CN)"
-        },
-        {
-            value: "EP",
-            label: "Europe (EP)"
-        },
-        {
-            value: "IN",
-            label: "India (IN)"
-        },
-        {
-            value: "IL",
-            label: "Israel (IL)"
-        },
-        {
-            value: "JP",
-            label: "Japan (JP)"
-        },
-        {
-            value: "MX",
-            label: "Mexico (MX)"
-        },
-        {
-            value: "NZ",
-            label: "New Zealand (NZ)"
-        },
-        {
-            value: "RU",
-            label: "Russia (RU)"
-        },
-        {
-            value: "SG",
-            label: "Singapore (SG)"
-        },
-        {
-            value: "ZA",
-            label: "South Africa (ZA)"
-        },
-        {
-            value: "KR",
-            label: "South Korea (KR)"
-        },
-    ]
     const [patent, setPatent] = useState({
         ref_no: "",
         prv_dof: "",
@@ -75,20 +12,7 @@ const PatentLifeCycleForm = () => {
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
-        npe_country: [],
-        npe_appno: "",
-        npe_dof: "",
-        npe_firms: "",
-        // npe_invoice: "",
-        // npe_ph: "",
-        npe_fer_i: "",
-        npe_fer_f: "",
-        npe_grant: "",
-        npe_patent: "",
-        npe_if: "",
-        npe_annuity: "" 
-    });
-    const [country, setCountry] = useState([]); 
+    }); 
     let name, value;
     const handleInputs = (e) => {
         // console.log(e);
@@ -96,9 +20,6 @@ const PatentLifeCycleForm = () => {
         value=e.target.value;
         setPatent({...patent, [name]:value});
     };
-    const handleChange = (e) => {
-        setCountry(Array.isArray(e) ? e.map(x => x.value) : []);
-    }
     console.log(patent);
     // console.log(country);
     return(
@@ -237,182 +158,6 @@ const PatentLifeCycleForm = () => {
                                 >
                                 </input>
                             </div>
-                        </div>
-                        <div className="patent-details">
-                            <div className="input-box">
-                                <span className="details">NPE Application Number</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="Enter NPE Application Number"
-                                    autoComplete="off"
-                                    name="npe_appno"
-                                    value={patent.npe_appno}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Date of Filing</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter NPE Date of Filing"
-                                    autoComplete="off"
-                                    name="npe_dof"
-                                    value={patent.npe_dof}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Firms</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="Enter NPE Firms"
-                                    autoComplete="off"
-                                    name="npe_firms"
-                                    value={patent.npe_firms}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE FER Issue Date</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter NPE FER Issue Date"
-                                    autoComplete="off"
-                                    name="npe_fer_i"
-                                    value={patent.npe_fer_i}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE FER Final Date</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter NPE FER Final Date"
-                                    autoComplete="off"
-                                    name="npe_fer_f"
-                                    value={patent.npe_fer_f}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Grant Date</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="NPE Grant Date"
-                                    autoComplete="off"
-                                    name="npe_grant"
-                                    value={patent.npe_grant}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Patent Number</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="Enter NPE Patent Number"
-                                    autoComplete="off"
-                                    name="npe_patent"
-                                    value={patent.npe_patent}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Issue Fee Date</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter NPE Issue Fee Date"
-                                    autoComplete="off"
-                                    name="npe_if"
-                                    value={patent.npe_if}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Annuities Date</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter NPE Annuities Date"
-                                    autoComplete="off"
-                                    name="npe_annuity"
-                                    value={patent.npe_annuity}
-                                    onChange={handleInputs}
-                                >
-                                </input>
-                            </div>
-
-                            {/* <div className="input-box">
-                                <span className="details">NPE Invoice</span>
-                                <input 
-                                    type="file" 
-                                    placeholder="Enter NPE Invoice"
-                                    multiple
-                                    autoComplete="off"
-                                >
-                                </input>
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">NPE Prosecution history</span>
-                                <input 
-                                    type="file"
-                                    multiple
-                                    placeholder="Enter NPE Prosecution history"
-                                    autoComplete="off"
-                                >  
-                                </input>
-                            </div> */}
-
-                            {/* <div className="select-box">
-                                <span className="details">NPE Country</span>
-                                <select 
-                                    multiple={true}
-                                    name="npe_country"
-                                    value={patent.npe_country}
-                                    onChange={handleInputs}
-                                >
-                                    <option defaultValue disabled>Select Country</option>
-                                    <option value="US">United States (US)</option>
-                                    <option value="AU">Australia (AU)</option>
-                                    <option value="BR">Brazil (BR)</option>
-                                    <option value="CA">Canada (CA)</option>
-                                    <option value="CN">China (CN)</option>
-                                    <option value="EP">Europe (EP)</option>
-                                    <option value="IN">India (IN)</option>
-                                    <option value="IL">Israel (IL)</option>
-                                    <option value="JP">Japan (JP)</option>
-                                    <option value="MX">Mexico (MX)</option>
-                                    <option value="NZ">New Zealand (NZ)</option>
-                                    <option value="RU">Russia (RU)</option>
-                                    <option value="SG">Singapore (SG)</option>
-                                    <option value="ZA">South Africa (ZA)</option>
-                                    <option value="KR">South Korea (KR)</option>
-                                </select>
-                            </div> */}
-                            <Select
-                                placeholder="Select Country"
-                                value={data.filter(obj => country.includes(obj.value))}
-                                options={data}
-                                onChange={handleChange}
-                                isMulti
-                                isClearable
-                            >
-                            </Select>
                         </div>
                         <div className="button">
                             <input 

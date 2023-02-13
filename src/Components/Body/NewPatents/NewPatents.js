@@ -1,5 +1,6 @@
-import PatentLifeCycleForm from "./PatentLifeCycleForm";
+// import PatentLifeCycleForm from "./PatentLifeCycleForm";
 import { Parallax } from 'react-parallax';
+import MultiNPEForm from './MultiNPEForm';
 // import PatentStepForm from './MultipStepForm/PatentStepForm';
 
 const NewPatents = () => {
@@ -17,8 +18,9 @@ const NewPatents = () => {
                     </div>
                 </Parallax>
             </div>
-            <PatentLifeCycleForm></PatentLifeCycleForm>
+            {/* <PatentLifeCycleForm></PatentLifeCycleForm> */}
             {/* <PatentStepForm></PatentStepForm> */}
+            <MultiNPEForm></MultiNPEForm>
         </div>
     );
 }
