@@ -9,7 +9,7 @@ const Login = () => {
     }
     return(
         <div>
-            <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
                     <div className='ParallaxContainer'>
                         <div className="ParallaxDiv">
                             <div className='FirmPageContent'>

@@ -84,7 +84,7 @@ const MultiNPEForm = () => {
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
-        pct_dl: "",
+        pct_dl: ""
     });
 
     let pname, pvalue;
@@ -94,7 +94,7 @@ const MultiNPEForm = () => {
         pvalue=e.target.value;
         setPRVPCTData({...PRVPCTData, [pname]:pvalue});
     };
-
+    
     console.log(PRVPCTData);
     console.log(NPEData);
 
@@ -268,6 +268,7 @@ const MultiNPEForm = () => {
                                                 <option value="SG">Singapore (SG)</option>
                                                 <option value="ZA">South Africa (ZA)</option>
                                                 <option value="KR">South Korea (KR)</option>
+                                                <option value="ES">Spain (ES)</option>
                                             </select>
                                         </div>
 
