@@ -21,6 +21,7 @@ const PatentDashboard = () => {
     return(
         <div>
             <div className='container'>
+                <h2>Cellix Bio Patents Data</h2>
                 <div className='box-container'>
                     {
                         patents.data && patents.data.map((patent, i) => (

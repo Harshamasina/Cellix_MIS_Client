@@ -19,7 +19,19 @@ const Register = () => {
                 <form method='#' className='loginform'>
                     <input 
                         type="text" 
+                        placeholder='Enter your Name'
+                        autoComplete="off"
+                    >
+                    </input>
+                    <input 
+                        type="text" 
                         placeholder='Enter your Email'
+                        autoComplete="off"
+                    >
+                    </input>
+                    <input 
+                        type="tel" 
+                        placeholder='Enter your Phone Number'
                         autoComplete="off"
                     >
                     </input>

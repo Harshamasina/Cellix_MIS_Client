@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FcSearch } from 'react-icons/fc';
+import { AiOutlineFileSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const SearchPatents = () => {
@@ -20,7 +20,7 @@ const SearchPatents = () => {
     return(
         <div>
             <div class="search-box">
-                <button class="btn-search"><FcSearch className='search-icon'></FcSearch></button>
+                <button class="btn-search"><AiOutlineFileSearch className='search-icon' /></button>
                 <input 
                     type="text" 
                     class="input-search" 
@@ -33,7 +33,7 @@ const SearchPatents = () => {
                 <div className='box-container'>
                     {
                         searchPatent && searchPatent.length === 0 ?
-                        <div><h1>No Patents Found</h1></div> :
+                        <div className='no-results'><img src='https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Search+Not+Found.png' alt='search'></img></div> :
                         searchPatent && searchPatent.map((patent, i) => (
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no} target="_blank">{patent.ref_no}</Link></h3>

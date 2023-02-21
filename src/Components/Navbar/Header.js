@@ -10,6 +10,8 @@ import './Header.css';
 import NewPatents from '../Body/NewPatents/NewPatents';
 import Register from '../Body/Login/Register';
 import PatentInfo from '../Body/Patents/PatentInfo';
+import Notifications from '../Body/Notifications/Notifications';
+import Error404 from '../Body/error404';
 
 function NavBar() {
         const [changeNavbar, setChangeNavbar] = useState(false);
@@ -36,9 +38,10 @@ function NavBar() {
                             >
                                 <Nav.Link className='navbar_link' as={Link} to="/home" eventKey="0">Home</Nav.Link>
                                 <Nav.Link className='navbar_link' as={Link} to="/patents" eventKey="1">Patents</Nav.Link>
-                                <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="2">New Entry</Nav.Link>
-                                <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="3">Firms</Nav.Link>
-                                <Nav.Link className='navbar_link' as={Link} to="/login" eventKey="4">Login</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>
+                                <Nav.Link className='navbar_link' as={Link} to="/login" eventKey="5">Login</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -50,10 +53,12 @@ function NavBar() {
                         <Route path='/patents' element={<Patents></Patents>}></Route>
                         <Route path='/newpatent' element={<NewPatents></NewPatents>}></Route>
                         <Route path='/firms' element={<Firms></Firms>}></Route>
+                        <Route path='/notifications' element={<Notifications></Notifications>}></Route>
                         <Route path='/patentinfo/:ref' element={<PatentInfo></PatentInfo>}></Route>
                         <Route path='/login' element={<Login></Login>}></Route>
                         <Route path='/register' element={<Register></Register>}></Route>
                         <Route path='/' element={<Home></Home>}></Route>
+                        <Route path='*' element={<Error404></Error404>}></Route>
                     </Routes>
                 </div>
             </>
