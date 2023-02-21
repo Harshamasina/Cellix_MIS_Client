@@ -8,7 +8,8 @@ import Login from "../Body/Login/Login";
 import Logo from './Logo';
 import './Header.css';
 import NewPatents from '../Body/NewPatents/NewPatents';
-
+import Register from '../Body/Login/Register';
+import PatentInfo from '../Body/Patents/PatentInfo';
 
 function NavBar() {
         const [changeNavbar, setChangeNavbar] = useState(false);
@@ -23,7 +24,6 @@ function NavBar() {
         return (
             <>
                 <div>
-                
                     <Navbar collapseOnSelect  variant={"dark"} expand="lg" className={changeNavbar ? 'color-nav-scroll' : 'color-nav'}>
                         <Logo></Logo>
                         <Navbar.Brand href="#"> </Navbar.Brand>
@@ -50,7 +50,9 @@ function NavBar() {
                         <Route path='/patents' element={<Patents></Patents>}></Route>
                         <Route path='/newpatent' element={<NewPatents></NewPatents>}></Route>
                         <Route path='/firms' element={<Firms></Firms>}></Route>
+                        <Route path='/patentinfo/:ref' element={<PatentInfo></PatentInfo>}></Route>
                         <Route path='/login' element={<Login></Login>}></Route>
+                        <Route path='/register' element={<Register></Register>}></Route>
                         <Route path='/' element={<Home></Home>}></Route>
                     </Routes>
                 </div>

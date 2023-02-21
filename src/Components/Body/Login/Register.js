@@ -1,13 +1,9 @@
 import { Parallax } from 'react-parallax';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
-    const ForgotPassword = () => {
-        return(
-            window.alert("Please Contact Admin")
-        );
-    }
+    const navigate = useNavigate();
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
@@ -38,12 +34,16 @@ const Login = () => {
                         placeholder='Enter your Password'
                     >
                     </input>
-                    <p onClick={ForgotPassword}>Forgot Password</p>
-                    <Link to="/register" className='RegisterLink'><p>Register</p></Link>
+                    <input 
+                        type="password" 
+                        placeholder='Confirm your Password'
+                    >
+                    </input>
                     <input 
                         type="submit" 
                         className="loginbutton" 
-                        value="Login"
+                        value="Register"
+                        onClick={() => navigate('/login')}
                     >
                     </input>
                 </form>
@@ -51,4 +51,4 @@ const Login = () => {
         </div>
     );
 }
-export default Login;
+export default Register;

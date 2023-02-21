@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 
 const MultiNPEForm = () => {
-
     const [NPEData, setNPEData] = useState([{
         npe_country: "",
         npe_appno: "",
@@ -30,12 +29,31 @@ const MultiNPEForm = () => {
         npe_annuity: "",
         npe_rfe: ""
     }]);
+    const [PRVPCTData, setPRVPCTData] = useState({
+        ref_no: "",
+        prv_dof: "",
+        prv_appno: "",
+        pct_dof: "",
+        pct_appno: "",
+        pct_isa: "",
+        pct_18: "",
+        pct_22_md: "",
+        pct_30_31: "",
+        pct_dl: "",
+        npe: NPEData
+    });
 
     const handleInputs = (e, index) => {
         const {name, value} = e.target;
         const data = [...NPEData];
         data[index][name] = value;
         setNPEData(data);
+        console.log(PRVPCTData);
+        setPRVPCTData({...PRVPCTData.ref_no, ...PRVPCTData.prv_dof, ...PRVPCTData.prv_appno, ...PRVPCTData.pct_isa, 
+            ...PRVPCTData.pct_dof, ...PRVPCTData.pct_appno, ...PRVPCTData.pct_18, ...PRVPCTData.pct_22_md, 
+            ...PRVPCTData.pct_30_31, ...PRVPCTData.pct_dl, npe: data})
+        
+        console.log(PRVPCTData);
     }
 
     const handleRemove = index => {
@@ -74,29 +92,15 @@ const MultiNPEForm = () => {
         }]);
     }
 
-    const [PRVPCTData, setPRVPCTData] = useState({
-        ref_no: "",
-        prv_dof: "",
-        prv_appno: "",
-        pct_dof: "",
-        pct_appno: "",
-        pct_isa: "",
-        pct_18: "",
-        pct_22_md: "",
-        pct_30_31: "",
-        pct_dl: ""
-    });
-
     let pname, pvalue;
     const handlepInputs = (e) => {
-        // console.log(e);
         pname=e.target.name;
         pvalue=e.target.value;
         setPRVPCTData({...PRVPCTData, [pname]:pvalue});
     };
     
-    console.log(PRVPCTData);
-    console.log(NPEData);
+    // console.log(PRVPCTData);
+    // console.log(NPEData);
 
     return(
         <div>
@@ -258,6 +262,7 @@ const MultiNPEForm = () => {
                                                 <option value="BR">Brazil (BR)</option>
                                                 <option value="CA">Canada (CA)</option>
                                                 <option value="CN">China (CN)</option>
+                                                <option value="DK">Denmark (DK)</option>
                                                 <option value="EP">Europe (EP)</option>
                                                 <option value="IN">India (IN)</option>
                                                 <option value="IL">Israel (IL)</option>
