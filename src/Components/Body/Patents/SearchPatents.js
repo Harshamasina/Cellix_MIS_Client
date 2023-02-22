@@ -39,6 +39,13 @@ const SearchPatents = () => {
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no} target="_blank">{patent.ref_no}</Link></h3>
                                 <h4>PRV Number: <span>{patent.prv_appno}</span></h4>
                                 <h4>PCT Number: <span>{patent.pct_appno}</span></h4>
+                                <ul className='country-ul'>
+                                    {
+                                        patent.npe && patent.npe.map((npe) => (
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link'><li key={npe}>{npe.npe_country}</li></Link>
+                                        ))
+                                    }
+                                </ul>
                                 <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">Know More</Link>
                             </div>
                         ))

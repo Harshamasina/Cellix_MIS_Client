@@ -7,13 +7,13 @@ const Register = () => {
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
-                    <div className='ParallaxContainer'>
-                        <div className="ParallaxDiv">
-                            <div className='FirmPageContent'>
-                                <h1>Login</h1>
-                            </div>
+                <div className='ParallaxContainer'>
+                    <div className="ParallaxDiv">
+                        <div className='FirmPageContent'>
+                            <h1>Login</h1>
                         </div>
                     </div>
+                </div>
             </Parallax>
             <div className='Login-Container'>
                 <form method='#' className='loginform'>
