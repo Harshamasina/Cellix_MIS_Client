@@ -5,18 +5,46 @@ import { Parallax } from 'react-parallax';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Accordion from 'react-bootstrap/Accordion';
+import { FaRegEdit } from 'react-icons/fa';
+import { Dna } from  'react-loader-spinner';
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/lock.jpg";
     const {ref} = useParams();
     const [patent, setPatent] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
-            const patentData = await axios.get(`/api/getpatent/${ref}`);
-            setPatent(patentData.data);
+            try{
+                const patentData = await axios.get(`/api/getpatent/${ref}`);
+                setPatent(patentData.data);
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError(err);
+                setLoading(false);
+            }
         }
         fetchData();
     }, [ref]);
+    if(loading){
+        return (
+            <div>
+                <Dna
+                    visible={true}
+                    height="20%"
+                    width="20%"
+                    ariaLabel="dna-loading"
+                    wrapperStyle={{marginLeft: '40%'}}
+                />
+            </div>
+        );
+    }
+    if(error){
+        return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
+    }
     console.log(patent);
     return(
         <div>
@@ -26,7 +54,7 @@ const PatentInfo = () => {
                         <div className='FirmPageContent'>
                             <h1>{patent.ref_no}</h1>
                         </div>
-                        <Link className='patentinfo-link'>Edit {patent.ref_no}</Link>
+                        <Link className='patentinfo-link' to="/patentupdate"><FaRegEdit className='patentinfo-icon'/></Link>
                     </div>
                 </div>
             </Parallax>
@@ -53,8 +81,8 @@ const PatentInfo = () => {
                         <p>PCT Deadline: <span>{patent.pct_dl}</span></p>
                     </div>
                 </Tab>
-                <Tab eventKey="NPE" title="Non Practicing Entity Data (NPE) Data" tabClassName='tab-item'>
-                    <Accordion defaultActiveKey="0" flush className='mb-4'>
+                <Tab eventKey="NPE" title="Non Practicing Entity (NPE) Data" tabClassName='tab-item'>
+                    <Accordion alwaysOpen className='mb-4 custom-accordion'>
                         {
                             patent.npe && patent.npe.map((npe, i) => (
                                 <Accordion.Item eventKey={i} key={i}>
@@ -69,11 +97,11 @@ const PatentInfo = () => {
                                                     <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE First Office Action Date (Only for US): <span>{npe.npe_us_foa}</span></p>
-                                                    <p>NPE Second Office Action Date (Only for US): <span>{npe.npe_us_soa}</span></p>
-                                                    <p>NPE request for Continuation (Only for US): <span>{npe.npe_us_rc}</span></p>
-                                                    <p>NPE Response to Examination Report (Only for US): <span>{npe.npe_us_rr}</span></p>
-                                                    <p>NPE Final Action (Only for US): <span>{npe.npe_us_fa}</span></p>
+                                                    <p>NPE First Office Action Date: <span>{npe.npe_us_foa}</span></p>
+                                                    <p>NPE Second Office Action Date: <span>{npe.npe_us_soa}</span></p>
+                                                    <p>NPE request for Continuation: <span>{npe.npe_us_rc}</span></p>
+                                                    <p>NPE Response to Examination Report: <span>{npe.npe_us_rr}</span></p>
+                                                    <p>NPE Final Action: <span>{npe.npe_us_fa}</span></p>
                                                     <p>NPE Grant Date: <span>{npe.npe_grant}</span></p>
                                                     <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
                                                     <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
@@ -89,7 +117,7 @@ const PatentInfo = () => {
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE Rule 161: <span>{npe.npe_ep_161}</span></p>
-                                                    <p>NPE Granted / Rejected: <span>{npe.npe_grant}</span></p>
+                                                    <p>NPE Granted / Rejected: <span>{npe.npe_ep_desc}</span></p>
                                                     <p>NPE claim to publication Date: <span>{npe.npe_ep_pub}</span></p>
                                                     <p>NPE Second Examination Report: <span>{npe.npe_ep_ser}</span></p>
                                                     <p>NPE translation of accepted Claim: <span>{npe.npe_ep_tac}</span></p>

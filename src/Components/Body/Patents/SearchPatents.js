@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { HiInformationCircle } from "react-icons/hi";
 
 const SearchPatents = () => {
     const [searchPatent, setSearchPatent] = useState();
@@ -46,7 +47,7 @@ const SearchPatents = () => {
                                         ))
                                     }
                                 </ul>
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">Know More</Link>
+                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank"><HiInformationCircle /></Link>
                             </div>
                         ))
                     }

@@ -10,8 +10,10 @@ import './Header.css';
 import NewPatents from '../Body/NewPatents/NewPatents';
 import Register from '../Body/Login/Register';
 import PatentInfo from '../Body/Patents/PatentInfo';
+// import updatePatent from '../Body/Patents/updatePatent';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
+import PatentUpdate from '../Body/Patents/PatentUpdate';
 
 function NavBar() {
         const [changeNavbar, setChangeNavbar] = useState(false);
@@ -55,6 +57,7 @@ function NavBar() {
                         <Route path='/firms' element={<Firms></Firms>}></Route>
                         <Route path='/notifications' element={<Notifications></Notifications>}></Route>
                         <Route path='/patentinfo/:ref' element={<PatentInfo></PatentInfo>}></Route>
+                        <Route path='/patentupdate' element={<PatentUpdate></PatentUpdate>}></Route>
                         <Route path='/login' element={<Login></Login>}></Route>
                         <Route path='/register' element={<Register></Register>}></Route>
                         <Route path='/' element={<Home></Home>}></Route>

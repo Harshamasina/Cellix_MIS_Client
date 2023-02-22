@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Dna } from  'react-loader-spinner'
+import { Dna } from  'react-loader-spinner';
+import { VscGoToFile } from "react-icons/vsc";
+import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 
 const PatentDashboard = () => {
     const [patents, setPatents] = useState([]);
@@ -39,7 +41,7 @@ const PatentDashboard = () => {
         </div>;
     }
     if(error){
-        return <div>Error: <h1>{error.message}</h1></div>;
+        return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     }
     return(
         <div>
@@ -58,7 +60,7 @@ const PatentDashboard = () => {
                                         ))
                                     }
                                 </ul>
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">Know More</Link>
+                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank"><VscGoToFile /></Link>
                             </div>
                         ))
                     }
