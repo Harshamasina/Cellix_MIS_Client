@@ -7,7 +7,7 @@ const SearchPatents = () => {
     const searchHandle = async(e) => {
         let key = e.target.value;
         if(key){
-            let searchResult = await fetch(`http://localhost:5000/api/searchpatents/${key.replaceAll("/", "%2F")}`);
+            let searchResult = await fetch(`/api/searchpatents/${key.replaceAll("/", "%2F")}`);
             searchResult = await searchResult.json();
             if(searchResult){
                 setSearchPatent(searchResult);

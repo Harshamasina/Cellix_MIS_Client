@@ -12,7 +12,7 @@ const PatentDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentsData = await axios.get("http://localhost:5000/api/getpatents");
+                const patentsData = await axios.get("/api/getpatents");
                 setPatents(patentsData.data);
                 setLoading(false);
             } catch (err) {
