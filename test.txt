@@ -1,0 +1,30 @@
+// const today = new Date();
+        // const apiDate = new Date(date);
+        // console.log(today);
+        // console.log(apiDate);
+        // const diff = today.getTime() - apiDate.getTime();
+        // const diffDays = Math.round(diff / (24 * 60 * 60 * 1000));
+        // const diffMonths = Math.round(diff / (30 * 24 * 60 * 60 * 1000));
+        // if (diffDays <= 7) {
+        //     return 'red';
+        // } else if (diffMonths <= 1) {
+        //     return 'orange';
+        // } else if (diffMonths <= 2) {
+        //     return 'yellow';
+        // } else {
+        //     return 'black'; 
+        // }
+        const today = new Date();
+        const oneWeek = 7 * 24 * 60 * 60 * 1000;
+        const twoMonths = 2 * 30 * 24 * 60 * 60 * 1000;
+        const [year, month, day] = date.split('-');
+        const apiDate = new Date(year, month - 1, day);
+        const diff = today.getTime() - apiDate.getTime();
+
+        if (diff <= oneWeek) {
+        return 'red';
+        } else if (diff <= twoMonths) {
+        return 'orange';
+        } else {
+        return '';
+        }

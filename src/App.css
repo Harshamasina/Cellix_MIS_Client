@@ -692,7 +692,8 @@ body{
 }
 
 .nav-tabs .nav-link.active {
-  color: #15B39D !important;
+  color: #fff !important;
+  background: #0E6E59 !important;
   border: 2px solid #0E6E59 !important;
 }
 
@@ -726,7 +727,6 @@ body{
 }
 
 .tab-data span{
-  color: #282c34;
   font-size: 1.1vw;
   font-weight: 500;
 }
@@ -744,12 +744,6 @@ body{
   justify-content: left;
   padding-left: 15px;
   padding-top: 7px;
-}
-
-.tab-npe-data span{
-  color: #282c34;
-  font-size: 1.1vw;
-  font-weight: 500;
 }
 
 .accordion-item{
@@ -806,4 +800,28 @@ body{
   .error-container{
     margin-top: 10% !important;
   }
+}
+
+.red {
+  color: #FF4433;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.orange {
+  color: #FF5F1F;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.yellow {
+  color: #FFC000;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.black{
+  color: #282c34;
+  font-size: 1.1vw;
+  font-weight: 500;
 }

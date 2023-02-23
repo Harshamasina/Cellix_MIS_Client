@@ -8,6 +8,8 @@ import Accordion from 'react-bootstrap/Accordion';
 import { FaRegEdit } from 'react-icons/fa';
 import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { OverlayTrigger, Popover } from 'react-bootstrap';
+
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/lock.jpg";
@@ -45,7 +47,60 @@ const PatentInfo = () => {
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     }
-    console.log(patent);
+    // console.log(patent);
+
+    const renderPopover = (date) => {
+        try{
+            if (!date) {
+                return <Popover />;
+            }
+            const today = new Date();
+            const apiDate = new Date(date);
+            // const monthDiff = (today.getFullYear() - apiDate.getFullYear()) * 12 + (today.getMonth() - apiDate.getMonth());
+            const timeDiff = apiDate.getTime() - today.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const diffMonths = Math.ceil(daysDiff / 30);
+            if (daysDiff < 0 || daysDiff > 60) {
+                return <Popover />;
+            }
+            if(diffMonths <= 2){
+                return(
+                    <Popover>
+                        <Popover.Body>
+                            {daysDiff} days until {apiDate.toLocaleDateString()}! 
+                        </Popover.Body>
+                    </Popover>
+                )
+            }
+        } catch(err) {
+            console.error(err);
+        }
+    }
+
+    const changeColorDates = (date) => {
+        try{
+            const today = new Date();
+            const apiDate = new Date(date);
+            const timeDiff = apiDate.getTime() - today.getTime();
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            const diffMonths = Math.ceil(daysDiff / 30);
+            if(daysDiff < 0){
+                return('black');
+            }
+            if(daysDiff <= 7){
+                return('red');
+
+            } else if (diffMonths <= 2){
+                return('orange');
+
+            }
+            else{
+                return('black');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
     return(
         <div>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={3}>
@@ -93,7 +148,7 @@ const PatentInfo = () => {
                                                 <div className='tab-npe-data shadow-lg'>
                                                     <p>NPE Country: <span>{npe.npe_country}</span></p>
                                                     <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <p>NPE Date of Filing: <span>{npe.npe_dof}</span></p>
+                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
                                                     <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
@@ -112,7 +167,7 @@ const PatentInfo = () => {
                                                 <div className='tab-npe-data shadow-lg'>
                                                     <p>NPE Country: <span>{npe.npe_country}</span></p>
                                                     <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <p>NPE Date of Filing: <span>{npe.npe_dof}</span></p>
+                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
                                                     <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
@@ -132,7 +187,7 @@ const PatentInfo = () => {
                                                 <div className='tab-npe-data shadow-lg'>
                                                     <p>NPE Country: <span>{npe.npe_country}</span></p>
                                                     <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <p>NPE Date of Filing: <span>{npe.npe_dof}</span></p>
+                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
                                                     <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
@@ -149,11 +204,11 @@ const PatentInfo = () => {
                                                 <div className='tab-npe-data shadow-lg'>
                                                     <p>NPE Country: <span>{npe.npe_country}</span></p>
                                                     <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <p>NPE Date of Filing: <span>{npe.npe_dof}</span></p>
+                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
                                                     <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
                                                     <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
                                                     <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE Grant Date: <span>{npe.npe_grant}</span></p>
+                                                    <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={renderPopover(npe.npe_grant)}><p>NPE Grant Date: <span className={changeColorDates(npe.npe_grant)}>{npe.npe_grant}</span></p></OverlayTrigger>
                                                     <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
                                                     <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
                                                     <p>NPE Annuities Date: <span>{npe.npe_annuity}</span></p>

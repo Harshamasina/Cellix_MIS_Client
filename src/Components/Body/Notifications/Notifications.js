@@ -1,4 +1,6 @@
 import { Parallax } from 'react-parallax';
+// import NotificationTable from './NotificationTable';
+import TestNotification from './TestNotification';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Notifications.jpg";
@@ -13,6 +15,8 @@ const Notifications = () => {
                     </div>
                 </div>
             </Parallax>
+            {/* <NotificationTable></NotificationTable> */}
+            <TestNotification></TestNotification>
         </div>
     );
 }
