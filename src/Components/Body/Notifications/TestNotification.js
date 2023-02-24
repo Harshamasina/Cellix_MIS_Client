@@ -17,24 +17,35 @@ function TestNotification() {
     let filter = false;
     const dateFields = ['prv_dof', 'pct_dof', 'npe.npe_dof', 'npe.npe_grant'];
     dateFields.forEach(field => {
-      const fields = field.split('.');
+      const fields = field.split('/');
       let fieldValue = item;
       fields.forEach(field => {
         fieldValue = fieldValue[field];
       });
       const itemDate = new Date(fieldValue);
-      const diffInMonths = (currentDate.getFullYear() - itemDate.getFullYear()) * 12 + (currentDate.getMonth() - itemDate.getMonth());
-      if (diffInMonths < 2) {
+      // console.log(itemDate)
+      // const diffInMonths = (currentDate.getFullYear() - itemDate.getFullYear()) * 12 + (currentDate.getMonth() - itemDate.getMonth());
+      // const diffInMs = currentDate.getTime() - itemDate.getTime();
+      // const diffInM = diffInMs / (1000 * 60 * 60 * 24 * 30.44);
+      // const diffInMonths = Math.floor(diffInM);
+      // console.log(fields, fieldValue, diffInMonths);
+      // if (diffInMonths < 2) {
+      //   filter = true;
+      // }
+      const timeDiff = itemDate.getTime() - currentDate.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      console.log(daysDiff);
+      if(daysDiff > 0 && daysDiff <= 60){
         filter = true;
       }
     });
     return filter;
   });
   
-  // console.log(filteredData);
+  console.log(filteredData);
   
   const sortedData = filteredData.sort((a, b) => {
-    const aDateFields = ['prv_dof', 'pct_dof', 'npe.npe_dof', 'npe.*.npe_grant'];
+    const aDateFields = ['prv_dof', 'pct_dof', 'npe.npe_dof', 'npe.npe_grant'];
     let aDate = null;
     let bDate = null;
     
