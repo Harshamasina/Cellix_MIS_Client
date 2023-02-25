@@ -117,21 +117,21 @@ const PCTPatentForm = () => {
                     >
                     </textarea>
                     <textarea 
-                        placeholder='Enter Formulas Image Links ( Upload Images in s3 and then past each link line wise )'
+                        placeholder='Enter Formulas Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "formula"
                         value={PCTPatent.formula}
                         onChange={handleInputs}
                     >
                     </textarea>
                     <textarea 
-                        placeholder='Enter Claims text or Image Links ( Upload Images in s3 and then past each link line wise )'
+                        placeholder='Enter Claims text or Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "claims"
                         value={PCTPatent.claims}
                         onChange={handleInputs}
                     >
                     </textarea>
                     <textarea 
-                        placeholder='Enter Compounds Image Links ( Upload Images in s3 and then past each link line wise )'
+                        placeholder='Enter Compounds Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "compounds"
                         value={PCTPatent.compounds}
                         onChange={handleInputs}

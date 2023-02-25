@@ -942,6 +942,7 @@ body{
   background: #fff;
   border-radius: 7px;
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  margin-top: 3%;
 }
 
 .Login-Container .loginform{
@@ -981,6 +982,7 @@ body{
 .loginform input.loginbutton{
   color: #fff;
   background: #009579;
+  width: 40% !important;
   height: 60px;
   font-size: 1.5rem;
   font-weight: 500;
@@ -988,6 +990,7 @@ body{
   margin-top: 1.7rem;
   cursor: pointer;
   transition: 0.4s;
+  margin-left: 30%;
 }
 
 .loginform input.loginbutton:hover{
@@ -998,17 +1001,24 @@ body{
 .forgot-pass{
   color: #0E6E59;
   cursor: pointer;
+  font-size: 13px;
 }
 
 .forgot-pass:hover{
   text-decoration: 1px underline #0E6E59 !important;
 }
 
+.login-links{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 .register-Link{
   display: inline !important;
   text-decoration: none !important;
   color: #0E6E59;
-  font-size: 20px;
+  font-size: 13px;
 }
 
 .register-Link:hover{
