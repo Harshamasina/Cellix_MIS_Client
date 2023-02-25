@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
     const navigate = useNavigate();
+    // const [user, setUser] = useState({
+    //     name: "",
+    //     email: "",
+    //     phone: "",
+    //     password: "",
+    //     cpassword: ""
+    // }); 
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>

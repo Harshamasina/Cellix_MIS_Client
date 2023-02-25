@@ -38,14 +38,16 @@ const Login = () => {
                         placeholder='Enter your Password'
                     >
                     </input>
-                    <p onClick={ForgotPassword}>Forgot Password</p>
-                    <Link to="/register" className='RegisterLink'><p>Register</p></Link>
+                    <span className='forgot-pass' onClick={ForgotPassword}>Forgot Password</span>
                     <input 
                         type="submit" 
                         className="loginbutton" 
                         value="Login"
                     >
                     </input>
+                    <div className='NewUser'>
+                        <span>New user ?</span><Link to="/register" className='register-Link'>Register</Link>
+                    </div>
                 </form>
             </div>
         </div>
