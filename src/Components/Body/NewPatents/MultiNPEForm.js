@@ -48,12 +48,10 @@ const MultiNPEForm = () => {
         const data = [...NPEData];
         data[index][name] = value;
         setNPEData(data);
-        console.log(PRVPCTData);
-        setPRVPCTData({...PRVPCTData.ref_no, ...PRVPCTData.prv_dof, ...PRVPCTData.prv_appno, ...PRVPCTData.pct_isa, 
-            ...PRVPCTData.pct_dof, ...PRVPCTData.pct_appno, ...PRVPCTData.pct_18, ...PRVPCTData.pct_22_md, 
-            ...PRVPCTData.pct_30_31, ...PRVPCTData.pct_dl, npe: data})
-        
-        console.log(PRVPCTData);
+        // console.log(PRVPCTData);
+        // setPRVPCTData({...PRVPCTData.ref_no, ...PRVPCTData.prv_dof, ...PRVPCTData.prv_appno, ...PRVPCTData.pct_isa, 
+        //     ...PRVPCTData.pct_dof, ...PRVPCTData.pct_appno, ...PRVPCTData.pct_18, ...PRVPCTData.pct_22_md, 
+        //     ...PRVPCTData.pct_30_31, ...PRVPCTData.pct_dl, npe: data})
     }
 
     const handleRemove = index => {
@@ -99,8 +97,8 @@ const MultiNPEForm = () => {
         setPRVPCTData({...PRVPCTData, [pname]:pvalue});
     };
     
-    // console.log(PRVPCTData);
-    // console.log(NPEData);
+    console.log(PRVPCTData);
+    console.log(NPEData);
 
     return(
         <div>
