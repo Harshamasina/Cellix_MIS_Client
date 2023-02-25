@@ -1,24 +1,25 @@
-// import PatentLifeCycleForm from "./PatentLifeCycleForm";
 import { Parallax } from 'react-parallax';
-import MultiNPEForm from './MultiNPEForm';
+import { Link } from 'react-router-dom';
 
 const NewPatents = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Policy.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/update.jpg";
     return(
         <div>
             <div>
                 <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg" blur={2}>
                     <div className='ParallaxContainer'>
                         <div className="ParallaxDiv">
-                            <div className='FirmPageContent'>
-                                <h1>Patent Life Cycle Entry Form</h1>
+                            <div className='new-entry'>
+                                <h1>New International Patent or New MIS Reference Number Entry</h1>
+                                <div className='new-entry-links justify-content-center'>
+                                    <Link className='entry-link' to='/misform'>MIS NPE Form</Link>
+                                    <Link className='entry-link' to='/pctpatentform'>Patent Form</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </Parallax>
             </div>
-            {/* <PatentLifeCycleForm></PatentLifeCycleForm> */}
-            <MultiNPEForm></MultiNPEForm>
         </div>
     );
 }

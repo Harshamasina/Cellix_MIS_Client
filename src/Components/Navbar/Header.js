@@ -14,6 +14,9 @@ import PatentInfo from '../Body/Patents/PatentInfo';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';
+import MultiNPEForm from '../Body/NewPatents/MultiNPEForm';
+import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
+
 
 function NavBar() {
         const [changeNavbar, setChangeNavbar] = useState(false);
@@ -60,6 +63,8 @@ function NavBar() {
                         <Route path='/patentupdate' element={<PatentUpdate></PatentUpdate>}></Route>
                         <Route path='/login' element={<Login></Login>}></Route>
                         <Route path='/register' element={<Register></Register>}></Route>
+                        <Route path='/misform' element={<MultiNPEForm></MultiNPEForm>}></Route>
+                        <Route path='/pctpatentform' element={<PCTPatentForm></PCTPatentForm>}></Route>
                         <Route path='/' element={<Home></Home>}></Route>
                         <Route path='*' element={<Error404></Error404>}></Route>
                     </Routes>

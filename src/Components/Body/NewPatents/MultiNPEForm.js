@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button } from "react-bootstrap";
+import { Parallax } from 'react-parallax';
 
 const MultiNPEForm = () => {
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/books+hammer+1.jpg";
     const [NPEData, setNPEData] = useState([{
         npe_country: "",
         npe_appno: "",
@@ -102,6 +104,15 @@ const MultiNPEForm = () => {
 
     return(
         <div>
+            <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg" blur={3}>
+                <div className='ParallaxContainer1'>
+                    <div className="ParallaxDiv">
+                        <div className='FirmPageContent'>
+                            <h1>MIS Form</h1>
+                        </div>
+                    </div>
+                </div>
+            </Parallax>
             <div className="patentForm">
                 <div className="content">
                     <form method="#" className="form">
@@ -583,24 +594,20 @@ const MultiNPEForm = () => {
                         <div>
                             {
                                 NPEData.length!==1 &&
-                                <Button 
-                                    variant="contained" 
-                                    color="error" 
+                                <Button
                                     onClick = {() => handleRemove(i)}
-                                    className="mx-lg-2"
+                                    className="mx-lg-3 remove-npe"
                                 >
                                 Remove NPE Country
                                 </Button>
                             }
                             { 
                                 NPEData.length - 1 === i &&
-                                <Button 
-                                    variant="contained"  
-                                    color="success" 
+                                <Button   
                                     onClick = { handleClick }
-                                    className="m-lg-3"
+                                    className="m-lg-3 add-npe"
                                 >
-                                Add NEW NPE Country
+                                Add New NPE Country
                                 </Button>
                             }
                         </div>

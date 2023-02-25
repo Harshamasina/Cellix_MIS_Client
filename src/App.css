@@ -351,71 +351,6 @@ body{
   margin-bottom: 5%;
 }
 
-.Login-Container{
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  max-width: 430px;
-  width: 100%;
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-.Login-Container .loginform{
-  padding: 2rem;
-}
-
-.loginform header{
-  font-size: 2rem;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
- .loginform input{
-   height: 60px;
-   width: 100%;
-   padding: 0 15px;
-   font-size: 17px;
-   margin-bottom: 1.3rem;
-   border: 1px solid #ddd;
-   border-radius: 6px;
-   outline: none;
- }
-
- .loginform input:focus{
-   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
- }
-
-.loginform p{
-  font-size: 16px;
-  color: #009579;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.loginform p:hover{
-  text-decoration: underline;
-}
-
-.loginform input.loginbutton{
-  color: #fff;
-  background: #009579;
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-top: 1.7rem;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.loginform input.loginbutton:hover{
-  background: #006653;
-  transform: scale(1.05);
-}
-
 .container{
   max-width: 1300px;
   width: 100%;
@@ -857,4 +792,141 @@ body{
   font-size: 1.5vw;
   color: #0E6E59;
   margin-top: 2%;
+}
+
+.new-entry h1{
+  text-align: center;
+	font-size: 8vh;
+	width: 100%;
+	color: #15B39D;
+  margin-bottom: 5%;
+}
+
+.new-entry-links{
+  display: flex;
+  flex-direction: row;
+}
+
+.entry-link{
+  margin-left: 5%;
+  background: transparent;
+  padding: 20px 30px 20px 40px;
+  font-size: 30px;
+  color: #009579;
+  text-decoration: none;
+  border: 2px solid #0E6E59;
+  border-radius: 10px;
+  transition: .5s;
+}
+
+.entry-link:hover{
+  color: #fff !important;
+  transform: scale(1.1) !important;
+  background: #006653;
+}
+
+
+.PCT-Container{
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  margin-left: 17%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+.PCT-Container .PCTform{
+  padding: 2rem;
+}
+
+.PCTform{
+  margin-left: 10%;
+  /* width: 100%; */
+}
+
+.PCTform input{
+  height: 40px;
+  width: 40%;
+  padding: 0 15px;
+  font-size: 16px;
+  margin-bottom: 1.3rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  margin-left: 10px;
+}
+
+.PCTform textarea{
+  height: 150px;
+  width: 110%;
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-bottom: 1.3rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  margin-left: 10px;
+  outline: none;
+}
+
+.PCTform input:focus{
+  border: 1px solid #0E6E59;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.PCTform textarea:focus{
+  border: 1px solid #0E6E59;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.PCTform input.pctbutton{
+  color: #fff;
+  background: #009579;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
+  margin-left: 30%;
+}
+
+.PCTform input.pctbutton:hover{
+  background: #006653;
+  transform: scale(1.05);
+}
+
+.error-message{
+  font-size: 1.1vw;
+  text-align: center;
+  color: #FF4433;
+  font-weight: 600;
+}
+
+.add-npe{
+  background: transparent !important;
+  border: 2px solid #0E6E59 !important;
+  color: #0E6E59 !important;
+  font-size: 20px !important;
+  transition: 1s;
+}
+
+.add-npe:hover{
+  background: #0E6E59 !important;
+  color: #fff !important;
+}
+
+.remove-npe{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  font-size: 20px !important;
+  transition: 1s;
+}
+
+.remove-npe:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
 }
