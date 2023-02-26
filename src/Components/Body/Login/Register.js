@@ -44,14 +44,13 @@ const Register = () => {
                 await updateProfile(userDetails, {
                     displayName: user.name,
                 });
-                navigate('/login');
+                navigate('/');
             })
             .catch((err) => {
                 setButtonDisabled(false);
                 setErrorMsg(err.message);
                 console.log("Error", err.message);
             });
-        console.log(user);
     }
 
     return(

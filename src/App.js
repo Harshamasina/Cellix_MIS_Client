@@ -4,19 +4,24 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './Components/Navbar/Header';
 import GoToTopBtn from './Components/Body/GoToTopBtn';
 import { auth } from './config/firebase';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [username, setUsername] = useState("");
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log(user);
+      if(user){
+        setUsername(user.displayName);
+      } else {
+        setUsername("");
+      }
     });
   }, []);
   
   return (
     <div>
       <BrowserRouter>
-        <Header></Header>
+        <Header name={username}></Header>
         <Footer></Footer>
         <GoToTopBtn></GoToTopBtn>
       </BrowserRouter>

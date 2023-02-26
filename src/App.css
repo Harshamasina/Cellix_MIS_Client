@@ -1029,3 +1029,29 @@ body{
 .register-Link:hover{
   text-decoration: 1px underline #0E6E59 !important;
 }
+
+.signout-button{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  transition: .5s !important;
+  font-size: 20px !important;
+}
+
+.signout-button:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+.signin-button{
+  background: transparent !important;
+  border: 2px solid #fff !important;
+  transition: .5s !important;
+  font-size: 20px !important;
+}
+
+.signin-button:hover{
+  background: #fff !important;
+  color: #0E6E59 !important;
+  transform: scale(1.05);
+}
