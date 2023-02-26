@@ -1,5 +1,5 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Home from "../Body/Home/Home";
 import Patents from "../Body/Patents/Patents";
@@ -38,7 +38,7 @@ function NavBar(props) {
         const handleSignOut = () => {
             signOut(auth).then(() => {
                 window.alert("Signed Out Successfully");
-                // navigate('/login');
+                navigate('/login');
             }).catch((err) => {
                 console.log("Error", err);
             });
@@ -88,19 +88,19 @@ function NavBar(props) {
                 
                 <div>
                     <Routes>
-                        <Route path='/home' element={<Home></Home>}></Route>
-                        <Route path='/patents' element={<Patents></Patents>}></Route>
-                        <Route path='/newpatent' element={<NewPatents></NewPatents>}></Route>
-                        <Route path='/firms' element={<Firms></Firms>}></Route>
-                        <Route path='/notifications' element={<Notifications></Notifications>}></Route>
-                        <Route path='/patentinfo/:ref' element={<PatentInfo></PatentInfo>}></Route>
-                        <Route path='/patentupdate' element={<PatentUpdate></PatentUpdate>}></Route>
-                        <Route path='/login' element={<Login></Login>}></Route>
-                        <Route path='/register' element={<Register></Register>}></Route>
-                        <Route path='/misform' element={<MultiNPEForm></MultiNPEForm>}></Route>
-                        <Route path='/pctpatentform' element={<PCTPatentForm></PCTPatentForm>}></Route>
-                        <Route path='/' element={<Home></Home>}></Route>
-                        <Route path='*' element={<Error404></Error404>}></Route>
+                        <Route path='/home' element={login ? <Home /> : <Navigate to='/login' />}></Route>
+                        <Route path='/patents' element={login ? <Patents /> : <Navigate to='/login' />}></Route>
+                        <Route path='/newpatent' element={login ? <NewPatents /> : <Navigate to='/login' />}></Route>
+                        <Route path='/firms' element={login ? <Firms /> : <Navigate to='/login' />}></Route>
+                        <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />}></Route>
+                        <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />}></Route>
+                        <Route path='/patentupdate' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
+                        <Route path='/login' element={<Login />}></Route>
+                        <Route path='/register' element={<Register />}></Route>
+                        <Route path='/misform' element={login ? <MultiNPEForm /> : <Navigate to='/login' />}></Route>
+                        <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />}></Route>
+                        <Route path='/' element={login ? <Home /> : <Navigate to='/login' />}></Route>
+                        <Route path='*' element={<Error404 />}></Route>
                     </Routes>
                 </div>
             </>
