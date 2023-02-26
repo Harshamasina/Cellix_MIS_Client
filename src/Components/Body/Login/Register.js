@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Parallax } from 'react-parallax';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../../config/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
@@ -13,12 +16,44 @@ const Register = () => {
         password: "",
         cpassword: ""
     });
+    const [ errorMsg, setErrorMsg ] = useState("");
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+
     let name, value;
     let handleInputs = (e) => {
         name=e.target.name;
         value = e.target.value;
         setUser({...user, [name]:value});
     };
+
+    let handleSubmit = () => {
+        if( !user.name || !user.email || !user.phone || !user.emp_id || !user.password || !user.cpassword){
+            setErrorMsg("All Fields are required");
+            return;
+        }
+        if( user.password !== user.cpassword ){
+            setErrorMsg("Passwords does not match")
+            return;
+        }
+        setErrorMsg("");
+        setButtonDisabled(true);
+        createUserWithEmailAndPassword(auth, user.email, user.password)
+            .then(async(res) => {
+                setButtonDisabled(false);
+                const userDetails = res.user;
+                await updateProfile(userDetails, {
+                    displayName: user.name,
+                });
+                navigate('/login');
+            })
+            .catch((err) => {
+                setButtonDisabled(false);
+                setErrorMsg(err.message);
+                console.log("Error", err.message);
+            });
+        console.log(user);
+    }
+
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
@@ -34,7 +69,7 @@ const Register = () => {
                 <form method='#' className='loginform'>
                     <input 
                         type="text" 
-                        placeholder='Enter your Name'
+                        placeholder='Enter your Name*'
                         autoComplete="off"
                         name='name'
                         value={user.name}
@@ -43,7 +78,7 @@ const Register = () => {
                     </input>
                     <input 
                         type="text" 
-                        placeholder='Enter your Email'
+                        placeholder='Enter your Email*'
                         autoComplete="off"
                         name='email'
                         value={user.email}
@@ -61,7 +96,7 @@ const Register = () => {
                     </input>
                     <input 
                         type="text" 
-                        placeholder='Enter your Employee Id'
+                        placeholder='Enter your Employee Id*'
                         autoComplete="off"
                         name='emp_id'
                         value={user.emp_id}
@@ -70,7 +105,7 @@ const Register = () => {
                     </input>
                     <input 
                         type="password" 
-                        placeholder='Enter your Password'
+                        placeholder='Enter your Password*'
                         autoComplete="off"
                         name='password'
                         value={user.password}
@@ -79,7 +114,7 @@ const Register = () => {
                     </input>
                     <input 
                         type="password" 
-                        placeholder='Confirm your Password'
+                        placeholder='Confirm your Password*'
                         autoComplete="off"
                         name='cpassword'
                         value={user.cpassword}
@@ -87,12 +122,14 @@ const Register = () => {
                     >
                     </input>
                     <input 
-                        type="submit" 
+                        type="button" 
                         className="loginbutton" 
                         value="Register"
-                        onClick={() => navigate('/login')}
+                        onClick={handleSubmit}
+                        disabled={buttonDisabled}
                     >
                     </input>
+                    <h4 className='error-message'>{errorMsg}</h4>
                     <div className="login-links">
                         <Link to="/login" className='register-Link'>Already a User? Login</Link>
                     </div>

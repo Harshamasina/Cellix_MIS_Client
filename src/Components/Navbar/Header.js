@@ -10,7 +10,6 @@ import './Header.css';
 import NewPatents from '../Body/NewPatents/NewPatents';
 import Register from '../Body/Login/Register';
 import PatentInfo from '../Body/Patents/PatentInfo';
-// import updatePatent from '../Body/Patents/updatePatent';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';

@@ -998,6 +998,11 @@ body{
   transform: scale(1.05);
 }
 
+.loginform input.loginbutton:disabled{
+  color: #fff;
+  background: #707070;
+}
+
 .forgot-pass{
   color: #0E6E59;
   cursor: pointer;
