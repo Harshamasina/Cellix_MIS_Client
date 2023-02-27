@@ -947,6 +947,10 @@ body{
 
 .Login-Container .loginform{
   padding: 2rem;
+  text-align: center;
+  font-size: 3vw;
+  color: #0E6E59;
+  font-weight: 600;
 }
 
 .loginform input{
@@ -982,7 +986,7 @@ body{
 .loginform input.loginbutton{
   color: #fff;
   background: #009579;
-  width: 40% !important;
+  width: 45% !important;
   height: 60px;
   font-size: 1.5rem;
   font-weight: 500;
@@ -1039,7 +1043,7 @@ body{
 .signout-button:hover{
   background: #FF4433 !important;
   color: #fff !important;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .signin-button{
@@ -1052,13 +1056,67 @@ body{
 .signin-button:hover{
   background: #fff !important;
   color: #0E6E59 !important;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
+.close-button{
+  background: transparent !important;
+  transition: .5s !important;
+  font-size: 15px !important;
+  color: #0E6E59 !important;
+  border: 2px solid #0E6E59 !important;
+}
 
-.loginform{
-  text-align: center;
-  font-size: 3vw;
+.close-button:hover{
+  background: #0E6E59 !important;
+  color: #fff !important;
+  transform: scale(1.1);
+}
+
+.signout-modal-button{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  transition: .5s !important;
+  font-size: 15px !important;
+}
+
+.signout-modal-button:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+  transform: scale(1.1);
+}
+
+.Modal-header{
+  color: #0E6E59 !important;
+  text-align: center !important;
+  margin-left: 20% !important;
+}
+
+.Modal-header span{
+  text-transform: uppercase;
+  font-weight: 650;
+}
+
+.Modal-header-pct{
+  color: #0E6E59 !important;
+  text-align: center !important;
+}
+
+.Modal-title-pct{
   color: #0E6E59;
-  font-weight: 600;
+  text-align: center !important;
+  margin-left: 35%;
+}
+
+.modal-content {
+  border: none !important;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-footer {
+  border-top: none !important;
 }

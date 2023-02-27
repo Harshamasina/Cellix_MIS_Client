@@ -1,6 +1,7 @@
 import { Parallax } from 'react-parallax';
 import { useState } from 'react';
 import axios from 'axios';
+import { Modal, Button } from 'react-bootstrap';
 
 const PCTPatentForm = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/last+man+standing.jpg";
@@ -17,6 +18,7 @@ const PCTPatentForm = () => {
     });
     const [submitting, setSubmitting] = useState(false);
     const [submissionError, setSubmissionError] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     let name, value;
     let handleInputs = (e) => {
@@ -25,8 +27,12 @@ const PCTPatentForm = () => {
         setPCTPatent({...PCTPatent, [name]:value});
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+        setShowModal(true);
+    }
+
+    const handleSubmitModal = async () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
@@ -52,6 +58,10 @@ const PCTPatentForm = () => {
             setSubmitting(false);
         }
     }
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    };
 
     return(
         <div>
@@ -139,11 +149,21 @@ const PCTPatentForm = () => {
                     </textarea>
                     <input 
                         type="submit" 
-                        className="pctbutton" 
+                        className="pctbutton"
                         value={submitting ? 'Submitting...' : 'Submit'}
                         disabled={submitting}
                     >
                     </input>
+                    <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg">
+                        <Modal.Header >
+                            <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Are you sure you want to submit the form? Please verify all data inserted correctly</Modal.Body>
+                        <Modal.Footer>
+                            <Button className='signout-modal-button' onClick={handleModalClose}>Cancel</Button>
+                            <Button className = "close-button" onClick={handleSubmitModal}>Submit</Button>
+                        </Modal.Footer>
+                    </Modal>
                     {submissionError && <p className='error-message'>{submissionError}</p>}
                 </form>
             </div>

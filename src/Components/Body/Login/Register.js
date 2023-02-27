@@ -65,7 +65,7 @@ const Register = () => {
                 </div>
             </Parallax>
             <div className='Login-Container'>
-                <form method='#' className='loginform'>
+                <form className='loginform'>
                     <input 
                         type="text" 
                         placeholder='Enter your Name*'

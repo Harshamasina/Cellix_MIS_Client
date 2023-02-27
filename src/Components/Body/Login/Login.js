@@ -14,12 +14,14 @@ const Login = () => {
     });
     const [ errorMsg, setErrorMsg ] = useState("");
     const [buttonDisabled, setButtonDisabled] = useState(false);
+
     let name, value;
     let handleInputs = (e) => {
         name=e.target.name;
         value = e.target.value;
         setUser({...user, [name]:value});
     };
+
     let handleSubmit = () => {
         if( !user.email || !user.password){
             setErrorMsg("All Fields are required");
@@ -39,11 +41,7 @@ const Login = () => {
             });
         console.log(user);
     }
-    const ForgotPassword = () => {
-        return(
-            window.alert("Please Contact Admin")
-        );
-    }
+
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
@@ -84,7 +82,7 @@ const Login = () => {
                     </input>
                     <h4 className='error-message'>{errorMsg}</h4>
                     <div className="login-links">
-                        <span className='forgot-pass' onClick={ForgotPassword}>Forgot Password</span>
+                        <Link to='/forgotpassword' className='register-Link'>Forgot Password</Link>
                         <Link to="/register" className='register-Link'>Register</Link>
                     </div>
                 </form>

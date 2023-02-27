@@ -17,12 +17,15 @@ import MultiNPEForm from '../Body/NewPatents/MultiNPEForm';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
+import Modal from 'react-bootstrap/Modal';
+import ForgotPassword from '../Body/Login/ForgotPassword';
 
 
 
 function NavBar(props) {
         const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
         const [changeNavbar, setChangeNavbar] = useState(false);
+        const [modal, setModal] = useState(false);
         const navigate = useNavigate();
        
         const changeBackground = () => {
@@ -42,10 +45,14 @@ function NavBar(props) {
             return () => handleLogIn();
         }, [login]);
 
+        const handleClose = () => setModal(false);
+        const handleShow = () => setModal(true);
+
         const handleSignOut = () => {
             signOut(auth).then(() => {
                 window.alert("Signed Out Successfully");
                 localStorage.removeItem('user');
+                setModal(false);
                 navigate('/login');
             }).catch((err) => {
                 console.log("Error", err);
@@ -73,12 +80,12 @@ function NavBar(props) {
                                             <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>
-                                            <Nav.Link className='navbar_link' as={Link} to="/" eventKey="5">{props.name ? `${props.name}` : ""}</Nav.Link>
+                                            <Nav.Link className='navbar_link' as={Link} eventKey="5">{props.name ? `${props.name}` : ""}</Nav.Link>
                                         </>
                                     )
                                 }
                                 {
-                                    login ? ( <Button className='signout-button' onClick={handleSignOut}>Sign Out</Button> ) : (
+                                    login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
                                         <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
                                     )
                                 }
@@ -98,11 +105,24 @@ function NavBar(props) {
                         <Route path='/patentupdate' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
+                        <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
                         <Route path='/misform' element={login ? <MultiNPEForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/' element={login ? <Home /> : <Navigate to='/login' />}></Route>
                         <Route path='*' element={<Error404 />}></Route>
                     </Routes>
+                </div>
+
+                <div>
+                    <Modal show={modal} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
+                        <Modal.Header>
+                            <Modal.Title className='Modal-header'><span>{props.name},</span> Are you Sure you Want To Log Out!</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Footer>
+                            <Button className = "close-button" onClick={handleClose}>close</Button>
+                            <Button className='signout-modal-button' onClick={handleSignOut}>Yes, Logout</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </>
         );
