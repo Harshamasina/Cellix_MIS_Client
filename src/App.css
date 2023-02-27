@@ -990,7 +990,6 @@ body{
   margin-top: 1.7rem;
   cursor: pointer;
   transition: 0.4s;
-  margin-left: 30%;
 }
 
 .loginform input.loginbutton:hover{
@@ -1054,4 +1053,12 @@ body{
   background: #fff !important;
   color: #0E6E59 !important;
   transform: scale(1.05);
+}
+
+
+.loginform{
+  text-align: center;
+  font-size: 3vw;
+  color: #0E6E59;
+  font-weight: 600;
 }

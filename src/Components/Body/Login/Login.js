@@ -57,6 +57,7 @@ const Login = () => {
             </Parallax>
             <div className='Login-Container'>
                 <form method='#' className='loginform'>
+                    <header>Cellix Bio MIS</header>
                     <input 
                         type="text" 
                         placeholder='Enter your Email'

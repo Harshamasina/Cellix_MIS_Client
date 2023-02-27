@@ -1,5 +1,5 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { Link, Routes, Route, Navigate } from "react-router-dom";
+import { Link, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Home from "../Body/Home/Home";
 import Patents from "../Body/Patents/Patents";
@@ -17,12 +17,11 @@ import MultiNPEForm from '../Body/NewPatents/MultiNPEForm';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 
 
 
 function NavBar(props) {
-        const [login, setLogin] = useState(null);
+        const [login, setLogin] = useState(JSON.parse(sessionStorage.getItem('login')));
         const [changeNavbar, setChangeNavbar] = useState(false);
         const navigate = useNavigate();
        
@@ -35,21 +34,23 @@ function NavBar(props) {
         }
         window.addEventListener('scroll', changeBackground);
 
+        useEffect(() => {
+            const handleLogIn = auth.onAuthStateChanged((user) => {
+                setLogin(user);
+                sessionStorage.setItem('login', JSON.stringify(login));
+            });
+            return () => handleLogIn();
+        }, [login]);
+
         const handleSignOut = () => {
             signOut(auth).then(() => {
                 window.alert("Signed Out Successfully");
+                sessionStorage.removeItem('user');
                 navigate('/login');
             }).catch((err) => {
                 console.log("Error", err);
             });
         }
-        
-        useEffect(() => {
-            const handleLogout = auth.onAuthStateChanged((user) => {
-                setLogin(user);
-            });
-            return () => handleLogout();
-        }, []);
 
         return (
             <>
