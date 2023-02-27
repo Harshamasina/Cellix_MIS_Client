@@ -12,7 +12,7 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 
 
 const PatentInfo = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/lock.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
     const {ref} = useParams();
     const [patent, setPatent] = useState([]);
     const [error, setError] = useState(null);
@@ -103,7 +103,7 @@ const PatentInfo = () => {
     };
     return(
         <div>
-            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={3}>
+            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

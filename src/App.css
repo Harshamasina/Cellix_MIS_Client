@@ -592,8 +592,8 @@ body{
 .patentinfo-link{
   background: transparent;
   padding: 10px 25px 20px 30px;
-  font-size: 2vw;
-  color: #0E6E59;
+  font-size: 2.5vw;
+  color: #fff;
   text-decoration: none;
   border-radius: 10px;
   transition: .5s;
@@ -849,7 +849,9 @@ body{
   height: 40px;
   width: 40%;
   padding: 0 15px;
-  font-size: 16px;
+  font-size: 17px;
+  color: #282c34 !important;
+  font-weight: 600;
   margin-bottom: 1.3rem;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -861,7 +863,9 @@ body{
   height: 150px;
   width: 110%;
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 17px;
+  color: #282c34 !important;
+  font-weight: 600;
   margin-bottom: 1.3rem;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -881,7 +885,7 @@ body{
 }
 
 .PCTform input.pctbutton{
-  color: #fff;
+  color: #fff !important;
   background: #009579;
   height: 60px;
   font-size: 1.5rem;
@@ -954,11 +958,11 @@ body{
 }
 
 .loginform input{
-  height: 50px;
+  height: 45px;
   width: 100%;
   padding: 0 15px;
   font-size: 16px;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1rem;
   border: 1px solid #ddd;
   border-radius: 6px;
   outline: none;
@@ -1037,7 +1041,10 @@ body{
   background: transparent !important;
   border: 2px solid #FF4433 !important;
   transition: .5s !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
+  margin-left: 22% !important;
+  margin-top: 5% !important;
+  margin-bottom: 3% !important;
 }
 
 .signout-button:hover{
@@ -1090,7 +1097,7 @@ body{
 .Modal-header{
   color: #0E6E59 !important;
   text-align: center !important;
-  margin-left: 20% !important;
+  margin-left: 10% !important;
 }
 
 .Modal-header span{

@@ -6,7 +6,7 @@ import { auth } from '../../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/lady+1.jpg";
     const navigate = useNavigate();
     const [user, setUser] = useState({
         name: "",

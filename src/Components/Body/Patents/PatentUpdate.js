@@ -1,10 +1,10 @@
 import { Parallax } from 'react-parallax';
 
 const PatentUpdate = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/update.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/bino.jpg";
     return(
         <div>
-            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={3}>
+            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

@@ -19,8 +19,9 @@ import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
 import Modal from 'react-bootstrap/Modal';
 import ForgotPassword from '../Body/Login/ForgotPassword';
-
-
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import UpdatePassword from '../Body/Login/UpdatePassword';
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 function NavBar(props) {
         const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -80,15 +81,18 @@ function NavBar(props) {
                                             <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>
-                                            <Nav.Link className='navbar_link' as={Link} eventKey="5">{props.name ? `${props.name}` : ""}</Nav.Link>
                                         </>
                                     )
                                 }
-                                {
-                                    login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
-                                        <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
-                                    )
-                                }
+                                <NavDropdown title={props.name ? (<span>{props.name} <MdKeyboardArrowDown /></span>) : ""} id="basic-nav-dropdown" className='nav-dropdown'>
+                                    <NavDropdown.Item><Link className='dropdown-link'>About</Link></NavDropdown.Item>
+                                    <NavDropdown.Item><Link to='updatepassword' className='dropdown-link'>Change Password</Link></NavDropdown.Item>
+                                    {
+                                        login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
+                                            <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
+                                        )
+                                    }
+                                </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -105,7 +109,8 @@ function NavBar(props) {
                         <Route path='/patentupdate' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
-                        <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
+                        <Route path='/forgotpassword' element={<ForgotPassword />} />
+                        <Route path='/updatepassword' element={login ? <UpdatePassword /> : <Navigate to='/login' />} />
                         <Route path='/misform' element={login ? <MultiNPEForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/' element={login ? <Home /> : <Navigate to='/login' />}></Route>

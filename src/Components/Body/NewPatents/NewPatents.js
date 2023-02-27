@@ -6,7 +6,7 @@ const NewPatents = () => {
     return(
         <div>
             <div>
-                <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg" blur={2}>
+                <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg">
                     <div className='ParallaxContainer'>
                         <div className="ParallaxDiv">
                             <div className='new-entry'>

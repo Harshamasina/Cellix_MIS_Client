@@ -6,7 +6,7 @@ const Patents = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Sit.jpg";
     return(
         <div>
-            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

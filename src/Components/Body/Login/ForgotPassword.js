@@ -4,7 +4,7 @@ import { auth } from '../../../config/firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
 
 const ForgotPassword = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/fingerprint.jpg";
     const [email, setEmail] = useState("");
     const [ errorMsg, setErrorMsg ] = useState("");
     const [message, setMessage] = useState("");

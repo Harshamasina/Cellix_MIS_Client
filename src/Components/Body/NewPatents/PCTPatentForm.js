@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 
 const PCTPatentForm = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/last+man+standing.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/html+css.jpg";
     const [PCTPatent, setPCTPatent] = useState({
         wno: "",
         pct: "",
@@ -65,7 +65,7 @@ const PCTPatentForm = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={5}>
+            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

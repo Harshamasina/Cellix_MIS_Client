@@ -6,7 +6,7 @@ import { auth } from '../../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/key+2.jpg";
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email: "",
@@ -44,7 +44,7 @@ const Login = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg" blur={1}>
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

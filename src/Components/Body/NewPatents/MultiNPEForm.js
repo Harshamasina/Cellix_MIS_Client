@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { Parallax } from 'react-parallax';
 
 const MultiNPEForm = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/books+hammer+1.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/analsys.jpg";
     const [NPEData, setNPEData] = useState([{
         npe_country: "",
         npe_appno: "",
@@ -104,7 +104,7 @@ const MultiNPEForm = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg" blur={3}>
+            <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

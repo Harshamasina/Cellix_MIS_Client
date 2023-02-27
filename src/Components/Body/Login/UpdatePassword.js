@@ -4,22 +4,25 @@ import { auth } from '../../../config/firebase';
 import { updatePassword } from 'firebase/auth';
 
 const UpdatePassword = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/privacy+new+(Crop).jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/data.jpg";
     const [pass, setPass] = useState({
         email: "",
         password: "",
         cpassword: ""
     });
     const [ errorMsg, setErrorMsg ] = useState("");
+    const [message, setMessage] = useState("");
     const user = auth.currentUser;
     let name, value;
+
     let handleInputs = (e) => {
         name=e.target.name;
         value = e.target.value;
         setPass({...pass, [name]:value});
     };
 
-    const handleSubmit = () => {
+    const handleUpdatePassword = (e) => {
+        e.preventDefault();
         if( !pass.email || !pass.password || !pass.cpassword ){
             setErrorMsg("All Fields are Required");
             return;
@@ -32,6 +35,12 @@ const UpdatePassword = () => {
         updatePassword(user, pass.password)
         .then((res) => {
             console.log(res);
+            setMessage("Successfully updated your password.");
+            setPass({
+                email: "",
+                password: "",
+                cpassword: ""
+            });
         })
         .catch((err) => {
             setErrorMsg(err.message);
@@ -41,7 +50,7 @@ const UpdatePassword = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
@@ -83,10 +92,11 @@ const UpdatePassword = () => {
                         type="button" 
                         className="loginbutton" 
                         value="Update Password"
-                        onClick={handleSubmit}
+                        onClick={handleUpdatePassword}
                     >
                     </input>
-                    <h4 className='error-message'>{errorMsg}</h4>
+                    { message && <h4 className='error-message'>{message}</h4> }
+                    { errorMsg && <h4 className='error-message'>{errorMsg}</h4> }
                 </form>
             </div>
         </div>
