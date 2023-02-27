@@ -21,7 +21,7 @@ import { signOut } from 'firebase/auth';
 
 
 function NavBar(props) {
-        const [login, setLogin] = useState(JSON.parse(sessionStorage.getItem('login')));
+        const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
         const [changeNavbar, setChangeNavbar] = useState(false);
         const navigate = useNavigate();
        
@@ -37,7 +37,7 @@ function NavBar(props) {
         useEffect(() => {
             const handleLogIn = auth.onAuthStateChanged((user) => {
                 setLogin(user);
-                sessionStorage.setItem('login', JSON.stringify(login));
+                localStorage.setItem('login', JSON.stringify(login));
             });
             return () => handleLogIn();
         }, [login]);
@@ -45,7 +45,7 @@ function NavBar(props) {
         const handleSignOut = () => {
             signOut(auth).then(() => {
                 window.alert("Signed Out Successfully");
-                sessionStorage.removeItem('user');
+                localStorage.removeItem('user');
                 navigate('/login');
             }).catch((err) => {
                 console.log("Error", err);
@@ -73,7 +73,7 @@ function NavBar(props) {
                                             <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
                                             <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>
-                                            <Nav.Link className='navbar_link' as={Link} to="/" eventKey="6">{props.name ? `${props.name}` : ""}</Nav.Link>
+                                            <Nav.Link className='navbar_link' as={Link} to="/" eventKey="5">{props.name ? `${props.name}` : ""}</Nav.Link>
                                         </>
                                     )
                                 }

@@ -42,11 +42,11 @@ const SearchPatents = () => {
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
-                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link'><li key={npe}>{npe.npe_country}</li></Link>
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank"><li key={npe}>{npe.npe_country}</li></Link>
                                         ))
                                     }
                                 </ul>
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no}><HiInformationCircle /></Link>
+                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank"><HiInformationCircle /></Link>
                             </div>
                         ))
                     }
