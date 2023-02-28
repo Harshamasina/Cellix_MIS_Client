@@ -151,11 +151,11 @@ body{
   text-align: center;
 }
 
-.content .form .patent-details{
+.patent-details{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 0 12px 0;
+  margin: 20px 0 5% 0;
 }
 
 .form .patent-details .input-box{
@@ -247,6 +247,11 @@ body{
 
 .patent-details .input-box input:focus{
   border-color: #0e6e59;
+}
+
+.patent-details h4{
+  color: #0E6E59;
+  font-weight: 650;
 }
 
 /* .patent-details .input-box select:focus{
@@ -1126,4 +1131,10 @@ body{
 
 .modal-footer {
   border-top: none !important;
+}
+
+.Modal-title-Update{
+  color: #0E6E59;
+  text-align: center !important;
+  margin-left: 25%;
 }

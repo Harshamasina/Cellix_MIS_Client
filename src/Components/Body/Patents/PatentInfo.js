@@ -10,7 +10,6 @@ import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 
-
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
     const {ref} = useParams();
@@ -31,6 +30,7 @@ const PatentInfo = () => {
         }
         fetchData();
     }, [ref]);
+
     if(loading){
         return (
             <div>
@@ -39,15 +39,15 @@ const PatentInfo = () => {
                     height="20%"
                     width="20%"
                     ariaLabel="dna-loading"
-                    wrapperStyle={{marginLeft: '40%'}}
+                    wrapperStyle={{marginLeft: '40%', marginTop: '7%'}}
                 />
             </div>
         );
     }
+
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     }
-    // console.log(patent);
 
     const renderPopover = (date) => {
         try{
@@ -109,7 +109,7 @@ const PatentInfo = () => {
                         <div className='FirmPageContent'>
                             <h1>{patent.ref_no}</h1>
                         </div>
-                        <Link className='patentinfo-link' to="/patentupdate"><FaRegEdit className='patentinfo-icon'/></Link>
+                        <Link className='patentinfo-link' to={"/patentupdate/"+patent._id}><FaRegEdit className='patentinfo-icon'/></Link>
                     </div>
                 </div>
             </Parallax>
@@ -129,7 +129,7 @@ const PatentInfo = () => {
                     <div className='tab-data'>
                         <p>PCT Number: <span>{patent.pct_appno}</span></p>
                         <p>PCT Date of Filing: <span>{patent.pct_dof}</span></p>
-                        <p>PCT ISA Date: <span>{patent.pct_}</span></p>
+                        <p>PCT ISA Date: <span>{patent.pct_isa}</span></p>
                         <p>PCT Publication Date: <span>{patent.pct_18}</span></p>
                         <p>PCT 22 Month Date: <span>{patent.pct_22_md}</span></p>
                         <p>PCT 30/31 Date: <span>{patent.pct_30_31}</span></p>

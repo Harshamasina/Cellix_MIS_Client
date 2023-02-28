@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { Parallax } from 'react-parallax';
 
 const MultiNPEForm = () => {
@@ -44,6 +44,7 @@ const MultiNPEForm = () => {
         pct_dl: "",
         npe: NPEData
     });
+    const [showModal, setShowModal] = useState(false);
 
     const handleInputs = (e, index) => {
         const {name, value} = e.target;
@@ -56,7 +57,15 @@ const MultiNPEForm = () => {
         //     ...PRVPCTData.pct_30_31, ...PRVPCTData.pct_dl, npe: data})
     }
 
-    const handleRemove = index => {
+    const handleModal = () => {
+        setShowModal(true);
+    };
+
+    const handleModalClose = () => {
+        setShowModal(false);
+    };
+
+    const handleRemove = (index) => {
         const list=[...NPEData];
         list.splice(index,1);
         setNPEData(list);
@@ -595,7 +604,7 @@ const MultiNPEForm = () => {
                             {
                                 NPEData.length!==1 &&
                                 <Button
-                                    onClick = {() => handleRemove(i)}
+                                    onClick = {handleModal}
                                     className="mx-lg-3 remove-npe"
                                 >
                                 Remove NPE Country
@@ -610,6 +619,16 @@ const MultiNPEForm = () => {
                                 Add New NPE Country
                                 </Button>
                             }
+                            <Modal show={showModal} onHide={handleModalClose}>
+                                <Modal.Header >
+                                    <Modal.Title className='Modal-title-pct'>Remove NPE Data</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body style={{textAlign: 'center', fontSize: '1.1vw'}}>Are you sure you want to remove NPE Country Data</Modal.Body>
+                                <Modal.Footer>
+                                    <Button className='close-button' onClick={handleModalClose}>No</Button>
+                                    <Button className='signout-modal-button' onClick={() => handleRemove(i)}>yes</Button>
+                                </Modal.Footer>
+                            </Modal>
                         </div>
                     </div>
                     );

@@ -66,8 +66,8 @@ function NavBar(props) {
                     <Navbar collapseOnSelect  variant={"dark"} expand="lg" className={changeNavbar ? 'color-nav-scroll' : 'color-nav'}>
                         <Logo></Logo>
                         <Navbar.Brand href="#"> </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle'/>
-                        <Navbar.Collapse id="responsive-navbar-nav">
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle' />
+                        <Navbar.Collapse id="responsive-navbar-nav" responsive={true.toString()}>
                             <Nav
                                 className="ms-auto my-2 my-xxl-0 gap-2 me-3"
                                 style={{ maxHeight: '100%',fontSize:'17px'}}
@@ -106,7 +106,7 @@ function NavBar(props) {
                         <Route path='/firms' element={login ? <Firms /> : <Navigate to='/login' />}></Route>
                         <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />}></Route>
                         <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />}></Route>
-                        <Route path='/patentupdate' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
+                        <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='/forgotpassword' element={<ForgotPassword />} />

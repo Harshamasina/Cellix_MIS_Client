@@ -21,7 +21,6 @@ const PatentsPaginate = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`/api/getpatents/${pageIndex}`);
-                console.log(response);
                 setPatents(response.data.Patents);
                 setTotalPages(response.data.totalPages);
                 setPageSize(response.data.pageSize);
