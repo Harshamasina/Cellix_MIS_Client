@@ -215,7 +215,7 @@ a:hover::after { width: 100%; }
 }
 
 .nav-dropdown .dropdown-item:hover {
-	background: #fff;
+	background: none !important;
 }
 
 .dropdown-link{
@@ -227,5 +227,5 @@ a:hover::after { width: 100%; }
 }
 
 .dropdown-link:hover{
-	color: #0E6E59 !important;
+	color: #15B39D !important;
 }

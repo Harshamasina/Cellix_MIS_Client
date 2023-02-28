@@ -4,7 +4,7 @@ import { Parallax } from 'react-parallax';
 // import TestNotification from './TestNotification';
 
 const Notifications = () => {
-    const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/notifications+1.jpg";
+    const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
     return(
         <div>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={1}>
