@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
@@ -9,7 +10,7 @@ import { Modal, Button } from "react-bootstrap";
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/checklist+1.jpg";
     const { id } = useParams();
-    const [patent, setPatent] = useState("");
+    const [patent, setPatent] = useState([]);
     const [updatePatent, setUpdatePatent] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -509,36 +510,6 @@ const PatentUpdate = () => {
                         </Modal>
                     </form>
                 </div>
-            </div>
-            <div>
-                {/* {
-                    updatePatent && (
-                        <div>
-                            {
-                                Object.keys(updatePatent).map((key) => (
-                                    <div key={key}>
-                                        <label htmlFor={key}>{key}</label>
-                                        <span>{ updatePatent[key] }</span>
-                                    </div>
-                                ))
-                            }
-                            {
-                                updatePatent?.npe?.map((item, index) => (
-                                    <div key={index}>
-                                        {
-                                            Object.keys(item).map((key) => (
-                                                <div key={key}>
-                                                    <label htmlFor={`npe[${index}.${key}]`}>{key}</label>
-                                                    <span>{item[key]}</span>
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    )
-                } */}
             </div>
         </div>
     );
