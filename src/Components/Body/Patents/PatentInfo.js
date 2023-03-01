@@ -19,7 +19,7 @@ const PatentInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`/api/getpatent/${ref}`);
+                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getpatent/${ref}`);
                 setPatent(patentData.data);
                 setLoading(false);
             } catch (err) {
