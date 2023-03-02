@@ -18,7 +18,7 @@ const OfflinePage = () => {
   if (isOnline) {
     return <div>You are now online. Page reloading...</div>;
   } else {
-    return <div>You are offline. Please check your internet connection.</div>;
+    return <div>You are offline. Please check your internet connection. Cellix Bio MIS React Web Application</div>;
   }
 }
 
