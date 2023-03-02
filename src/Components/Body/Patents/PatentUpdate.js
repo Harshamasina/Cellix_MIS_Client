@@ -21,7 +21,7 @@ const PatentUpdate = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`http://localhost:5000/api/getpatentid/${id}`);
+                const res = await axios.get(`https://misbackend.cellixbio.info/api/getpatentid/${id}`);
                 setPatent(res.data);
                 setUpdatePatent(res.data);
                 setLoading(false);
@@ -67,7 +67,7 @@ const PatentUpdate = () => {
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         try{
-            const res = await axios.patch(`/api/updatepatentid/${id}`, updatePatent);
+            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatepatentid/${id}`, updatePatent);
             console.log(res);
             setShowModal(false);
         } catch (err) {
