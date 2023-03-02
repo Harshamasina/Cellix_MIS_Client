@@ -611,6 +611,24 @@ body{
   background: #006653;
 }
 
+.patentnpe-link{
+  background: transparent;
+  padding: 10px 25px 20px 30px;
+  font-size: 2vw;
+  color: #0E6E59;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .5s;
+  margin-left: 27%;
+  border: 2px solid #0E6E59;
+}
+
+.patentnpe-link:hover{
+  color: #fff !important;
+  background: #15B39D;
+  border: 2px solid #15B39D;
+}
+
 .Tabs{
   width: 65vw;
   margin-top: 2%;

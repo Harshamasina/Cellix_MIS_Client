@@ -6,6 +6,8 @@ import { useParams } from 'react-router';
 import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { Modal, Button } from "react-bootstrap";
+import { IoMdGlobe } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/checklist+1.jpg";
@@ -99,6 +101,7 @@ const PatentUpdate = () => {
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
                             <h1> { patent && patent.ref_no } Update</h1>
+                            <Link className='patentnpe-link' to='/addnewnpe'>Add New NPE <IoMdGlobe /></Link>
                         </div>
                     </div>
                 </div>

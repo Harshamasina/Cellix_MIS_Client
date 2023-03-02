@@ -109,7 +109,7 @@ const PatentLifeCycleForm = () => {
         setNPEModal(false);
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setSubmitModal(true);
     }
@@ -150,7 +150,7 @@ const PatentLifeCycleForm = () => {
             </Parallax>
             <div className="patentForm">
                 <div className="content">
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form">
                         <div className="patent-details">
                             <div className="input-box">
                                 <span className="details">Reference Number</span>
@@ -660,7 +660,7 @@ const PatentLifeCycleForm = () => {
                         }
                         <Button className="add-npe" onClick={handleAddNPE}>Add NPE</Button>
                         <div className='button'>
-                           <input type="submit" name="submit patent" value={isLoading ? "submitting Patent" : "Submit Patent"}></input>
+                           <input type="submit" name="submit patent" value={isLoading ? "submitting Patent" : "Submit Patent"} onClick={handleSubmit}></input>
                         </div>
                         <Modal show={submitModal} onHide={handleRemoveCancelled}>
                             <Modal.Header >

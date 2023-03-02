@@ -13,6 +13,7 @@ import PatentInfo from '../Body/Patents/PatentInfo';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';
+import AddNewNPE from '../Body/Patents/AddNewNPE';
 import PatentLifeCycleForm from '../Body/NewPatents/PatentLifeCycleForm';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
 import { auth } from '../../config/firebase';
@@ -108,6 +109,7 @@ function NavBar(props) {
                         <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />}></Route>
                         <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />}></Route>
                         <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
+                        <Route path='/addnewnpe' element={login ? <AddNewNPE /> : <Navigate to='/login' />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='/forgotpassword' element={<ForgotPassword />} />
