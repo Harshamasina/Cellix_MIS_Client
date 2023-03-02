@@ -36,7 +36,7 @@ const PCTPatentForm = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('http://localhost:5000/api/pctpatent', PCTPatent);
+            const res = await axios.post('https://misbackend.cellixbio.info/api/pctpatent', PCTPatent);
             console.log(res);
             setPCTPatent({
                 wno: "",

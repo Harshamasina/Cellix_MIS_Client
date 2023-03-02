@@ -109,7 +109,7 @@ function NavBar(props) {
                         <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />}></Route>
                         <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />}></Route>
                         <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />}></Route>
-                        <Route path='/addnewnpe' element={login ? <AddNewNPE /> : <Navigate to='/login' />}></Route>
+                        <Route path='/addnewnpe/:id' element={login ? <AddNewNPE /> : <Navigate to='/login' />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='/forgotpassword' element={<ForgotPassword />} />

@@ -101,7 +101,7 @@ const PatentUpdate = () => {
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
                             <h1> { patent && patent.ref_no } Update</h1>
-                            <Link className='patentnpe-link' to='/addnewnpe'>Add New NPE <IoMdGlobe /></Link>
+                            <Link className='patentnpe-link' to={"/addnewnpe/"+patent._id}>Add New NPE <IoMdGlobe /></Link>
                         </div>
                     </div>
                 </div>
