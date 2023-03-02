@@ -13,7 +13,7 @@ import PatentInfo from '../Body/Patents/PatentInfo';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';
-import MultiNPEForm from '../Body/NewPatents/MultiNPEForm';
+import PatentLifeCycleForm from '../Body/NewPatents/PatentLifeCycleForm';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
@@ -22,6 +22,7 @@ import ForgotPassword from '../Body/Login/ForgotPassword';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
+
 
 function NavBar(props) {
         const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -111,7 +112,7 @@ function NavBar(props) {
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='/forgotpassword' element={<ForgotPassword />} />
                         <Route path='/updatepassword' element={login ? <UpdatePassword /> : <Navigate to='/login' />} />
-                        <Route path='/misform' element={login ? <MultiNPEForm /> : <Navigate to='/login' />}></Route>
+                        <Route path='/misform' element={login ? <PatentLifeCycleForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />}></Route>
                         <Route path='/' element={login ? <Home /> : <Navigate to='/login' />}></Route>
                         <Route path='*' element={<Error404 />}></Route>

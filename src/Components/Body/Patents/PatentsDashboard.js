@@ -20,7 +20,7 @@ const PatentsPaginate = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://misbackend.cellixbio.info/api/getpatents/${pageIndex}`);
+                const response = await axios.get(`http://localhost:5000/api/getpatents/${pageIndex}`);
                 setPatents(response.data.Patents);
                 setTotalPages(response.data.totalPages);
                 setPageSize(response.data.pageSize);
