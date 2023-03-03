@@ -20,7 +20,7 @@ const PatentInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getpatent/${ref}`);
+                const patentData = await axios.get(`/api/getpatent/${ref}`);
                 setPatent(patentData.data);
                 setLoading(false);
             } catch (err) {
@@ -141,7 +141,7 @@ const PatentInfo = () => {
                         <p>PCT Deadline: <span>{patent.pct_dl}</span></p>
                     </div>
                 </Tab>
-                <Tab eventKey="NPE" title="Non Practicing Entity (NPE) Data" tabClassName='tab-item'>
+                <Tab eventKey="NPE" title="National Phase Entry (NPE) Data" tabClassName='tab-item'>
                     <Accordion alwaysOpen className='mb-4 custom-accordion'>
                         {
                             patent.npe && patent.npe.map((npe, i) => (

@@ -26,4 +26,5 @@ const Patents = () => {
         </div>
     );
 }
+
 export default Patents;
