@@ -89,10 +89,8 @@ const PatentInfo = () => {
             }
             if(daysDiff <= 7){
                 return('red');
-
             } else if (diffMonths <= 2){
                 return('orange');
-
             }
             else{
                 return('black');
@@ -101,6 +99,7 @@ const PatentInfo = () => {
             console.error(err);
         }
     };
+    
     return(
         <div>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">

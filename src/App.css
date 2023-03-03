@@ -599,7 +599,7 @@ body{
   background: transparent;
   padding: 10px 25px 20px 30px;
   font-size: 2.5vw;
-  color: #fff;
+  color: #15B39D;
   text-decoration: none;
   border-radius: 10px;
   transition: .5s;
@@ -614,13 +614,12 @@ body{
 .patentnpe-link{
   background: transparent;
   padding: 10px 25px 20px 30px;
-  font-size: 2vw;
+  font-size: 3vw;
   color: #0E6E59;
   text-decoration: none;
   border-radius: 10px;
   transition: .5s;
-  margin-left: 27%;
-  border: 2px solid #0E6E59;
+  margin-left: 40%;
 }
 
 .patentnpe-link:hover{
