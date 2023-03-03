@@ -9,6 +9,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { Breadcrumbs } from '@mui/material';
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
@@ -112,6 +113,10 @@ const PatentInfo = () => {
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+                <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
+            </Breadcrumbs>
             <Tabs
                 defaultActiveKey="NPE"
                 id="uncontrolled-tab-example"

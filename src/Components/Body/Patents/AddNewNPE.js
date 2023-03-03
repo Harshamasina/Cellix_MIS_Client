@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { Parallax } from 'react-parallax';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Breadcrumbs } from '@mui/material';
 
 const AddNewNpe = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Bar+Graphs.jpg";
@@ -36,6 +38,7 @@ const AddNewNpe = () => {
             npe_rfe: ""
         }
     ]);
+    const [patent, setPatent] = useState([]);
 
     const handleAddNPE = () => {
         setNPEData([...NPEData, {
@@ -88,6 +91,21 @@ const AddNewNpe = () => {
         setSubmitModal(true);
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try{
+                const res = await axios.get(`http://localhost:5000/api/getpatentid/${id}`);
+                setPatent(res.data);
+                setIsLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError(err);
+                setIsLoading(false);
+            }
+        }
+        fetchData();
+    }, [id]);
+
     const handleSubmitModal = async () => {
         setError(null);
         setIsLoading(true);
@@ -107,18 +125,23 @@ const AddNewNpe = () => {
     const handleCloseSubmitModal= () => {
         setSubmitModal(false);
     }
-    console.log(NPEData);
     return(
         <div>
            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
-                            <h1>Add New NPE</h1>
+                            <h1>{ patent && patent.ref_no } New NPE</h1>
                         </div>
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+                <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
+                <Link to={"/patentupdate/"+patent._id} className='BC-Links'>{patent.ref_no} Update</Link>
+                <Link to={"/addnewnpe/"+patent._id} className='BC-Links'>{patent.ref_no} New NPE</Link>
+            </Breadcrumbs>
             <div className="patentForm">
                 <div className="content">
                     <form className="form">

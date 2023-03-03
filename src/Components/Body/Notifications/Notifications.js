@@ -1,7 +1,5 @@
 import { Parallax } from 'react-parallax';
-// import TestNotification1 from './TestNotification1';
-// import NotificationTable from './NotificationTable';
-// import TestNotification from './TestNotification';
+import NotificationTable from './NotificationTable';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
@@ -16,9 +14,7 @@ const Notifications = () => {
                     </div>
                 </div>
             </Parallax>
-            {/* <NotificationTable></NotificationTable> */}
-            {/* <TestNotification></TestNotification> */}
-            {/* <TestNotification1></TestNotification1> */}
+            <NotificationTable></NotificationTable>
         </div>
     );
 }

@@ -1156,3 +1156,25 @@ body{
   text-align: center !important;
   margin-left: 25%;
 }
+
+.bread-crumb{
+  margin-left: 2% !important;
+  margin-top: 2% !important;
+}
+
+Breadcrumb.Item{
+  text-decoration: none !important;
+}
+
+.BC-Links{
+  font-size: 16px;
+  font-weight: 547;
+  text-decoration: none !important;
+  color: #282c34;
+  transition: .3s;
+}
+
+.BC-Links:hover{
+  color: #0E6E59 !important;
+  text-decoration: underline 1px solid #0E6E59 !important;
+}

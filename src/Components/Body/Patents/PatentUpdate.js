@@ -8,6 +8,7 @@ import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { Modal, Button } from "react-bootstrap";
 import { IoMdGlobe } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { Breadcrumbs } from '@mui/material';
 
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/checklist+1.jpg";
@@ -106,6 +107,11 @@ const PatentUpdate = () => {
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+                <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
+                <Link to={"/patentupdate/"+patent._id} className='BC-Links'>{patent.ref_no} Update</Link>
+            </Breadcrumbs>
             <div className="patentForm">
                 <div className="content">
                     <form className="form">
