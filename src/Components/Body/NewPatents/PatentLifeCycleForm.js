@@ -118,7 +118,7 @@ const PatentLifeCycleForm = () => {
         setError(null);
         setIsLoading(true);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData);
+            const res = await axios.post('http://localhost:5000/api/patent', patentData);
             console.log(res);
             setIsLoading(false);
             window.alert("Successfully Posted Patent");

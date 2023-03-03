@@ -93,7 +93,7 @@ const AddNewNpe = () => {
         setIsLoading(true);
         setIsLoading(false);
         try{
-            const res = await axios.patch(`https://misbackend.cellixbio.info/api/addnewnpe/${id}`, { "npe": NPEData });
+            const res = await axios.patch(`http://localhost:5000/api/addnewnpe/${id}`, { "npe": NPEData });
             console.log(res);
             setIsLoading(false);
             window.location.reload();
