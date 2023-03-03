@@ -24,7 +24,6 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
     const [changeNavbar, setChangeNavbar] = useState(false);

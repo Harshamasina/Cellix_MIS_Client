@@ -11,7 +11,7 @@ const NotificationTable = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const result = await axios.get('http://localhost:5000/api/notifications');
+                const result = await axios.get('https://misbackend.cellixbio.info/api/notifications');
                 setNotifications(result.data);
                 setLoading(false);
             } catch (err) {
