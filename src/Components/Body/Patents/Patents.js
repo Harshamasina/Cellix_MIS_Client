@@ -1,6 +1,8 @@
 import { Parallax } from 'react-parallax';
+import { Link } from 'react-router-dom';
 import PatentDashboard from './PatentsDashboard';
 import SearchPatents from './SearchPatents';
+import { Breadcrumbs } from '@mui/material';
 
 const Patents = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Sit.jpg";
@@ -15,6 +17,10 @@ const Patents = () => {
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/home" className='BC-Links'>Home</Link>
+                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+            </Breadcrumbs>
             <SearchPatents></SearchPatents>
             <PatentDashboard></PatentDashboard>
         </div>

@@ -137,6 +137,7 @@ const AddNewNpe = () => {
                 </div>
             </Parallax>
             <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
                 <Link to={"/patentupdate/"+patent._id} className='BC-Links'>{patent.ref_no} Update</Link>

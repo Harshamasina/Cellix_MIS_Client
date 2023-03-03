@@ -2,6 +2,8 @@ import { Parallax } from 'react-parallax';
 import { useState } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
+import { Breadcrumbs } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const PCTPatentForm = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/html+css.jpg";
@@ -74,6 +76,11 @@ const PCTPatentForm = () => {
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/home" className='BC-Links'>Home</Link>
+                <Link to="/newpatent" className='BC-Links'>New Patent</Link>
+                <Link to="/pctpatentform" className='BC-Links'>New Patent Form</Link>
+            </Breadcrumbs>
             <div className='PCT-Container'>
                 <form onSubmit={handleSubmit} className='PCTform'>
                     <input 
