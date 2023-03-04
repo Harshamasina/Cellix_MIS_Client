@@ -94,7 +94,7 @@ const AddNewNpe = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`/api/getpatentid/${id}`);
+                const res = await axios.get(`https://misbackend.cellixbio.info/api/getpatentid/${id}`);
                 setPatent(res.data);
                 setIsLoading(false);
             } catch (err) {
@@ -111,7 +111,7 @@ const AddNewNpe = () => {
         setIsLoading(true);
         setIsLoading(false);
         try{
-            const res = await axios.patch(`/api/addnewnpe/${id}`, { "npe": NPEData });
+            const res = await axios.patch(`https://misbackend.cellixbio.info/api/addnewnpe/${id}`, { "npe": NPEData });
             console.log(res);
             setIsLoading(false);
             window.location.reload();
