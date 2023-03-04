@@ -163,7 +163,7 @@ const PatentUpdate = () => {
                                     placeholder="Enter PCT Date of Filing"
                                     autoComplete="off"
                                     name="pct_dof"
-                                    value={ updatePatent?.prv_dof || '' }
+                                    value={ updatePatent?.pct_dof || '' }
                                     onChange={handleInputChange}
                                 >
                                 </input>
