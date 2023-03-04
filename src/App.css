@@ -1178,3 +1178,97 @@ Breadcrumb.Item{
   color: #0E6E59 !important;
   text-decoration: underline 1px solid #0E6E59 !important;
 }
+
+.input-box input{
+  height: 45px;
+  width: 40%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  margin-top: 1%;
+}
+
+.input-box input:focus{
+  border-color: #0e6e59;
+}
+
+.input-box select{
+  height: 45px;
+  width: 40%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.input-box select:focus{
+  border-color: #0e6e59;
+}
+
+.input-box textarea{
+  height: 200px;
+  width: 50%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  margin-top: 1%;
+  padding-top: 5px;
+}
+
+.input-box textarea:focus{
+  border-color: #0e6e59;
+}
+
+.add-date{
+  background: transparent !important;
+  border: 2px solid #0E6E59 !important;
+  color: #0E6E59 !important;
+  font-size: 15px !important;
+  transition: 1s;
+  margin: .5%;
+}
+
+.add-date:hover{
+  background: #0E6E59 !important;
+  color: #fff !important;
+}
+
+.remove-date{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  font-size: 15px !important;
+  transition: 1s;
+  margin: .5%;
+}
+
+.remove-date:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+}
+
+.submit-data{
+  background: #0E6E59 !important;
+  color: #fff !important;
+  font-size: 30px !important;
+  transition: .4s !important;
+  margin: .5%;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+.submit-data:hover{
+  color: #15B39D !important;
+  color: #fff !important;
+}

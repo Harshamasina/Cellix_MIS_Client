@@ -1,7 +1,7 @@
 {
   "name": "cellix_mis_client",
   "version": "0.1.0",
-  "proxy": "https://misbackend.cellixbio.info/",
+  "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
