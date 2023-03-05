@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 const ApplicationFamily = () => {
     const [patentData, setPatentData] = useState({
@@ -38,6 +38,11 @@ const ApplicationFamily = () => {
             npe_notes: ""
         }]
     });
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [showSubmitModal, setShowSubmitDeleteModel] = useState(false);
+    const [deleteIndex, setDeleteIndex] = useState(null);
+    const [submissionError, setSubmissionError] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
 
     const handleInputs = (e) => {
         setPatentData({ ...patentData, [e.target.name]: e.target.value });
@@ -118,21 +123,50 @@ const ApplicationFamily = () => {
     };
 
     const handleRemoveNPE = (index) => {
-        const npe = [...patentData.npe]
-        npe.splice(index, 1);
-        setPatentData({ ...patentData, npe });
+        setShowDeleteModal(true);
+        setDeleteIndex(index);
     }
 
-    const handleSubmit = async (e) => {
+    const handleConfirmNPEDelete = () => {
+        setPatentData((prevState) => {
+          const newState = { ...prevState };
+          newState.npe.splice(deleteIndex, 1);
+          setShowDeleteModal(false);
+          return newState;
+        });
+    };
+
+    const handleCancelDelete = () => {
+        setShowDeleteModal(false);
+        setDeleteIndex(null);
+    };
+
+    const handleSubmit =  (e) => {
         e.preventDefault();
+        setShowSubmitDeleteModel(true);
+    }
+
+    const handleSubmitModal = async () => {
+        setShowSubmitDeleteModel(false);
+        setSubmitting(true);
+        setSubmissionError(null);
         try{
             const res = await axios.post('http://localhost:5000/api/patent', patentData);
             console.log(res);
+            alert("Application Family Submitted Successfully");
+            window.location.reload();
         } catch (err) {
             console.error(err);
+            setSubmissionError(err.response.data.message);
+        } finally {
+            setSubmitting(false);
         }
     }
-    console.log(patentData);
+
+    const handleCloseSubmitModal= () => {
+        setShowSubmitDeleteModel(false);
+    }
+
     return(
         <div>
             <Breadcrumbs separator="\" className='bread-crumb'>
@@ -265,9 +299,11 @@ const ApplicationFamily = () => {
                                 />
                             </div>
                         </div>
+                        <span className='npe'>National Phase Entry Data</span>
                         {
                             patentData.npe.map((npeData, NPEIndex) => (
                                 <div key={NPEIndex} className="input-box-container">
+                                    <span className='npe-details'>Filing Stage: </span>
                                     <div className="input-box">
                                         <span className='details'>NPE Country</span>
                                         <select 
@@ -344,6 +380,7 @@ const ApplicationFamily = () => {
                                         />
                                     </div>
                                     <div>
+                                        <span className='npe-details'>Examination Stage: </span>
                                         {
                                             npeData.npe_oa.map((OADate, OAIndex) => (
                                                 <div key={OAIndex}>
@@ -398,6 +435,7 @@ const ApplicationFamily = () => {
                                         />
                                     </div>
                                     <div>
+                                        <span className='npe-details'>Annuity Stage: </span>
                                         {
                                             npeData.npe_af.map((OFDate, OFIndex) => (
                                                 <div key={OFIndex}>
@@ -423,7 +461,7 @@ const ApplicationFamily = () => {
                                                             onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
                                                         />
                                                     </div>
-                                                    <Button size='sm' className='remove-date' onClick={() => handleRemoveNPEAnnuityDate(NPEIndex, OFIndex)}>Remove Annuity Date</Button>
+                                                    <Button size='sm' className="remove-date" onClick={() => handleRemoveNPEAnnuityDate(NPEIndex, OFIndex)}>Remove Annuity Date</Button>
                                                 </div>
                                             ))
                                         }
@@ -464,12 +502,44 @@ const ApplicationFamily = () => {
                                             onChange={ (e) => handleChange(e, NPEIndex)}
                                         />
                                     </div>
-                                    <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className=" m-lg-3 remove-npe">Remove NPE</Button>
+                                    <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
+                                    <Modal show={showDeleteModal} onHide={handleCancelDelete}>
+                                        <Modal.Header>
+                                            <Modal.Title>Confirm NPE Deletion</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            Are you sure you want to delete this NPE Data?
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button className='close-button'  onClick={handleCancelDelete}>Cancel</Button>
+                                            <Button className='signout-modal-button' onClick={handleConfirmNPEDelete}>Delete</Button>
+                                        </Modal.Footer>
+                                    </Modal>
                                 </div>
                             ))
                         }
                         <Button size="lg" onClick={handleAddNPE} className="add-npe">Add New NPE</Button>
-                        <Button size='lg' onClick={handleSubmit} className='submit-data'>Submit Application Family</Button>
+                        <div className='button'>
+                            <input
+                                type="submit"
+                                name="submit patent"
+                                value={submitting ? 'Submitting Application Family...' : 'Submit Application Family'}
+                                onClick={handleSubmit}
+                            />
+                        </div>
+                        {submissionError && <p className='error-message'>{submissionError}</p>}
+                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg">
+                            <Modal.Header>
+                                <Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                Are you sure you want to submit this Data?
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
+                                <Button  className='close-button' onClick={handleSubmitModal}>Submit</Button>
+                            </Modal.Footer>
+                        </Modal>
                     </form>
                 </div>
             </div>

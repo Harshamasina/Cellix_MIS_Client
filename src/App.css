@@ -173,6 +173,7 @@ body{
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
+  margin-top: 1%;
 }
 
 .patent-details .input-box input{
@@ -259,7 +260,7 @@ body{
 } */
 
 .button input{
-  width: 20%;
+  width: 25%;
   padding: 15px 25px 15px 25px;
   border-radius: 5px;
   border: none;
@@ -269,7 +270,7 @@ body{
   letter-spacing: 1px;
   cursor: pointer;
   /* transition: all 0.3s ease; */
-  margin-left: 45%;
+  margin-left: 42%;
   align-items: center;
   top: 5% !important;
   text-align: center;
@@ -1179,9 +1180,33 @@ Breadcrumb.Item{
   text-decoration: underline 1px solid #0E6E59 !important;
 }
 
+.input-box-container{
+  margin-left: 30%;
+}
+
+.npe{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 30px;
+  color: #0E6E59;
+  text-align: center;
+  margin-top: -5%;
+}
+
+.npe-details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 25px;
+  color: #0E6E59;
+  margin-left: 20%;
+  margin-top: 1%;
+}
+
 .input-box input{
   height: 45px;
-  width: 40%;
+  width: 60%;
   outline: none;
   font-size: 16px;
   border-radius: 5px;
@@ -1198,7 +1223,7 @@ Breadcrumb.Item{
 
 .input-box select{
   height: 45px;
-  width: 40%;
+  width: 60%;
   outline: none;
   font-size: 16px;
   border-radius: 5px;
@@ -1214,7 +1239,7 @@ Breadcrumb.Item{
 
 .input-box textarea{
   height: 200px;
-  width: 50%;
+  width: 90%;
   outline: none;
   font-size: 16px;
   border-radius: 5px;
@@ -1236,7 +1261,8 @@ Breadcrumb.Item{
   color: #0E6E59 !important;
   font-size: 15px !important;
   transition: 1s;
-  margin: .5%;
+  margin-left: 22%;
+  margin-top: 1%;
 }
 
 .add-date:hover{
@@ -1250,7 +1276,8 @@ Breadcrumb.Item{
   color: #FF4433 !important;
   font-size: 15px !important;
   transition: 1s;
-  margin: .5%;
+  margin-left: 21%;
+  margin-top: 1%;
 }
 
 .remove-date:hover{
@@ -1271,4 +1298,24 @@ Breadcrumb.Item{
 .submit-data:hover{
   color: #15B39D !important;
   color: #fff !important;
+}
+
+.remove-npe-form{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  font-size: 20px !important;
+  transition: 1s;
+  margin-left: 73%;
+}
+
+.remove-npe-form:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+}
+
+.Modal-title-submit-form{
+  color: #0E6E59;
+  text-align: center !important;
+  margin-left: 17%;
 }
