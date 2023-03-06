@@ -151,7 +151,7 @@ const ApplicationFamily = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('http://localhost:5000/api/patent', patentData);
+            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData);
             console.log(res);
             alert("Application Family Submitted Successfully");
             window.location.reload();
@@ -311,7 +311,6 @@ const ApplicationFamily = () => {
                                             onChange={ (e) => handleChange(e, NPEIndex)}
                                         >
                                             <option defaultValue disabled>Select Country</option>
-                                            <option value="US">United States (US)</option>
                                             <option value="US (DIV)">United States (US DIV)</option>
                                             <option value="AU">Australia (AU)</option>
                                             <option value="BR">Brazil (BR)</option>
@@ -329,6 +328,7 @@ const ApplicationFamily = () => {
                                             <option value="ZA">South Africa (ZA)</option>
                                             <option value="KR">South Korea (KR)</option>
                                             <option value="ES">Spain (ES)</option>
+                                            <option value="US">United States (US)</option>
                                         </select>
                                     </div>
 
