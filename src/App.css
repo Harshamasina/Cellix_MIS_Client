@@ -1198,6 +1198,13 @@ Breadcrumb.Item{
   margin-left: 30%;
 }
 
+.input-box-container h3{
+  color: #0E6E59;
+  font-size: 40px;
+  margin-left: 16%;
+  margin-top: 1%;
+}
+
 .npe{
   display: block;
   font-weight: 500;

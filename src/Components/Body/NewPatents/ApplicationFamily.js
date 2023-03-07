@@ -178,7 +178,7 @@ const ApplicationFamily = () => {
                 <div className="content">
                     <form className="form">
                         <div className="patent-details">
-                        <div className="input-box">
+                            <div className="input-box">
                                 <span className="details">Reference Number</span>
                                 <input 
                                     type="text" 
@@ -294,7 +294,7 @@ const ApplicationFamily = () => {
                                     placeholder="Enter PCT Deadline"
                                     autoComplete="off"
                                     name="pct_dl"
-                                    value={patentData.prv_dl}
+                                    value={patentData.pct_dl}
                                     onChange={handleInputs}
                                 />
                             </div>
