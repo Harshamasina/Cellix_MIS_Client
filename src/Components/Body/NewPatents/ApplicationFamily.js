@@ -269,7 +269,7 @@ const ApplicationFamily = () => {
                                     placeholder="Enter PCT Month Date"
                                     autoComplete="off"
                                     name="pct_22_md"
-                                    value={patentData.pct_22_24}
+                                    value={patentData.pct_22_md}
                                     onChange={handleInputs}
                                 />
                             </div>
@@ -415,10 +415,10 @@ const ApplicationFamily = () => {
                                     <div className="input-box">
                                         <span className="details">NPE Granted / Rejected</span>
                                         <select
-                                            name="npe_ep_desc"
+                                            name="npe_grant_desc"
                                             onChange={ (e) => handleChange(e, NPEIndex)}
                                         >
-                                            <option defaultValue disabled>Select NPE Status</option>
+                                            <option value="NA">Select NPE Status</option>
                                             <option value="1">Granted</option>
                                             <option value="0">Rejected</option>
                                         </select>
@@ -431,6 +431,17 @@ const ApplicationFamily = () => {
                                             autoComplete="off"
                                             name="npe_grant"
                                             value={npeData.npe_grant}
+                                            onChange={ (e) => handleChange(e, NPEIndex)}
+                                        />
+                                    </div>
+                                    <div className="input-box">
+                                        <span className="details">NPE Issue Fee</span>
+                                        <input 
+                                            type="date" 
+                                            placeholder="NPE Issue Fee"
+                                            autoComplete="off"
+                                            name="npe_if"
+                                            value={npeData.npe_if}
                                             onChange={ (e) => handleChange(e, NPEIndex)}
                                         />
                                     </div>

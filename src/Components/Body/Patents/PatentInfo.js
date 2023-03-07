@@ -133,95 +133,50 @@ const PatentInfo = () => {
                 <Tab eventKey="PCT" title="Patent Corporation Treaty (PCT) Data" tabClassName='tab-item'>
                     <div className='tab-data'>
                         <p>PCT Number: <span>{patent.pct_appno}</span></p>
-                        <p>PCT Date of Filing: <span>{patent.pct_dof}</span></p>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dof)}><p>PCT Date of Filing: <span className={changeColorDates(patent.pct_dof)}>{patent.pct_dof}</span></p></OverlayTrigger>
                         <p>PCT ISA Date: <span>{patent.pct_isa}</span></p>
-                        <p>PCT Publication Date: <span>{patent.pct_18}</span></p>
-                        <p>PCT 22 Month Date: <span>{patent.pct_22_md}</span></p>
-                        <p>PCT 30/31 Date: <span>{patent.pct_30_31}</span></p>
-                        <p>PCT Deadline: <span>{patent.pct_dl}</span></p>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_18)}><p>PCT Publication Date: <span className={changeColorDates(patent.pct_18)}>{patent.pct_18}</span></p></OverlayTrigger>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_22_md)}><p>PCT 22 Month Date: <span className={changeColorDates(patent.pct_22_md)}>{patent.pct_22_md}</span></p></OverlayTrigger>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_30_31)}><p>PCT 30 / 31 Month Date: <span className={changeColorDates(patent.pct_30_31)}>{patent.pct_30_31}</span></p></OverlayTrigger>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dl)}><p>PCT Deadline: <span className={changeColorDates(patent.pct_dl)}>{patent.pct_dl}</span></p></OverlayTrigger>
                     </div>
                 </Tab>
                 <Tab eventKey="NPE" title="National Phase Entry (NPE) Data" tabClassName='tab-item'>
                     <Accordion alwaysOpen className='mb-4 custom-accordion'>
                         {
-                            patent.npe && patent.npe.map((npe, i) => (
+                            patent.npe && patent.npe.map((npeData, i) => (
                                 <Accordion.Item eventKey={i} key={i}>
-                                    <Accordion.Header>{npe.npe_country}</Accordion.Header>
-                                    <Accordion.Body>
-                                        {
-                                            npe.npe_country === 'US' || npe.npe_country === 'US(DIV)'? (
-                                                <div className='tab-npe-data shadow-lg'>
-                                                    <p>NPE Country: <span>{npe.npe_country}</span></p>
-                                                    <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
-                                                    <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
-                                                    <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE First Office Action Date: <span>{npe.npe_us_foa}</span></p>
-                                                    <p>NPE Second Office Action Date: <span>{npe.npe_us_soa}</span></p>
-                                                    <p>NPE request for Continuation: <span>{npe.npe_us_rc}</span></p>
-                                                    <p>NPE Response to Examination Report: <span>{npe.npe_us_rr}</span></p>
-                                                    <p>NPE Final Action: <span>{npe.npe_us_fa}</span></p>
-                                                    <p>NPE Grant Date: <span>{npe.npe_grant}</span></p>
-                                                    <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
-                                                    <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
-                                                    <p>NPE Annuities Date: <span>{npe.npe_annuity}</span></p>
-                                                    <p>NPE Request for Examination Date: <span>{npe.npe_rfe}</span></p>
-                                                </div>
-                                            ) : npe.npe_country === 'EP' ? (
-                                                <div className='tab-npe-data shadow-lg'>
-                                                    <p>NPE Country: <span>{npe.npe_country}</span></p>
-                                                    <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
-                                                    <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
-                                                    <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE Rule 161: <span>{npe.npe_ep_161}</span></p>
-                                                    <p>NPE Granted / Rejected: <span>{npe.npe_ep_desc}</span></p>
-                                                    <p>NPE claim to publication Date: <span>{npe.npe_ep_pub}</span></p>
-                                                    <p>NPE Second Examination Report: <span>{npe.npe_ep_ser}</span></p>
-                                                    <p>NPE translation of accepted Claim: <span>{npe.npe_ep_tac}</span></p>
-                                                    <p>NPE Validation: <span>{npe.npe_ep_val}</span></p>
-                                                    <p>NPE Grant Date: <span>{npe.npe_grant}</span></p>
-                                                    <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
-                                                    <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
-                                                    <p>NPE Annuities Date: <span>{npe.npe_annuity}</span></p>
-                                                    <p>NPE Request for Examination Date: <span>{npe.npe_rfe}</span></p>
-                                                </div>
-                                            ) : npe.npe_country === 'IN' ? (
-                                                <div className='tab-npe-data shadow-lg'>
-                                                    <p>NPE Country: <span>{npe.npe_country}</span></p>
-                                                    <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
-                                                    <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
-                                                    <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE Appeal Date: <span>{npe.npe_in_appeal}</span></p>
-                                                    <p>NPE Hearing Date: <span>{npe.npe_in_hearing}</span></p>
-                                                    <p>NPE Second Examination Report: <span>{npe.npe_in_ser}</span></p>
-                                                    <p>NPE Grant Date: <span>{npe.npe_grant}</span></p>
-                                                    <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
-                                                    <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
-                                                    <p>NPE Annuities Date: <span>{npe.npe_annuity}</span></p>
-                                                    <p>NPE Request for Examination Date: <span>{npe.npe_rfe}</span></p>
-                                                </div>
-                                            ) : (
-                                                <div className='tab-npe-data shadow-lg'>
-                                                    <p>NPE Country: <span>{npe.npe_country}</span></p>
-                                                    <p>NPE Application Number: <span>{npe.npe_appno}</span></p>
-                                                    <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npe.npe_dof)}><p>NPE Date of Filing: <span className={changeColorDates(npe.npe_dof)}>{npe.npe_dof}</span></p></OverlayTrigger>
-                                                    <p>NPE Firm: <span>{npe.npe_fer_f}</span></p>
-                                                    <p>NPE FER Issue Date: <span>{npe.npe_fer_i}</span></p>
-                                                    <p>NPE FER Final Date: <span>{npe.npe_fer_f}</span></p>
-                                                    <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={renderPopover(npe.npe_grant)}><p>NPE Grant Date: <span className={changeColorDates(npe.npe_grant)}>{npe.npe_grant}</span></p></OverlayTrigger>
-                                                    <p>NPE Patent Number: <span>{npe.npe_patent}</span></p>
-                                                    <p>NPE Issue Fee Date: <span>{npe.npe_if}</span></p>
-                                                    <p>NPE Annuities Date: <span>{npe.npe_annuity}</span></p>
-                                                    <p>NPE Request for Examination Date: <span>{npe.npe_rfe}</span></p>
-                                                </div>
-                                            )
-                                        }
-                                    </Accordion.Body>
+                                    <Accordion.Header>{npeData.npe_country}</Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className='tab-npe-data shadow-lg'>
+                                                <h4>Filing Stage</h4>
+                                                <p>NPE Country: <span>{npeData.npe_country}</span></p>
+                                                <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
+                                                <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
+                                                <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
+                                                <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
+                                                <h4>Examination Stage</h4>
+                                                {
+                                                    npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(oaData.npe_oa_date)}><p key={i}>{oaData.npe_oa_descp}: <span className={changeColorDates(oaData.npe_oa_date)}>{oaData.npe_oa_date}</span></p></OverlayTrigger>
+                                                    ))
+                                                }
+                                                <p>NPE Grant Decision: <span>{npeData.npe_grant_desc}</span></p>
+                                                <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
+                                                <p>NPE Issue Fee: <span>{npeData.npe_if}</span></p>
+                                                <h4>Annuity Stage</h4>
+                                                {
+                                                    npeData.npe_oa && npeData.npe_af.map((afData, i) => (
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(afData.npe_af_date)}><p key={i}>{afData.npe_af_descp}: <span className={changeColorDates(afData.npe_af_date)}>{afData.npe_af_date}</span></p></OverlayTrigger>
+                                                    ))
+                                                }
+                                                <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
+                                                <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
+                                                <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
+                                                <h4>Notes</h4>
+                                                <p className='NPE-notes'>{npeData.npe_notes}</p>
+                                            </div>
+                                        </Accordion.Body>
                                 </Accordion.Item>
                             ))
                         }

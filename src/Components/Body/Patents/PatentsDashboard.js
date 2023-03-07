@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Pagination } from 'react-bootstrap';
 import { VscGoToFile } from "react-icons/vsc";
 import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
@@ -10,21 +9,14 @@ import { Link } from 'react-router-dom';
 
 const PatentsPaginate = () => {
     const [patents, setPatents] = useState([]);
-    const [pageIndex, setPageIndex] = useState(0);
-    const [pageSize, setPageSize] = useState(9);
-    const [count, setCount] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://misbackend.cellixbio.info/api/getpatents/${pageIndex}`);
-                setPatents(response.data.Patents);
-                setTotalPages(response.data.totalPages);
-                setPageSize(response.data.pageSize);
-                setCount(response.data.count);
+                const response = await axios.get('http://localhost:5000/api/getpatents/');
+                setPatents(response.data);
                 setLoading(false);
             } catch(err) {
                 console.error(err);
@@ -33,22 +25,7 @@ const PatentsPaginate = () => {
             }
         }
         fetchData();
-    }, [pageIndex]);
-    
-    const handlePageChange = (pageNumber) => {
-        setPageIndex(pageNumber - 1);
-    };
-    
-    const handlePrevPage = () => {
-        setPageIndex((prevPageIndex) => prevPageIndex - 1);
-    };
-    
-    const handleNextPage = () => {
-        setPageIndex((prevPageIndex) => prevPageIndex + 1);
-    };
-    
-    const startIndex = pageIndex * pageSize + 1;
-    const endIndex = Math.min(startIndex + pageSize - 1, count);
+    }, []);
 
     if(loading){
         return <div>
@@ -70,19 +47,9 @@ const PatentsPaginate = () => {
         <div>
             <div className='container'>
                 <h2>Cellix Bio Patents Data</h2>
-                <Pagination className="justify-content-center" size="lg">
-                    <Pagination.Prev
-                        disabled={pageIndex === 0}
-                        onClick={handlePrevPage}
-                    />
-                    <Pagination.Next
-                        disabled={pageIndex === totalPages - 1}
-                        onClick={handleNextPage}
-                    />
-                </Pagination>
                 <div className='box-container'>
                     {
-                        patents.map((patent, i) => (
+                        patents && patents.map((patent, i) => (
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
                                 <h4>PCT Number: <span>{patent.pct_appno}</span></h4>
@@ -98,36 +65,6 @@ const PatentsPaginate = () => {
                         ))
                     }
                 </div>
-            </div>
-            <div>
-                <p className='Pagination-info'>Showing {startIndex}-{endIndex} of {count} Patents.</p>
-                <Pagination className="justify-content-center" size="lg">
-                    <Pagination.First
-                        onClick={() => handlePageChange(1)}
-                        disabled={pageIndex === 0}
-                    />
-                    <Pagination.Prev
-                        disabled={pageIndex === 0}
-                        onClick={handlePrevPage}
-                    />
-                    {[...Array(totalPages).keys()].map((page) => (
-                        <Pagination.Item
-                            key={page}
-                            active={pageIndex === page}
-                            onClick={() => handlePageChange(page + 1)}
-                        >
-                            {page + 1}
-                        </Pagination.Item>
-                    ))}
-                    <Pagination.Next
-                        disabled={pageIndex === totalPages - 1}
-                        onClick={handleNextPage}
-                    />
-                    <Pagination.Last
-                        onClick={() => handlePageChange(totalPages)}
-                        disabled={pageIndex === totalPages - 1} 
-                    />
-                </Pagination>
             </div>
         </div>
     );

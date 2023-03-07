@@ -695,6 +695,13 @@ body{
   border-radius: 10px;
 }
 
+.tab-npe-data h4{
+  text-align: center;
+  margin: 1.5%;
+  color: #0E6E59;
+  font-weight: 650;
+}
+
 .tab-npe-data p{
   text-align: left;
   font-size: 1.2vw;
@@ -703,6 +710,13 @@ body{
   justify-content: left;
   padding-left: 15px;
   padding-top: 7px;
+}
+
+.NPE-notes{
+  width: 90% !important;
+  color: #282c34 !important;
+  text-align: justify !important;
+  font-weight: 500 !important;
 }
 
 .accordion-item{
