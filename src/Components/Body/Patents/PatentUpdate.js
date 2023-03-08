@@ -30,18 +30,12 @@ const PatentUpdate = () => {
                 npe_appno: "",
                 npe_dof: "",
                 npe_firms: "",
-                npe_oa: [{
-                    npe_oa_descp: "",
-                    npe_oa_date: ""
-                }],
+                npe_oa: [{ npe_oa_descp: "", npe_oa_date: "" }],
                 npe_grant_desc: "",
                 npe_grant: "",
                 npe_patent: "",
                 npe_if: "",
-                npe_af: [{
-                    npe_af_descp: "",
-                    npe_af_date: ""
-                }],
+                npe_af: [{ npe_af_descp: "", npe_af_date: "" }],
                 npe_rfe: "",
                 npe_notes: ""
             }
@@ -124,18 +118,12 @@ const PatentUpdate = () => {
                 npe_appno: "",
                 npe_dof: "",
                 npe_firms: "",
-                npe_oa: [{
-                    npe_oa_descp: "",
-                    npe_oa_date: ""
-                }],
+                npe_oa: [{ npe_oa_descp: "", npe_oa_date: "" }],
                 npe_grant_desc: "",
                 npe_grant: "",
                 npe_patent: "",
                 npe_if: "",
-                npe_af: [{
-                    npe_af_descp: "",
-                    npe_af_date: ""
-                }],
+                npe_af: [{ npe_af_descp: "", npe_af_date: "" }],
                 npe_rfe: "",
                 npe_notes: ""
             }]
@@ -165,17 +153,9 @@ const PatentUpdate = () => {
     };
 
     const handleAddOA = (NPEIndex) => {
-        setPatent(prevState => {
-          const updatedNPE = [...prevState.npe];
-          updatedNPE[NPEIndex].npe_oa = [...updatedNPE[NPEIndex].npe_oa, {
-            npe_oa_descp: "",
-            npe_oa_date: ""
-          }];
-          return {
-            ...prevState,
-            npe: updatedNPE
-          };
-        });
+        const updatedNPE = { ...patent };
+        updatedNPE.npe[NPEIndex].npe_oa.push({ npe_oa_descp: "", npe_oa_date: "" });
+        setPatent(updatedNPE);
     };
 
     const handleRemoveOA = (NPEIndex, OAIndex) => {
@@ -190,17 +170,9 @@ const PatentUpdate = () => {
     };
 
     const handleAddAF = (NPEIndex) => {
-        setPatent(prevState => {
-          const updatedNPE = [...prevState.npe];
-          updatedNPE[NPEIndex].npe_af = [...updatedNPE[NPEIndex].npe_af, {
-            npe_af_descp: "",
-            npe_af_date: ""
-          }];
-          return {
-            ...prevState,
-            npe: updatedNPE
-          };
-        });
+        const updatedNPE = { ...patent };
+        updatedNPE.npe[NPEIndex].npe_af.push({ npe_af_descp: "", npe_af_date: "" });
+        setPatent(updatedNPE);
     };
 
     const handleRemoveAF = (NPEIndex, AFIndex) => {
@@ -228,6 +200,7 @@ const PatentUpdate = () => {
             window.location.reload();
         } catch (err) {
             console.error(err);
+            setError(err);
         } finally {
             setSubmitting(false);
         }
@@ -499,7 +472,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_oa_date"
                                                         value={oa.npe_oa_date}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex, undefined ,oaIndex)}
+                                                        onChange={ (e) => handleInputs(e, NPEIndex, undefined , oaIndex)}
                                                     />
                                                 </div>
                                                 <Button size='sm' className='remove-date' onClick={() => handleRemoveOA(NPEIndex, oaIndex)}>Remove Office Action</Button>
