@@ -24,7 +24,7 @@ const SearchPatents = () => {
                 <input 
                     type="text" 
                     class="input-search" 
-                    placeholder="Enter Ref Number / PRV Number / PCT Number"
+                    placeholder="Enter Ref / PRV / PCT / NPE Numbers"
                     onChange={searchHandle}
                 >
                 </input>
@@ -42,7 +42,11 @@ const SearchPatents = () => {
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
-                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank"><li key={npe}>{npe.npe_country}</li></Link>
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
+                                                <li>
+                                                    {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
+                                                </li>
+                                            </Link>
                                         ))
                                     }
                                 </ul>

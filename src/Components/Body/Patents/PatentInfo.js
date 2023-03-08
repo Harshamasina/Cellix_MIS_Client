@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Parallax } from 'react-parallax';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
@@ -17,6 +17,7 @@ const PatentInfo = () => {
     const [patent, setPatent] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
         const fetchData = async () => {
             try{
@@ -146,37 +147,55 @@ const PatentInfo = () => {
                         {
                             patent.npe && patent.npe.map((npeData, i) => (
                                 <Accordion.Item eventKey={i} key={i}>
-                                    <Accordion.Header>{npeData.npe_country}</Accordion.Header>
-                                        <Accordion.Body>
-                                            <div className='tab-npe-data shadow-lg'>
-                                                <h4>Filing Stage</h4>
-                                                <p>NPE Country: <span>{npeData.npe_country}</span></p>
-                                                <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
-                                                <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
-                                                <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
-                                                <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
-                                                <h4>Examination Stage</h4>
-                                                {
-                                                    npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (
-                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(oaData.npe_oa_date)}><p key={i}>{oaData.npe_oa_descp}: <span className={changeColorDates(oaData.npe_oa_date)}>{oaData.npe_oa_date}</span></p></OverlayTrigger>
-                                                    ))
-                                                }
-                                                <p>NPE Grant Decision: <span>{npeData.npe_grant_desc}</span></p>
-                                                <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
-                                                <p>NPE Issue Fee: <span>{npeData.npe_if}</span></p>
-                                                <h4>Annuity Stage</h4>
-                                                {
-                                                    npeData.npe_oa && npeData.npe_af.map((afData, i) => (
-                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(afData.npe_af_date)}><p key={i}>{afData.npe_af_descp}: <span className={changeColorDates(afData.npe_af_date)}>{afData.npe_af_date}</span></p></OverlayTrigger>
-                                                    ))
-                                                }
-                                                <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
-                                                <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
-                                                <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
-                                                <h4>Notes</h4>
-                                                <p className='NPE-notes'>{npeData.npe_notes}</p>
-                                            </div>
-                                        </Accordion.Body>
+                                    <Accordion.Header>{npeData.npe_country_div ? (npeData.npe_country_div) : (npeData.npe_country)}</Accordion.Header>
+                                    <Accordion.Body>
+                                        <div className='tab-npe-data shadow-lg'>
+                                            <h4>Filing Stage</h4>
+                                            <p>NPE Country: <span>{npeData.npe_country}</span></p>
+                                            <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
+                                            <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
+                                            <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
+                                            <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
+                                            <h4>Examination Stage</h4>
+                                            {
+                                                npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (
+                                                    oaData.npe_oa_descp ? (
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(oaData.npe_oa_date)}>
+                                                            <p key={i}>
+                                                                {oaData.npe_oa_descp}:  
+                                                                <span className={changeColorDates(oaData.npe_oa_date)} style={{marginLeft: "1%"}}>
+                                                                    {oaData.npe_oa_date}
+                                                                </span>
+                                                            </p>
+                                                        </OverlayTrigger>
+                                                    ) : ("")
+                                                ))
+                                            }
+                                            <p>NPE Grant Decision: <span>{npeData.npe_grant_desc === "1" ? ("Granted") : ("Rejected")}</span></p>
+                                            <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
+                                            <p>NPE Issue Fee: <span>{npeData.npe_if}</span></p>
+                                            <h4>Annuity Stage</h4>
+                                            {
+                                                npeData.npe_oa && npeData.npe_af.map((afData, i) => (
+                                                    afData.npe_af_descp ? (
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(afData.npe_af_date)}>
+                                                            <p key={i}>
+                                                                {afData.npe_af_descp}:
+                                                                <span className={changeColorDates(afData.npe_af_date)} style={{marginLeft: "1%"}}>
+                                                                    {afData.npe_af_date}
+                                                                </span>
+                                                            </p>
+                                                        </OverlayTrigger>
+                                                    ) : ("")
+                                                ))
+                                            }
+                                            <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
+                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
+                                            <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
+                                            <h4>Notes</h4>
+                                            <p className='NPE-notes'>{npeData.npe_notes}</p>
+                                        </div>
+                                    </Accordion.Body>
                                 </Accordion.Item>
                             ))
                         }

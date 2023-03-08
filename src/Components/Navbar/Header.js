@@ -13,8 +13,6 @@ import PatentInfo from '../Body/Patents/PatentInfo';
 import Notifications from '../Body/Notifications/Notifications';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';
-import AddNewNPE from '../Body/Patents/AddNewNPE';
-import PatentLifeCycleForm from '../Body/NewPatents/PatentLifeCycleForm';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
 import { auth } from '../../config/firebase';
 import { signOut } from 'firebase/auth';
@@ -137,12 +135,10 @@ function NavBar() {
                     <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />} />
                     <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />} />
                     <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />} />
-                    <Route path='/addnewnpe/:id' element={login ? <AddNewNPE /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/forgotpassword' element={<ForgotPassword />} />
                     <Route path='/updatepassword' element={login ? <UpdatePassword /> : <Navigate to='/login' />} />
-                    <Route path='/misform' element={login ? <PatentLifeCycleForm /> : <Navigate to='/login' />} />
                     <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />} />
                     <Route path='/' element={login ? <Home /> : <Navigate to='/login' />} />
                     <Route path='*' element={<Error404 />} />

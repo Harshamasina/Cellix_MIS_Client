@@ -10,6 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email: "",
+        emp_id: "",
         password: ""
     });
     const [ errorMsg, setErrorMsg ] = useState("");
@@ -27,6 +28,11 @@ const Login = () => {
             setErrorMsg("All Fields are required");
             return;
         }
+        const empIDRegex = /^(APL|apl)\d{4}|(CLX-|clx-)(EMP-|emp-)\d{3}$/;
+        if(!empIDRegex.test(user.emp_id)){
+            setErrorMsg("Invalid Employee ID");
+            return;
+        }
         setErrorMsg("");
         setButtonDisabled(true);
         signInWithEmailAndPassword(auth, user.email, user.password)
@@ -41,7 +47,7 @@ const Login = () => {
             });
         console.log(user);
     }
-
+    console.log(user);
     return(
         <div>
             <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg" blur={1}>
@@ -54,7 +60,7 @@ const Login = () => {
                 </div>
             </Parallax>
             <div className='Login-Container'>
-                <form method='#' className='loginform'>
+                <form className='loginform'>
                     <header>Cellix Bio MIS</header>
                     <input 
                         type="text" 
@@ -62,24 +68,31 @@ const Login = () => {
                         name='email'
                         value={user.email}
                         onChange={handleInputs}
-                    >
-                    </input>
+                        autoComplete="off"
+                    />
+                    <input 
+                        type="text" 
+                        placeholder='Enter your Employee ID'
+                        name='emp_id'
+                        value={user.emp_id}
+                        onChange={handleInputs}
+                        autoComplete="off"
+                    />
                     <input 
                         type="password" 
                         placeholder='Enter your Password'
                         name='password'
                         value={user.password}
                         onChange={handleInputs}
-                    >
-                    </input>
+                        autoComplete="off"
+                    />
                     <input 
                         type="submit" 
                         className="loginbutton" 
                         value="Login"
                         onClick={handleSubmit}
                         disabled={buttonDisabled}
-                    >
-                    </input>
+                    />
                     <h4 className='error-message'>{errorMsg}</h4>
                     <div className="login-links">
                         <Link to='/forgotpassword' className='register-Link'>Forgot Password</Link>

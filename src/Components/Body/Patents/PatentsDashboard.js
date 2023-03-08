@@ -56,7 +56,11 @@ const PatentsPaginate = () => {
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
-                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank"><li key={npe}>{npe.npe_country}</li></Link>
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
+                                                <li>
+                                                    {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
+                                                </li>
+                                            </Link>
                                         ))
                                     }
                                 </ul>

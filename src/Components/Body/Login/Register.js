@@ -32,25 +32,30 @@ const Register = () => {
             return;
         }
         if( user.password !== user.cpassword ){
-            setErrorMsg("Passwords does not match")
+            setErrorMsg("Passwords does not match");
+            return;
+        }
+        const empIDRegex = /^(APL|apl)\d{4}|(CLX-|clx-)(EMP-|emp-)\d{3}$/;
+        if(!empIDRegex.test(user.emp_id)){
+            setErrorMsg("Invalid Employee ID");
             return;
         }
         setErrorMsg("");
         setButtonDisabled(true);
         createUserWithEmailAndPassword(auth, user.email, user.password)
-            .then(async(res) => {
-                setButtonDisabled(false);
-                const userDetails = res.user;
-                await updateProfile(userDetails, {
-                    displayName: user.name,
-                });
-                navigate('/');
-            })
-            .catch((err) => {
-                setButtonDisabled(false);
-                setErrorMsg(err.message);
-                console.log("Error", err.message);
+        .then(async(res) => {
+            setButtonDisabled(false);
+            const userDetails = res.user;
+            await updateProfile(userDetails, {
+                displayName: user.name,
             });
+            navigate('/');
+        })
+        .catch((err) => {
+            setButtonDisabled(false);
+            setErrorMsg(err.message);
+            console.log("Error", err.message);
+        });
     }
 
     return(
@@ -73,8 +78,7 @@ const Register = () => {
                         name='name'
                         value={user.name}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="text" 
                         placeholder='Enter your Email*'
@@ -82,8 +86,7 @@ const Register = () => {
                         name='email'
                         value={user.email}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="tel" 
                         placeholder='Enter your Phone Number'
@@ -91,8 +94,7 @@ const Register = () => {
                         name='phone'
                         value={user.phone}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="text" 
                         placeholder='Enter your Employee Id*'
@@ -100,8 +102,7 @@ const Register = () => {
                         name='emp_id'
                         value={user.emp_id}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="password" 
                         placeholder='Enter your Password*'
@@ -109,8 +110,7 @@ const Register = () => {
                         name='password'
                         value={user.password}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="password" 
                         placeholder='Confirm your Password*'
@@ -118,16 +118,14 @@ const Register = () => {
                         name='cpassword'
                         value={user.cpassword}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
                     <input 
                         type="button" 
                         className="loginbutton" 
                         value="Register"
                         onClick={handleSubmit}
                         disabled={buttonDisabled}
-                    >
-                    </input>
+                    />
                     <h4 className='error-message'>{errorMsg}</h4>
                     <div className="login-links">
                         <Link to="/login" className='register-Link'>Already a User? Login</Link>

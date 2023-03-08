@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Button, Modal } from 'react-bootstrap';
+import { Accordion, Button, Modal } from 'react-bootstrap';
 
 const ApplicationFamily = () => {
     const [patentData, setPatentData] = useState({
@@ -300,235 +300,246 @@ const ApplicationFamily = () => {
                             </div>
                         </div>
                         <span className='npe'>National Phase Entry Data</span>
-                        {
-                            patentData.npe.map((npeData, NPEIndex) => (
-                                <div key={NPEIndex} className="input-box-container">
-                                    <span className='npe-details'>Filing Stage: </span>
-                                    <div className="input-box">
-                                        <span className='details'>NPE Country</span>
-                                        <select 
-                                            name="npe_country"
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        >
-                                            <option defaultValue disabled>Select Country</option>
-                                            <option value="US (DIV)">United States (US DIV)</option>
-                                            <option value="AU">Australia (AU)</option>
-                                            <option value="BR">Brazil (BR)</option>
-                                            <option value="CA">Canada (CA)</option>
-                                            <option value="CN">China (CN)</option>
-                                            <option value="DK">Denmark (DK)</option>
-                                            <option value="EP">Europe (EP)</option>
-                                            <option value="IN">India (IN)</option>
-                                            <option value="IL">Israel (IL)</option>
-                                            <option value="JP">Japan (JP)</option>
-                                            <option value="MX">Mexico (MX)</option>
-                                            <option value="NZ">New Zealand (NZ)</option>
-                                            <option value="RU">Russia (RU)</option>
-                                            <option value="SG">Singapore (SG)</option>
-                                            <option value="ZA">South Africa (ZA)</option>
-                                            <option value="KR">South Korea (KR)</option>
-                                            <option value="ES">Spain (ES)</option>
-                                            <option value="US">United States (US)</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="input-box">
-                                        <span className="details">NPE Country with (Divisional Number)</span>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Enter NPE Country with (Divisional Number)"
-                                            autoComplete="off"
-                                            name="npe_country_div"
-                                            value={npeData.npe_country_div}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <span className="details">NPE Application Number</span>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Enter NPE Application Number"
-                                            autoComplete="off"
-                                            name="npe_appno"
-                                            value={npeData.npe_appno}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <span className="details">NPE Date of Filing</span>
-                                        <input 
-                                            type="date" 
-                                            placeholder="Enter NPE Date of Filing"
-                                            autoComplete="off"
-                                            name="npe_dof"
-                                            value={npeData.npe_dof}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-
-                                    <div className="input-box">
-                                        <span className="details">NPE Firms</span>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Enter NPE Firms"
-                                            autoComplete="off"
-                                            name="npe_firms"
-                                            value={npeData.npe_firms}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-                                    <div>
-                                        <span className='npe-details'>Examination Stage: </span>
-                                        {
-                                            npeData.npe_oa.map((OADate, OAIndex) => (
-                                                <div key={OAIndex}>
-                                                    <div className="input-box">
-                                                        <span className="details">NPE Examination Type</span>
-                                                        <input 
-                                                            type="text" 
-                                                            placeholder="Enter NPE Examination Type"
-                                                            autoComplete="off"
-                                                            name="npe_oa_descp"
-                                                            value={OADate.npe_oa_descp}
-                                                            onChange={ (e) => handleNPEOfficeDateChange(e, NPEIndex, OAIndex)}
-                                                        />
-                                                    </div>
-                                                    <div className="input-box">
-                                                        <span className="details">NPE Examination Date</span>
-                                                        <input 
-                                                            type="date" 
-                                                            placeholder="Enter NPE Examination Date"
-                                                            autoComplete="off"
-                                                            name="npe_oa_date"
-                                                            value={OADate.npe_oa_date}
-                                                            onChange={ (e) => handleNPEOfficeDateChange(e, NPEIndex, OAIndex)}
-                                                        />
-                                                    </div>
-                                                    <Button size='sm' className='remove-date' onClick={() => handleRemoveNPEOfficeDate(NPEIndex, OAIndex)}>Remove Office Action</Button>
+                        <Accordion alwaysOpen className='mb-4 update-accordion'>
+                            {
+                                patentData.npe.map((npeData, NPEIndex) => (
+                                    <Accordion.Item eventKey={NPEIndex} key={NPEIndex}>
+                                        <Accordion.Header>
+                                            {npeData.npe_country ? ("") : ("Click to add NPE Data")}    
+                                            {npeData.npe_country_div ? (npeData.npe_country_div) : (npeData.npe_country)}
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <div className="input-box-container">
+                                                <span className='npe-details'>Filing Stage: </span>
+                                                <div className="input-box">
+                                                    <span className='details'>NPE Country</span>
+                                                    <select 
+                                                        name="npe_country"
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                        value={npeData.npe_country ? npeData.npe_country : "Select Country"}
+                                                    >
+                                                        <option defaultValue disabled>Select Country</option>
+                                                        <option value="US (DIV)">United States (US DIV)</option>
+                                                        <option value="AU">Australia (AU)</option>
+                                                        <option value="BR">Brazil (BR)</option>
+                                                        <option value="CA">Canada (CA)</option>
+                                                        <option value="CN">China (CN)</option>
+                                                        <option value="DK">Denmark (DK)</option>
+                                                        <option value="EP">Europe (EP)</option>
+                                                        <option value="IN">India (IN)</option>
+                                                        <option value="IL">Israel (IL)</option>
+                                                        <option value="JP">Japan (JP)</option>
+                                                        <option value="MX">Mexico (MX)</option>
+                                                        <option value="NZ">New Zealand (NZ)</option>
+                                                        <option value="RU">Russia (RU)</option>
+                                                        <option value="SG">Singapore (SG)</option>
+                                                        <option value="ZA">South Africa (ZA)</option>
+                                                        <option value="KR">South Korea (KR)</option>
+                                                        <option value="ES">Spain (ES)</option>
+                                                        <option value="US">United States (US)</option>
+                                                    </select>
                                                 </div>
-                                            ))
-                                        }
-                                        <Button size='sm' className='add-date' onClick={() => handleAddNPEOfficeDate(NPEIndex)}>Add Office Action</Button>
-                                    </div>
-                                    <div className="input-box">
-                                        <span className="details">NPE Granted / Rejected</span>
-                                        <select
-                                            name="npe_grant_desc"
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        >
-                                            <option value="NA">Select NPE Status</option>
-                                            <option value="1">Granted</option>
-                                            <option value="0">Rejected</option>
-                                        </select>
-                                    </div>
-                                    <div className="input-box">
-                                        <span className="details">NPE Grant Date</span>
-                                        <input 
-                                            type="date" 
-                                            placeholder="NPE Grant Date"
-                                            autoComplete="off"
-                                            name="npe_grant"
-                                            value={npeData.npe_grant}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-                                    <div className="input-box">
-                                        <span className="details">NPE Issue Fee</span>
-                                        <input 
-                                            type="date" 
-                                            placeholder="NPE Issue Fee"
-                                            autoComplete="off"
-                                            name="npe_if"
-                                            value={npeData.npe_if}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-                                    <div>
-                                        <span className='npe-details'>Annuity Stage: </span>
-                                        {
-                                            npeData.npe_af.map((OFDate, OFIndex) => (
-                                                <div key={OFIndex}>
-                                                    <div className="input-box">
-                                                        <span className="details">NPE Annuity Type</span>
-                                                        <input 
-                                                            type="text" 
-                                                            placeholder="Enter NPE Annuity Type"
-                                                            autoComplete="off"
-                                                            name="npe_af_descp"
-                                                            value={OFDate.npe_af_descp}
-                                                            onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
-                                                        />
-                                                    </div>
-                                                    <div className="input-box">
-                                                        <span className="details">NPE NPE Annuity Date</span>
-                                                        <input 
-                                                            type="date" 
-                                                            placeholder="Enter NPE Annuity Date"
-                                                            autoComplete="off"
-                                                            name="npe_af_date"
-                                                            value={OFDate.npe_af_date}
-                                                            onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
-                                                        />
-                                                    </div>
-                                                    <Button size='sm' className="remove-date" onClick={() => handleRemoveNPEAnnuityDate(NPEIndex, OFIndex)}>Remove Annuity Date</Button>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Country with (Divisional Number)</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Country with (Divisional Number)"
+                                                        autoComplete="off"
+                                                        name="npe_country_div"
+                                                        value={npeData.npe_country_div}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
                                                 </div>
-                                            ))
-                                        }
-                                        <Button size='sm' className='add-date' onClick={() => handleAddNPEAnnuityDate(NPEIndex)}>Add Annuity Date</Button>
-                                    </div>
-                                    <div className="input-box">
-                                        <span className="details">NPE Patent Number</span>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Enter NPE Patent Number"
-                                            autoComplete="off"
-                                            name="npe_patent"
-                                            value={npeData.npe_patent}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
 
-                                    <div className="input-box">
-                                        <span className="details">NPE Request for Examination Date</span>
-                                        <input 
-                                            type="date" 
-                                            placeholder="Enter NPE Request for Examination Date"
-                                            autoComplete="off"
-                                            name="npe_rfe"
-                                            value={npeData.npe_rfe}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
+                                                <div className="input-box">
+                                                    <span className="details">NPE Application Number</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Application Number"
+                                                        autoComplete="off"
+                                                        name="npe_appno"
+                                                        value={npeData.npe_appno}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
 
-                                    <div className="input-box">
-                                        <span className="details">NPE Notes</span>
-                                        <textarea 
-                                            type="date" 
-                                            placeholder="Enter NPE Notes"
-                                            autoComplete="off"
-                                            name="npe_notes"
-                                            value={npeData.npe_notes}
-                                            onChange={ (e) => handleChange(e, NPEIndex)}
-                                        />
-                                    </div>
-                                    <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
-                                    <Modal show={showDeleteModal} onHide={handleCancelDelete}>
-                                        <Modal.Header>
-                                            <Modal.Title>Confirm NPE Deletion</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            Are you sure you want to delete this NPE Data?
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button className='close-button'  onClick={handleCancelDelete}>Cancel</Button>
-                                            <Button className='signout-modal-button' onClick={handleConfirmNPEDelete}>Delete</Button>
-                                        </Modal.Footer>
-                                    </Modal>
-                                </div>
-                            ))
-                        }
+                                                <div className="input-box">
+                                                    <span className="details">NPE Date of Filing</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="Enter NPE Date of Filing"
+                                                        autoComplete="off"
+                                                        name="npe_dof"
+                                                        value={npeData.npe_dof}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Firms</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Firms"
+                                                        autoComplete="off"
+                                                        name="npe_firms"
+                                                        value={npeData.npe_firms}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <span className='npe-details'>Examination Stage: </span>
+                                                    {
+                                                        npeData.npe_oa.map((OADate, OAIndex) => (
+                                                            <div key={OAIndex}>
+                                                                <div className="input-box">
+                                                                    <span className="details">NPE Examination Type</span>
+                                                                    <input 
+                                                                        type="text" 
+                                                                        placeholder="Enter NPE Examination Type"
+                                                                        autoComplete="off"
+                                                                        name="npe_oa_descp"
+                                                                        value={OADate.npe_oa_descp}
+                                                                        onChange={ (e) => handleNPEOfficeDateChange(e, NPEIndex, OAIndex)}
+                                                                    />
+                                                                </div>
+                                                                <div className="input-box">
+                                                                    <span className="details">NPE Examination Date</span>
+                                                                    <input 
+                                                                        type="date" 
+                                                                        placeholder="Enter NPE Examination Date"
+                                                                        autoComplete="off"
+                                                                        name="npe_oa_date"
+                                                                        value={OADate.npe_oa_date}
+                                                                        onChange={ (e) => handleNPEOfficeDateChange(e, NPEIndex, OAIndex)}
+                                                                    />
+                                                                </div>
+                                                                <Button size='sm' className='remove-date' onClick={() => handleRemoveNPEOfficeDate(NPEIndex, OAIndex)}>Remove Office Action</Button>
+                                                            </div>
+                                                        ))
+                                                    }
+                                                    <Button size='sm' className='add-date' onClick={() => handleAddNPEOfficeDate(NPEIndex)}>Add Office Action</Button>
+                                                </div>
+                                                <div className="input-box">
+                                                    <span className="details">NPE Granted / Rejected</span>
+                                                    <select
+                                                        name="npe_grant_desc"
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    >
+                                                        <option value="NA">Select NPE Status</option>
+                                                        <option value="1">Granted</option>
+                                                        <option value="0">Rejected</option>
+                                                    </select>
+                                                </div>
+                                                <div className="input-box">
+                                                    <span className="details">NPE Grant Date</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="NPE Grant Date"
+                                                        autoComplete="off"
+                                                        name="npe_grant"
+                                                        value={npeData.npe_grant}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+                                                <div className="input-box">
+                                                    <span className="details">NPE Issue Fee</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="NPE Issue Fee"
+                                                        autoComplete="off"
+                                                        name="npe_if"
+                                                        value={npeData.npe_if}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <span className='npe-details'>Annuity Stage: </span>
+                                                    {
+                                                        npeData.npe_af.map((OFDate, OFIndex) => (
+                                                            <div key={OFIndex}>
+                                                                <div className="input-box">
+                                                                    <span className="details">NPE Annuity Type</span>
+                                                                    <input 
+                                                                        type="text" 
+                                                                        placeholder="Enter NPE Annuity Type"
+                                                                        autoComplete="off"
+                                                                        name="npe_af_descp"
+                                                                        value={OFDate.npe_af_descp}
+                                                                        onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
+                                                                    />
+                                                                </div>
+                                                                <div className="input-box">
+                                                                    <span className="details">NPE NPE Annuity Date</span>
+                                                                    <input 
+                                                                        type="date" 
+                                                                        placeholder="Enter NPE Annuity Date"
+                                                                        autoComplete="off"
+                                                                        name="npe_af_date"
+                                                                        value={OFDate.npe_af_date}
+                                                                        onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
+                                                                    />
+                                                                </div>
+                                                                <Button size='sm' className="remove-date" onClick={() => handleRemoveNPEAnnuityDate(NPEIndex, OFIndex)}>Remove Annuity Date</Button>
+                                                            </div>
+                                                        ))
+                                                    }
+                                                    <Button size='sm' className='add-date' onClick={() => handleAddNPEAnnuityDate(NPEIndex)}>Add Annuity Date</Button>
+                                                </div>
+                                                <div className="input-box">
+                                                    <span className="details">NPE Patent Number</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Patent Number"
+                                                        autoComplete="off"
+                                                        name="npe_patent"
+                                                        value={npeData.npe_patent}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Request for Examination Date</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="Enter NPE Request for Examination Date"
+                                                        autoComplete="off"
+                                                        name="npe_rfe"
+                                                        value={npeData.npe_rfe}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Notes</span>
+                                                    <textarea 
+                                                        type="date" 
+                                                        placeholder="Enter NPE Notes"
+                                                        autoComplete="off"
+                                                        name="npe_notes"
+                                                        value={npeData.npe_notes}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+                                                <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
+                                                <Modal show={showDeleteModal} onHide={handleCancelDelete} backdrop="static" keyboard={false}>
+                                                    <Modal.Header>
+                                                        <Modal.Title>Confirm NPE Deletion</Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+                                                        Are you sure you want to delete this NPE Data?
+                                                    </Modal.Body>
+                                                    <Modal.Footer>
+                                                        <Button className='close-button'  onClick={handleCancelDelete}>Cancel</Button>
+                                                        <Button className='signout-modal-button' onClick={handleConfirmNPEDelete}>Delete</Button>
+                                                    </Modal.Footer>
+                                                </Modal>
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                ))
+                            }
+                        </Accordion>
                         <Button size="lg" onClick={handleAddNPE} className="add-npe">Add New NPE</Button>
                         <div className='button'>
                             <input
@@ -539,7 +550,7 @@ const ApplicationFamily = () => {
                             />
                         </div>
                         {submissionError && <p className='error-message'>{submissionError}</p>}
-                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg">
+                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false}>
                             <Modal.Header>
                                 <Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title>
                             </Modal.Header>

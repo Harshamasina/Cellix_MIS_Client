@@ -1340,3 +1340,36 @@ Breadcrumb.Item{
   text-align: center !important;
   margin-left: 17%;
 }
+
+.update-accordion .accordion-item{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 0.5%;
+  border: none !important;
+}
+
+.update-accordion .accordion-button{
+  color: #0E6E59 !important;
+  font-size: 1.2vw !important;
+  font-weight: 600;
+  background: transparent !important;
+  border: 2px solid #0E6E59 !important;
+  border-radius: 10px !important;
+  transition: .5s ease-in-out !important;
+}
+
+.update-accordion .accordion-button:hover{
+  color: #fff !important;
+  background: #0E6E59 !important;
+  border-radius: 10px !important;
+}
+
+.update-accordion .accordion-button:focus {
+  box-shadow: none;
+  background: #0E6E59 !important;
+  color: #fff !important;
+}
+
+.update-accordion .accordion-button:not(.collapsed) {
+  color: #fff;
+}
