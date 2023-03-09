@@ -380,7 +380,7 @@ const PatentUpdate = () => {
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             <div className="input-box-container">
-                                                <h3>Filing Stage</h3>
+                                            <span className='npe-details'>Filing Stage: </span>
                                                 <div className="input-box">
                                                     <span className='details'>NPE Country</span>
                                                     <select 
@@ -457,7 +457,7 @@ const PatentUpdate = () => {
                                                         onChange={ (e) => handleInputs(e, NPEIndex)}
                                                     />
                                                 </div>
-                                                <h3>Examination Stage</h3>
+                                                <span className='npe-details'>Examination Stage: </span>
                                                 {
                                                     npe.npe_oa.map((oa, oaIndex) => (
                                                         <div key={oaIndex}>
@@ -524,7 +524,7 @@ const PatentUpdate = () => {
                                                         onChange={ (e) => handleInputs(e, NPEIndex)}
                                                     />
                                                 </div>
-                                                <h3>Annuity Stage</h3>
+                                                <span className='npe-details'>Annuity Stage: </span>
                                                 {
                                                     npe.npe_af.map((af, afIndex) => (
                                                         <div key={afIndex}>

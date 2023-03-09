@@ -17,6 +17,7 @@ const SearchPatents = () => {
             }
         }
     }
+
     return(
         <div>
             <div class="search-box">
@@ -42,7 +43,7 @@ const SearchPatents = () => {
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
-                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' key={npe}>
                                                 <li>
                                                     {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
                                                 </li>
@@ -50,7 +51,7 @@ const SearchPatents = () => {
                                         ))
                                     }
                                 </ul>
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank"><HiInformationCircle /></Link>
+                                <Link className='btn' to={"/patentinfo/"+patent.ref_no}><HiInformationCircle /></Link>
                             </div>
                         ))
                     }

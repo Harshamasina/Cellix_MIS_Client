@@ -29,6 +29,17 @@ body{
   width: 15px;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  display: block;
+  background-image: url('../public/calendar-3.svg');
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  filter: invert(25%) sepia(100%) saturate(500%) hue-rotate(90deg);
+}
+
 .main-header{
   padding: 1rem 0;
   transition: box-shadow ease .3s, background ease .3s, padding ease .5s;
