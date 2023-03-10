@@ -688,6 +688,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 40%;
 }
 
+.tab-data h4{
+  color: #15B39D;
+  font-size: 1.4vw;
+}
+
 .tab-data p{
   text-align: left;
   font-size: 1.2vw;
@@ -699,6 +704,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tab-data span{
   font-size: 1.1vw;
   font-weight: 500;
+  color: #282c34;
 }
 
 .tab-npe-data{
@@ -1207,12 +1213,18 @@ Breadcrumb.Item{
 
 .input-box-container{
   margin-left: 30%;
+  margin-bottom: 7%;
 }
 
 .input-box-container h3{
   color: #0E6E59;
   font-size: 40px;
   margin-left: 16%;
+}
+
+.input-box-container h4{
+  color: #0e6e59;
+  font-size: 1.4vw;
   margin-top: 1%;
 }
 
@@ -1302,6 +1314,22 @@ Breadcrumb.Item{
   color: #fff !important;
 }
 
+
+.add-prv-date{
+  background: transparent !important;
+  border: 2px solid #0E6E59 !important;
+  color: #0E6E59 !important;
+  font-size: 15px !important;
+  transition: 1s;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+.add-prv-date:hover{
+  background: #0E6E59 !important;
+  color: #fff !important;
+}
+
 .remove-date{
   background: transparent !important;
   border: 2px solid #FF4433 !important;
@@ -1313,6 +1341,21 @@ Breadcrumb.Item{
 }
 
 .remove-date:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+}
+
+.remove-prv-date{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  font-size: 15px !important;
+  transition: 1s;
+  /* margin-left: 21%; */
+  margin-top: 1%;
+}
+
+.remove-prv-date:hover{
   background: #FF4433 !important;
   color: #fff !important;
 }

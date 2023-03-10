@@ -67,7 +67,7 @@ function NavBar() {
     useEffect(() => {
         const TimeOut = setTimeout(() => {
             handleSignOut();
-        }, 4 * 60 * 60 * 1000);
+        }, 24 * 60 * 60 * 1000);
         return () => {
             clearTimeout(TimeOut);
         }
@@ -77,7 +77,7 @@ function NavBar() {
         const storedUser = localStorage.getItem('login');
         if (storedUser) {
             const user = JSON.parse(storedUser);
-            const expirationTime = 4 * 60 * 60 * 1000;
+            const expirationTime = 24 * 60 * 60 * 1000;
             const warningTime = expirationTime - 5 * 60 * 1000;
             if (Date.now() - user.lastLoginAt > warningTime) {
                 window.alert('Your session will expire soon. Please log out and log in again to continue using the app.');

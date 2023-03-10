@@ -7,15 +7,17 @@ import { Accordion, Button, Modal } from 'react-bootstrap';
 const ApplicationFamily = () => {
     const [patentData, setPatentData] = useState({
         ref_no: "",
-        prv_dof: "",
-        prv_appno: "",
+        prv: [{
+            prv_appno: "",
+            prv_dof: ""
+        }],
         pct_dof: "",
         pct_appno: "",
-        pct_isa: "",
+        pct_das: "",
+        pct_isr: "",
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
-        pct_dl: "",
         npe: [{
             npe_country: "",
             npe_country_div: "",
@@ -46,6 +48,15 @@ const ApplicationFamily = () => {
 
     const handleInputs = (e) => {
         setPatentData({ ...patentData, [e.target.name]: e.target.value });
+    }
+
+    const handleChangePRV = (e, index) => {
+        const { name, value } = e.target;
+        setPatentData(prevState => {
+            const newState = { ...prevState };
+            newState.prv[index][name] = value;
+            return newState;
+        });
     }
 
     const handleChange = (e, index) => {
@@ -103,6 +114,14 @@ const ApplicationFamily = () => {
         setPatentData({ ...patentData, npe });
     }
 
+    const handleAddPRV = () => {
+        const prv = [ ...patentData.prv, {
+            prv_appno: "",
+            prv_dof: ""
+        }];
+        setPatentData({ ...patentData, prv });
+    } 
+
     const handleAddNPE = () => {
         const npe = [...patentData.npe, {
             npe_country: "",
@@ -120,6 +139,14 @@ const ApplicationFamily = () => {
             npe_notes: ""
         }];
         setPatentData({ ...patentData, npe });
+    };
+
+    const handleRemovePRV = (index) => {
+        setPatentData((prevState) => {
+            const newState = { ...prevState };
+            newState.prv.splice(index, 1);
+            return newState;
+        });
     };
 
     const handleRemoveNPE = (index) => {
@@ -151,7 +178,7 @@ const ApplicationFamily = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData);
+            const res = await axios.post('http://localhost:5000/api/patent', patentData);
             console.log(res);
             alert("Application Family Submitted Successfully");
             window.location.reload();
@@ -172,12 +199,11 @@ const ApplicationFamily = () => {
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/newpatent" className='BC-Links'>New Patent</Link>
-                <Link to="/newentry" className='BC-Links'>New Reference Number Form</Link>
             </Breadcrumbs>
             <div className="patentForm">
                 <div className="content">
                     <form className="form">
-                        <div className="patent-details">
+                        <div className="input-box-container">
                             <div className="input-box">
                                 <span className="details">Reference Number</span>
                                 <input 
@@ -190,30 +216,38 @@ const ApplicationFamily = () => {
                                 />
                             </div>
 
-                            <div className="input-box">
-                                <span className="details">PRV Date of Filing</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PRV Date of Filing"
-                                    autoComplete="off"
-                                    name="prv_dof"
-                                    value={patentData.prv_dof}
-                                    onChange={handleInputs}
-                                />
-                            </div>
+                            {
+                                patentData.prv.map((prvData, prvIndex) => (
+                                    <div key={prvIndex}>
+                                        <div className="input-box">
+                                            <span className="details">PRV Date of Filing</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter PRV Date of Filing"
+                                                autoComplete="off"
+                                                name="prv_dof"
+                                                value={prvData.prv_dof}
+                                                onChange={ (e) => handleChangePRV(e, prvIndex) }
+                                            />
+                                        </div>
 
-                            <div className="input-box">
-                                <span className="details">PRV Application Number</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="PRV Application Number"
-                                    autoComplete="off"
-                                    name="prv_appno"
-                                    value={patentData.prv_appno}
-                                    onChange={handleInputs}
-                                />
-                            </div>
-
+                                        <div className="input-box">
+                                            <span className="details">PRV Application Number</span>
+                                            <input 
+                                                type="text" 
+                                                placeholder="Enter PRV Application Number"
+                                                autoComplete="off"
+                                                name="prv_appno"
+                                                value={prvData.prv_appno}
+                                                onChange={ (e) => handleChangePRV(e, prvIndex) }
+                                            />
+                                        </div>
+                                        <Button size='lg' onClick={() => handleRemovePRV(prvIndex)} className= "remove-prv-date">Remove PRV</Button>
+                                    </div>
+                                ))
+                            }
+                            <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add PRV</Button>
+                            
                             <div className="input-box">
                                 <span className="details">PCT Date of Filing</span>
                                 <input 
@@ -239,13 +273,25 @@ const ApplicationFamily = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PCT ISA Date</span>
+                                <span className="details">PCT DAS Code</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter DAS Code"
+                                    autoComplete="off"
+                                    name="pct_das"
+                                    value={patentData.pct_das}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT ISR Date</span>
                                 <input 
                                     type="date" 
-                                    placeholder="Enter PCT ISA Date"
+                                    placeholder="Enter PCT ISR Date"
                                     autoComplete="off"
-                                    name="pct_isa"
-                                    value={patentData.pct_isa}
+                                    name="pct_isr"
+                                    value={patentData.pct_isr}
                                     onChange={handleInputs}
                                 />
                             </div>
@@ -282,19 +328,6 @@ const ApplicationFamily = () => {
                                     autoComplete="off"
                                     name="pct_30_31"
                                     value={patentData.pct_30_31}
-                                    onChange={handleInputs}
-                                />
-                            </div>
-
-                            
-                            <div className="input-box">
-                                <span className="details">PCT Deadline</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PCT Deadline"
-                                    autoComplete="off"
-                                    name="pct_dl"
-                                    value={patentData.pct_dl}
                                     onChange={handleInputs}
                                 />
                             </div>
@@ -341,13 +374,13 @@ const ApplicationFamily = () => {
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Country with (Divisional Number)</span>
+                                                    <span className="details">NPE Firm</span>
                                                     <input 
                                                         type="text" 
-                                                        placeholder="Enter NPE Country with (Divisional Number)"
+                                                        placeholder="Enter NPE Firm"
                                                         autoComplete="off"
-                                                        name="npe_country_div"
-                                                        value={npeData.npe_country_div}
+                                                        name="npe_firms"
+                                                        value={npeData.npe_firms}
                                                         onChange={ (e) => handleChange(e, NPEIndex)}
                                                     />
                                                 </div>
@@ -377,16 +410,17 @@ const ApplicationFamily = () => {
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Firms</span>
+                                                    <span className="details">NPE Country with (Divisional Number)</span>
                                                     <input 
                                                         type="text" 
-                                                        placeholder="Enter NPE Firms"
+                                                        placeholder="Enter NPE Country with (Divisional Number)"
                                                         autoComplete="off"
-                                                        name="npe_firms"
-                                                        value={npeData.npe_firms}
+                                                        name="npe_country_div"
+                                                        value={npeData.npe_country_div}
                                                         onChange={ (e) => handleChange(e, NPEIndex)}
                                                     />
                                                 </div>
+
                                                 <div>
                                                     <span className='npe-details'>Examination Stage: </span>
                                                     {
@@ -470,7 +504,7 @@ const ApplicationFamily = () => {
                                                                     />
                                                                 </div>
                                                                 <div className="input-box">
-                                                                    <span className="details">NPE NPE Annuity Date</span>
+                                                                    <span className="details">NPE Annuity Date</span>
                                                                     <input 
                                                                         type="date" 
                                                                         placeholder="Enter NPE Annuity Date"

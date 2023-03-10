@@ -21,7 +21,7 @@ const PatentInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getpatent/${ref}`);
+                const patentData = await axios.get(`http://localhost:5000/api/getpatent/${ref}`);
                 setPatent(patentData.data);
                 setLoading(false);
             } catch (err) {
@@ -126,22 +126,29 @@ const PatentInfo = () => {
                 fill
             >
                 <Tab eventKey="PRV" title="Provisional Patent (PRV) Data" tabClassName='tab-item'>
-                    <div className='tab-data'>
-                        <p>PRV Application Number: <span>{patent.prv_appno}</span></p>
-                        <p>PRV Date of Filing: <span>{patent.prv_dof}</span></p>
-                    </div>
+                    {
+                        patent.prv && patent.prv.map((prvData, prvIndex) => (
+                            <div className='tab-data' key={prvIndex}>
+                                <h4>PRV {prvIndex + 1}</h4>
+                                <p>PRV Application Number: <span>{prvData.prv_appno}</span></p>
+                                <p>PRV Application Number: <span>{prvData.prv_dof}</span></p>
+                            </div>
+                        ))
+                    }
                 </Tab>
+                
                 <Tab eventKey="PCT" title="Patent Corporation Treaty (PCT) Data" tabClassName='tab-item'>
                     <div className='tab-data'>
                         <p>PCT Number: <span>{patent.pct_appno}</span></p>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dof)}><p>PCT Date of Filing: <span className={changeColorDates(patent.pct_dof)}>{patent.pct_dof}</span></p></OverlayTrigger>
-                        <p>PCT ISA Date: <span>{patent.pct_isa}</span></p>
+                        <p>PCT DAS Code: <span>{patent.pct_das}</span></p>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_isr)}><p>PCT ISR Date: <span className={changeColorDates(patent.pct_isr)}>{patent.pct_isr}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_18)}><p>PCT Publication Date: <span className={changeColorDates(patent.pct_18)}>{patent.pct_18}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_22_md)}><p>PCT 22 Month Date: <span className={changeColorDates(patent.pct_22_md)}>{patent.pct_22_md}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_30_31)}><p>PCT 30 / 31 Month Date: <span className={changeColorDates(patent.pct_30_31)}>{patent.pct_30_31}</span></p></OverlayTrigger>
-                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dl)}><p>PCT Deadline: <span className={changeColorDates(patent.pct_dl)}>{patent.pct_dl}</span></p></OverlayTrigger>
                     </div>
                 </Tab>
+                
                 <Tab eventKey="NPE" title="National Phase Entry (NPE) Data" tabClassName='tab-item'>
                     <Accordion alwaysOpen className='mb-4 custom-accordion'>
                         {

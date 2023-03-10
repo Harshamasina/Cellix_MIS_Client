@@ -14,15 +14,17 @@ const PatentUpdate = () => {
     const { id } = useParams();
     const [patent, setPatent] = useState({
         ref_no: "",
-        prv_dof: "",
-        prv_appno: "",
+        prv: [{
+            prv_dof: "",
+            prv_appno: "",
+        }],
         pct_dof: "",
         pct_appno: "",
-        pct_isa: "",
+        pct_das: "",
+        pct_isr: "",
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
-        pct_dl: "",
         npe: [
             {
                 npe_country: "",
@@ -51,7 +53,7 @@ const PatentUpdate = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/getpatentid/${id}`);
+                const res = await axios.get(`http://localhost:5000/api/getpatentid/${id}`);
                 setPatent(res.data);
                 setLoading(false);
             } catch (err) {
@@ -63,7 +65,7 @@ const PatentUpdate = () => {
         fetchData();
     }, [id]);
 
-    const handleInputs = (e, NPEIndex, AFIndex, OAIndex) => {
+    const handleInputs = (e, PRVIndex, NPEIndex, AFIndex, OAIndex) => {
         const { name, value } = e.target;
         if (OAIndex !== undefined) {
           setPatent(prevState => {
@@ -101,12 +103,34 @@ const PatentUpdate = () => {
               npe: updatedNPE
             };
           });
+        } else if (PRVIndex !== undefined) {
+            setPatent(prevState => {
+              const updatePRV = [...prevState.prv];
+              updatePRV[PRVIndex] = {
+                ...updatePRV[PRVIndex],
+                [name]: value
+              };
+              return {
+                ...prevState,
+                prv: updatePRV
+              };
+            });
         } else {
           setPatent(prevState => ({
             ...prevState,
             [name]: value
           }));
         }
+    };
+
+    const handleAddPRV = () => {
+        setPatent(prevState => ({
+            ...prevState,
+            prv: [...prevState.prv, {
+                prv_dof: "",
+                prv_appno: "",
+            }]
+        }));
     };
 
     const handleAddNPE = () => {
@@ -128,6 +152,17 @@ const PatentUpdate = () => {
                 npe_notes: ""
             }]
         }));
+    };
+
+    const handleRemovePRV = (index) => {
+        setPatent(prevState => {
+            const updatePRV = [...prevState.prv];
+            updatePRV.splice(index, 1);
+            return{
+                ...prevState,
+                prv: updatePRV
+            }
+        });
     };
 
     const handleRemoveNPE = (index) => {
@@ -194,7 +229,7 @@ const PatentUpdate = () => {
     const handleUpdateModal = async () => {
         setSubmitting(true);
         try{
-            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatepatentid/${id}` ,patent);
+            const res = await axios.patch(`http://localhost:5000/api/updatepatentid/${id}` ,patent);
             console.log(res);
             alert("Application Family Updated Successfully");
             window.location.reload();
@@ -248,7 +283,7 @@ const PatentUpdate = () => {
             <div className="patentForm">
                 <div className="content">
                     <form className="form">
-                        <div className="patent-details">
+                        <div className="input-box-container">
                             <div className="input-box">
                                 <span className="details">Reference Number</span>
                                 <input 
@@ -261,50 +296,46 @@ const PatentUpdate = () => {
                                 />
                             </div>
 
-                            <div className="input-box">
-                                <span className="details">PRV Date of Filing</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PRV Date of Filing"
-                                    autoComplete="off"
-                                    name="prv_dof"
-                                    value={patent.prv_dof}
-                                    onChange={handleInputs}
-                                />
-                            </div>
+                            {
+                                patent.prv.map((prvData, prvIndex) => (
+                                    <div key={prvIndex}>
+                                        <h4>PRV {prvIndex + 1}</h4>
+                                        <div className="input-box">
+                                            <span className="details">PRV Date of Filing</span>
+                                            <input 
+                                                type="date" 
+                                                placeholder="Enter PRV Date of Filing"
+                                                autoComplete="off"
+                                                name="prv_dof"
+                                                value={prvData.prv_dof}
+                                                onChange={ (e) => handleInputs(e, prvIndex) }
+                                            />
+                                        </div>
 
+                                        <div className="input-box">
+                                            <span className="details">PRV Application Number</span>
+                                            <input 
+                                                type="text" 
+                                                placeholder="PRV Application Number"
+                                                autoComplete="off"
+                                                name="prv_appno"
+                                                value={prvData.prv_appno}
+                                                onChange={ (e) => handleInputs(e, prvIndex) }
+                                            />
+                                        </div>
+                                        <Button size='sm' className='remove-date' onClick={() => handleRemovePRV(prvIndex)}>Remove PRV</Button>
+                                    </div>
+                                ))
+                            }
+                            <Button size="sm" onClick={handleAddPRV} className="add-date">Add New PRV</Button>
                             <div className="input-box">
-                                <span className="details">PRV Application Number</span>
+                                <span className="details">PCT Deadline</span>
                                 <input 
                                     type="text" 
-                                    placeholder="PRV Application Number"
+                                    placeholder="Enter PCT Deadline"
                                     autoComplete="off"
-                                    name="prv_appno"
-                                    value={patent.prv_appno}
-                                    onChange={handleInputs}
-                                />
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">PCT Date of Filing</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PCT Date of Filing"
-                                    autoComplete="off"
-                                    name="pct_dof"
-                                    value={patent.pct_dof}
-                                    onChange={handleInputs}
-                                />
-                            </div>
-
-                            <div className="input-box">
-                                <span className="details">PCT Number</span>
-                                <input 
-                                    type="text" 
-                                    placeholder="Enter PCT Number"
-                                    autoComplete="off"
-                                    name="pct_appno"
-                                    value={patent.pct_appno}
+                                    name="pct_das"
+                                    value={patent.pct_das}
                                     onChange={handleInputs}
                                 />
                             </div>
@@ -315,8 +346,8 @@ const PatentUpdate = () => {
                                     type="date" 
                                     placeholder="Enter PCT ISA Date"
                                     autoComplete="off"
-                                    name="pct_isa"
-                                    value={patent.pct_isa}
+                                    name="pct_isr"
+                                    value={patent.pct_isr}
                                     onChange={handleInputs}
                                 />
                             </div>
@@ -356,19 +387,6 @@ const PatentUpdate = () => {
                                     onChange={handleInputs}
                                 />
                             </div>
-
-                            
-                            <div className="input-box">
-                                <span className="details">PCT Deadline</span>
-                                <input 
-                                    type="date" 
-                                    placeholder="Enter PCT Deadline"
-                                    autoComplete="off"
-                                    name="pct_dl"
-                                    value={patent.pct_dl}
-                                    onChange={handleInputs}
-                                />
-                            </div>
                         </div>
                         <Accordion alwaysOpen className='mb-4 update-accordion'>
                             {
@@ -385,7 +403,7 @@ const PatentUpdate = () => {
                                                     <span className='details'>NPE Country</span>
                                                     <select 
                                                         name="npe_country"
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                         value={npe.npe_country}
                                                     >
                                                         <option defaultValue disabled>Select Country</option>
@@ -411,14 +429,14 @@ const PatentUpdate = () => {
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Country with (Divisional Number)</span>
+                                                    <span className="details">NPE Firm</span>
                                                     <input 
                                                         type="text" 
-                                                        placeholder="Enter NPE Country with (Divisional Number)"
+                                                        placeholder="Enter NPE Firm"
                                                         autoComplete="off"
-                                                        name="npe_country_div"
-                                                        value={npe.npe_country_div}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        name="npe_firms"
+                                                        value={npe.npe_firms}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
 
@@ -430,7 +448,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_appno"
                                                         value={npe.npe_appno}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
 
@@ -442,21 +460,22 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_dof"
                                                         value={npe.npe_dof}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Firms</span>
+                                                    <span className="details">NPE Country with (Divisional Number)</span>
                                                     <input 
                                                         type="text" 
-                                                        placeholder="Enter NPE Firms"
+                                                        placeholder="Enter NPE Country with (Divisional Number)"
                                                         autoComplete="off"
-                                                        name="npe_firms"
-                                                        value={npe.npe_firms}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        name="npe_country_div"
+                                                        value={npe.npe_country_div}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
+
                                                 <span className='npe-details'>Examination Stage: </span>
                                                 {
                                                     npe.npe_oa.map((oa, oaIndex) => (
@@ -469,7 +488,7 @@ const PatentUpdate = () => {
                                                                     autoComplete="off"
                                                                     name="npe_oa_descp"
                                                                     value={oa.npe_oa_descp}
-                                                                    onChange={ (e) => handleInputs(e, NPEIndex, undefined ,oaIndex)}
+                                                                    onChange={ (e) => handleInputs(e, undefined ,NPEIndex, undefined ,oaIndex)}
                                                                 />
                                                             </div>
                                                             <div className="input-box">
@@ -480,7 +499,7 @@ const PatentUpdate = () => {
                                                                     autoComplete="off"
                                                                     name="npe_oa_date"
                                                                     value={oa.npe_oa_date}
-                                                                    onChange={ (e) => handleInputs(e, NPEIndex, undefined , oaIndex)}
+                                                                    onChange={ (e) => handleInputs(e, undefined ,NPEIndex, undefined , oaIndex)}
                                                                 />
                                                             </div>
                                                             <Button size='sm' className='remove-date' onClick={() => handleRemoveOA(NPEIndex, oaIndex)}>Remove Office Action</Button>
@@ -493,7 +512,8 @@ const PatentUpdate = () => {
                                                     <span className="details">NPE Granted / Rejected</span>
                                                     <select
                                                         name="npe_grant_desc"
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
+                                                        value={npe.npe_grant_desc}
                                                     >
                                                         <option value="NA">Select NPE Status</option>
                                                         <option value="1">Granted</option>
@@ -509,7 +529,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_grant"
                                                         value={npe.npe_grant}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
                                                 
@@ -521,7 +541,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_if"
                                                         value={npe.npe_if}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
                                                 <span className='npe-details'>Annuity Stage: </span>
@@ -536,7 +556,7 @@ const PatentUpdate = () => {
                                                                     autoComplete="off"
                                                                     name="npe_af_descp"
                                                                     value={af.npe_af_descp}
-                                                                    onChange={ (e) => handleInputs(e, NPEIndex, afIndex)}
+                                                                    onChange={ (e) => handleInputs(e, undefined ,NPEIndex, afIndex)}
                                                                 />
                                                             </div>
                                                             <div className="input-box">
@@ -547,7 +567,7 @@ const PatentUpdate = () => {
                                                                     autoComplete="off"
                                                                     name="npe_af_date"
                                                                     value={af.npe_af_date}
-                                                                    onChange={ (e) => handleInputs(e, NPEIndex, afIndex)}
+                                                                    onChange={ (e) => handleInputs(e, undefined ,NPEIndex, afIndex)}
                                                                 />
                                                             </div>
                                                             <Button size='sm' className='remove-date' onClick={() => handleRemoveAF(NPEIndex, afIndex)}>Remove Annuity Fee</Button>
@@ -563,7 +583,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_patent"
                                                         value={npe.npe_patent}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
 
@@ -575,7 +595,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_rfe"
                                                         value={npe.npe_rfe}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
 
@@ -587,7 +607,7 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_notes"
                                                         value={npe.npe_notes}
-                                                        onChange={ (e) => handleInputs(e, NPEIndex)}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
                                                 <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
