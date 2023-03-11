@@ -178,7 +178,7 @@ const ApplicationFamily = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('http://localhost:5000/api/patent', patentData);
+            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData);
             console.log(res);
             alert("Application Family Submitted Successfully");
             window.location.reload();
@@ -246,7 +246,7 @@ const ApplicationFamily = () => {
                                     </div>
                                 ))
                             }
-                            <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add PRV</Button>
+                            <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add New PRV</Button>
                             
                             <div className="input-box">
                                 <span className="details">PCT Date of Filing</span>

@@ -53,7 +53,7 @@ const PatentUpdate = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`http://localhost:5000/api/getpatentid/${id}`);
+                const res = await axios.get(`https://misbackend.cellixbio.info/api/getpatentid/${id}`);
                 setPatent(res.data);
                 setLoading(false);
             } catch (err) {
@@ -229,7 +229,7 @@ const PatentUpdate = () => {
     const handleUpdateModal = async () => {
         setSubmitting(true);
         try{
-            const res = await axios.patch(`http://localhost:5000/api/updatepatentid/${id}` ,patent);
+            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatepatentid/${id}` ,patent);
             console.log(res);
             alert("Application Family Updated Successfully");
             window.location.reload();
@@ -323,11 +323,11 @@ const PatentUpdate = () => {
                                                 onChange={ (e) => handleInputs(e, prvIndex) }
                                             />
                                         </div>
-                                        <Button size='sm' className='remove-date' onClick={() => handleRemovePRV(prvIndex)}>Remove PRV</Button>
+                                        <Button size='sm' className='remove-prv-date' onClick={() => handleRemovePRV(prvIndex)}>Remove PRV</Button>
                                     </div>
                                 ))
                             }
-                            <Button size="sm" onClick={handleAddPRV} className="add-date">Add New PRV</Button>
+                            <Button size="sm" onClick={handleAddPRV} className="add-prv-date">Add New PRV</Button>
                             <div className="input-box">
                                 <span className="details">PCT Deadline</span>
                                 <input 

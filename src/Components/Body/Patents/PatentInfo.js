@@ -21,7 +21,7 @@ const PatentInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`http://localhost:5000/api/getpatent/${ref}`);
+                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getpatent/${ref}`);
                 setPatent(patentData.data);
                 setLoading(false);
             } catch (err) {
@@ -180,7 +180,6 @@ const PatentInfo = () => {
                                             }
                                             <p>NPE Grant Decision: <span>{npeData.npe_grant_desc === "1" ? ("Granted") : ("Rejected")}</span></p>
                                             <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
-                                            <p>NPE Issue Fee: <span>{npeData.npe_if}</span></p>
                                             <h4>Annuity Stage</h4>
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (

@@ -1321,7 +1321,7 @@ Breadcrumb.Item{
   color: #0E6E59 !important;
   font-size: 15px !important;
   transition: 1s;
-  margin-left: 1%;
+  margin-left: 25%;
   margin-top: 1%;
 }
 
@@ -1351,7 +1351,7 @@ Breadcrumb.Item{
   color: #FF4433 !important;
   font-size: 15px !important;
   transition: 1s;
-  /* margin-left: 21%; */
+  margin-left: 47.5%;
   margin-top: 1%;
 }
 
