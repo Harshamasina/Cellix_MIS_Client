@@ -389,8 +389,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .container .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap:15px;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  gap:12px;
 }
 
 .container .box-container .box{
@@ -398,7 +398,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 5px;
   background: #fff;
   text-align: center;
-  padding:30px 20px;
+  padding: 20px 10px;
   transition: .2s;
 }
 
@@ -436,21 +436,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: inline-block;
   background: transparent;
   color:#0E6E59;
-  font-size: 2vw;
+  font-size: 1.5vw;
   border-radius: 5px;
-  padding: 5px 25px 15px 20px;
   transition: .2s;
 }
 
 .container .box-container .box .btn:hover{
-  letter-spacing: 1px;
-  background: #0E6E59;
-  color: #fff !important;
+  color: #15B39D !important;
 }
 
 .container .box-container .box:hover{
   box-shadow: 0 10px 15px rgba(0,0,0,.3);
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 @media (max-width:768px){
@@ -1426,4 +1423,61 @@ Breadcrumb.Item{
 
 .update-accordion .accordion-button:not(.collapsed) {
   color: #fff;
+}
+
+.pagination-patents-lg-container{
+  margin-left: 44%;
+}
+
+.pagination-patents-sm{
+  margin-left: 46%;
+}
+
+.select-paginate{
+  margin-left: 2%;
+}
+
+.popover{
+  background: transparent !important;
+  border: none !important;
+  margin-top: 0.5% !important;
+}
+
+.popover-msg{
+  color: #15B39D !important;
+}
+
+.MuiPagination-root .Mui-selected {
+  background-color: #0E6E59 !important;
+  color: white !important;
+}
+
+.table-pagination-container{
+  margin-left: 37%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.MuiTablePagination-toolbar{
+  color: #0E6E59;
+  font-size: 1vw;
+}
+
+.MuiTablePagination-root {
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.MuiTablePagination-spacer {
+  flex-grow: 1;
+}
+
+.MuiSelect-selectMenu {
+  display: flex;
+  align-items: center;
 }

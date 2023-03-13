@@ -101,6 +101,12 @@ const PatentInfo = () => {
             console.error(err);
         }
     };
+
+    const popover = (
+        <Popover className='popover'>
+          <Popover.Body as="h6" className='popover-msg'>Update {patent.ref_no}</Popover.Body>
+        </Popover>
+    );
     
     return(
         <div>
@@ -110,7 +116,16 @@ const PatentInfo = () => {
                         <div className='FirmPageContent'>
                             <h1>{patent.ref_no}</h1>
                         </div>
-                        <Link className='patentinfo-link' to={"/patentupdate/"+patent._id}><FaRegEdit className='patentinfo-icon'/></Link>
+                        <OverlayTrigger 
+                            placement="right" 
+                            // delay={{ show: 250, hide: 400 }}
+                            trigger={['hover', 'focus']}
+                            overlay={popover}
+                        >
+                            <Link className='patentinfo-link' to={"/patentupdate/"+patent._id}>
+                                <FaRegEdit className='patentinfo-icon'/>
+                            </Link>
+                        </OverlayTrigger>
                     </div>
                 </div>
             </Parallax>
@@ -159,10 +174,10 @@ const PatentInfo = () => {
                                         <div className='tab-npe-data shadow-lg'>
                                             <h4>Filing Stage</h4>
                                             <p>NPE Country: <span>{npeData.npe_country}</span></p>
-                                            <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
+                                            <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
                                             <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
                                             <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
-                                            <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
+                                            <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
                                             <h4>Examination Stage</h4>
                                             {
                                                 npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (
