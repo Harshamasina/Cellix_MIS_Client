@@ -329,10 +329,34 @@ const PatentUpdate = () => {
                             }
                             <Button size="sm" onClick={handleAddPRV} className="add-prv-date">Add New PRV</Button>
                             <div className="input-box">
-                                <span className="details">PCT Deadline</span>
+                                <span className="details">PCT Date of Filing</span>
+                                <input 
+                                    type="date" 
+                                    placeholder="Enter PCT DOF"
+                                    autoComplete="off"
+                                    name="pct_dof"
+                                    value={patent.pct_dof}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Application Number</span>
                                 <input 
                                     type="text" 
-                                    placeholder="Enter PCT Deadline"
+                                    placeholder="Enter PCT Application Number"
+                                    autoComplete="off"
+                                    name="pct_appno"
+                                    value={patent.pct_appno}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT DAS Code</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter PCT DAS Code"
                                     autoComplete="off"
                                     name="pct_das"
                                     value={patent.pct_das}
@@ -341,10 +365,10 @@ const PatentUpdate = () => {
                             </div>
 
                             <div className="input-box">
-                                <span className="details">PCT ISA Date</span>
+                                <span className="details">PCT ISR Date</span>
                                 <input 
                                     type="date" 
-                                    placeholder="Enter PCT ISA Date"
+                                    placeholder="Enter PCT ISR Date"
                                     autoComplete="off"
                                     name="pct_isr"
                                     value={patent.pct_isr}
