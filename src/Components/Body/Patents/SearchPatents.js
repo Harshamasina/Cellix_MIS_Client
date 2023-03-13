@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { HiInformationCircle } from "react-icons/hi";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 const SearchPatents = () => {
     const [searchPatent, setSearchPatent] = useState();
@@ -16,7 +18,13 @@ const SearchPatents = () => {
                 console.log("No Patent Found");
             }
         }
-    }
+    };
+
+    const popover = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Get More Info</Popover.Body>
+        </Popover>
+    );
 
     return(
         <div>
@@ -32,26 +40,42 @@ const SearchPatents = () => {
             </div>
             <div className='container'>
                 <div className='box-container'>
-                    {
-                        searchPatent && searchPatent.length === 0 ?
-                        <div className='no-results'><img src='https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Search+Not+Found.png' alt='search'></img></div> :
+                {
                         searchPatent && searchPatent.map((patent, i) => (
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
-                                <h4>PRV Number: <span>{patent.prv_appno}</span></h4>
-                                <h4>PCT Number: <span>{patent.pct_appno}</span></h4>
+                                <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
+                                {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
+                                {patent.npe && patent.npe.length > 0 && (<h4>NPE Application Numbers</h4>)}
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
-                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' key={npe}>
-                                                <li>
-                                                    {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
-                                                </li>
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
+                                                <li>{npe.npe_appno}</li>
                                             </Link>
                                         ))
                                     }
                                 </ul>
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no}><HiInformationCircle /></Link>
+                                {patent.npe && patent.npe.length > 0 && (<h4>NPE Patent Numbers</h4>)}
+                                <ul className='country-ul'>
+                                    {
+                                        patent.npe && patent.npe.map((npe) => (
+                                            <Link to={"/patentinfo/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
+                                                <li>{npe.npe_patent}</li>
+                                            </Link>
+                                        ))
+                                    }
+                                </ul>
+                                <OverlayTrigger 
+                                    placement="auto" 
+                                    delay={{ show: 250, hide: 400 }}
+                                    trigger={['hover', 'focus']}
+                                    overlay={popover}
+                                >
+                                    <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">
+                                        <HiInformationCircle />
+                                    </Link>
+                                </OverlayTrigger>
                             </div>
                         ))
                     }

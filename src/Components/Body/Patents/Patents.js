@@ -5,14 +5,14 @@ import SearchPatents from './SearchPatents';
 import { Breadcrumbs } from '@mui/material';
 
 const Patents = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Sit.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Bar+Graphs.jpg";
     return(
         <div>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
-                            <h1>Cellix Bio Patents</h1>
+                            <h1>Cellix Bio Application Families</h1>
                         </div>
                     </div>
                 </div>

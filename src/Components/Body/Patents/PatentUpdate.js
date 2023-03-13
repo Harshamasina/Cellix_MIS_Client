@@ -10,7 +10,7 @@ import { Breadcrumbs } from '@mui/material';
 import { Accordion, Button, Modal } from 'react-bootstrap';
 
 const PatentUpdate = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/checklist+1.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/analsys.jpg";
     const { id } = useParams();
     const [patent, setPatent] = useState({
         ref_no: "",
@@ -253,7 +253,7 @@ const PatentUpdate = () => {
                     height="20%"
                     width="20%"
                     ariaLabel="dna-loading"
-                    wrapperStyle={{marginLeft: '40%', marginTop: '7%'}}
+                    wrapperStyle={{marginLeft: '40%', marginTop: '10%'}}
                 />
             </div>
         );
@@ -265,10 +265,10 @@ const PatentUpdate = () => {
     
     return(
         <div>
-            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
+            <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={1}>
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
-                        <div className='FirmPageContent'>
+                        <div className='UpdatePageContent'>
                             <h1> { patent && patent.ref_no } Update</h1>
                         </div>
                     </div>

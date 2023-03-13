@@ -14,7 +14,7 @@ import Popover from 'react-bootstrap/Popover';
 const PatentsDashboard = () => {
     const [patents, setPatents] = useState([]);
     const [pageIndex, setPageIndex] = useState(0);
-    const [pageSize, setPageSize] = useState(5);
+    const [pageSize, setPageSize] = useState(6);
     const [totalPages, setTotalPages] = useState(0);
     const [count, setCount] = useState(0);
     const [sort, setSort] = useState("prv.prv_dof:desc");
@@ -72,7 +72,7 @@ const PatentsDashboard = () => {
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     }
-    console.log(patents);
+
     return(
         <div>
             <Select 
@@ -85,7 +85,8 @@ const PatentsDashboard = () => {
                 <MenuItem value={"prv.prv_dof:desc"}>PRV Filing Desc</MenuItem>
                 <MenuItem value={"prv.prv_dof:asc"}>PRV Filing Asc</MenuItem>  
             </Select>
-            <div className='pagination-patents-lg-container'>
+            
+            <div className='pagination-container'>
                 <Pagination
                     count={totalPages} 
                     page={pageIndex + 1}
@@ -94,9 +95,9 @@ const PatentsDashboard = () => {
                     showFirstButton 
                     showLastButton
                     shape="rounded"
-                    // color="success"
                 />
             </div>
+            
             <div className='container'>
                 <h2>Cellix Bio Patents Data</h2>
                 <div className='box-container'>
@@ -105,7 +106,8 @@ const PatentsDashboard = () => {
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
                                 <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
-                                <h4>PCT Number: <span>{patent.pct_appno}</span></h4>
+                                {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
+                                
                                 <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
@@ -117,6 +119,7 @@ const PatentsDashboard = () => {
                                         ))
                                     }
                                 </ul>
+
                                 <OverlayTrigger 
                                     placement="auto" 
                                     delay={{ show: 250, hide: 400 }}
@@ -132,9 +135,10 @@ const PatentsDashboard = () => {
                     }
                 </div>
             </div>
+            
             <div className='table-pagination-container'>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
+                    rowsPerPageOptions={[9, 15, 30, 60]}
                     count={count}
                     component='div'
                     rowsPerPage={pageSize}

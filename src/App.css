@@ -351,17 +351,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	text-align: center;
 	font-size: 8vh;
 	width: 100%;
-	color: #15B39D;
+	color: #2c444e;
 }
 
 .HomePageContent h2{
 	text-align: center;
 	font-size: 6vh;
 	width: 100%;
-	color: #15B39D;
+	color: #2c444e;
 }
 
 .FirmPageContent h1{
+  text-align: center;
+	font-size: 10vh;
+	width: 100%;
+	color: #2c444e;
+  margin-bottom: 5%;
+}
+
+.UpdatePageContent h1{
   text-align: center;
 	font-size: 10vh;
 	width: 100%;
@@ -389,7 +397,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .container .box-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap:12px;
 }
 
@@ -447,7 +455,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .container .box-container .box:hover{
   box-shadow: 0 10px 15px rgba(0,0,0,.3);
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 @media (max-width:768px){
@@ -469,6 +477,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .country-ul li{
   padding-right: 15px;
+  font-size: 20px;
+  font-weight: 450;
+}
+
+.country-ul-span{
+  padding-right: 25px;
   font-size: 20px;
   font-weight: 450;
 }
@@ -850,7 +864,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-align: center;
 	font-size: 8vh;
 	width: 100%;
-	color: #15B39D;
+	color: #2c444e;
   margin-bottom: 5%;
 }
 
@@ -1425,8 +1439,9 @@ Breadcrumb.Item{
   color: #fff;
 }
 
-.pagination-patents-lg-container{
-  margin-left: 44%;
+.pagination-container{
+  display: flex;
+  justify-content: center;
 }
 
 .pagination-patents-sm{
@@ -1453,14 +1468,10 @@ Breadcrumb.Item{
 }
 
 .table-pagination-container{
-  margin-left: 37%;
   margin-top: 2%;
   margin-bottom: 1%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 16px;
-  padding-right: 16px;
+  justify-content: center;
 }
 
 .MuiTablePagination-toolbar{
@@ -1469,8 +1480,10 @@ Breadcrumb.Item{
 }
 
 .MuiTablePagination-root {
-  flex-shrink: 0;
-  margin-left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .MuiTablePagination-spacer {
