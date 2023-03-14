@@ -669,9 +669,9 @@ const PatentUpdate = () => {
                             />
                         </div>
                         <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false} centered>
-                            <Modal.Header><Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title></Modal.Header>
+                            <Modal.Header><Modal.Title className='Modal-title-submit-form'>Confirmation Application Family Data Update</Modal.Title></Modal.Header>
                             <Modal.Body>
-                                <p>Are you sure you want to update this Data? Please verify whether all the inputs are correct If so Please enter the confirmation code to delete the Application</p>
+                                <p>Are you sure you want to update this Data? Please verify whether all the inputs are correct if so Please enter the confirmation code to update the Application</p>
                                 <div className='input-box'>
                                     <input
                                         type="text"

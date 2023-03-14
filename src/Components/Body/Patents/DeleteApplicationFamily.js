@@ -31,12 +31,12 @@ const DeleteApplicationFamily = ({PatentId}) => {
             <div className="remove-application-container">
                 <Button className= "remove-application" onClick={() => setDeleteModal(true)}>Remove Application</Button>
             </div>
-            <Modal show={deleteModal} onHide={() => setDeleteModal(false)} centered backdrop="static" keyboard={false}>
+            <Modal size='lg' show={deleteModal} onHide={() => setDeleteModal(false)} centered backdrop="static" keyboard={false}>
                 <Modal.Header  className='justify-content-center' style={{color: "#FF4433"}}>
-                    <Modal.Title>Confirmation Deletion</Modal.Title>
+                    <Modal.Title>Confirm Deletion</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Please enter the confirmation code to delete the Application</p>
+                    <p>Are you sure you want to delete this Application if so please enter the confirmation code to delete the Application</p>
                     <div className='input-box'>
                         <input
                             type="text"
@@ -50,8 +50,7 @@ const DeleteApplicationFamily = ({PatentId}) => {
                 <Modal.Footer>
                     <Button className='close-button'  onClick={() => setDeleteModal(false)}>Cancel</Button>
                     <Button 
-                        className='signout-modal-button' 
-                        // disabled={confirmCode !== 'CLX-EMP-123'}
+                        className='signout-modal-button'
                         disabled={!confirmCode}
                         onClick={handleDelete}
                     >
