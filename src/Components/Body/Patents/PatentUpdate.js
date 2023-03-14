@@ -8,6 +8,7 @@ import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '@mui/material';
 import { Accordion, Button, Modal } from 'react-bootstrap';
+import DeleteApplicationFamily from './DeleteApplicationFamily';
 
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/analsys.jpg";
@@ -49,12 +50,15 @@ const PatentUpdate = () => {
     const [deleteIndex, setDeleteIndex] = useState(null);
     const [showSubmitModal, setShowSubmitDeleteModel] = useState(false);
     const [submitting, setSubmitting] = useState(false);
+    const [confirmCode, setConfirmCode] = useState('');
+    const [errorMessage, setErrorMessage]  = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try{
                 const res = await axios.get(`https://misbackend.cellixbio.info/api/getpatentid/${id}`);
                 setPatent(res.data);
+                setError(res.data.message);
                 setLoading(false);
             } catch (err) {
                 console.error(err);
@@ -229,13 +233,19 @@ const PatentUpdate = () => {
     const handleUpdateModal = async () => {
         setSubmitting(true);
         try{
-            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatepatentid/${id}` ,patent);
-            console.log(res);
-            alert("Application Family Updated Successfully");
-            window.location.reload();
+            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatepatentid/${id}` ,patent, {
+                headers: { 'confirmCode': confirmCode },
+            });
+            if(res.status === 201){
+                console.log(res);
+                setErrorMessage(res.data.message);
+                alert("Application Family Updated Successfully");
+                window.location.reload();
+            }
         } catch (err) {
             console.error(err);
-            setError(err);
+            setErrorMessage(err.response.data.error);
+            setConfirmCode('');
         } finally {
             setSubmitting(false);
         }
@@ -658,9 +668,20 @@ const PatentUpdate = () => {
                                 onClick={handleUpdate}
                             />
                         </div>
-                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false}>
+                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false} centered>
                             <Modal.Header><Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title></Modal.Header>
-                            <Modal.Body>Are you sure you want to update this Data? Please verify whether all the inputs are correct.</Modal.Body>
+                            <Modal.Body>
+                                <p>Are you sure you want to update this Data? Please verify whether all the inputs are correct If so Please enter the confirmation code to delete the Application</p>
+                                <div className='input-box'>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter confirmation code"
+                                        value={confirmCode}
+                                        onChange={ (e) => setConfirmCode(e.target.value) }
+                                    />
+                                </div>
+                                {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
+                            </Modal.Body>
                             <Modal.Footer>
                                 <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
                                 <Button  className='close-button' onClick={handleUpdateModal}>Submit</Button>
@@ -669,6 +690,7 @@ const PatentUpdate = () => {
                     </form>
                 </div>
             </div>
+            <DeleteApplicationFamily PatentId={id}></DeleteApplicationFamily>
         </div>
     );
 }

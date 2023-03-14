@@ -6,6 +6,7 @@
 .pnp.js
 .txt
 firebase.js
+.env
 
 # testing
 /coverage

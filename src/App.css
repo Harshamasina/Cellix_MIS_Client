@@ -1494,3 +1494,23 @@ Breadcrumb.Item{
   display: flex;
   align-items: center;
 }
+
+.remove-application-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-application{
+  background: transparent !important;
+  border: 2px solid #FF4433 !important;
+  color: #FF4433 !important;
+  font-size: 25px !important;
+  margin-bottom: 2%;
+  transition: 1s;
+}
+
+.remove-application:hover{
+  background: #FF4433 !important;
+  color: #fff !important;
+}
