@@ -14,7 +14,7 @@ import Popover from 'react-bootstrap/Popover';
 const PatentsDashboard = () => {
     const [patents, setPatents] = useState([]);
     const [pageIndex, setPageIndex] = useState(0);
-    const [pageSize, setPageSize] = useState(6);
+    const [pageSize, setPageSize] = useState(9);
     const [totalPages, setTotalPages] = useState(0);
     const [count, setCount] = useState(0);
     const [sort, setSort] = useState("prv.prv_dof:desc");
@@ -138,7 +138,7 @@ const PatentsDashboard = () => {
             
             <div className='table-pagination-container'>
                 <TablePagination
-                    rowsPerPageOptions={[9, 15, 30, 60]}
+                    rowsPerPageOptions={[6, 9, 15, 30, 60]}
                     count={count}
                     component='div'
                     rowsPerPage={pageSize}
