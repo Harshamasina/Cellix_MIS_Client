@@ -102,7 +102,7 @@ function NavBar() {
                                 login && (
                                     <>
                                         <Nav.Link className='navbar_link' as={Link} to="/home" eventKey="0">Home</Nav.Link>
-                                        <Nav.Link className='navbar_link' as={Link} to="/patents" eventKey="1">Patents</Nav.Link>
+                                        <Nav.Link className='navbar_link' as={Link} to="/patents" eventKey="1">Applications</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>

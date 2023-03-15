@@ -99,7 +99,6 @@ const PatentsDashboard = () => {
             </div>
             
             <div className='container'>
-                <h2>Cellix Bio Patents Data</h2>
                 <div className='box-container'>
                     {
                         patents && patents.map((patent, i) => (
@@ -146,7 +145,7 @@ const PatentsDashboard = () => {
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
                     labelDisplayedRows={({ from, to, count }) => `${from}-${to} of ${count}`}
-                    labelRowsPerPage="Application Family per page"
+                    labelRowsPerPage="Application Families per page"
                     showFirstButton 
                     showLastButton
                 />

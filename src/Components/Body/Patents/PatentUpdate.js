@@ -286,7 +286,7 @@ const PatentUpdate = () => {
             </Parallax>
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
-                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+                <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
                 <Link to={"/patentupdate/"+patent._id} className='BC-Links'>{patent.ref_no} Update</Link>
             </Breadcrumbs>
@@ -684,7 +684,7 @@ const PatentUpdate = () => {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
-                                <Button  className='close-button' onClick={handleUpdateModal}>Submit</Button>
+                                <Button  className='close-button' onClick={handleUpdateModal} disabled={!confirmCode}>Update</Button>
                             </Modal.Footer>
                         </Modal>
                     </form>

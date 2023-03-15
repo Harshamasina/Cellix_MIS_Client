@@ -45,6 +45,8 @@ const ApplicationFamily = () => {
     const [deleteIndex, setDeleteIndex] = useState(null);
     const [submissionError, setSubmissionError] = useState(null);
     const [submitting, setSubmitting] = useState(false);
+    const [confirmCode, setConfirmCode] = useState('');
+    const [errorMessage, setErrorMessage]  = useState('');
 
     const handleInputs = (e) => {
         setPatentData({ ...patentData, [e.target.name]: e.target.value });
@@ -174,17 +176,23 @@ const ApplicationFamily = () => {
     }
 
     const handleSubmitModal = async () => {
-        setShowSubmitDeleteModel(false);
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData);
-            console.log(res);
-            alert("Application Family Submitted Successfully");
-            window.location.reload();
+            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData, {
+                headers: { 'confirmCode': confirmCode },
+            });
+            if(res.status === 201){
+                console.log(res);
+                setErrorMessage(res.data.message);
+                alert("Application Family Submitted Successfully");
+                window.location.reload();
+            }
         } catch (err) {
             console.error(err);
+            setErrorMessage(err.response.data.error);
             setSubmissionError(err.response.data.message);
+            setConfirmCode('');
         } finally {
             setSubmitting(false);
         }
@@ -589,11 +597,20 @@ const ApplicationFamily = () => {
                                 <Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                Are you sure you want to submit this Data?
+                                <p>Are you sure you want to submit this Application? Please verify whether all the inputs are correct if so Please enter the confirmation code to submit the Application Family</p>
+                                <div className='input-box'>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter confirmation code"
+                                        value={confirmCode}
+                                        onChange={ (e) => setConfirmCode(e.target.value) }
+                                    />
+                                </div>
+                                {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
-                                <Button  className='close-button' onClick={handleSubmitModal}>Submit</Button>
+                                <Button  className='close-button' onClick={handleSubmitModal} disabled={!confirmCode}>Submit</Button>
                             </Modal.Footer>
                         </Modal>
                     </form>

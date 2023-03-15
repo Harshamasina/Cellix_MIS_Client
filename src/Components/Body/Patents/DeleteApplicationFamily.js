@@ -23,6 +23,7 @@ const DeleteApplicationFamily = ({PatentId}) => {
         } catch (err) {
             console.error(err);
             setErrorMessage(err.response.data.error);
+            setConfirmCode('');
         }
     }
 
