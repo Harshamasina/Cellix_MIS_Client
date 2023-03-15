@@ -21,6 +21,8 @@ const PCTPatentForm = () => {
     const [submitting, setSubmitting] = useState(false);
     const [submissionError, setSubmissionError] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [confirmCode, setConfirmCode] = useState('');
+    const [errorMessage, setErrorMessage]  = useState('');
 
     let name, value;
     let handleInputs = (e) => {
@@ -38,24 +40,31 @@ const PCTPatentForm = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/pctpatent', PCTPatent);
-            console.log(res);
-            setPCTPatent({
-                wno: "",
-                pct: "",
-                year: "",
-                publication_date:"",
-                therapeutic_area: "",
-                diseases: "",
-                formula: "",
-                claims: "",
-                compounds: ""
+            const res = await axios.post('https://misbackend.cellixbio.info/api/pctpatent', PCTPatent, {
+                headers: { 'confirmCode': confirmCode },
             });
-            alert('Patent Submitted Successfully');
-            window.location.reload();
+            if(res.status === 201){
+                console.log(res);
+                setErrorMessage(res.data.message);
+                setPCTPatent({
+                    wno: "",
+                    pct: "",
+                    year: "",
+                    publication_date:"",
+                    therapeutic_area: "",
+                    diseases: "",
+                    formula: "",
+                    claims: "",
+                    compounds: ""
+                });
+                alert('Patent Submitted Successfully');
+                window.location.reload();
+            }
         } catch (err) {
             console.log(err);
             setSubmissionError(err.response.data.message);
+            setErrorMessage(err.response.data.error);
+            setConfirmCode('');
         } finally {
             setSubmitting(false);
         }
@@ -165,10 +174,21 @@ const PCTPatentForm = () => {
                         <Modal.Header >
                             <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>Are you sure you want to submit the form? Please verify all data inserted correctly</Modal.Body>
+                        <Modal.Body>
+                            <p>Are you sure you want to submit the form? Please verify all data inserted correctly if so Please enter the confirmation code to submit the Patent</p>
+                            <div className='input-box'>
+                                    <input
+                                        type="password"
+                                        placeholder="Enter confirmation code"
+                                        value={confirmCode}
+                                        onChange={ (e) => setConfirmCode(e.target.value) }
+                                    />
+                                </div>
+                                {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
+                        </Modal.Body>
                         <Modal.Footer>
                             <Button className='signout-modal-button' onClick={handleModalClose}>Cancel</Button>
-                            <Button className = "close-button" onClick={handleSubmitModal}>Submit</Button>
+                            <Button className = "close-button" onClick={handleSubmitModal} disabled={!confirmCode}>Submit</Button>
                         </Modal.Footer>
                     </Modal>
                     {submissionError && <p className='error-message'>{submissionError}</p>}

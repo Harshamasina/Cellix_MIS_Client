@@ -40,7 +40,7 @@ const DeleteApplicationFamily = ({PatentId}) => {
                     <p>Are you sure you want to delete this Application if so please enter the confirmation code to delete the Application</p>
                     <div className='input-box'>
                         <input
-                            type="text"
+                            type="password"
                             placeholder="Enter confirmation code"
                             value={confirmCode}
                             onChange={ (e) => setConfirmCode(e.target.value) }

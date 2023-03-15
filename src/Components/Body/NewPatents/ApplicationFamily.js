@@ -600,7 +600,7 @@ const ApplicationFamily = () => {
                                 <p>Are you sure you want to submit this Application? Please verify whether all the inputs are correct if so Please enter the confirmation code to submit the Application Family</p>
                                 <div className='input-box'>
                                     <input
-                                        type="text"
+                                        type="password"
                                         placeholder="Enter confirmation code"
                                         value={confirmCode}
                                         onChange={ (e) => setConfirmCode(e.target.value) }

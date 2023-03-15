@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { auth } from '../../../config/firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/notifications+1.jpg";
@@ -25,7 +26,7 @@ const ForgotPassword = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
@@ -55,6 +56,9 @@ const ForgotPassword = () => {
                     </input>
                     { message && <h4 className='error-message'>{message}</h4> }
                     { errorMsg && <h4 className='error-message'>{errorMsg}</h4> }
+                    <div className="login-links">
+                        <Link to="/login" className='register-Link'>Back to Login</Link>
+                    </div>
                 </form>
             </div>
         </div>
