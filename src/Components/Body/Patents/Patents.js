@@ -19,7 +19,7 @@ const Patents = () => {
             </Parallax>
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
-                <Link to="/patents" className='BC-Links'>Patents Dashboard</Link>
+                <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
             </Breadcrumbs>
             <SearchPatents></SearchPatents>
             <PatentDashboard></PatentDashboard>
