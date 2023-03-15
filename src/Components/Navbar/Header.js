@@ -21,6 +21,7 @@ import ForgotPassword from '../Body/Login/ForgotPassword';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
+import CustomNotifications from '../Body/Notifications/CustomNotifications';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -133,6 +134,7 @@ function NavBar() {
                     <Route path='/newpatent' element={login ? <NewPatents /> : <Navigate to='/login' />} />
                     <Route path='/firms' element={login ? <Firms /> : <Navigate to='/login' />} />
                     <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />} />
+                    <Route path='/customnotifications' element={login ? <CustomNotifications /> : <Navigate to='/login' />} />
                     <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />} />
                     <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />

@@ -1669,3 +1669,18 @@ Breadcrumb.Item{
     width: 320px;
   }
 }
+
+.customNote-link{
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  font-size: 4vw;
+  color: #15B39D;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .5s;
+}
+
+.customNote-link:hover{
+  color: #282c34 !important;
+}
