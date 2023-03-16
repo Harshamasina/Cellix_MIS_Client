@@ -2,12 +2,13 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { MdOutlineNotifications } from 'react-icons/md';
 import { Parallax } from 'react-parallax';
 import { Link } from 'react-router-dom';
+import { Breadcrumbs } from '@mui/material';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
     const popover = (
         <Popover className='popover'>
-          <Popover.Body as="h6" className='popover-msg'>Create Custom Notifications</Popover.Body>
+          <Popover.Body as="h6" className='popover-msg'>Custom Notifications</Popover.Body>
         </Popover>
     );
     
@@ -32,6 +33,10 @@ const Notifications = () => {
                     </div>
                 </div>
             </Parallax>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to='/home' className='BC-Links'>Home</Link>
+                <Link to='/notifications' className='BC-Links'>Notifications</Link>
+            </Breadcrumbs>
         </div>
     );
 }

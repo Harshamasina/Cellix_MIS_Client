@@ -11,6 +11,9 @@ import NewPatents from '../Body/NewPatents/NewPatents';
 import Register from '../Body/Login/Register';
 import PatentInfo from '../Body/Patents/PatentInfo';
 import Notifications from '../Body/Notifications/Notifications';
+import CustomNotifications from '../Body/Notifications/CustomNotifications/CustomNotifications';
+import CreateCustomNotif from '../Body/Notifications/CustomNotifications/CreateCustomNotif';
+import UpdateCustomNotif from '../Body/Notifications/CustomNotifications/updateCustomNotif';
 import Error404 from '../Body/error404';
 import PatentUpdate from '../Body/Patents/PatentUpdate';
 import PCTPatentForm from '../Body/NewPatents/PCTPatentForm';
@@ -21,7 +24,6 @@ import ForgotPassword from '../Body/Login/ForgotPassword';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
-import CustomNotifications from '../Body/Notifications/CustomNotifications';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -135,6 +137,8 @@ function NavBar() {
                     <Route path='/firms' element={login ? <Firms /> : <Navigate to='/login' />} />
                     <Route path='/notifications' element={login ? <Notifications /> : <Navigate to='/login' />} />
                     <Route path='/customnotifications' element={login ? <CustomNotifications /> : <Navigate to='/login' />} />
+                    <Route path='/createnotifications' element={login ? <CreateCustomNotif /> : <Navigate to='/login' />} />
+                    <Route path='/updatenotifications/:id' element={login ? <UpdateCustomNotif /> : <Navigate to='/login' />} />
                     <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />} />
                     <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />

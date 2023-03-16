@@ -937,10 +937,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 700;
 }
 
+.green{
+  color: #0E6E59;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
 .black{
   color: #282c34;
   font-size: 1.1vw;
   font-weight: 500;
+}
+
+.red-notification{
+  color: #FF4433 !important;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.orange-notification{
+  color: #FF5F1F !important;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.grey-notification{
+  color: #707070 !important;
+  font-size: 1.1vw;
+  font-weight: 700;
 }
 
 .page-item .page-link {
@@ -1151,7 +1175,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 10px;
 }
 
-.loginform textarea{
+.patent-textarea{
   height: 150px;
   width: 110%;
   padding: 10px 15px;
@@ -1164,6 +1188,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   outline: none;
 }
 
+.notif-textarea{
+  height: 150px;
+  width: 100% !important;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  margin-left: 10px;
+  margin-top: 15px;
+  outline: none;
+}
+
 .loginform input:focus{
   border: 1px solid #0E6E59;
   box-shadow: 0 5px 10px rgba(0,0,0,0.05);
@@ -1172,7 +1209,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .loginform input.loginbutton{
   color: #fff;
   background: #009579;
-  width: 45% !important;
+  width: 50% !important;
   height: 60px;
   font-size: 1.5rem;
   font-weight: 500;
@@ -1683,4 +1720,61 @@ Breadcrumb.Item{
 
 .customNote-link:hover{
   color: #282c34 !important;
+}
+
+.notification-table{
+  width: 90% !important;
+  margin: 0 auto;
+}
+
+.notification-table thead{
+  text-align: center;
+  color: #0E6E59;
+  font-size: 1.1vw;
+}
+
+.notification-table tbody{
+  text-align: center;
+  font-size: 1.03vw;
+  color: #282c34;
+}
+
+.update-notification{
+  color: #0E6E59;
+  font-size: 1.5vw;
+  transition: .3s;
+}
+
+.reference-links{
+  color: #282c34;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.reference-links:hover{
+  color: #0E6E59;
+  text-decoration: underline 1px solid #0E6E59;
+}
+
+
+.delete-notification{
+  color: #FF4433;
+  font-size: 1.5vw;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.delete-notification:hover{
+  transform: scale(1.1);
+}
+
+.delete-update-notification{
+  color: #FF4433;
+  font-size: 2.5vw;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.delete-update-notification:hover{
+  transform: scale(1.1);
 }
