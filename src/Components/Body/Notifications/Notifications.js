@@ -3,6 +3,8 @@ import { MdOutlineNotifications } from 'react-icons/md';
 import { Parallax } from 'react-parallax';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '@mui/material';
+import PCTNotifications from './PCTNotifications';
+// import NPENotifications from './NPENotifications';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
@@ -37,6 +39,8 @@ const Notifications = () => {
                 <Link to='/home' className='BC-Links'>Home</Link>
                 <Link to='/notifications' className='BC-Links'>Notifications</Link>
             </Breadcrumbs>
+            <PCTNotifications />
+            {/* <NPENotifications /> */}
         </div>
     );
 }

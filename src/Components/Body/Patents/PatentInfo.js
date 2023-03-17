@@ -58,7 +58,6 @@ const PatentInfo = () => {
             }
             const today = new Date();
             const apiDate = new Date(date);
-            // const monthDiff = (today.getFullYear() - apiDate.getFullYear()) * 12 + (today.getMonth() - apiDate.getMonth());
             const timeDiff = apiDate.getTime() - today.getTime();
             const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
             const diffMonths = Math.ceil(daysDiff / 30);
@@ -69,7 +68,7 @@ const PatentInfo = () => {
                 return(
                     <Popover>
                         <Popover.Body>
-                            {daysDiff} days until {apiDate.toLocaleDateString()}! 
+                            {daysDiff} days until deadline 
                         </Popover.Body>
                     </Popover>
                 )
@@ -85,16 +84,13 @@ const PatentInfo = () => {
             const apiDate = new Date(date);
             const timeDiff = apiDate.getTime() - today.getTime();
             const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            const diffMonths = Math.ceil(daysDiff / 30);
-            if(daysDiff < 0){
-                return('black');
-            }
-            if(daysDiff <= 7){
+            if(daysDiff >=0 && daysDiff <= 7){
                 return('red');
-            } else if (diffMonths <= 2){
+            } else if (daysDiff > 7 && daysDiff <= 30){
                 return('orange');
-            }
-            else{
+            } else if (daysDiff > 30 && daysDiff <= 60){
+                return('yellow');
+            } else {
                 return('black');
             }
         } catch (err) {
@@ -135,7 +131,7 @@ const PatentInfo = () => {
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
             </Breadcrumbs>
             <Tabs
-                defaultActiveKey="NPE"
+                defaultActiveKey="PCT"
                 id="uncontrolled-tab-example"
                 className="mb-3 Tabs"
                 fill
@@ -157,8 +153,8 @@ const PatentInfo = () => {
                         <p>PCT Number: <span>{patent.pct_appno}</span></p>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dof)}><p>PCT Date of Filing: <span className={changeColorDates(patent.pct_dof)}>{patent.pct_dof}</span></p></OverlayTrigger>
                         <p>PCT DAS Code: <span>{patent.pct_das}</span></p>
-                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_isr)}><p>PCT ISR Date: <span className={changeColorDates(patent.pct_isr)}>{patent.pct_isr}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_18)}><p>PCT Publication Date: <span className={changeColorDates(patent.pct_18)}>{patent.pct_18}</span></p></OverlayTrigger>
+                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_isr)}><p>PCT ISR Date: <span className={changeColorDates(patent.pct_isr)}>{patent.pct_isr}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_22_md)}><p>PCT 22 Month Date: <span className={changeColorDates(patent.pct_22_md)}>{patent.pct_22_md}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_30_31)}><p>PCT 30 / 31 Month Date: <span className={changeColorDates(patent.pct_30_31)}>{patent.pct_30_31}</span></p></OverlayTrigger>
                     </div>

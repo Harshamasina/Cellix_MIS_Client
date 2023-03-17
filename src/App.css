@@ -818,14 +818,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-align: left;
   font-size: 1.2vw;
   color: #035c3c;
-  font-weight: 550;
+  font-weight: bold;
   justify-content: left;
 }
 
 .tab-data span{
   font-size: 1.1vw;
   font-weight: 500;
-  color: #282c34;
 }
 
 .tab-npe-data{
@@ -957,6 +956,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .orange-notification{
   color: #FF5F1F !important;
+  font-size: 1.1vw;
+  font-weight: 700;
+}
+
+.yellow-notification {
+  color: #FFC000 !important;
   font-size: 1.1vw;
   font-weight: 700;
 }
@@ -1608,7 +1613,7 @@ Breadcrumb.Item{
 .popover{
   background: transparent !important;
   border: none !important;
-  margin-top: 0.5% !important;
+  padding: 10px !important;
 }
 
 .popover-msg{
@@ -1777,4 +1782,11 @@ Breadcrumb.Item{
 
 .delete-update-notification:hover{
   transform: scale(1.1);
+}
+
+.notification-header{
+  text-align: center;
+  color: #0E6E59;
+  font-weight: 600;
+  font-size: 2.5vw;
 }
