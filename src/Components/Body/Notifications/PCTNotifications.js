@@ -54,6 +54,7 @@ const PCTNotifications = () => {
             console.error(err);
         }
     };
+    
     return(
         <div>
             <h3 className="notification-header">PCT Notifications</h3>

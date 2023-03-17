@@ -50,7 +50,7 @@ const Login = () => {
     console.log(user);
     return(
         <div>
-            <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

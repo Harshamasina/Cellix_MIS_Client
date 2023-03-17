@@ -208,7 +208,7 @@ const PatentInfo = () => {
                                             }
                                             <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
-                                            <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
+                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_rfe)}><p>NPE Request for Examination Date: <span className={changeColorDates(npeData.npe_rfe)}>{npeData.npe_rfe}</span></p></OverlayTrigger>
                                             <h4>Notes</h4>
                                             <p className='NPE-notes'>{npeData.npe_notes}</p>
                                         </div>
