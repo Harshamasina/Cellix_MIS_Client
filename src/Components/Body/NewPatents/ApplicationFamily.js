@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Accordion, Button, Modal } from 'react-bootstrap';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const ApplicationFamily = () => {
     const [patentData, setPatentData] = useState({
@@ -47,6 +48,7 @@ const ApplicationFamily = () => {
     const [submitting, setSubmitting] = useState(false);
     const [confirmCode, setConfirmCode] = useState('');
     const [errorMessage, setErrorMessage]  = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleInputs = (e) => {
         setPatentData({ ...patentData, [e.target.name]: e.target.value });
@@ -198,8 +200,11 @@ const ApplicationFamily = () => {
         }
     }
 
+    const toggleShowPassword = () => setShowPassword(!showPassword);
+
     const handleCloseSubmitModal= () => {
         setShowSubmitDeleteModel(false);
+        setShowPassword(false);
     }
 
     return(
@@ -598,13 +603,16 @@ const ApplicationFamily = () => {
                             </Modal.Header>
                             <Modal.Body>
                                 <p>Are you sure you want to submit this Application? Please verify whether all the inputs are correct if so Please enter the confirmation code to submit the Application Family</p>
-                                <div className='input-box'>
+                                <div className='delete-input-box'>
                                     <input
-                                        type="password"
+                                        type={showPassword ? 'text' : 'password'}
                                         placeholder="Enter confirmation code"
                                         value={confirmCode}
                                         onChange={ (e) => setConfirmCode(e.target.value) }
                                     />
+                                    <div className="eye-icon" onClick={toggleShowPassword}>
+                                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                                    </div>
                                 </div>
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                             </Modal.Body>

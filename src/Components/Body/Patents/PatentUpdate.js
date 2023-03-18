@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { Breadcrumbs } from '@mui/material';
 import { Accordion, Button, Modal } from 'react-bootstrap';
 import DeleteApplicationFamily from './DeleteApplicationFamily';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/analsys.jpg";
@@ -52,6 +53,7 @@ const PatentUpdate = () => {
     const [submitting, setSubmitting] = useState(false);
     const [confirmCode, setConfirmCode] = useState('');
     const [errorMessage, setErrorMessage]  = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -253,7 +255,10 @@ const PatentUpdate = () => {
 
     const handleCloseSubmitModal= () => {
         setShowSubmitDeleteModel(false);
+        setShowPassword(false);
     }
+
+    const toggleShowPassword = () => setShowPassword(!showPassword);
 
     if(loading){
         return (
@@ -672,13 +677,16 @@ const PatentUpdate = () => {
                             <Modal.Header><Modal.Title className='Modal-title-submit-form'>Confirmation Application Family Data Update</Modal.Title></Modal.Header>
                             <Modal.Body>
                                 <p>Are you sure you want to update this Data? Please verify whether all the inputs are correct if so Please enter the confirmation code to update the Application</p>
-                                <div className='input-box'>
+                                <div className='delete-input-box'>
                                     <input
-                                        type="password"
+                                        type={showPassword ? 'text' : 'password'}
                                         placeholder="Enter confirmation code"
                                         value={confirmCode}
                                         onChange={ (e) => setConfirmCode(e.target.value) }
                                     />
+                                    <div className="eye-icon" onClick={toggleShowPassword}>
+                                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                                    </div>
                                 </div>
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                             </Modal.Body>

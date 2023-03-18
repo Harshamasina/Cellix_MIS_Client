@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const PCTPatentForm = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/html+css.jpg";
@@ -23,6 +24,7 @@ const PCTPatentForm = () => {
     const [showModal, setShowModal] = useState(false);
     const [confirmCode, setConfirmCode] = useState('');
     const [errorMessage, setErrorMessage]  = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     let name, value;
     let handleInputs = (e) => {
@@ -72,7 +74,10 @@ const PCTPatentForm = () => {
 
     const handleModalClose = () => {
         setShowModal(false);
+        setShowPassword(false);
     };
+
+    const toggleShowPassword = () => setShowPassword(!showPassword);
 
     return(
         <div>
@@ -176,13 +181,16 @@ const PCTPatentForm = () => {
                         </Modal.Header>
                         <Modal.Body>
                             <p>Are you sure you want to submit the form? Please verify all data inserted correctly if so Please enter the confirmation code to submit the Patent</p>
-                            <div className='input-box'>
+                            <div className='delete-input-box'>
                                     <input
-                                        type="password"
+                                        type={showPassword ? 'text' : 'password'}
                                         placeholder="Enter confirmation code"
                                         value={confirmCode}
                                         onChange={ (e) => setConfirmCode(e.target.value) }
                                     />
+                                    <div className="eye-icon" onClick={toggleShowPassword}>
+                                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                                    </div>
                                 </div>
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                         </Modal.Body>

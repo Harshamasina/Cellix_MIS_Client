@@ -7,6 +7,7 @@ import { Parallax } from 'react-parallax';
 import { Button, Modal } from "react-bootstrap";
 import DeleteCustomNotif from './DeleteCustomNotif';
 import { Link } from "react-router-dom";
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const UpdateCustomNotif = () => {
     const { id } = useParams();
@@ -22,6 +23,7 @@ const UpdateCustomNotif = () => {
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -73,7 +75,10 @@ const UpdateCustomNotif = () => {
 
     const handleModalClose= () => {
         setShowModal(false);
+        setShowPassword(false);
     }
+
+    const toggleShowPassword = () => setShowPassword(!showPassword);
 
     if(loading){
         return (
@@ -154,13 +159,16 @@ const UpdateCustomNotif = () => {
                         </Modal.Header>
                         <Modal.Body>
                             <p>Are you sure you want to update the form? Please verify all data inserted correctly if so Please enter the confirmation code to update the notification</p>
-                            <div className='input-box'>
+                            <div className='delete-input-box'>
                                     <input
-                                        type="password"
+                                        type={showPassword ? 'text' : 'password'}
                                         placeholder="Enter confirmation code"
                                         value={confirmCode}
                                         onChange={ (e) => setConfirmCode(e.target.value) }
                                     />
+                                    <div className="eye-icon" onClick={toggleShowPassword}>
+                                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                                    </div>
                                 </div>
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                         </Modal.Body>

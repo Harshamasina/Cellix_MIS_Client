@@ -45,9 +45,7 @@ const Login = () => {
                 setErrorMsg(err.message);
                 console.log("Error", err.message);
             });
-        console.log(user);
     }
-    console.log(user);
     return(
         <div>
             <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg">
