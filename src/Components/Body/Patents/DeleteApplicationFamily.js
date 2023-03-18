@@ -14,12 +14,13 @@ const DeleteApplicationFamily = ({PatentId}) => {
 
     const handleDelete = async () => {
         try {
-            const res = await axios.delete(`https://misbackend.cellixbio.info/api/deletepatent/${PatentId}`, {
-                headers: { 'confirmCode': confirmCode },
-            });
+                const res = await axios.delete(`https://misbackend.cellixbio.info/api/deletepatent/${PatentId}`, {
+                    headers: { 'confirmCode': confirmCode },
+                });
             if(res.status === 201){
                 setErrorMessage(res.data.message);
                 setDeleteModal(false);
+                alert("Application Family got Successfully Deleted and Stored in Backup");
                 navigate('/patents');
                 window.location.reload();
             }
