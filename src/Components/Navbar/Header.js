@@ -24,7 +24,8 @@ import ForgotPassword from '../Body/Login/ForgotPassword';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
-import DeletedApplications from '../Body/Patents/DeletedApplications';
+import DeletedApplications from '../Body/Patents/DeletedApplications/DeletedApplications';
+import DeletedApplicationInfo from '../Body/Patents/DeletedApplications/DeletedApplicationInfo';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -143,6 +144,7 @@ function NavBar() {
                     <Route path='/patentinfo/:ref' element={login ? <PatentInfo /> : <Navigate to='/login' />} />
                     <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />} />
                     <Route path='/deletedapplications' element={login ? <DeletedApplications /> : <Navigate to='/login' />} />
+                    <Route path='/deletedapplication/:ref' element={login ? <DeletedApplicationInfo /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/forgotpassword' element={<ForgotPassword />} />

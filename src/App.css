@@ -1180,6 +1180,40 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 10px;
 }
 
+.password-input-box{
+  position: relative;
+  width: 100%;
+}
+
+.password-input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 0 40px 0 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  margin-top: 1%;
+  background-color: transparent;
+}
+
+.password-input-box .eye-icon {
+  font-size: 20px;
+  color: #0E6E59;
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .patent-textarea{
   height: 150px;
   width: 110%;

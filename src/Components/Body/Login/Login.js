@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const Login = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/key+2.jpg";
@@ -15,6 +16,7 @@ const Login = () => {
     });
     const [ errorMsg, setErrorMsg ] = useState("");
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     let name, value;
     let handleInputs = (e) => {
@@ -46,6 +48,9 @@ const Login = () => {
                 console.log("Error", err.message);
             });
     }
+
+    const toggleShowPassword = () => setShowPassword(!showPassword);
+
     return(
         <div>
             <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg">
@@ -76,14 +81,19 @@ const Login = () => {
                         onChange={handleInputs}
                         autoComplete="off"
                     />
-                    <input 
-                        type="password" 
-                        placeholder='Enter your Password'
-                        name='password'
-                        value={user.password}
-                        onChange={handleInputs}
-                        autoComplete="off"
-                    />
+                    <div className='password-input-box'>
+                        <input 
+                            type={ showPassword ? 'text' : 'password' }
+                            placeholder='Enter your Password'
+                            name='password'
+                            value={user.password}
+                            onChange={handleInputs}
+                            autoComplete="off"
+                        />
+                        <div className="eye-icon" onClick={toggleShowPassword}>
+                            {showPassword ? <BsEyeSlash /> : <BsEye />}
+                        </div>
+                    </div>
                     <input 
                         type="submit" 
                         className="loginbutton" 
