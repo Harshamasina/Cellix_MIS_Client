@@ -852,7 +852,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tab-npe-data span{
   font-size: 1.1vw;
   font-weight: 500;
-  color: #282c34 !important;
 }
 
 .NPE-notes{
@@ -1431,14 +1430,36 @@ Breadcrumb.Item{
   margin-top: 1%;
 }
 
+.prv{
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+  color: #0E6E59;
+  font-size: 1.8vw;
+  margin-top: 2%;
+  margin-left: 7%;
+}
+
+.pct{
+  display: flex;
+  text-align: center;
+  font-weight: 500;
+  color: #0E6E59;
+  font-size: 1.8vw;
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+
 .npe{
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 1.8vw;
   color: #0E6E59;
   text-align: center;
   margin-top: -5%;
+  margin-bottom: 2%;
 }
 
 .npe-details{

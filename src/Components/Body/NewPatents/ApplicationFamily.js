@@ -228,7 +228,7 @@ const ApplicationFamily = () => {
                                     onChange={handleInputs}
                                 />
                             </div>
-
+                            <span className='prv'>Provisional Patent (PRV) Stage</span>
                             {
                                 patentData.prv.map((prvData, prvIndex) => (
                                     <div key={prvIndex}>
@@ -260,7 +260,7 @@ const ApplicationFamily = () => {
                                 ))
                             }
                             <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add New PRV</Button>
-                            
+                            <span className='pct'>Patent Corporation Treaty (PCT) Stage</span>
                             <div className="input-box">
                                 <span className="details">PCT Date of Filing</span>
                                 <input 
@@ -345,7 +345,7 @@ const ApplicationFamily = () => {
                                 />
                             </div>
                         </div>
-                        <span className='npe'>National Phase Entry Data</span>
+                        <span className='npe'>National Phase Entry (NPE) Stage</span>
                         <Accordion alwaysOpen className='mb-4 update-accordion'>
                             {
                                 patentData.npe.map((npeData, NPEIndex) => (
