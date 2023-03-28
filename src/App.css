@@ -1865,6 +1865,10 @@ Breadcrumb.Item{
   background-color: transparent;
 }
 
+.delete-input-box input:focus{
+  border-color: #0e6e59 !important;
+}
+
 .delete-input-box .eye-icon {
   font-size: 25px;
   color: #0E6E59;
@@ -1880,10 +1884,6 @@ Breadcrumb.Item{
   align-items: center;
 }
 
-.delete-box-input input:focus{
-  border-color: #0e6e59;
-}
-
 .searchPatentImg-container{
   display: flex;
   justify-content: center;
@@ -1891,4 +1891,16 @@ Breadcrumb.Item{
 
 .searchPatentImg{
   width: 25%;
+}
+
+.forgot-code{
+  color: #0E6E59;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 1%;
+}
+
+.forgot-code:hover{
+  color: #15B39D;
+  text-decoration: underline 1px solid #15B39D;
 }

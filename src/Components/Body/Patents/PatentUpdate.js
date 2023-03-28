@@ -691,6 +691,7 @@ const PatentUpdate = () => {
                                     </div>
                                 </div>
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
+                                <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
