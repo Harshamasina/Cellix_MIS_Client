@@ -1,4 +1,5 @@
 import { Parallax } from 'react-parallax';
+import FirmsTable from './FirmsTable';
 
 const Firms = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Office.jpg";
@@ -15,6 +16,7 @@ const Firms = () => {
                     </div>
                 </Parallax>
             </div>
+            <FirmsTable></FirmsTable>
         </div>
     );
 }

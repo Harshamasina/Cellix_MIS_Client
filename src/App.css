@@ -1785,12 +1785,13 @@ Breadcrumb.Item{
 .notification-table{
   width: 90% !important;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 .notification-table thead{
   text-align: center;
   color: #0E6E59;
-  font-size: 1.1vw;
+  font-size: 1.25vw;
 }
 
 .notification-table tbody{
@@ -1843,7 +1844,7 @@ Breadcrumb.Item{
   text-align: center;
   color: #0E6E59;
   font-weight: 600;
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 .delete-input-box{
@@ -1903,4 +1904,23 @@ Breadcrumb.Item{
 .forgot-code:hover{
   color: #15B39D;
   text-decoration: underline 1px solid #15B39D;
+}
+
+.Firms-Table{
+  width: 60% !important;
+  margin: 0 auto;
+  margin-top: 2%;
+  border-radius: 10px;
+}
+
+.Firms-Table thead{
+  text-align: center;
+  color: #0E6E59;
+  font-size: 1.25vw;
+}
+
+.Firms-Table tbody{
+  text-align: center;
+  font-size: 1.03vw;
+  color: #282c34;
 }

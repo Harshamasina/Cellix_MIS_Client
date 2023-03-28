@@ -9,6 +9,7 @@ const PCTNotifications = () => {
     const [PCTNotifications, setPCTNotifications] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -60,16 +61,18 @@ const PCTNotifications = () => {
             <h3 className="notification-header">PCT Notifications</h3>
             <Table striped hover className='mt-3 shadow-lg notification-table'>
                 <thead>
-                    <th>Sno</th>
-                    <th>Reference Number</th>
-                    <th>Field</th>
-                    <th>Date</th>
-                    <th>Days Left</th>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Reference Number</th>
+                        <th>Field</th>
+                        <th>Date</th>
+                        <th>Days Left</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {
                         PCTNotifications && PCTNotifications.map((PCTNotification, index) => (
-                            <tr>
+                            <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td><Link className='reference-links' to={"/patentinfo/"+PCTNotification.ref_no} target="_blank">{PCTNotification.ref_no}</Link></td>
                                 <td>{PCTNotification.fieldName}</td>

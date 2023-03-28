@@ -284,7 +284,7 @@ const PatentUpdate = () => {
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
                         <div className='UpdatePageContent'>
-                            <h1> { patent && patent.ref_no } Update</h1>
+                            <h1>Update { patent && patent.ref_no }</h1>
                         </div>
                     </div>
                 </div>
@@ -293,7 +293,7 @@ const PatentUpdate = () => {
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
-                <Link to={"/patentupdate/"+patent._id} className='BC-Links'>{patent.ref_no} Update</Link>
+                <Link to={"/patentupdate/"+patent._id} className='BC-Links'>Update {patent.ref_no}</Link>
             </Breadcrumbs>
             <div className="patentForm">
                 <div className="content">
