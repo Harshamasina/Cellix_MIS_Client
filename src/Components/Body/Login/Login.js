@@ -97,7 +97,7 @@ const Login = () => {
                     <input 
                         type="submit" 
                         className="loginbutton" 
-                        value="Login"
+                        value="Login" 
                         onClick={handleSubmit}
                         disabled={buttonDisabled}
                     />

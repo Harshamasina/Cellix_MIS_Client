@@ -4,6 +4,7 @@ import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Accordion, Button, Modal } from 'react-bootstrap';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicationFamily = () => {
     const [patentData, setPatentData] = useState({
@@ -49,6 +50,7 @@ const ApplicationFamily = () => {
     const [confirmCode, setConfirmCode] = useState('');
     const [errorMessage, setErrorMessage]  = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleInputs = (e) => {
         setPatentData({ ...patentData, [e.target.name]: e.target.value });
@@ -188,7 +190,7 @@ const ApplicationFamily = () => {
                 console.log(res);
                 setErrorMessage(res.data.message);
                 alert("Application Family Submitted Successfully");
-                window.location.reload();
+                navigate("/patentinfo/"+patentData.ref_no);
             }
         } catch (err) {
             console.error(err);

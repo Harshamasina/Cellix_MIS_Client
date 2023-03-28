@@ -26,6 +26,7 @@ import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import DeletedApplications from '../Body/Patents/DeletedApplications/DeletedApplications';
 import DeletedApplicationInfo from '../Body/Patents/DeletedApplications/DeletedApplicationInfo';
+import { VscSignOut } from 'react-icons/vsc';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -162,7 +163,7 @@ function NavBar() {
                     </Modal.Header>
                     <Modal.Footer>
                         <Button className = "close-button" onClick={handleClose}>close</Button>
-                        <Button className='signout-modal-button' onClick={handleSignOut}>Yes, Logout</Button>
+                        <Button className='signout-modal-button' onClick={handleSignOut}><VscSignOut /> Yes, Logout</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
