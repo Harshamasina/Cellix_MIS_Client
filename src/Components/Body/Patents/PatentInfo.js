@@ -142,7 +142,7 @@ const PatentInfo = () => {
                             <div className='tab-data' key={prvIndex}>
                                 <h4>PRV {prvIndex + 1}</h4>
                                 <p>PRV Application Number: <span>{prvData.prv_appno}</span></p>
-                                <p>PRV Application Number: <span>{prvData.prv_dof}</span></p>
+                                <p>PRV Date of Filing: <span>{prvData.prv_dof}</span></p>
                             </div>
                         ))
                     }

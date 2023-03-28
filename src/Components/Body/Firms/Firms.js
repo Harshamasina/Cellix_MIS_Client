@@ -1,7 +1,7 @@
 import { Parallax } from 'react-parallax';
 
 const Firms = () => {
-    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/search+1.jpg";
+    const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Office.jpg";
     return(
         <div>
             <div>

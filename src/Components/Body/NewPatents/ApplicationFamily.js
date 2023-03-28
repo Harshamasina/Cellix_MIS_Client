@@ -597,7 +597,7 @@ const ApplicationFamily = () => {
                             />
                         </div>
                         {submissionError && <p className='error-message'>{submissionError}</p>}
-                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false}>
+                        <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false} centered>
                             <Modal.Header>
                                 <Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title>
                             </Modal.Header>

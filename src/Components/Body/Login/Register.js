@@ -60,7 +60,7 @@ const Register = () => {
 
     return(
         <div>
-            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg" blur={1}>
+            <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>

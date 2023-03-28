@@ -40,38 +40,40 @@ const SearchPatents = () => {
             </div>
             <div className='search-container'>
                 <div className='box-container'>
-                {
-                    searchPatent && searchPatent.map((patent, i) => (
-                        <div className='box' key={i}>
-                            <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
-                            <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
-                            {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
-                            <uL className='country-ul'>
-                                {
-                                    patent.npe && patent.npe.map((npe) => (
-                                        <li>
-                                            <ul className='search-ul'>
-                                                <li className='search-span'>Country: <span>{npe.npe_country}</span></li>
-                                                <li className='search-span'>App No: <span>{npe.npe_appno ? npe.npe_appno : (<span>NA</span>)}</span></li>
-                                                <li className='search-span'>Patent No: <span>{npe.npe_patent ? npe.npe_patent : (<span>NA</span>)}</span></li>
-                                            </ul>
-                                        </li>
-                                    ))
-                                }
-                            </uL>
-                            <OverlayTrigger 
-                                placement="auto" 
-                                delay={{ show: 250, hide: 400 }}
-                                trigger={['hover', 'focus']}
-                                overlay={popover}
-                            >
-                                <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">
-                                    <HiInformationCircle />
-                                </Link>
-                            </OverlayTrigger>
-                        </div>
-                    ))
-                }
+                    {
+                        searchPatent && searchPatent.length === 0 ? 
+                            <div className='searchPatentImg-container'><img className="searchPatentImg" src="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Search+Not+Found.png" alt="not Found"></img></div> : 
+                        searchPatent && searchPatent.map((patent, i) => (
+                            <div className='box' key={i}>
+                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
+                                <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
+                                {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
+                                <uL className='country-ul'>
+                                    {
+                                        patent.npe && patent.npe.map((npe) => (
+                                            <li>
+                                                <ul className='search-ul'>
+                                                    <li className='search-span'>Country: <span>{npe.npe_country}</span></li>
+                                                    <li className='search-span'>App No: <span>{npe.npe_appno ? npe.npe_appno : (<span>NA</span>)}</span></li>
+                                                    <li className='search-span'>Patent No: <span>{npe.npe_patent ? npe.npe_patent : (<span>NA</span>)}</span></li>
+                                                </ul>
+                                            </li>
+                                        ))
+                                    }
+                                </uL>
+                                <OverlayTrigger 
+                                    placement="auto" 
+                                    delay={{ show: 250, hide: 400 }}
+                                    trigger={['hover', 'focus']}
+                                    overlay={popover}
+                                >
+                                    <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">
+                                        <HiInformationCircle />
+                                    </Link>
+                                </OverlayTrigger>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>

@@ -1862,3 +1862,12 @@ Breadcrumb.Item{
 .delete-box-input input:focus{
   border-color: #0e6e59;
 }
+
+.searchPatentImg-container{
+  display: flex;
+  justify-content: center;
+}
+
+.searchPatentImg{
+  width: 25%;
+}

@@ -175,7 +175,7 @@ const PCTPatentForm = () => {
                         disabled={submitting}
                     >
                     </input>
-                    <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg">
+                    <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>
                         <Modal.Header >
                             <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
                         </Modal.Header>
