@@ -1792,6 +1792,9 @@ Breadcrumb.Item{
   text-align: center;
   color: #0E6E59;
   font-size: 1.25vw;
+  position: sticky;
+  top: 0px;
+  background: #ffffff;
 }
 
 .notification-table tbody{
@@ -1914,6 +1917,9 @@ Breadcrumb.Item{
 }
 
 .Firms-Table thead{
+  position: sticky;
+  top: 0px;
+  background: white;
   text-align: center;
   color: #0E6E59;
   font-size: 1.25vw;

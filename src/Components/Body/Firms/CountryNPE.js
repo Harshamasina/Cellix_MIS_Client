@@ -68,7 +68,7 @@ const CountryNPE = () => {
                         npeCountry && npeCountry.map((npe, index) => (
                             <div className="box" key={index}>
                                 <h4>{npe.npe_country}</h4>
-                                <h4>NPE Firms: <span>{npe.npe_firms ? npe.npe_firms : "NA"}</span></h4>
+                                <h4>NPE Firm: <span>{npe.npe_firms ? npe.npe_firms : "NA"}</span></h4>
                                 <h4>NPE Application: <span>{npe.npe_appno}</span></h4>
                                 <h4>NPE Date of Filing: <span>{npe.npe_dof ? npe.npe_dof : "NA"}</span></h4>
                                 <h4>NPE Patent: <span>{ npe.npe_patent ? npe.npe_patent : "NA" }</span></h4>
