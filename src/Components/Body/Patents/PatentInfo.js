@@ -10,6 +10,7 @@ import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
+import { Helmet } from 'react-helmet';
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
@@ -106,6 +107,11 @@ const PatentInfo = () => {
     
     return(
         <div>
+            <Helmet>
+                <title>{ref} | MIS</title>
+                <meta name="description" content={ref}></meta>
+            </Helmet>
+
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
@@ -125,11 +131,13 @@ const PatentInfo = () => {
                     </div>
                 </div>
             </Parallax>
+
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
             </Breadcrumbs>
+            
             <Tabs
                 defaultActiveKey="PCT"
                 id="uncontrolled-tab-example"

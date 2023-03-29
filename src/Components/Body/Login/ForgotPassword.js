@@ -3,6 +3,7 @@ import { Parallax } from 'react-parallax';
 import { auth } from '../../../config/firebase';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 const ForgotPassword = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/notifications+1.jpg";
@@ -26,6 +27,10 @@ const ForgotPassword = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Forgot Password | MIS</title>
+                <meta name="description" content="Cellix Bio MIS application Forgot Password Page" />
+            </Helmet>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -45,15 +50,13 @@ const ForgotPassword = () => {
                         name='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                    >
-                    </input>
+                    />
                     <input 
                         type="button" 
                         className="loginbutton" 
                         value="Reset Password"
                         onClick={handleResetPassword}
-                    >
-                    </input>
+                    />
                     { message && <h4 className='error-message'>{message}</h4> }
                     { errorMsg && <h4 className='error-message'>{errorMsg}</h4> }
                     <div className="login-links">

@@ -7,6 +7,7 @@ import PCTNotifications from './PCTNotifications';
 import NPENotifications from './NPENotifications';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { Helmet } from 'react-helmet';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
@@ -18,6 +19,10 @@ const Notifications = () => {
     
     return(
         <div>
+            <Helmet>
+                <title>PCT, NPE Notifications | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Application PCT, NPE and Custom notifications"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

@@ -4,11 +4,17 @@ import PatentDashboard from './PatentsDashboard';
 import SearchPatents from './SearchPatents';
 import { Breadcrumbs } from '@mui/material';
 import { MdOutlineBackup } from 'react-icons/md';
+import { Helmet } from 'react-helmet';
 
 const Patents = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Bar+Graphs.jpg";
     return(
         <div>
+            <Helmet>
+                <title>Application Families | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Applications Families page"></meta>
+            </Helmet>
+
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -19,10 +25,12 @@ const Patents = () => {
                     </div>
                 </div>
             </Parallax>
+
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
             </Breadcrumbs>
+            
             <SearchPatents></SearchPatents>
             <PatentDashboard></PatentDashboard>
         </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { auth } from '../../../config/firebase';
 import { updatePassword } from 'firebase/auth';
+import { Helmet } from "react-helmet";
 
 const UpdatePassword = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/fingerprint.jpg";
@@ -50,6 +51,10 @@ const UpdatePassword = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Change Password | MIS</title>
+                <meta name="description" content="Cellix Bio MIS application Change Password Page" />
+            </Helmet>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

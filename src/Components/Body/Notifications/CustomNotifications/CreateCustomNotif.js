@@ -4,6 +4,7 @@ import { Parallax } from 'react-parallax';
 import { Modal, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const CreateCustomNotif = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Deadline.jpg";
@@ -61,6 +62,10 @@ const CreateCustomNotif = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Create Custom Notification | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Application create custom notification page"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

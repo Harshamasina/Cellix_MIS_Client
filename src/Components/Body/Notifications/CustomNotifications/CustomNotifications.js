@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import DeleteCustomNotif from './DeleteCustomNotif';
 import { Breadcrumbs } from '@mui/material';
+import { Helmet } from 'react-helmet';
 
 const CustomNotifications = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Todos.jpg";
@@ -68,6 +69,10 @@ const CustomNotifications = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Custom Notifications | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Application Custom Notifications"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

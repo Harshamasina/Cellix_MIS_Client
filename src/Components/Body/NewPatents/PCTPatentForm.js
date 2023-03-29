@@ -5,6 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { Helmet } from 'react-helmet';
 
 const PCTPatentForm = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/html+css.jpg";
@@ -81,6 +82,10 @@ const PCTPatentForm = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>New International Patent | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Application new International Patent entry"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

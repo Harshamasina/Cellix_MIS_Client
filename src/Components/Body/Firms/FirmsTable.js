@@ -1,62 +1,77 @@
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const FirmsTable = () => {
     const Firms = [
         {
             country: "USA(US)",
-            Firm: "Trinity Law"
+            Firm: "Trinity Law",
+            countryCode: "US"
         },
         {
             country: "Europe(EP)",
-            Firm: "ISAR"
+            Firm: "ISAR",
+            countryCode: "EP"
         },
         {
             country: "Japan(JP)",
-            Firm: "Saegusa"
+            Firm: "Saegusa",
+            countryCode: "JP"
         },
         {
             country: "Singapore(SG)",
-            Firm: "Mark & Clerk"
+            Firm: "Mark & Clerk",
+            countryCode: "SG"
         },
         {
-            country: "South Korea(SK)",
-            Firm: "First Law"
+            country: "South Korea(KR)",
+            Firm: "First Law",
+            countryCode: "KR"
         },
         {
             country: "New Zealand(NZ)",
-            Firm: "Eagar"
+            Firm: "Eagar",
+            countryCode: "NZ"
         },
         {
             country: "Australia(AU)",
-            Firm: "Eagar"
+            Firm: "Eagar",
+            countryCode: "AU"
         },
         {
             country: "South Africa(ZA)",
-            Firm: "De Chalains"
+            Firm: "De Chalains",
+            countryCode: "ZA"
         },
         {
             country: "Mexico(MX)",
-            Firm: "CYS"
+            Firm: "CYS",
+            countryCode: "MX"
         },
         {
             country: "Brazil(BR)",
-            Firm: "DN"
+            Firm: "DN",
+            countryCode: "BR"
         },
         {
             country: "Israel(IL)",
-            Firm: "Liad Whatstein"
+            Firm: "Liad Whatstein",
+            countryCode: "IL"
         },
         {
             country: "Canada(CA)",
-            Firm: "NELLIGAN O'BRIEN PAYNE LLP"
+            Firm: "NELLIGAN O'BRIEN PAYNE LLP",
+            countryCode: "CA"
         },
         {
             country: "Russia(RU) ",
-            Firm: "IP trend, Patentica ( 103A and 155)"
+            Firm: "IP trend, Patentica ( 103A and 155)",
+            countryCode: "RU"
         },
         {
             country: "India(IN)",
-            Firm: "Cellix, KK"
+            Firm: "Cellix, KK",
+            countryCode: "IN"
         }
     ];
     
@@ -75,7 +90,7 @@ const FirmsTable = () => {
                         Firms.map((firm, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{firm.country}</td>
+                                <td><Link className='reference-links' to={"/countrynpe/"+firm.countryCode} target="_blank">{firm.country}</Link></td>
                                 <td>{firm.Firm}</td>
                             </tr>
                         ))

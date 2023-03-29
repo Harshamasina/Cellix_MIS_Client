@@ -7,6 +7,7 @@ import { Parallax } from 'react-parallax';
 import { Accordion, Tab, Tabs } from "react-bootstrap";
 import { Breadcrumbs } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const DeletedApplicationInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/search+1.jpg";
@@ -50,6 +51,11 @@ const DeletedApplicationInfo = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>{ref} | Deleted Application | MIS</title>
+                <meta name="description" content={ref}></meta>
+            </Helmet>
+
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

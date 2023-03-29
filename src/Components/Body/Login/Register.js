@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../../config/firebase';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/lady+1.jpg";
@@ -60,6 +61,10 @@ const Register = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Register | MIS | Cellix Bio</title>
+                <meta name="description" content="Cellix Bio MIS application Register Page" />
+            </Helmet>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

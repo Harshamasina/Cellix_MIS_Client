@@ -10,6 +10,7 @@ import { Breadcrumbs } from '@mui/material';
 import { Accordion, Button, Modal } from 'react-bootstrap';
 import DeleteApplicationFamily from './DeleteApplicationFamily';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { Helmet } from 'react-helmet';
 
 const PatentUpdate = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/analsys.jpg";
@@ -280,6 +281,9 @@ const PatentUpdate = () => {
     
     return(
         <div>
+            <Helmet>
+                <title>Update {patent.ref_no} | MIS</title>
+            </Helmet>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={1}>
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { CgDatabase } from 'react-icons/cg';
+import { Helmet } from 'react-helmet';
 
 const DeletedApplications = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/trends+1.jpg";
@@ -46,6 +47,10 @@ const DeletedApplications = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Deleted Application Families | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Deleted Applications Families page"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { Helmet } from "react-helmet";
 
 const Login = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/key+2.jpg";
@@ -53,6 +54,10 @@ const Login = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>Login | MIS | Cellix Bio</title>
+                <meta name="description" content="Cellix Bio MIS application Login Page" />
+            </Helmet>
             <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

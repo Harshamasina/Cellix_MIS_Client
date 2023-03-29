@@ -26,6 +26,7 @@ import UpdatePassword from '../Body/Login/UpdatePassword';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import DeletedApplications from '../Body/Patents/DeletedApplications/DeletedApplications';
 import DeletedApplicationInfo from '../Body/Patents/DeletedApplications/DeletedApplicationInfo';
+import CountryNPE from '../Body/Firms/CountryNPE';
 import { VscSignOut } from 'react-icons/vsc';
 
 function NavBar() {
@@ -146,6 +147,7 @@ function NavBar() {
                     <Route path='/patentupdate/:id' element={login ? <PatentUpdate /> : <Navigate to='/login' />} />
                     <Route path='/deletedapplications' element={login ? <DeletedApplications /> : <Navigate to='/login' />} />
                     <Route path='/deletedapplication/:ref' element={login ? <DeletedApplicationInfo /> : <Navigate to='/login' />} />
+                    <Route path='/countrynpe/:countrycode' element={login ? <CountryNPE /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/forgotpassword' element={<ForgotPassword />} />

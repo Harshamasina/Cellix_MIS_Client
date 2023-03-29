@@ -8,6 +8,7 @@ import { Button, Modal } from "react-bootstrap";
 import DeleteCustomNotif from './DeleteCustomNotif';
 import { Link } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { Helmet } from "react-helmet";
 
 const UpdateCustomNotif = () => {
     const { id } = useParams();
@@ -99,6 +100,10 @@ const UpdateCustomNotif = () => {
     }
     return(
         <div>
+            <Helmet>
+                <title>Update Custom Notification | MIS</title>
+                <meta name="description" content="Cellix Bio MIS Application create custom notification page"></meta>
+            </Helmet>
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
