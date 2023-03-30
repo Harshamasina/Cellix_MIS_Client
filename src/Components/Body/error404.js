@@ -11,6 +11,7 @@ const Error404 = () => {
                 <title>Error 404 | MIS</title>
                 <meta name="description" content="Error 404, Page Not Found"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

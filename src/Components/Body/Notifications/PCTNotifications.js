@@ -59,6 +59,7 @@ const PCTNotifications = () => {
     return(
         <div>
             <h3 className="notification-header">PCT Notifications</h3>
+            
             <Table striped hover className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>

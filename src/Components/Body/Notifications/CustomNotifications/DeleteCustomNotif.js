@@ -40,6 +40,7 @@ const DeleteCustomNotif = ({notificationId}) => {
     return(
         <div>
             <MdOutlineNotificationsOff onClick={() => setDeleteModal(true)} />
+            
             <Modal size='lg' show={deleteModal} onHide={handleCloseModal} centered backdrop="static" keyboard={false}>
                 <Modal.Header  className='justify-content-center' style={{color: "#FF4433"}}>
                     <Modal.Title>Confirm Deletion</Modal.Title>

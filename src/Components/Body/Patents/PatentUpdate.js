@@ -284,6 +284,7 @@ const PatentUpdate = () => {
             <Helmet>
                 <title>Update {patent.ref_no} | MIS</title>
             </Helmet>
+
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg" blur={1}>
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
@@ -293,12 +294,14 @@ const PatentUpdate = () => {
                     </div>
                 </div>
             </Parallax>
+
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/patents" className='BC-Links'>Application Dashboard</Link>
                 <Link to={"/patentinfo/"+patent.ref_no} className='BC-Links'>{patent.ref_no}</Link>
                 <Link to={"/patentupdate/"+patent._id} className='BC-Links'>Update {patent.ref_no}</Link>
             </Breadcrumbs>
+
             <div className="patentForm">
                 <div className="content">
                     <form className="form">
@@ -679,6 +682,7 @@ const PatentUpdate = () => {
                                 onClick={handleUpdate}
                             />
                         </div>
+
                         <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false} centered>
                             <Modal.Header><Modal.Title className='Modal-title-submit-form'>Confirmation Application Family Data Update</Modal.Title></Modal.Header>
                             <Modal.Body>

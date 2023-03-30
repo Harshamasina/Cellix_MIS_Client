@@ -43,6 +43,7 @@ const DeleteApplicationFamily = ({PatentId}) => {
             <div className="remove-application-container">
                 <Button className= "remove-application" onClick={() => setDeleteModal(true)}><RiDeleteBin5Line /> Delete Application</Button>
             </div>
+            
             <Modal size='lg' show={deleteModal} onHide={handleCloseModal} centered backdrop="static" keyboard={false}>
                 <Modal.Header  className='justify-content-center' style={{color: "#FF4433"}}>
                     <Modal.Title>Confirm Deletion</Modal.Title>

@@ -81,9 +81,9 @@ const UpdateCustomNotif = () => {
 
     const toggleShowPassword = () => setShowPassword(!showPassword);
 
-    const PopoverDeletedApplications = (
-        <Popover className='popover'>
-          <Popover.Body as="p" className='popover-msg'>Delete Notification</Popover.Body>
+    const DeleteNotificationPopover = (
+        <Popover>
+            <Popover.Body as="span" className='popover-msg'>Delete notification</Popover.Body>
         </Popover>
     );
 
@@ -110,6 +110,7 @@ const UpdateCustomNotif = () => {
                 <title>Update Custom Notification | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application create custom notification page"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -118,6 +119,7 @@ const UpdateCustomNotif = () => {
                     </div>
                 </div>
             </Parallax>
+
             <div className='Login-Container'>
                 <form className='loginform'>
                     <input 
@@ -160,16 +162,11 @@ const UpdateCustomNotif = () => {
                         onClick={handleUpdate}
                     />
 
-                    <div className="delete-update-notification">
-                        <OverlayTrigger 
-                            placement="bottom" 
-                            delay={{ show: 250, hide: 400 }}
-                            trigger={['hover', 'focus']}
-                            overlay={PopoverDeletedApplications}
-                        >
+                    <OverlayTrigger trigger='hover' placement="bottom" overlay={DeleteNotificationPopover}>
+                        <div className="delete-update-notification">
                             <DeleteCustomNotif notificationId = {notification._id} />
-                        </OverlayTrigger>
-                    </div>
+                        </div>
+                    </OverlayTrigger>
 
                     <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>
                         <Modal.Header >
@@ -196,6 +193,7 @@ const UpdateCustomNotif = () => {
                             <Button className = "close-button" onClick={handleUpdateModal} disabled={!confirmCode}>Submit</Button>
                         </Modal.Footer>
                     </Modal>
+
                     <div className="login-links">
                         <Link to='/customnotifications' className='register-Link'>Back to Notifications</Link>
                     </div>

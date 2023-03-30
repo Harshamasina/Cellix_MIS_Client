@@ -23,6 +23,7 @@ const Notifications = () => {
                 <title>PCT, NPE Notifications | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application PCT, NPE and Custom notifications"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">

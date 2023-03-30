@@ -38,6 +38,7 @@ const SearchPatents = () => {
                 >
                 </input>
             </div>
+            
             <div className='search-container'>
                 <div className='box-container'>
                     {

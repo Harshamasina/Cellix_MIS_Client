@@ -70,6 +70,7 @@ const CreateCustomNotif = () => {
                 <title>Create Custom Notification | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application create custom notification page"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={150} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -78,6 +79,7 @@ const CreateCustomNotif = () => {
                     </div>
                 </div>
             </Parallax>
+
             <div className='Login-Container'>
                 <form className='loginform'>
                     <input 

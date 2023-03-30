@@ -67,12 +67,19 @@ const CustomNotifications = () => {
         </Popover>
     );
 
+    const updatePopover = (
+        <Popover id="update-popover">
+            <Popover.Body as="span" className='popover-msg'>update notification</Popover.Body>
+        </Popover>
+    );
+
     return(
         <div>
             <Helmet>
                 <title>Custom Notifications | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application Custom Notifications"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
@@ -91,11 +98,13 @@ const CustomNotifications = () => {
                     </div>
                 </div>
             </Parallax>
+
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to='/home' className='BC-Links'>Home</Link>
                 <Link to='/notifications' className='BC-Links'>Notifications</Link>
                 <Link t0='/customnotifications' className='BC-Links'>Custom Notifications</Link>
             </Breadcrumbs>
+
             <Table striped hover className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>
@@ -119,9 +128,11 @@ const CustomNotifications = () => {
                                 <td>{notification.descp}</td>
                                 <td className={changeColor(notification.daysLeft)}>{notification.daysLeft}</td>
                                 <td>
-                                    <Link to={"/updatenotifications/"+notification._id} className="update-notification">
-                                        <MdOutlineEditNotifications />
-                                    </Link>
+                                    <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={updatePopover}>
+                                        <Link to={"/updatenotifications/"+notification._id} className="update-notification">
+                                            <MdOutlineEditNotifications />
+                                        </Link>
+                                    </OverlayTrigger>
                                     {notification.daysLeft <= 0 ? (<div className="delete-notification"><DeleteCustomNotif notificationId = {notification._id} /></div>) : ""}
                                 </td>
                             </tr>
