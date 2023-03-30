@@ -29,11 +29,11 @@ const Notifications = () => {
                         <div className='FirmPageContent'>
                             <h1>Cellix Bio MIS Notifications</h1>
                             <OverlayTrigger 
-                            placement="bottom" 
-                            delay={{ show: 250, hide: 400 }}
-                            trigger={['hover', 'focus']}
-                            overlay={popover}
-                        >
+                                placement="bottom" 
+                                delay={{ show: 250, hide: 400 }}
+                                trigger={['hover', 'focus']}
+                                overlay={popover}
+                            >
                             <Link className='customNote-link' to="/customnotifications">
                                 <MdOutlineNotifications />
                             </Link>

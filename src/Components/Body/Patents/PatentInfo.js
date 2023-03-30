@@ -68,7 +68,7 @@ const PatentInfo = () => {
             if(diffMonths <= 2){
                 return(
                     <Popover>
-                        <Popover.Body>
+                        <Popover.Body className='popover-dates'>
                             {daysDiff} days until deadline 
                         </Popover.Body>
                     </Popover>
@@ -77,7 +77,7 @@ const PatentInfo = () => {
         } catch(err) {
             console.error(err);
         }
-    }
+    };
 
     const changeColorDates = (date) => {
         try{
@@ -186,7 +186,7 @@ const PatentInfo = () => {
                                             {
                                                 npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (
                                                     oaData.npe_oa_descp ? (
-                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(oaData.npe_oa_date)}>
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="right" overlay={renderPopover(oaData.npe_oa_date)}>
                                                             <p key={i}>
                                                                 {oaData.npe_oa_descp}:  
                                                                 <span className={changeColorDates(oaData.npe_oa_date)} style={{marginLeft: "1%"}}>
@@ -203,7 +203,7 @@ const PatentInfo = () => {
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (
                                                     afData.npe_af_descp ? (
-                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(afData.npe_af_date)}>
+                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="left" overlay={renderPopover(afData.npe_af_date)}>
                                                             <p key={i}>
                                                                 {afData.npe_af_descp}:
                                                                 <span className={changeColorDates(afData.npe_af_date)} style={{marginLeft: "1%"}}>
