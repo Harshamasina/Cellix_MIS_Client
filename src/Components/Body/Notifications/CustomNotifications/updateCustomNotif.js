@@ -9,6 +9,7 @@ import DeleteCustomNotif from './DeleteCustomNotif';
 import { Link } from "react-router-dom";
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { Helmet } from "react-helmet";
+import { OverlayTrigger, Popover } from 'react-bootstrap';
 
 const UpdateCustomNotif = () => {
     const { id } = useParams();
@@ -41,7 +42,6 @@ const UpdateCustomNotif = () => {
         }
         fetchData();
     }, [id]);
-    console.log(notification);
 
     const handleInputs = (e) => {
         const { name, value } = e.target;
@@ -80,6 +80,12 @@ const UpdateCustomNotif = () => {
     }
 
     const toggleShowPassword = () => setShowPassword(!showPassword);
+
+    const PopoverDeletedApplications = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Delete Notification</Popover.Body>
+        </Popover>
+    );
 
     if(loading){
         return (
@@ -155,7 +161,14 @@ const UpdateCustomNotif = () => {
                     />
 
                     <div className="delete-update-notification">
-                        <DeleteCustomNotif notificationId = {notification._id} />
+                        <OverlayTrigger 
+                            placement="bottom" 
+                            delay={{ show: 250, hide: 400 }}
+                            trigger={['hover', 'focus']}
+                            overlay={PopoverDeletedApplications}
+                        >
+                            <DeleteCustomNotif notificationId = {notification._id} />
+                        </OverlayTrigger>
                     </div>
 
                     <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>

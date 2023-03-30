@@ -96,7 +96,7 @@ const CustomNotifications = () => {
                 <Link to='/notifications' className='BC-Links'>Notifications</Link>
                 <Link t0='/customnotifications' className='BC-Links'>Custom Notifications</Link>
             </Breadcrumbs>
-            <Table striped className='mt-3 shadow-lg notification-table'>
+            <Table striped hover className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>
                         <th>Sno</th>
