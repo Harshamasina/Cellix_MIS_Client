@@ -953,7 +953,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .patentinfo-link{
     font-size: 4vh !important;
     color: #282c34 !important;
-    margin-left: 20% !important;
+    margin-left: 25% !important;
   }
   .Tabs {
     width: 90%;
@@ -2406,5 +2406,13 @@ Breadcrumb.Item{
 
   .delete-input-box{
     width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dna-wrapper {
+    margin-left: 10% !important;
+    margin-top: 50% !important;
+    width: 80% !important;
   }
 }

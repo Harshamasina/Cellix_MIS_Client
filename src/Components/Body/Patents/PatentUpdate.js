@@ -269,6 +269,7 @@ const PatentUpdate = () => {
                     height="20%"
                     width="20%"
                     ariaLabel="dna-loading"
+                    wrapperClass='dna-wrapper'
                     wrapperStyle={{marginLeft: '40%', marginTop: '10%'}}
                 />
             </div>
@@ -661,9 +662,11 @@ const PatentUpdate = () => {
 
                                                 <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
 
-                                                <Modal show={showNPEModal} onHide={handleCancelDelete} backdrop="static" keyboard={false}>
+                                                <Modal show={showNPEModal} onHide={handleCancelDelete} backdrop="static" keyboard={false} centered>
                                                     <Modal.Header><Modal.Title>Confirm NPE Deletion</Modal.Title></Modal.Header>
+                                                    
                                                     <Modal.Body>Are you sure you want to delete this NPE Data?</Modal.Body>
+                                                    
                                                     <Modal.Footer>
                                                         <Button className='close-button'  onClick={handleCancelDelete}>Cancel</Button>
                                                         <Button className='signout-modal-button' onClick={handleConfirmNPERemove}>Delete</Button>

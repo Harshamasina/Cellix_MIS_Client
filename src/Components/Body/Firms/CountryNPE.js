@@ -36,6 +36,7 @@ const CountryNPE = () => {
                     height="20%"
                     width="20%"
                     ariaLabel="dna-loading"
+                    wrapperClass='dna-wrapper'
                     wrapperStyle={{marginLeft: '40%', marginTop: '10%'}}
                 />
             </div>

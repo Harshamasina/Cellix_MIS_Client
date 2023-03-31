@@ -42,7 +42,8 @@ const PatentInfo = () => {
                     height="20%"
                     width="20%"
                     ariaLabel="dna-loading"
-                    wrapperStyle={{marginLeft: '40%', marginTop: '10%'}}
+                    wrapperClass='dna-wrapper'
+                    wrapperStyle={{ marginLeft: '40%', marginTop: '10%'}}
                 />
             </div>
         );
