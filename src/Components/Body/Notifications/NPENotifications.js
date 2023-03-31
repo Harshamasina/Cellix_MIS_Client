@@ -66,7 +66,7 @@ const NPENotifications = () => {
                         <th>SNo</th>
                         <th>Ref No</th>
                         <th>Country</th>
-                        <th>Patent Number</th>
+                        <th>Patent / Application Number</th>
                         <th>Field Name</th>
                         <th>Field Value</th>
                         <th>Days Left</th>
@@ -79,7 +79,7 @@ const NPENotifications = () => {
                                 <td>{index + 1}</td>
                                 <td><Link className='reference-links' to={"/patentinfo/"+npeNotification.ref_no} target="_blank">{npeNotification.ref_no}</Link></td>
                                 <td>{npeNotification.npe_country}</td>
-                                <td>{npeNotification.npe_patent ? npeNotification.npe_patent : "NA"}</td>
+                                <td>{npeNotification.npe_patent ? npeNotification.npe_patent : npeNotification.npe_appno}</td>
                                 <td>{npeNotification.fieldName}</td>
                                 <td>{npeNotification.fieldValue}</td>
                                 <td className={changeColor(npeNotification.daysLeft)}>{npeNotification.daysLeft}</td>
