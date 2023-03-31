@@ -199,7 +199,17 @@ const PatentInfo = () => {
                                                     ) : ("")
                                                 ))
                                             }
-                                            <p>NPE Grant Decision: <span>{npeData.npe_grant_desc === "1" ? ("Granted") : ("Rejected")}</span></p>
+                                            <p>NPE Grant Decision: 
+                                                <span>
+                                                    {
+                                                        npeData.npe_grant_desc === "1" ? " Granted" :
+                                                        npeData.npe_grant_desc === "2" ? " Lapsed" :
+                                                        npeData.npe_grant_desc === "3" ? " Abandon" :
+                                                        npeData.npe_grant_desc === "4" ? " Under examination" :
+                                                        npeData.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                                    }
+                                                </span>
+                                            </p>
                                             <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
                                             <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <h4>Annuity Stage</h4>

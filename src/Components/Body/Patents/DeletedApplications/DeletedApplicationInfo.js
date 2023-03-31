@@ -117,6 +117,7 @@ const DeletedApplicationInfo = () => {
                                             <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
                                             <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
                                             <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
+                                            <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
                                             <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
                                             <h4>Examination Stage</h4>
                                             {
@@ -131,8 +132,19 @@ const DeletedApplicationInfo = () => {
                                                     ) : ("")
                                                 ))
                                             }
-                                            <p>NPE Grant Decision: <span>{npeData.npe_grant_desc === "1" ? ("Granted") : ("Rejected")}</span></p>
+                                            <p>NPE Grant Decision: 
+                                                <span>
+                                                    {
+                                                        npeData.npe_grant_desc === "1" ? " Granted" :
+                                                        npeData.npe_grant_desc === "2" ? " Lapsed" :
+                                                        npeData.npe_grant_desc === "3" ? " Abandon" :
+                                                        npeData.npe_grant_desc === "4" ? " Under examination" :
+                                                        npeData.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                                    }
+                                                </span>
+                                            </p>
                                             <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
+                                            <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <h4>Annuity Stage</h4>
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (
@@ -146,9 +158,7 @@ const DeletedApplicationInfo = () => {
                                                     ) : ("")
                                                 ))
                                             }
-                                            <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <p><span>{npeData.npe_if}</span></p>
-                                            <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
                                             <h4>Notes</h4>
                                             <p className='NPE-notes'>{npeData.npe_notes}</p>
                                         </div>
