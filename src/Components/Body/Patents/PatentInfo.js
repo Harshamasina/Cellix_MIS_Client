@@ -182,6 +182,7 @@ const PatentInfo = () => {
                                             <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
                                             <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
                                             <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
+                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_rfe)}><p>NPE Request for Examination Date: <span className={changeColorDates(npeData.npe_rfe)}>{npeData.npe_rfe}</span></p></OverlayTrigger>
                                             <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
                                             <h4>Examination Stage</h4>
                                             {
@@ -200,6 +201,7 @@ const PatentInfo = () => {
                                             }
                                             <p>NPE Grant Decision: <span>{npeData.npe_grant_desc === "1" ? ("Granted") : ("Rejected")}</span></p>
                                             <p>NPE Grant Date: <span>{npeData.npe_grant}</span></p>
+                                            <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <h4>Annuity Stage</h4>
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (
@@ -215,9 +217,7 @@ const PatentInfo = () => {
                                                     ) : ("")
                                                 ))
                                             }
-                                            <p>NPE Patent Number: <span>{npeData.npe_patent}</span></p>
                                             <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
-                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_rfe)}><p>NPE Request for Examination Date: <span className={changeColorDates(npeData.npe_rfe)}>{npeData.npe_rfe}</span></p></OverlayTrigger>
                                             <h4>Notes</h4>
                                             <p className='NPE-notes'>{npeData.npe_notes}</p>
                                         </div>

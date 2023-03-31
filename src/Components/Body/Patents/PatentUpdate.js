@@ -514,6 +514,18 @@ const PatentUpdate = () => {
                                                 </div>
 
                                                 <div className="input-box">
+                                                    <span className="details">NPE Request for Examination Date</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="Enter NPE Request for Examination Date"
+                                                        autoComplete="off"
+                                                        name="npe_rfe"
+                                                        value={npe.npe_rfe}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
                                                     <span className="details">NPE Country with (Divisional Number)</span>
                                                     <input 
                                                         type="text" 
@@ -566,6 +578,9 @@ const PatentUpdate = () => {
                                                     >
                                                         <option value="NA">Select NPE Status</option>
                                                         <option value="1">Granted</option>
+                                                        <option value="2">Lapsed</option>
+                                                        <option value="3">Abandon</option>
+                                                        <option value="4">Under examination</option>
                                                         <option value="0">Rejected</option>
                                                     </select>
                                                 </div>
@@ -578,6 +593,18 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_grant"
                                                         value={npe.npe_grant}
+                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Patent Number</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Patent Number"
+                                                        autoComplete="off"
+                                                        name="npe_patent"
+                                                        value={npe.npe_patent}
                                                         onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
@@ -624,29 +651,6 @@ const PatentUpdate = () => {
                                                     ))
                                                 }
                                                 <Button size='sm' className='add-date' onClick={() => handleAddAF(NPEIndex)}>Add Annuity Fee</Button>
-                                                <div className="input-box">
-                                                    <span className="details">NPE Patent Number</span>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Enter NPE Patent Number"
-                                                        autoComplete="off"
-                                                        name="npe_patent"
-                                                        value={npe.npe_patent}
-                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
-                                                    />
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <span className="details">NPE Request for Examination Date</span>
-                                                    <input 
-                                                        type="date" 
-                                                        placeholder="Enter NPE Request for Examination Date"
-                                                        autoComplete="off"
-                                                        name="npe_rfe"
-                                                        value={npe.npe_rfe}
-                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
-                                                    />
-                                                </div>
 
                                                 <div className="input-box">
                                                     <span className="details">NPE Notes</span>

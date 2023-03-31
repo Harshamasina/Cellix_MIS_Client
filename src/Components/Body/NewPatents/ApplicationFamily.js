@@ -429,6 +429,18 @@ const ApplicationFamily = () => {
                                                 </div>
 
                                                 <div className="input-box">
+                                                    <span className="details">NPE Request for Examination Date</span>
+                                                    <input 
+                                                        type="date" 
+                                                        placeholder="Enter NPE Request for Examination Date"
+                                                        autoComplete="off"
+                                                        name="npe_rfe"
+                                                        value={npeData.npe_rfe}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-box">
                                                     <span className="details">NPE Country with (Divisional Number)</span>
                                                     <input 
                                                         type="text" 
@@ -476,16 +488,20 @@ const ApplicationFamily = () => {
                                                 </div>
 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Granted / Rejected</span>
+                                                    <span className="details">NPE Status</span>
                                                     <select
                                                         name="npe_grant_desc"
                                                         onChange={ (e) => handleChange(e, NPEIndex)}
                                                     >
                                                         <option value="NA">Select NPE Status</option>
                                                         <option value="1">Granted</option>
+                                                        <option value="2">Lapsed</option>
+                                                        <option value="3">Abandon</option>
+                                                        <option value="4">Under examination</option>
                                                         <option value="0">Rejected</option>
                                                     </select>
                                                 </div>
+
                                                 <div className="input-box">
                                                     <span className="details">NPE Grant Date</span>
                                                     <input 
@@ -497,6 +513,19 @@ const ApplicationFamily = () => {
                                                         onChange={ (e) => handleChange(e, NPEIndex)}
                                                     />
                                                 </div>
+
+                                                <div className="input-box">
+                                                    <span className="details">NPE Patent Number</span>
+                                                    <input 
+                                                        type="text" 
+                                                        placeholder="Enter NPE Patent Number"
+                                                        autoComplete="off"
+                                                        name="npe_patent"
+                                                        value={npeData.npe_patent}
+                                                        onChange={ (e) => handleChange(e, NPEIndex)}
+                                                    />
+                                                </div>
+
                                                 <div className="input-box">
                                                     <span className="details">NPE Issue Fee</span>
                                                     <input 
@@ -541,30 +570,6 @@ const ApplicationFamily = () => {
                                                     }
 
                                                     <Button size='sm' className='add-date' onClick={() => handleAddNPEAnnuityDate(NPEIndex)}>Add Annuity Date</Button>
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <span className="details">NPE Patent Number</span>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Enter NPE Patent Number"
-                                                        autoComplete="off"
-                                                        name="npe_patent"
-                                                        value={npeData.npe_patent}
-                                                        onChange={ (e) => handleChange(e, NPEIndex)}
-                                                    />
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <span className="details">NPE Request for Examination Date</span>
-                                                    <input 
-                                                        type="date" 
-                                                        placeholder="Enter NPE Request for Examination Date"
-                                                        autoComplete="off"
-                                                        name="npe_rfe"
-                                                        value={npeData.npe_rfe}
-                                                        onChange={ (e) => handleChange(e, NPEIndex)}
-                                                    />
                                                 </div>
 
                                                 <div className="input-box">
