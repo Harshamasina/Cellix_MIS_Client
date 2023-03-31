@@ -215,6 +215,7 @@ const ApplicationFamily = () => {
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/newpatent" className='BC-Links'>New Patent</Link>
             </Breadcrumbs>
+
             <div className="patentForm">
                 <div className="content">
                     <form className="form">
@@ -261,7 +262,9 @@ const ApplicationFamily = () => {
                                     </div>
                                 ))
                             }
+
                             <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add New PRV</Button>
+
                             <span className='pct'>Patent Corporation Treaty (PCT) Stage</span>
                             <div className="input-box">
                                 <span className="details">PCT Date of Filing</span>
@@ -347,6 +350,7 @@ const ApplicationFamily = () => {
                                 />
                             </div>
                         </div>
+
                         <span className='npe'>National Phase Entry (NPE) Stage</span>
                         <Accordion alwaysOpen className='mb-4 update-accordion'>
                             {
@@ -467,8 +471,10 @@ const ApplicationFamily = () => {
                                                             </div>
                                                         ))
                                                     }
+
                                                     <Button size='sm' className='add-date' onClick={() => handleAddNPEOfficeDate(NPEIndex)}>Add Office Action</Button>
                                                 </div>
+
                                                 <div className="input-box">
                                                     <span className="details">NPE Granted / Rejected</span>
                                                     <select
@@ -533,8 +539,10 @@ const ApplicationFamily = () => {
                                                             </div>
                                                         ))
                                                     }
+
                                                     <Button size='sm' className='add-date' onClick={() => handleAddNPEAnnuityDate(NPEIndex)}>Add Annuity Date</Button>
                                                 </div>
+
                                                 <div className="input-box">
                                                     <span className="details">NPE Patent Number</span>
                                                     <input 
@@ -570,8 +578,10 @@ const ApplicationFamily = () => {
                                                         onChange={ (e) => handleChange(e, NPEIndex)}
                                                     />
                                                 </div>
+
                                                 <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
-                                                <Modal show={showDeleteModal} onHide={handleCancelDelete} backdrop="static" keyboard={false}>
+                                                
+                                                <Modal show={showDeleteModal} onHide={handleCancelDelete} backdrop="static" keyboard={false} centered>
                                                     <Modal.Header>
                                                         <Modal.Title>Confirm NPE Deletion</Modal.Title>
                                                     </Modal.Header>
@@ -589,7 +599,9 @@ const ApplicationFamily = () => {
                                 ))
                             }
                         </Accordion>
+
                         <Button size="lg" onClick={handleAddNPE} className="add-npe">Add New NPE</Button>
+
                         <div className='button'>
                             <input
                                 type="submit"
@@ -598,11 +610,14 @@ const ApplicationFamily = () => {
                                 onClick={handleSubmit}
                             />
                         </div>
+
                         {submissionError && <p className='error-message'>{submissionError}</p>}
+
                         <Modal show={showSubmitModal} onHide={handleCloseSubmitModal} size="lg" backdrop="static" keyboard={false} centered>
                             <Modal.Header>
                                 <Modal.Title className='Modal-title-submit-form'>Confirm Application Family Data Submission</Modal.Title>
                             </Modal.Header>
+
                             <Modal.Body>
                                 <p>Are you sure you want to submit this Application? Please verify whether all the inputs are correct if so Please enter the confirmation code to submit the Application Family</p>
                                 <div className='delete-input-box'>
@@ -619,6 +634,7 @@ const ApplicationFamily = () => {
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                                 <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                             </Modal.Body>
+
                             <Modal.Footer>
                                 <Button className='signout-modal-button'  onClick={handleCloseSubmitModal}>Cancel</Button>
                                 <Button  className='close-button' onClick={handleSubmitModal} disabled={!confirmCode}>Submit</Button>
