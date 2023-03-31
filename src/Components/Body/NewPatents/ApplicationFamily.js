@@ -17,6 +17,7 @@ const ApplicationFamily = () => {
         pct_appno: "",
         pct_das: "",
         pct_isr: "",
+        pct_pubno: "",
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
@@ -310,6 +311,18 @@ const ApplicationFamily = () => {
                                     autoComplete="off"
                                     name="pct_isr"
                                     value={patentData.pct_isr}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">PCT Publication Number</span>
+                                <input 
+                                    type="text" 
+                                    placeholder="Enter PCT Publication Number"
+                                    autoComplete="off"
+                                    name="pct_pubno"
+                                    value={patentData.pct_pubno}
                                     onChange={handleInputs}
                                 />
                             </div>

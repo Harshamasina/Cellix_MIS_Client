@@ -162,6 +162,7 @@ const PatentInfo = () => {
                         <p>PCT Number: <span>{patent.pct_appno}</span></p>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_dof)}><p>PCT Date of Filing: <span className={changeColorDates(patent.pct_dof)}>{patent.pct_dof}</span></p></OverlayTrigger>
                         <p>PCT DAS Code: <span>{patent.pct_das}</span></p>
+                        <p>PCT Publication Number: <span>{patent.pct_pubno}</span></p>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_18)}><p>PCT Publication Date: <span className={changeColorDates(patent.pct_18)}>{patent.pct_18}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_isr)}><p>PCT ISR Date: <span className={changeColorDates(patent.pct_isr)}>{patent.pct_isr}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_22_md)}><p>PCT 22 Month Date: <span className={changeColorDates(patent.pct_22_md)}>{patent.pct_22_md}</span></p></OverlayTrigger>
