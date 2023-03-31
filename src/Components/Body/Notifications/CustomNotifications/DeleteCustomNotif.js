@@ -43,8 +43,9 @@ const DeleteCustomNotif = ({notificationId}) => {
             
             <Modal size='lg' show={deleteModal} onHide={handleCloseModal} centered backdrop="static" keyboard={false}>
                 <Modal.Header  className='justify-content-center' style={{color: "#FF4433"}}>
-                    <Modal.Title>Confirm Deletion</Modal.Title>
+                    <Modal.Title>Confirm Notification Deletion</Modal.Title>
                 </Modal.Header>
+
                 <Modal.Body>
                     <p>Are you sure you want to delete this notification if so please enter the confirmation code to delete</p>
                     <div className='delete-input-box'>
@@ -61,6 +62,7 @@ const DeleteCustomNotif = ({notificationId}) => {
                     {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                     <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                 </Modal.Body>
+                
                 <Modal.Footer>
                     <Button className='close-button'  onClick={handleCloseModal}>Cancel</Button>
                     <Button 

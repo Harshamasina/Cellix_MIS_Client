@@ -446,7 +446,7 @@ const PatentUpdate = () => {
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             <div className="input-box-container">
-                                            <span className='npe-details'>Filing Stage: </span>
+                                            <span className='npe-details'>Filing Stage</span>
                                                 <div className="input-box">
                                                     <span className='details'>NPE Country</span>
                                                     <select 
@@ -524,7 +524,7 @@ const PatentUpdate = () => {
                                                     />
                                                 </div>
 
-                                                <span className='npe-details'>Examination Stage: </span>
+                                                <span className='npe-details'>Examination Stage</span>
                                                 {
                                                     npe.npe_oa.map((oa, oaIndex) => (
                                                         <div key={oaIndex}>
@@ -592,7 +592,7 @@ const PatentUpdate = () => {
                                                         onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
-                                                <span className='npe-details'>Annuity Stage: </span>
+                                                <span className='npe-details'>Annuity Stage</span>
                                                 {
                                                     npe.npe_af.map((af, afIndex) => (
                                                         <div key={afIndex}>
@@ -658,7 +658,9 @@ const PatentUpdate = () => {
                                                         onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>
+
                                                 <Button size='lg' onClick={() => handleRemoveNPE(NPEIndex)} className= "remove-npe-form">Remove NPE</Button>
+
                                                 <Modal show={showNPEModal} onHide={handleCancelDelete} backdrop="static" keyboard={false}>
                                                     <Modal.Header><Modal.Title>Confirm NPE Deletion</Modal.Title></Modal.Header>
                                                     <Modal.Body>Are you sure you want to delete this NPE Data?</Modal.Body>
@@ -673,7 +675,9 @@ const PatentUpdate = () => {
                                 ))
                             }
                         </Accordion>
+
                         <Button size="lg" onClick={handleAddNPE} className="add-npe">Add New NPE</Button>
+
                         <div className='button'>
                             <input
                                 type="submit"
@@ -706,6 +710,7 @@ const PatentUpdate = () => {
                                 <Button  className='close-button' onClick={handleUpdateModal} disabled={!confirmCode}>Update</Button>
                             </Modal.Footer>
                         </Modal>
+                        
                     </form>
                 </div>
             </div>

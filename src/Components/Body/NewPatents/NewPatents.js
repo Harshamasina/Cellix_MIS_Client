@@ -12,6 +12,7 @@ const NewPatents = () => {
                 <title>New Application Family | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application new application family entry"></meta>
             </Helmet>
+
             <Parallax bgImage={ img } strength={200} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -24,6 +25,7 @@ const NewPatents = () => {
                     </div>
                 </div>
             </Parallax>
+            
             <ApplicationFamily></ApplicationFamily>
         </div>
     );

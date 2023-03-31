@@ -170,8 +170,9 @@ const UpdateCustomNotif = () => {
 
                     <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>
                         <Modal.Header >
-                            <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
+                            <Modal.Title className='Modal-title-pct'>Confirm Notification Update</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <p>Are you sure you want to update the form? Please verify all data inserted correctly if so Please enter the confirmation code to update the notification</p>
                             <div className='delete-input-box'>
@@ -188,6 +189,7 @@ const UpdateCustomNotif = () => {
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                                 <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                         </Modal.Body>
+
                         <Modal.Footer>
                             <Button className='signout-modal-button' onClick={handleModalClose}>Cancel</Button>
                             <Button className = "close-button" onClick={handleUpdateModal} disabled={!confirmCode}>Submit</Button>

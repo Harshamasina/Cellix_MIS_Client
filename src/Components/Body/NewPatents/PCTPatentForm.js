@@ -86,20 +86,23 @@ const PCTPatentForm = () => {
                 <title>New International Patent | MIS</title>
                 <meta name="description" content="Cellix Bio MIS Application new International Patent entry"></meta>
             </Helmet>
+
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
-                        <div className='FirmPageContent'>
+                        <div className='HomePageContent'>
                             <h1>International Patent Form</h1>
                         </div>
                     </div>
                 </div>
             </Parallax>
+
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to="/home" className='BC-Links'>Home</Link>
                 <Link to="/newpatent" className='BC-Links'>New Patent</Link>
                 <Link to="/pctpatentform" className='BC-Links'>New Patent Form</Link>
             </Breadcrumbs>
+
             <div className='PCT-Container'>
                 <form onSubmit={handleSubmit} className='PCTform'>
                     <input 
@@ -109,8 +112,8 @@ const PCTPatentForm = () => {
                         name= "wno"
                         value={PCTPatent.wno}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
+
                     <input 
                         type="text" 
                         placeholder='Enter PCT or Application Number *'
@@ -118,8 +121,8 @@ const PCTPatentForm = () => {
                         name= "pct"
                         value={PCTPatent.pct}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
+
                     <input 
                         type="text" 
                         placeholder='Enter Published Year *'
@@ -127,8 +130,8 @@ const PCTPatentForm = () => {
                         name= "year"
                         value={PCTPatent.year}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
+
                     <input 
                         type="text" 
                         placeholder='Enter Publishing Date (dd.mm.yyyy) *'
@@ -136,54 +139,55 @@ const PCTPatentForm = () => {
                         name= "publication_date"
                         value={PCTPatent.publication_date}
                         onChange={handleInputs}
-                    >
-                    </input>
+                    />
+
                     <textarea 
                         placeholder='Enter Therapeutic Area *'
                         name="therapeutic_area"
                         value={PCTPatent.therapeutic_area}
                         onChange={handleInputs}
-                    >
-                    </textarea>
+                    />
+
                     <textarea 
                         placeholder='Enter Diseases *'
                         name= "diseases"
                         value={PCTPatent.diseases}
                         onChange={handleInputs}
-                    >
-                    </textarea>
+                    />
+
                     <textarea 
                         placeholder='Enter Formulas Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "formula"
                         value={PCTPatent.formula}
                         onChange={handleInputs}
-                    >
-                    </textarea>
+                    />
+
                     <textarea 
                         placeholder='Enter Claims text or Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "claims"
                         value={PCTPatent.claims}
                         onChange={handleInputs}
-                    >
-                    </textarea>
+                    />
+
                     <textarea 
                         placeholder='Enter Compounds Image Links ( Upload Images in s3 and then paste each link line wise )'
                         name= "compounds"
                         value={PCTPatent.compounds}
                         onChange={handleInputs}
-                    >
-                    </textarea>
+                    />
+
                     <input 
                         type="submit" 
                         className="pctbutton"
-                        value={submitting ? 'Submitting...' : 'Submit'}
+                        value={submitting ? 'Submitting... Patent' : 'Submit Patent'}
                         disabled={submitting}
-                    >
-                    </input>
+                    />
+
                     <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>
                         <Modal.Header >
                             <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <p>Are you sure you want to submit the form? Please verify all data inserted correctly if so Please enter the confirmation code to submit the Patent</p>
                             <div className='delete-input-box'>
@@ -200,11 +204,13 @@ const PCTPatentForm = () => {
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                                 <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                         </Modal.Body>
+
                         <Modal.Footer>
                             <Button className='signout-modal-button' onClick={handleModalClose}>Cancel</Button>
                             <Button className = "close-button" onClick={handleSubmitModal} disabled={!confirmCode}>Submit</Button>
                         </Modal.Footer>
                     </Modal>
+
                     {submissionError && <p className='error-message'>{submissionError}</p>}
                 </form>
             </div>

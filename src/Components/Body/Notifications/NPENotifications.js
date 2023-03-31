@@ -60,7 +60,7 @@ const NPENotifications = () => {
         <div>
             <h3 className="notification-header">NPE Notifications</h3>
             
-            <Table striped hover className='mt-3 shadow-lg notification-table'>
+            <Table striped hover responsive className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>
                         <th>SNo</th>

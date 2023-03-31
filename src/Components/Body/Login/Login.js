@@ -58,6 +58,7 @@ const Login = () => {
                 <title>Login | MIS | Cellix Bio</title>
                 <meta name="description" content="Cellix Bio MIS application Login Page" />
             </Helmet>
+
             <Parallax bgImage={ img } strength={250} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer'>
                     <div className="ParallaxDiv">
@@ -67,9 +68,10 @@ const Login = () => {
                     </div>
                 </div>
             </Parallax>
+
             <div className='Login-Container'>
                 <form className='loginform'>
-                    <header>Cellix Bio MIS</header>
+                    <header>Welcome to Cellix Bio MIS!</header>
                     <input 
                         type="text" 
                         placeholder='Enter your Email'
@@ -78,6 +80,7 @@ const Login = () => {
                         onChange={handleInputs}
                         autoComplete="off"
                     />
+
                     <input 
                         type="text" 
                         placeholder='Enter your Employee ID'
@@ -86,6 +89,7 @@ const Login = () => {
                         onChange={handleInputs}
                         autoComplete="off"
                     />
+
                     <div className='password-input-box'>
                         <input 
                             type={ showPassword ? 'text' : 'password' }
@@ -99,6 +103,7 @@ const Login = () => {
                             {showPassword ? <BsEyeSlash /> : <BsEye />}
                         </div>
                     </div>
+
                     <input 
                         type="submit" 
                         className="loginbutton" 
@@ -106,7 +111,9 @@ const Login = () => {
                         onClick={handleSubmit}
                         disabled={buttonDisabled}
                     />
+
                     <h4 className='error-message'>{errorMsg}</h4>
+                    
                     <div className="login-links">
                         <Link to='/forgotpassword' className='register-Link'>Forgot Password</Link>
                         <Link to="/register" className='register-Link'>Register</Link>

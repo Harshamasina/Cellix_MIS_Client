@@ -118,7 +118,7 @@ function NavBar() {
                                                 <NavDropdown.Item className='subdropdown-link'>{login.displayName}</NavDropdown.Item>
                                                 <NavDropdown.Item className='subdropdown-link'>{login.email}</NavDropdown.Item>
                                             </NavDropdown>
-                                        <NavDropdown.Item><Link to='updatepassword' className='dropdown-link'>Change Password</Link></NavDropdown.Item>
+                                        <NavDropdown.Item><Nav.Link as={Link} to='updatepassword' className='dropdown-link' eventKey="5">Change Password</Nav.Link></NavDropdown.Item>
                                             {
                                                 login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
                                                     <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>

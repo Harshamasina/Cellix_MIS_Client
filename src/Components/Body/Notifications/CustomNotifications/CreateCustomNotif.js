@@ -121,10 +121,12 @@ const CreateCustomNotif = () => {
                         value="Create Notification"
                         onClick={handleSubmit}
                     />
+
                     <Modal show={showModal} onHide={handleModalClose} backdrop="static" keyboard={false} size="lg" centered>
                         <Modal.Header >
                             <Modal.Title className='Modal-title-pct'>Confirm Submission</Modal.Title>
                         </Modal.Header>
+
                         <Modal.Body>
                             <p>Are you sure you want to submit the form? Please verify all data inserted correctly if so Please enter the confirmation code to submit the Patent</p>
                             <div className='delete-input-box'>
@@ -141,11 +143,13 @@ const CreateCustomNotif = () => {
                                 {errorMessage && ( <p className="text-danger mt-3">{errorMessage}</p> )}
                                 <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                         </Modal.Body>
+
                         <Modal.Footer>
                             <Button className='signout-modal-button' onClick={handleModalClose}>Cancel</Button>
                             <Button className = "close-button" onClick={handleSubmitModal} disabled={!confirmCode}>Submit</Button>
                         </Modal.Footer>
                     </Modal>
+                    
                     <div className="login-links">
                         <Link to='/customnotifications' className='register-Link'>Back to Notifications</Link>
                     </div>

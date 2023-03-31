@@ -90,7 +90,7 @@ const CustomNotifications = () => {
                                 trigger={['hover', 'focus']}
                                 overlay={popover}
                             >
-                            <Link className='customNote-link' to="/createnotifications">
+                            <Link className='create-customNote-link' to="/createnotifications">
                                 <MdOutlineNotificationsActive />
                             </Link>
                         </OverlayTrigger>
@@ -105,7 +105,7 @@ const CustomNotifications = () => {
                 <Link t0='/customnotifications' className='BC-Links'>Custom Notifications</Link>
             </Breadcrumbs>
 
-            <Table striped hover className='mt-3 shadow-lg notification-table'>
+            <Table striped hover responsive className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>
                         <th>Sno</th>

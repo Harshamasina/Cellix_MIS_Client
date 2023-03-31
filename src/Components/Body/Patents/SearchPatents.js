@@ -32,7 +32,7 @@ const SearchPatents = () => {
                 <button class="btn-search"><AiOutlineFileSearch className='search-icon' /></button>
                 <input 
                     type="text" 
-                    class="input-search" 
+                    className="input-search" 
                     placeholder="Enter Ref / PRV / PCT / NPE Numbers"
                     onChange={searchHandle}
                 >
