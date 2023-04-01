@@ -8,6 +8,7 @@ import { Accordion, Tab, Tabs } from "react-bootstrap";
 import { Breadcrumbs } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { HiArrowSmRight } from "react-icons/hi";
 
 const DeletedApplicationInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/search+1.jpg";
@@ -159,7 +160,14 @@ const DeletedApplicationInfo = () => {
                                             }
                                             <p><span>{npeData.npe_if}</span></p>
                                             <h4>Notes</h4>
-                                            <p className='NPE-notes'>{npeData.npe_notes}</p>
+                                            {
+                                                npeData.npe_notes.split(/\n+/).map((line, index) => (
+                                                    <p key={index} className='NPE-notes'>
+                                                        {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                                        {line}
+                                                    </p>
+                                                ))
+                                            }
                                         </div>
                                     </Accordion.Body>
                                 </Accordion.Item>

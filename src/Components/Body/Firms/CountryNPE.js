@@ -53,6 +53,7 @@ const CountryNPE = () => {
                 <title>{countrycode} | Firms | MIS</title>
                 <meta name="description" content="Cellix Bio MIS {countrycode} Firms"></meta>
             </Helmet>
+            
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">

@@ -1006,7 +1006,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 90% !important;
   color: #282c34 !important;
   text-align: justify !important;
-  font-weight: 500 !important;
+  font-weight: 450 !important;
+}
+
+.NPE-notes-icon{
+  color: #0E6E59;
+  font-size: 2vw !important;
+}
+
+@media screen and (max-width: 600px) {
+  .NPE-notes-icon{
+    font-size: 2vh !important;
+  }
 }
 
 .accordion-item{

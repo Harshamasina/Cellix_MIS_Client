@@ -11,6 +11,7 @@ import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
 import { Helmet } from 'react-helmet';
+import { HiArrowSmRight } from 'react-icons/hi';
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
@@ -229,7 +230,16 @@ const PatentInfo = () => {
                                             }
                                             <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
                                             <h4>Notes</h4>
-                                            <p className='NPE-notes'>{npeData.npe_notes}</p>
+                                            <div>
+                                                {
+                                                    npeData.npe_notes.split(/\n+/).map((line, index) => (
+                                                        <p key={index} className='NPE-notes'>
+                                                            {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                                            {line}
+                                                        </p>
+                                                    ))
+                                                }
+                                            </div>
                                         </div>
                                     </Accordion.Body>
                                 </Accordion.Item>
