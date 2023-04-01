@@ -32,7 +32,6 @@ const PatentUpdate = () => {
         npe: [
             {
                 npe_country: "",
-                npe_country_div: "",
                 npe_appno: "",
                 npe_dof: "",
                 npe_firms: "",
@@ -146,7 +145,6 @@ const PatentUpdate = () => {
             ...prevState,
             npe: [...prevState.npe, {
                 npe_country: "",
-                npe_country_div: "",
                 npe_appno: "",
                 npe_dof: "",
                 npe_firms: "",
@@ -455,8 +453,7 @@ const PatentUpdate = () => {
                                 patent.npe.map((npe, NPEIndex) => (
                                     <Accordion.Item eventKey={NPEIndex} key={NPEIndex}>
                                         <Accordion.Header>
-                                            {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
-                                            {npe.npe_country ? ("") : ("Click to add and update NPE Data")}
+                                            {npe.npe_country ? (npe.npe_country) : ("Click to add and update NPE Data")}
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             <div className="input-box-container">
@@ -534,18 +531,6 @@ const PatentUpdate = () => {
                                                         autoComplete="off"
                                                         name="npe_rfe"
                                                         value={npe.npe_rfe}
-                                                        onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
-                                                    />
-                                                </div>
-
-                                                <div className="input-box">
-                                                    <span className="details">NPE Country with (Divisional Number)</span>
-                                                    <input 
-                                                        type="text" 
-                                                        placeholder="Enter NPE Country with (Divisional Number)"
-                                                        autoComplete="off"
-                                                        name="npe_country_div"
-                                                        value={npe.npe_country_div}
                                                         onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
                                                     />
                                                 </div>

@@ -109,7 +109,7 @@ const DeletedApplicationInfo = () => {
                         {
                             patent.npe && patent.npe.map((npeData, i) => (
                                 <Accordion.Item eventKey={i} key={i}>
-                                    <Accordion.Header>{npeData.npe_country_div ? (npeData.npe_country_div) : (npeData.npe_country)}</Accordion.Header>
+                                    <Accordion.Header>{npeData.npe_country}</Accordion.Header>
                                     <Accordion.Body>
                                         <div className='tab-npe-data shadow-lg'>
                                             <h4>Filing Stage</h4>
@@ -118,7 +118,6 @@ const DeletedApplicationInfo = () => {
                                             <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
                                             <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
                                             <p>NPE Request for Examination Date: <span>{npeData.npe_rfe}</span></p>
-                                            <p>NPE Country Divisional Number: <span>{npeData.npe_country_div}</span></p>
                                             <h4>Examination Stage</h4>
                                             {
                                                 npeData.npe_oa && npeData.npe_oa.map((oaData, i) => (

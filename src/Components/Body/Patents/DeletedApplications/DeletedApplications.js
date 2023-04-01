@@ -80,7 +80,7 @@ const DeletedApplications = () => {
                                         patent.npe && patent.npe.map((npe) => (
                                             <Link to={"/deletedapplication/"+patent.ref_no} className='country-link' target="_blank" key={npe}>
                                                 <li>
-                                                    {npe.npe_country_div ? (npe.npe_country_div) : (npe.npe_country)}
+                                                    {npe.npe_country}
                                                 </li>
                                             </Link>
                                         ))
