@@ -42,6 +42,7 @@ const Login = () => {
             .then(async(res) => {
                 setButtonDisabled(false);
                 navigate('/');
+                window.location.reload();
             })
             .catch((err) => {
                 setButtonDisabled(false);
@@ -71,7 +72,7 @@ const Login = () => {
 
             <div className='Login-Container'>
                 <form className='loginform'>
-                    <header>Welcome to Cellix Bio MIS!</header>
+                    <header>Cellix Bio MIS</header>
                     <input 
                         type="text" 
                         placeholder='Enter your Email'

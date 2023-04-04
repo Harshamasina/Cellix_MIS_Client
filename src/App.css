@@ -2427,3 +2427,50 @@ Breadcrumb.Item{
     width: 80% !important;
   }
 }
+
+.session-timeout-header{
+  color: #FF4433;
+  font-size: 2vw !important;
+  margin-left: 18%;
+}
+
+.session-timeout-msg{
+  color: #282c34;
+  font-size: 1.2vw;
+  text-align: center;
+}
+
+.signout-modal-session-button{
+  background: transparent !important;
+  border: 2px solid #15B39D !important;
+  color: #15B39D !important;
+  transition: .5s !important;
+  font-size: 1.2vw !important;
+}
+
+.signout-modal-session-button:hover{
+  background: #15B39D !important;
+  color: #fff !important;
+  transform: scale(1.05);
+}
+
+@media only screen and (max-width: 600px) {
+  .dna-wrapper {
+    margin-left: 10% !important;
+    margin-top: 50% !important;
+    width: 80% !important;
+  }
+
+  .session-timeout-header{
+    font-size: 3vh !important;
+    margin-left: 15% !important;
+  }
+
+  .session-timeout-msg{
+    font-size: 2vh !important;
+  }
+
+  .signout-modal-session-button{
+    font-size: 2vh !important;
+  }
+}

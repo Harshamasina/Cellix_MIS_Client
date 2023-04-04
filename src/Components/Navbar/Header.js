@@ -27,11 +27,12 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import DeletedApplications from '../Body/Patents/DeletedApplications/DeletedApplications';
 import DeletedApplicationInfo from '../Body/Patents/DeletedApplications/DeletedApplicationInfo';
 import CountryNPE from '../Body/Firms/CountryNPE';
-import { VscSignOut } from 'react-icons/vsc';
+import { VscSignOut, VscSignIn } from 'react-icons/vsc';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
     const [changeNavbar, setChangeNavbar] = useState(false);
+    const [sessionTimeoutModal, setSessionTimeoutModal] = useState(false); 
     const [modal, setModal] = useState(false);
     const navigate = useNavigate();
     
@@ -65,6 +66,7 @@ function NavBar() {
             window.alert("Signed Out Successfully");
             localStorage.removeItem('user');
             setModal(false);
+            setSessionTimeoutModal(false);
             navigate('/login');
         }).catch((err) => {
             console.log("Error", err);
@@ -72,22 +74,13 @@ function NavBar() {
     }
 
     useEffect(() => {
-        const TimeOut = setTimeout(() => {
-            handleSignOut();
-        }, 24 * 60 * 60 * 1000);
-        return () => {
-            clearTimeout(TimeOut);
-        }
-    });
-
-    useEffect(() => {
         const storedUser = localStorage.getItem('login');
         if (storedUser) {
             const user = JSON.parse(storedUser);
-            const expirationTime = 24 * 60 * 60 * 1000;
-            const warningTime = expirationTime - 5 * 60 * 1000;
+            const expirationTime = 5 * 60 * 60 * 1000;
+            const warningTime = expirationTime - 2 * 60 * 1000;
             if (Date.now() - user.lastLoginAt > warningTime) {
-                window.alert('Your session will expire soon. Please log out and log in again to continue using the app.');
+                setSessionTimeoutModal(true);
             }
         }
     }, []);
@@ -97,7 +90,6 @@ function NavBar() {
             <div>
                 <Navbar collapseOnSelect  variant={"dark"} expand="lg" className={changeNavbar ? 'color-nav-scroll' : 'color-nav'}>
                     <Logo></Logo>
-                    <Navbar.Brand href="#"> </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle' />
                     <Navbar.Collapse id="responsive-navbar-nav" responsive={true.toString()}>
                         <Nav
@@ -161,13 +153,27 @@ function NavBar() {
             <div>
                 <Modal show={modal} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
                     <Modal.Header>
-                        <Modal.Title className='Modal-header'><span>{login ? login.displayName : ""},</span> Are you Sure you Want To Log Out!</Modal.Title>
+                        <Modal.Title className='Modal-header'><span>{login ? login.displayName : ""},</span> Are you Sure you Want To Log Out?</Modal.Title>
                     </Modal.Header>
                     <Modal.Footer>
                         <Button className = "close-button" onClick={handleClose}>close</Button>
                         <Button className='signout-modal-button' onClick={handleSignOut}><VscSignOut /> Yes, Logout</Button>
                     </Modal.Footer>
                 </Modal>
+            </div>
+
+            <div>
+                <Modal show={sessionTimeoutModal} onHide={handleSignOut} backdrop="static" keyboard={false} centered >
+                    <Modal.Header>
+                        <Modal.Title className='session-timeout-header'>Your Session Expired</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p className='session-timeout-msg'>Your session is expired. Please Login again to continue using the Cellix Bio MIS.</p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button className='signout-modal-session-button' onClick={handleSignOut}><VscSignIn /> Login, Again</Button>
+                    </Modal.Footer>
+                </Modal>    
             </div>
         </>
     );
