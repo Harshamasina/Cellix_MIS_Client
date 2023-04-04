@@ -35,7 +35,7 @@ const Notifications = () => {
                                 trigger={['hover', 'focus']}
                                 overlay={popover}
                             >
-                            <Link className='customNote-link' to="/customnotifications">
+                            <Link className='firm-link' to="/customnotifications">
                                 <MdOutlineNotifications />
                             </Link>
                         </OverlayTrigger>

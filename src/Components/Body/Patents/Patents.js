@@ -34,7 +34,7 @@ const Patents = () => {
                                 trigger={['hover', 'focus']}
                                 overlay={PopoverDeletedApplications}
                             >
-                                <Link className='customNote-link' to="/deletedapplications"><MdOutlineBackup /></Link>
+                                <Link className='firm-link' to="/deletedapplications"><MdOutlineBackup /></Link>
                             </OverlayTrigger>
                         </div>
                     </div>

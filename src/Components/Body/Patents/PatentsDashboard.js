@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { CgDatabase } from "react-icons/cg";
 import { Dna } from  'react-loader-spinner';
-import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { MdSignalWifiConnectedNoInternet0, MdOutlineDateRange, MdArrowUpward, MdArrowDownward } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { Pagination,Select, MenuItem } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
@@ -79,11 +79,12 @@ const PatentsDashboard = () => {
                 value={sort} 
                 onChange={handleSortChange} 
                 autoWidth
-                color="success"
+                variant='outlined'
+                color='success'
                 className='select-paginate'
             >
-                <MenuItem value={"prv.prv_dof:desc"}>PRV Filing Desc</MenuItem>
-                <MenuItem value={"prv.prv_dof:asc"}>PRV Filing Asc</MenuItem>  
+                <MenuItem value={"prv.prv_dof:desc"}>PRV Filing Desc <span className='sort-icon'> <MdOutlineDateRange /><MdArrowUpward /></span></MenuItem>
+                <MenuItem value={"prv.prv_dof:asc"}>PRV Filing Asc <span className='sort-icon'> <MdOutlineDateRange /><MdArrowDownward /></span> </MenuItem>  
             </Select>
             
             <div className='pagination-container'>

@@ -2197,6 +2197,21 @@ Breadcrumb.Item{
   color: #2c444e !important;
 }
 
+.firm-link{
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  font-size: 4vw;
+  color: #2c444e;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: .5s;
+}
+
+.firm-link:hover{
+  color: #15B39D !important;
+}
+
 .create-customNote-link{
   display: flex;
   justify-content: center;
@@ -2246,6 +2261,14 @@ Breadcrumb.Item{
   }
 
   .create-customNote-link{
+    font-size: 6vh !important;
+  }
+
+  .firm-link{
+    font-size: 6vh !important;
+  }
+
+  .firm-customNote-link{
     font-size: 6vh !important;
   }
 
@@ -2478,4 +2501,10 @@ Breadcrumb.Item{
   .signout-modal-session-button{
     font-size: 2vh !important;
   }
+}
+
+.sort-icon{
+  font-size: 25px;
+  margin-left: 3px;
+  color: #0E6E59;
 }

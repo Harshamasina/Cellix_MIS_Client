@@ -3,6 +3,7 @@ import FirmsTable from './FirmsTable';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { VscLaw } from 'react-icons/vsc';
 
 const Firms = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Office.jpg";
@@ -17,6 +18,7 @@ const Firms = () => {
                     <div className="ParallaxDiv">
                         <div className='FirmPageContent'>
                             <h1>Firms</h1>
+                            <Link className='firm-link' to="/firms"><VscLaw /></Link>
                         </div>
                     </div>
                 </div>
