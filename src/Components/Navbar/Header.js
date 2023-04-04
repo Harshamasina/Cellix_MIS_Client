@@ -78,7 +78,7 @@ function NavBar() {
         if (storedUser) {
             const user = JSON.parse(storedUser);
             const expirationTime = 5 * 60 * 60 * 1000;
-            const warningTime = expirationTime - 2 * 60 * 1000;
+            const warningTime = expirationTime - 3 * 60 * 1000;
             if (Date.now() - user.lastLoginAt > warningTime) {
                 setSessionTimeoutModal(true);
             }
@@ -163,12 +163,12 @@ function NavBar() {
             </div>
 
             <div>
-                <Modal show={sessionTimeoutModal} onHide={handleSignOut} backdrop="static" keyboard={false} centered >
+                <Modal show={sessionTimeoutModal} onHide={handleSignOut} backdrop="static" keyboard={false} centered size='lg'>
                     <Modal.Header>
-                        <Modal.Title className='session-timeout-header'>Your Session Expired</Modal.Title>
+                        <Modal.Title className='session-timeout-header'><span>{login ? login.displayName : ""}</span>, Your Session Expired</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <p className='session-timeout-msg'>Your session is expired. Please Login again to continue using the Cellix Bio MIS.</p>
+                        <p className='session-timeout-msg'>Your session was expired. Please Login again to continue using the Cellix Bio MIS.</p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className='signout-modal-session-button' onClick={handleSignOut}><VscSignIn /> Login, Again</Button>

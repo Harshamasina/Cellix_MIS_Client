@@ -31,7 +31,7 @@ const Login = () => {
             setErrorMsg("All Fields are required");
             return;
         }
-        const empIDRegex = /^(APL|apl)\d{4}|(CLX-|clx-)(EMP-|emp-)\d{3}$/;
+        const empIDRegex = /^(APL|apl)(?=\d{4}$)\d{4}|(CLX-|clx-)(EMP-|emp-)\d{3}$/;
         if(!empIDRegex.test(user.emp_id)){
             setErrorMsg("Invalid Employee ID");
             return;

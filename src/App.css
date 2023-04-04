@@ -2431,7 +2431,12 @@ Breadcrumb.Item{
 .session-timeout-header{
   color: #FF4433;
   font-size: 2vw !important;
-  margin-left: 18%;
+  margin-left: 15%;
+}
+
+.session-timeout-header span{
+  text-transform: uppercase;
+  font-weight: 650;
 }
 
 .session-timeout-msg{
