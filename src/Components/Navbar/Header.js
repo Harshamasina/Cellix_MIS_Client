@@ -28,6 +28,8 @@ import DeletedApplications from '../Body/Patents/DeletedApplications/DeletedAppl
 import DeletedApplicationInfo from '../Body/Patents/DeletedApplications/DeletedApplicationInfo';
 import CountryNPE from '../Body/Firms/CountryNPE';
 import { VscSignOut, VscSignIn } from 'react-icons/vsc';
+import NPEApplications from '../Body/Patents/NPEApplications/NPEApplications';
+import NPEApplicationsDashboard from '../Body/Patents/NPEApplications/NPEApplicationsDashboard';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -102,15 +104,16 @@ function NavBar() {
                                     <>
                                         <Nav.Link className='navbar_link' as={Link} to="/home" eventKey="0">Home</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/patents" eventKey="1">Applications</Nav.Link>
-                                        <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="2">Firms</Nav.Link>
-                                        <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="3">New Entry</Nav.Link>
-                                        <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="4">Notifications</Nav.Link>
+                                        <Nav.Link className='navbar_link' as={Link} to="/npeapplications" eventKey="2">NPE Applications</Nav.Link>
+                                        <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="3">Firms</Nav.Link>
+                                        <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="4">New Entry</Nav.Link>
+                                        <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="5">Notifications</Nav.Link>
                                         <NavDropdown title={<span>{login ? login.displayName : ""} <MdKeyboardArrowDown /></span>} id="basic-nav-dropdown" className='nav-dropdown'>
                                             <NavDropdown title={<span>About <MdKeyboardArrowDown /></span>} className='subnav-dropdown'>
                                                 <NavDropdown.Item className='subdropdown-link'>{login.displayName}</NavDropdown.Item>
                                                 <NavDropdown.Item className='subdropdown-link'>{login.email}</NavDropdown.Item>
                                             </NavDropdown>
-                                        <NavDropdown.Item><Nav.Link as={Link} to='updatepassword' className='dropdown-link' eventKey="5">Change Password</Nav.Link></NavDropdown.Item>
+                                        <NavDropdown.Item><Nav.Link as={Link} to='updatepassword' className='dropdown-link' eventKey="6">Change Password</Nav.Link></NavDropdown.Item>
                                             {
                                                 login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
                                                     <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
@@ -140,6 +143,8 @@ function NavBar() {
                     <Route path='/deletedapplications' element={login ? <DeletedApplications /> : <Navigate to='/login' />} />
                     <Route path='/deletedapplication/:ref' element={login ? <DeletedApplicationInfo /> : <Navigate to='/login' />} />
                     <Route path='/countrynpe/:countrycode' element={login ? <CountryNPE /> : <Navigate to='/login' />} />
+                    <Route path='/npeapplications' element={login ? <NPEApplications /> : <Navigate to='/login' />} />
+                    <Route path='/npeapplicationsdashboard/:desc' element={login ? <NPEApplicationsDashboard /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/forgotpassword' element={<ForgotPassword />} />
