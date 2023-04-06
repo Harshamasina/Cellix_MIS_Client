@@ -1,5 +1,5 @@
 import { Parallax } from 'react-parallax';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
@@ -61,7 +61,8 @@ const PCTPatentForm = () => {
                     compounds: ""
                 });
                 alert('Patent Submitted Successfully');
-                window.location.reload();
+                setShowModal(false);
+                setConfirmCode('');
             }
         } catch (err) {
             console.log(err);
@@ -80,6 +81,18 @@ const PCTPatentForm = () => {
 
     const toggleShowPassword = () => setShowPassword(!showPassword);
 
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+    
     return(
         <div>
             <Helmet>

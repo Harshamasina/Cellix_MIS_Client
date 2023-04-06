@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { Modal, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
@@ -49,7 +49,9 @@ const CreateCustomNotif = () => {
                 });
                 alert('Notification created Successfully');
                 navigate('/customnotifications');
-                window.location.reload();
+                setConfirmCode('');
+                setShowModal(false);
+
             }
         } catch (err) {
             console.log(err);
@@ -63,6 +65,18 @@ const CreateCustomNotif = () => {
     };
 
     const toggleShowPassword = () => setShowPassword(!showPassword);
+
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     return(
         <div>

@@ -20,8 +20,8 @@ const DeleteCustomNotif = ({notificationId}) => {
             if(res.status === 201){
                 setErrorMessage(res.data.message);
                 setDeleteModal(false);
+                setConfirmCode('');
                 navigate("/customnotifications");
-                window.location.reload();
             }
         } catch (err) {
             console.error(err);

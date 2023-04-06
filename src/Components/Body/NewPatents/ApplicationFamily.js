@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -207,6 +207,18 @@ const ApplicationFamily = () => {
         setShowSubmitDeleteModel(false);
         setShowPassword(false);
     }
+
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     return(
         <div>

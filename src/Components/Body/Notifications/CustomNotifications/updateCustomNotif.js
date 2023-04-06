@@ -43,6 +43,18 @@ const UpdateCustomNotif = () => {
         fetchData();
     }, [id]);
 
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
     const handleInputs = (e) => {
         const { name, value } = e.target;
         setNotification(prevState => ({
@@ -65,12 +77,13 @@ const UpdateCustomNotif = () => {
                 console.log(res);
                 setErrorMessage(res.data.message);
                 alert("Notification Updated Successfully");
-                window.location.reload();
+                setShowModal(false);
             }
         } catch (err) {
             console.error(err);
             setErrorMessage(err.response.data.error);
             setConfirmCode('');
+            setShowModal(false);
         }
     }
 
@@ -105,6 +118,7 @@ const UpdateCustomNotif = () => {
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     }
+
     return(
         <div>
             <Helmet>
@@ -205,4 +219,5 @@ const UpdateCustomNotif = () => {
         </div>
     );
 }
+
 export default UpdateCustomNotif;

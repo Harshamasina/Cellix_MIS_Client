@@ -50,7 +50,7 @@ const PatentUpdate = () => {
     const [loading, setLoading] = useState(true);
     const [showNPEModal, setShowNPEModal] = useState(false);
     const [deleteIndex, setDeleteIndex] = useState(null);
-    const [showSubmitModal, setShowSubmitDeleteModel] = useState(false);
+    const [showSubmitModal, setShowSubmitModel] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [confirmCode, setConfirmCode] = useState('');
     const [errorMessage, setErrorMessage]  = useState('');
@@ -160,6 +160,18 @@ const PatentUpdate = () => {
         }));
     };
 
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = '';
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
     const handleRemovePRV = (index) => {
         setPatent(prevState => {
             const updatePRV = [...prevState.prv];
@@ -229,7 +241,7 @@ const PatentUpdate = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        setShowSubmitDeleteModel(true);
+        setShowSubmitModel(true);
     }
 
     const handleUpdateModal = async () => {
@@ -242,7 +254,9 @@ const PatentUpdate = () => {
                 console.log(res);
                 setErrorMessage(res.data.message);
                 alert("Application Family Updated Successfully");
-                window.location.reload();
+                setShowSubmitModel(false);
+                setConfirmCode('');
+                
             }
         } catch (err) {
             console.error(err);
@@ -254,7 +268,7 @@ const PatentUpdate = () => {
     }
 
     const handleCloseSubmitModal= () => {
-        setShowSubmitDeleteModel(false);
+        setShowSubmitModel(false);
         setShowPassword(false);
     }
 
