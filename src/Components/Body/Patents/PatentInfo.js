@@ -200,7 +200,7 @@ const PatentInfo = () => {
                                                     ) : ("")
                                                 ))
                                             }
-                                            <p>NPE Grant Decision: 
+                                            <p>NPE Status: 
                                                 <span>
                                                     {
                                                         npeData.npe_grant_desc === "1" ? " Granted" :

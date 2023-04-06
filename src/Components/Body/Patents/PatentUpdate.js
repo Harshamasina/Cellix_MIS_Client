@@ -582,7 +582,7 @@ const PatentUpdate = () => {
                                                 <Button size='sm' className='add-date' onClick={() => handleAddOA(NPEIndex)}>Add Office Action</Button>
                                                 
                                                 <div className="input-box">
-                                                    <span className="details">NPE Granted / Rejected</span>
+                                                    <span className="details">NPE Status</span>
                                                     <select
                                                         name="npe_grant_desc"
                                                         onChange={ (e) => handleInputs(e, undefined ,NPEIndex)}
