@@ -10,6 +10,7 @@ import { Pagination } from '@mui/material';
 import { TbFileDatabase } from 'react-icons/tb';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import { Helmet } from 'react-helmet';
 
 const NPEApplicationsDashboard = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Pie+Graph.jpg";
@@ -69,6 +70,19 @@ const NPEApplicationsDashboard = () => {
 
     return(
         <div>
+            <Helmet>
+                <title>
+                    {
+                       desc === "1" ? " Granted" :
+                       desc === "2" ? " Lapsed" :
+                       desc === "3" ? " Abandoned" :
+                       desc === "4" ? " Under examination" :
+                       desc === "0" ? " Rejected" : "NA" 
+                    } NPE Applications | MIS
+                </title>
+                <meta name="description" content="Cellix Bio MIS NPE Applications Families page"></meta>
+            </Helmet>
+
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
                 <div className='ParallaxContainer1'>
                     <div className="ParallaxDiv">
@@ -140,6 +154,6 @@ const NPEApplicationsDashboard = () => {
             </div>
         </div>
     );
-}
+};
 
 export default NPEApplicationsDashboard;

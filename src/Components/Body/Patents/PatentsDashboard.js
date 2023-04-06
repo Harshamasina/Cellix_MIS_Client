@@ -153,6 +153,6 @@ const PatentsDashboard = () => {
             </div>
         </div>
     );
-}
+};
 
 export default PatentsDashboard;

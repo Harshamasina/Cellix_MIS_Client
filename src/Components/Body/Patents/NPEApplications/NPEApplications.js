@@ -57,6 +57,6 @@ const NPEApplications = () => {
             </Parallax>
         </div>
     );
-}
+};
 
 export default NPEApplications;

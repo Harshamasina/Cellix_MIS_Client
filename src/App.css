@@ -2247,6 +2247,7 @@ Breadcrumb.Item{
   position: sticky;
   top: 0px;
   background: #ffffff;
+  vertical-align: middle !important;
 }
 
 .notification-table tbody{
