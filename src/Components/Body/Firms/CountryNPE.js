@@ -68,6 +68,7 @@ const CountryNPE = () => {
                 {
                     countrycode === "US" ? " USA" :
                     countrycode === "EP" ? " Europe" :
+                    countrycode === "SK" ? " Europe (EP)" :
                     countrycode === "JP" ? " Japan" :
                     countrycode === "SG" ? " Singapore" :
                     countrycode === "KR" ? " South Korea" :
@@ -92,6 +93,7 @@ const CountryNPE = () => {
                                 NPE's in {
                                     countrycode === "US" ? " USA" :
                                     countrycode === "EP" ? " Europe" :
+                                    countrycode === "SK" ? " Europe" :
                                     countrycode === "JP" ? " Japan" :
                                     countrycode === "SG" ? " Singapore" :
                                     countrycode === "KR" ? " South Korea" :

@@ -180,7 +180,27 @@ const PatentInfo = () => {
                                     <Accordion.Body>
                                         <div className='tab-npe-data shadow-lg'>
                                             <h4>Filing Stage</h4>
-                                            <p>NPE Country: <span>{npeData.npe_country}</span></p>
+                                            <p>
+                                                NPE Country: 
+                                                <span>
+                                                    {
+                                                        npeData.npe_country === "US" ? " United States of America (US)" :
+                                                        npeData.npe_country === "EP" ? " Europe (EP)" :
+                                                        npeData.npe_country === "SK" ? " Europe (EP)" :
+                                                        npeData.npe_country === "JP" ? " Japan (JP)" :
+                                                        npeData.npe_country === "SG" ? " Singapore (SG)" :
+                                                        npeData.npe_country === "KR" ? " South Korea (KR)" :
+                                                        npeData.npe_country === "NZ" ? " New Zealand (NZ)" :
+                                                        npeData.npe_country === "AU" ? " Australia (AU)" :
+                                                        npeData.npe_country === "BR" ? " Brazil (BR)" :
+                                                        npeData.npe_country === "IL" ? " Israel (IL)" :
+                                                        npeData.npe_country === "CA" ? " Canada (CA)" : 
+                                                        npeData.npe_country === "RU" ? " Russia (RU)" :
+                                                        npeData.npe_country === "ZA" ? " South Africa (ZA)" : 
+                                                        npeData.npe_country === "IN" ? " India (IN)" : "NA"
+                                                    }
+                                                </span>
+                                            </p>
                                             <p>NPE Firm: <span>{npeData.npe_firms}</span></p>
                                             <p>NPE Application Number: <span>{npeData.npe_appno}</span></p>
                                             <p>NPE Date of Filing: <span>{npeData.npe_dof}</span></p>
