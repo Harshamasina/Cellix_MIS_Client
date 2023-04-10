@@ -11,6 +11,7 @@ import { TbFileDatabase } from 'react-icons/tb';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { Helmet } from 'react-helmet';
+import { Breadcrumbs } from '@mui/material';
 
 const NPEApplicationsDashboard = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Pie+Graph.jpg";
@@ -100,6 +101,20 @@ const NPEApplicationsDashboard = () => {
                     </div>
                 </div>
             </Parallax>
+
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to="/home" className='BC-Links'>Home</Link>
+                <Link to="/npeapplications" className='BC-Links'>NPE Applications</Link>
+                <Link to={"/npeapplicationsdashboard/"+desc} className='BC-Links'>
+                    {
+                        desc === "1" ? " Granted" :
+                        desc === "2" ? " Lapsed" :
+                        desc === "3" ? " Abandoned" :
+                        desc === "4" ? " Under examination" :
+                        desc === "0" ? " Rejected" : "NA"
+                    } NPE Applications
+                </Link>
+            </Breadcrumbs>
 
             <div>
                 <div className='npe-top-pagination-container'>

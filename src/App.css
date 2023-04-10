@@ -897,6 +897,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: #fff !important;
   background: #0E6E59 !important;
   border: 2px solid #0E6E59 !important;
+  box-shadow: 0 5px 10px rgba(0,0,0,.4) !important;
 }
 
 .tab-data{

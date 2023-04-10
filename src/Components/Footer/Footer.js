@@ -6,7 +6,7 @@ const Footer = () => {
     return(
         <div className="footer">
             <div className="footer-content">
-                <a href="https://www.cellixbio.com/"><img src="https://cellixbio-assets.s3.ap-south-1.amazonaws.com/Web+Images/CellixBio.Icon.png" alt="footer-logo"/></a>
+                <a href="https://www.cellixbio.com/" target="_blank" rel="noreferrer"><img src="https://cellixbio-assets.s3.ap-south-1.amazonaws.com/Web+Images/CellixBio.Icon.png" alt="footer-logo"/></a>
                 <ul className="footer-links">
                     <li><Nav.Link className='footer_link' as={Link} to="/home" eventKey="0">Home</Nav.Link></li>
                     <li><Nav.Link className='footer_link' as={Link} to="/patents" eventKey="1">Applications</Nav.Link></li>
