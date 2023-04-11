@@ -2058,9 +2058,29 @@ Breadcrumb.Item{
   margin-left: 2%;
 }
 
+.select-paginate:focus{
+  outline-color: #15B39D;
+}
+
+.NPE-paginate{
+  margin-left: 2%;
+  margin-top: 2%;
+  width: 10%;
+  outline: 2px solid #0E6E59;
+}
+
+.NPE-paginate:focus{
+  outline-color: #15B39D;
+}
+
 .MuiPagination-root .Mui-selected {
   background-color: #0E6E59 !important;
   color: white !important;
+}
+
+.Mui-selected:focus {
+  background-color: #0E6E59;
+  color: #15B39D;
 }
 
 .table-pagination-container{
@@ -2100,6 +2120,14 @@ Breadcrumb.Item{
 
   .pagination-container{
     width: 100% !important;
+  }
+
+  .NPE-paginate{
+    width: 18vh !important;
+    height: 6vh !important;
+    font-size: 1.8vh !important;
+    margin-top: 3% !important;
+    margin-bottom: 3% !important;
   }
 }
 

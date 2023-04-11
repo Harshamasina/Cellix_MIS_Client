@@ -193,10 +193,13 @@ const PatentInfo = () => {
                                                         npeData.npe_country === "NZ" ? " New Zealand (NZ)" :
                                                         npeData.npe_country === "AU" ? " Australia (AU)" :
                                                         npeData.npe_country === "BR" ? " Brazil (BR)" :
+                                                        npeData.npe_country === "ES" ? " Spain (ES)" :
+                                                        npeData.npe_country === "MX" ? " Mexico (MX)" :
                                                         npeData.npe_country === "IL" ? " Israel (IL)" :
                                                         npeData.npe_country === "CA" ? " Canada (CA)" : 
                                                         npeData.npe_country === "RU" ? " Russia (RU)" :
-                                                        npeData.npe_country === "ZA" ? " South Africa (ZA)" : 
+                                                        npeData.npe_country === "ZA" ? " South Africa (ZA)" :
+                                                        npeData.npe_country === "CN" ? " China (CN)" :
                                                         npeData.npe_country === "IN" ? " India (IN)" : "NA"
                                                     }
                                                 </span>

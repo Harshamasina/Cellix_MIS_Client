@@ -72,6 +72,11 @@ const FirmsTable = () => {
             country: "India(IN)",
             Firm: "Cellix, KK",
             countryCode: "IN"
+        },
+        {
+            country: "China(CN)",
+            Firm: "NA",
+            countryCode: "CN"
         }
     ];
     

@@ -6,7 +6,7 @@ import { Dna } from  'react-loader-spinner';
 import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Pagination } from '@mui/material';
+import { MenuItem, Pagination, Select } from '@mui/material';
 import { TbFileDatabase } from 'react-icons/tb';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
@@ -19,8 +19,9 @@ const NPEApplicationsDashboard = () => {
     const [npeData, setNPEData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [selectedCountry, setSelectedCountry] = useState(null);
     const [page, setPage] = useState(1);
-    const [pageSize, setPageSize] = useState(30);
+    const [pageSize, setPageSize] = useState(15);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,15 +38,17 @@ const NPEApplicationsDashboard = () => {
         fetchData();
     }, [desc]);
 
+    const filteredNPEData = npeData[0]?.npeData.filter(npe => !selectedCountry || npe.npe?.npe_country === selectedCountry) || [];
+
     const handleChangePage = (event, value) => {
-        setPageSize(30);
+        setPageSize(15);
         setPage(value);
     };
     
     const itemsPerPage = pageSize;
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-
+    
     if(loading){
         return <div>
             <Dna
@@ -117,20 +120,53 @@ const NPEApplicationsDashboard = () => {
             </Breadcrumbs>
 
             <div>
-                <div className='npe-top-pagination-container'>
-                    <Pagination
-                        count={Math.ceil(npeData[0].npeData.length / itemsPerPage)}
-                        page={page}
-                        onChange={handleChangePage}
-                        size="medium" 
-                        shape="rounded"
-                    />
-                </div>
+                <Select
+                    labelId="npe-country-select-label"
+                    id="npe-country-select"
+                    value={selectedCountry}
+                    onChange={(e) => setSelectedCountry(e.target.value)}
+                    className='NPE-paginate'
+                    variant='outlined'
+                    color='success'
+                    displayEmpty
+                    inputProps={{ 'aria-label': 'Without label' }}
+                >
+                    <MenuItem value="" disabled>Select Country</MenuItem>
+                    <MenuItem value={null}>All Countries</MenuItem>
+                    <MenuItem value={'US'}>United States</MenuItem>
+                    <MenuItem value={'EP'}>Europe</MenuItem>
+                    <MenuItem value={'ES'}>Spain</MenuItem>
+                    <MenuItem value={'JP'}>Japan</MenuItem>
+                    <MenuItem value={'SG'}>Singapore</MenuItem>
+                    <MenuItem value={'KR'}>South Korea</MenuItem>
+                    <MenuItem value={'NZ'}>New Zealand</MenuItem>
+                    <MenuItem value={'AU'}>Australia</MenuItem>
+                    <MenuItem value={'BR'}>Brazil</MenuItem>
+                    <MenuItem value={'MX'}>Mexico</MenuItem>
+                    <MenuItem value={'ZA'}>South Africa</MenuItem> 
+                    <MenuItem value={'IL'}>Israel</MenuItem> 
+                    <MenuItem value={'CA'}>Canada</MenuItem> 
+                    <MenuItem value={'RU'}>Russia</MenuItem>
+                    <MenuItem value={'IN'}>India</MenuItem> 
+                    <MenuItem value={'CN'}>China</MenuItem>   
+                </Select>
+            </div>
 
+            <div className='npe-top-pagination-container'>
+                <Pagination
+                    count={Math.ceil(filteredNPEData.length / itemsPerPage)}
+                    page={page}
+                    onChange={handleChangePage}
+                    size="medium" 
+                    shape="rounded"
+                />
+            </div>
+
+            <div>
                 <div className='container'>
                     <div className='box-container'>
                         {
-                            npeData[0].npeData && npeData[0].npeData.slice(startIndex, endIndex).map((npe, index) => (
+                            filteredNPEData.slice(startIndex, endIndex).map((npe, index) => (
                                 <div className='box' key={index}>
                                     <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+npe.ref_no}>{npe.ref_no}</Link></h3>
                                     <h3>PCT Filing Date: <span>{npe.pct_dof}</span></h3>
@@ -154,18 +190,18 @@ const NPEApplicationsDashboard = () => {
                         }
                     </div>
                 </div>
+            </div>
 
-                <div className='npe-bottom-pagination-container'>
-                    <Pagination
-                        count={Math.ceil(npeData[0].npeData.length / itemsPerPage)}
-                        page={page}
-                        onChange={handleChangePage}
-                        size="large" 
-                        showFirstButton 
-                        showLastButton
-                        shape="rounded"
-                    />
-                </div>
+            <div className='npe-bottom-pagination-container'>
+                <Pagination
+                    count={Math.ceil(filteredNPEData.length / itemsPerPage)}
+                    page={page}
+                    onChange={handleChangePage}
+                    size="large" 
+                    showFirstButton 
+                    showLastButton
+                    shape="rounded"
+                />
             </div>
         </div>
     );

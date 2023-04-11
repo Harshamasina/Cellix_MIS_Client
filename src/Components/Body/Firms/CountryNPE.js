@@ -65,22 +65,24 @@ const CountryNPE = () => {
         <div>
             <Helmet>
                 <title>
-                {
-                    countrycode === "US" ? " USA" :
-                    countrycode === "EP" ? " Europe" :
-                    countrycode === "SK" ? " Europe (EP)" :
-                    countrycode === "JP" ? " Japan" :
-                    countrycode === "SG" ? " Singapore" :
-                    countrycode === "KR" ? " South Korea" :
-                    countrycode === "NZ" ? " New Zealand" :
-                    countrycode === "AU" ? " Australia" :
-                    countrycode === "ZA" ? " South Africa" :
-                    countrycode === "BR" ? " Brazil" :
-                    countrycode === "IL" ? " Israel" :
-                    countrycode === "CA" ? " Canada" : 
-                    countrycode === "RU" ? " Russia" : 
-                    countrycode === "IN" ? " India" : "NA"
-                } | Firms | MIS
+                    {
+                        countrycode === "US" ? " USA" :
+                        countrycode === "EP" ? " Europe" :
+                        countrycode === "SK" ? " Europe (EP)" :
+                        countrycode === "JP" ? " Japan" :
+                        countrycode === "SG" ? " Singapore" :
+                        countrycode === "KR" ? " South Korea" :
+                        countrycode === "NZ" ? " New Zealand" :
+                        countrycode === "AU" ? " Australia" :
+                        countrycode === "ZA" ? " South Africa" :
+                        countrycode === "BR" ? " Brazil" :
+                        countrycode === "MX" ? " Mexico" :
+                        countrycode === "IL" ? " Israel" :
+                        countrycode === "CA" ? " Canada" : 
+                        countrycode === "CN" ? " China" : 
+                        countrycode === "RU" ? " Russia" : 
+                        countrycode === "IN" ? " India" : "NA"
+                    } | Firms | MIS
                 </title>
                 <meta name="description" content="Cellix Bio MIS {countrycode} Firms"></meta>
             </Helmet>
@@ -101,8 +103,10 @@ const CountryNPE = () => {
                                     countrycode === "AU" ? " Australia" :
                                     countrycode === "ZA" ? " South Africa" :
                                     countrycode === "BR" ? " Brazil" :
+                                    countrycode === "MX" ? " Mexico" :
                                     countrycode === "IL" ? " Israel" :
-                                    countrycode === "CA" ? " Canada" : 
+                                    countrycode === "CA" ? " Canada" :
+                                    countrycode === "CN" ? " China" : 
                                     countrycode === "RU" ? " Russia" : 
                                     countrycode === "IN" ? " India" : "NA"
                                 }
