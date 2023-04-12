@@ -149,12 +149,16 @@ const DeletedApplicationInfo = () => {
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (
                                                     afData.npe_af_descp ? (
-                                                        <p key={i}>
-                                                            {afData.npe_af_descp}:
-                                                            <span style={{marginLeft: "1%"}}>
-                                                                {afData.npe_af_date}
-                                                            </span>
-                                                        </p>
+                                                        <div>
+                                                            <h5>Annuity {i + 1}</h5>
+                                                            <p key={i}>
+                                                                {afData.npe_af_descp}:
+                                                                <span style={{marginLeft: "1%"}}>
+                                                                    {afData.npe_af_date}
+                                                                </span>
+                                                            </p>
+                                                            <p>NPE Grace Period : <span>{afData.npe_af_grace}</span></p>
+                                                        </div>
                                                     ) : ("")
                                                 ))
                                             }

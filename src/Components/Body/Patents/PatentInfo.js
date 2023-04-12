@@ -184,7 +184,7 @@ const PatentInfo = () => {
                                                 NPE Country: 
                                                 <span>
                                                     {
-                                                        npeData.npe_country === "US" ? " United States of America (US)" :
+                                                        npeData.npe_country === "US" ? " United States (US)" :
                                                         npeData.npe_country === "EP" ? " Europe (EP)" :
                                                         npeData.npe_country === "SK" ? " Europe (EP)" :
                                                         npeData.npe_country === "JP" ? " Japan (JP)" :
@@ -240,14 +240,20 @@ const PatentInfo = () => {
                                             {
                                                 npeData.npe_oa && npeData.npe_af.map((afData, i) => (
                                                     afData.npe_af_descp ? (
-                                                        <OverlayTrigger trigger={['hover', 'focus']}  placement="left" overlay={renderPopover(afData.npe_af_date)}>
-                                                            <p key={i}>
-                                                                {afData.npe_af_descp}:
-                                                                <span className={changeColorDates(afData.npe_af_date)} style={{marginLeft: "1%"}}>
-                                                                    {afData.npe_af_date}
-                                                                </span>
-                                                            </p>
-                                                        </OverlayTrigger>
+                                                        <div>
+                                                            <h5>Annuity {i + 1}</h5>
+                                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="left" overlay={renderPopover(afData.npe_af_date)}>
+                                                                <p key={i}>
+                                                                    {afData.npe_af_descp}:
+                                                                    <span className={changeColorDates(afData.npe_af_date)} style={{marginLeft: "1%"}}>
+                                                                        {afData.npe_af_date}
+                                                                    </span>
+                                                                </p>
+                                                            </OverlayTrigger>
+                                                            <OverlayTrigger trigger={['hover', 'focus']}  placement="left" overlay={renderPopover(afData.npe_af_grace)}>
+                                                                <p>NPE Grace Period: <span className={changeColorDates(afData.npe_af_grace)}>{afData.npe_af_grace}</span></p>
+                                                            </OverlayTrigger>
+                                                        </div>
                                                     ) : ("")
                                                 ))
                                             }

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { Parallax } from 'react-parallax';
 import { useParams } from 'react-router';
@@ -40,7 +41,7 @@ const PatentUpdate = () => {
                 npe_grant: "",
                 npe_patent: "",
                 npe_if: "",
-                npe_af: [{ npe_af_descp: "", npe_af_date: "" }],
+                npe_af: [{ npe_af_descp: "", npe_af_date: "", npe_af_grace: "" }],
                 npe_rfe: "",
                 npe_notes: ""
             }
@@ -153,7 +154,7 @@ const PatentUpdate = () => {
                 npe_grant: "",
                 npe_patent: "",
                 npe_if: "",
-                npe_af: [{ npe_af_descp: "", npe_af_date: "" }],
+                npe_af: [{ npe_af_descp: "", npe_af_date: "", npe_af_grace: "" }],
                 npe_rfe: "",
                 npe_notes: ""
             }]
@@ -224,7 +225,7 @@ const PatentUpdate = () => {
 
     const handleAddAF = (NPEIndex) => {
         const updatedNPE = { ...patent };
-        updatedNPE.npe[NPEIndex].npe_af.push({ npe_af_descp: "", npe_af_date: "" });
+        updatedNPE.npe[NPEIndex].npe_af.push({ npe_af_descp: "", npe_af_date: "", npe_af_grace: "" });
         setPatent(updatedNPE);
     };
 
@@ -648,7 +649,7 @@ const PatentUpdate = () => {
                                                                 />
                                                             </div>
                                                             <div className="input-box">
-                                                                <span className="details">NPE NPE Annuity Date</span>
+                                                                <span className="details">NPE Annuity Date</span>
                                                                 <input 
                                                                     type="date" 
                                                                     placeholder="Enter NPE Annuity Date"
@@ -656,6 +657,31 @@ const PatentUpdate = () => {
                                                                     name="npe_af_date"
                                                                     value={af.npe_af_date}
                                                                     onChange={ (e) => handleInputs(e, undefined ,NPEIndex, afIndex)}
+                                                                />
+                                                            </div>
+                                                            <div className="input-box">
+                                                                <span className="details">NPE Grace Period 
+                                                                    (
+                                                                        <span>
+                                                                            {
+                                                                                af.npe_af_date && moment(af.npe_af_date).isValid() && (
+                                                                                    <span className='npe-grace-date'>
+                                                                                        {
+                                                                                            moment(af.npe_af_date).add(6, 'months').format('DD-MM-YYYY')
+                                                                                        }
+                                                                                    </span>
+                                                                                )
+                                                                            }
+                                                                        </span>
+                                                                    )
+                                                                </span>
+                                                                <input 
+                                                                    type="date" 
+                                                                    placeholder="Enter NPE Grace Period"
+                                                                    autoComplete="off"
+                                                                    name="npe_af_grace"
+                                                                    value={af.npe_af_grace}
+                                                                    onChange={(e) => handleInputs(e, undefined, NPEIndex, afIndex)}
                                                                 />
                                                             </div>
                                                             <Button size='sm' className='remove-date' onClick={() => handleRemoveAF(NPEIndex, afIndex)}>Remove Annuity Fee</Button>

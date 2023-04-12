@@ -934,6 +934,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 650;
 }
 
+.tab-npe-data h5{
+  margin-left: 3%;
+  color: #15B39D;
+  font-weight: 600;
+}
+
 .tab-npe-data p{
   text-align: left;
   font-size: 1.2vw;
@@ -949,6 +955,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-weight: 500;
 }
 
+.npe-grace-date{
+  color: #707070;
+}
 
 @media screen and (max-width: 600px) {
   .patentinfo-link{
@@ -981,6 +990,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   
   .tab-npe-data h4{
+    font-size: 1.5vh;
+  }
+
+  .tab-npe-data h5{
     font-size: 1.5vh;
   }
   

@@ -36,7 +36,8 @@ const ApplicationFamily = () => {
             npe_if: "",
             npe_af: [{
                 npe_af_descp: "",
-                npe_af_date: ""
+                npe_af_date: "",
+                npe_af_grace: ""
             }],
             npe_rfe: "",
             npe_notes: ""
@@ -139,7 +140,7 @@ const ApplicationFamily = () => {
             npe_grant: "",
             npe_patent: "",
             npe_if: "",
-            npe_af: [{ npe_af_descp: "", npe_af_date: "" }],
+            npe_af: [{ npe_af_descp: "", npe_af_date: "", npe_af_grace: "" }],
             npe_rfe: "",
             npe_notes: ""
         }];
@@ -571,6 +572,17 @@ const ApplicationFamily = () => {
                                                                         autoComplete="off"
                                                                         name="npe_af_date"
                                                                         value={OFDate.npe_af_date}
+                                                                        onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
+                                                                    />
+                                                                </div>
+                                                                <div className="input-box">
+                                                                    <span className="details">NPE Grace Period</span>
+                                                                    <input 
+                                                                        type="date" 
+                                                                        placeholder="NPE Grace Period"
+                                                                        autoComplete="off"
+                                                                        name="npe_af_grace"
+                                                                        value={OFDate.npe_af_grace}
                                                                         onChange={ (e) => handleNPEAnnuityDateChange(e, NPEIndex, OFIndex)}
                                                                     />
                                                                 </div>
