@@ -44,7 +44,7 @@ function NavBar() {
         }else{
             setChangeNavbar(false);
         }
-    }
+    };
     window.addEventListener('scroll', changeBackground);
 
     useEffect(() => {
@@ -73,7 +73,7 @@ function NavBar() {
         }).catch((err) => {
             console.log("Error", err);
         });
-    }
+    };
 
     useEffect(() => {
         const storedUser = localStorage.getItem('login');
