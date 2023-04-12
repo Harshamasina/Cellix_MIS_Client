@@ -12,6 +12,7 @@ import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { Breadcrumbs } from '@mui/material';
 import { Helmet } from 'react-helmet';
 import { HiArrowSmRight } from 'react-icons/hi';
+import moment from 'moment';
 
 const PatentInfo = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/graphs.jpg";
@@ -76,7 +77,7 @@ const PatentInfo = () => {
                     </Popover>
                 )
             }
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     };
@@ -251,7 +252,23 @@ const PatentInfo = () => {
                                                                 </p>
                                                             </OverlayTrigger>
                                                             <OverlayTrigger trigger={['hover', 'focus']}  placement="left" overlay={renderPopover(afData.npe_af_grace)}>
-                                                                <p>NPE Grace Period: <span className={changeColorDates(afData.npe_af_grace)}>{afData.npe_af_grace}</span></p>
+                                                                <p>
+                                                                    NPE Grace Period: 
+                                                                    {
+                                                                        afData.npe_af_grace ? <span className={changeColorDates(afData.npe_af_grace)}> {afData.npe_af_grace}</span> : 
+                                                                        <span>
+                                                                            {
+                                                                                afData && moment(afData.npe_af_date).isValid() && (
+                                                                                    <span style={{marginLeft: '1%'}} className={changeColorDates(moment(afData.npe_af_date).add(6, 'months').format('YYYY-MM-DD'))}>
+                                                                                        {
+                                                                                            moment(afData.npe_af_date).add(6, 'months').format('YYYY-MM-DD')
+                                                                                        }
+                                                                                    </span>
+                                                                                )
+                                                                            }
+                                                                        </span>
+                                                                    }
+                                                                </p>
                                                             </OverlayTrigger>
                                                         </div>
                                                     ) : ("")
