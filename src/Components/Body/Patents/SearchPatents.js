@@ -1,23 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { HiInformationCircle } from "react-icons/hi";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import axios from 'axios';
+import { BiErrorAlt } from 'react-icons/bi';
 
 const SearchPatents = () => {
-    const [searchPatent, setSearchPatent] = useState();
-    const searchHandle = async(e) => {
-        let key = e.target.value;
-        if(key){
-            let searchResult = await fetch(`https://misbackend.cellixbio.info/api/searchpatents/${key.replaceAll("/", "%2F")}`);
-            searchResult = await searchResult.json();
-            if(searchResult){
-                setSearchPatent(searchResult);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchPatent, setSearchPatent] = useState([]);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchSearchResults = async () => {
+            if (searchTerm) {
+                try {
+                    const response = await axios.get(`https://misbackend.cellixbio.info/api/searchpatents/${searchTerm.replaceAll("/", "%2F")}`);
+                    setSearchPatent(response.data);
+                    setError('');
+                } catch (error) {
+                    console.log(error);
+                    setSearchPatent([]);
+                    setError(error.message);
+                }
             } else {
-                console.log("No Patent Found");
+                setSearchPatent([]);
+                setError('');
             }
-        }
+        };
+        fetchSearchResults();
+    }, [searchTerm]);
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
     };
 
     const popover = (
@@ -34,21 +50,26 @@ const SearchPatents = () => {
                     type="text" 
                     className="input-search" 
                     placeholder="Enter Ref / PRV / PCT / NPE Numbers"
-                    onChange={searchHandle}
+                    onChange={handleSearch}
                 >
                 </input>
             </div>
             
             <div className='search-container'>
                 <div className='box-container'>
+                    {error && <div style={{color: '#0E6E59', fontSize: '40px' }}><span style={{fontSize: "50px", color: "#FF4433"}}><BiErrorAlt /></span>{error}</div>}
+                    
                     {
-                        searchPatent && searchPatent.length === 0 ? 
-                            <div className='searchPatentImg-container'><img className="searchPatentImg" src="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Search+Not+Found.png" alt="not Found"></img></div> : 
+                        (searchPatent && searchPatent.length === 0 && searchTerm) ? 
+                        <div className='searchPatentImg-container'>
+                          <img className="searchPatentImg" src="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Search+Not+Found.png" alt="not Found"></img>
+                        </div> :                     
                         searchPatent && searchPatent.map((patent, i) => (
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
                                 <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
                                 {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
+
                                 <uL className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
@@ -62,6 +83,7 @@ const SearchPatents = () => {
                                         ))
                                     }
                                 </uL>
+
                                 <OverlayTrigger 
                                     placement="auto" 
                                     delay={{ show: 250, hide: 400 }}
