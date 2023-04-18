@@ -88,6 +88,17 @@ const DeletedApplicationInfo = () => {
                                 <h4>PRV {prvIndex + 1}</h4>
                                 <p>PRV Application Number: <span>{prvData.prv_appno}</span></p>
                                 <p>PRV Application Number: <span>{prvData.prv_dof}</span></p>
+                                <div>
+                                    <p>{patent.prv_notes ? "PRV Notes: " : ""}</p>
+                                    {
+                                        patent.prv_notes.split(/\n+/).map((line, index) => (
+                                            <p key={index} className='NPE-notes'>
+                                                {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                                {line}
+                                            </p>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         ))
                     }
@@ -102,6 +113,17 @@ const DeletedApplicationInfo = () => {
                         <p>PCT ISR Date: <span>{patent.pct_isr}</span></p>
                         <p>PCT 22 Month Date: <span>{patent.pct_22_md}</span></p>
                         <p>PCT 30 / 31 Month Date: <span>{patent.pct_30_31}</span></p>
+                        <div>
+                            <p>{patent.pct_notes ? "PCT Notes: " : ""}</p>
+                            {
+                                patent.pct_notes.split(/\n+/).map((line, index) => (
+                                    <p key={index} className='NPE-notes'>
+                                        {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                        {line}
+                                    </p>
+                                ))
+                            }
+                        </div>
                     </div>
                 </Tab>
                 

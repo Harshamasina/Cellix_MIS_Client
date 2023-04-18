@@ -13,6 +13,7 @@ const ApplicationFamily = () => {
             prv_appno: "",
             prv_dof: ""
         }],
+        prv_notes: "",
         pct_dof: "",
         pct_appno: "",
         pct_das: "",
@@ -21,6 +22,7 @@ const ApplicationFamily = () => {
         pct_18: "",
         pct_22_md: "",
         pct_30_31: "",
+        pct_notes: "",
         npe: [{
             npe_country: "",
             npe_appno: "",
@@ -277,6 +279,18 @@ const ApplicationFamily = () => {
 
                             <Button size='lg' onClick={handleAddPRV} className= "add-prv-date">Add New PRV</Button>
 
+                            <div className="pct-input-box">
+                                <span className="details">PRV Notes</span>
+                                <textarea 
+                                    type="text" 
+                                    placeholder="Enter PRV Notes"
+                                    autoComplete="off"
+                                    name="prv_notes"
+                                    value={patentData.prv_notes}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
                             <span className='pct'>Patent Corporation Treaty (PCT) Stage</span>
                             <div className="input-box">
                                 <span className="details">PCT Date of Filing</span>
@@ -370,6 +384,18 @@ const ApplicationFamily = () => {
                                     autoComplete="off"
                                     name="pct_30_31"
                                     value={patentData.pct_30_31}
+                                    onChange={handleInputs}
+                                />
+                            </div>
+
+                            <div className="pct-input-box">
+                                <span className="details">PCT Notes</span>
+                                <textarea 
+                                    type="text" 
+                                    placeholder="Enter PCT Notes"
+                                    autoComplete="off"
+                                    name="pct_notes"
+                                    value={patentData.pct_notes}
                                     onChange={handleInputs}
                                 />
                             </div>

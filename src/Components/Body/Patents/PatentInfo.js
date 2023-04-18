@@ -154,6 +154,17 @@ const PatentInfo = () => {
                                 <h4>PRV {prvIndex + 1}</h4>
                                 <p>PRV Application Number: <span>{prvData.prv_appno}</span></p>
                                 <p>PRV Date of Filing: <span>{prvData.prv_dof}</span></p>
+                                <div>
+                                    <p>{patent.prv_notes ? "PRV Notes: " : ""}</p>
+                                    {
+                                        patent.prv_notes.split(/\n+/).map((line, index) => (
+                                            <p key={index} className='NPE-notes'>
+                                                {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                                {line}
+                                            </p>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         ))
                     }
@@ -169,6 +180,17 @@ const PatentInfo = () => {
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_isr)}><p>PCT ISR Date: <span className={changeColorDates(patent.pct_isr)}>{patent.pct_isr}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_22_md)}><p>PCT 22 Month Date: <span className={changeColorDates(patent.pct_22_md)}>{patent.pct_22_md}</span></p></OverlayTrigger>
                         <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(patent.pct_30_31)}><p>PCT 30 / 31 Month Date: <span className={changeColorDates(patent.pct_30_31)}>{patent.pct_30_31}</span></p></OverlayTrigger>
+                        <div>
+                            <p>{patent.pct_notes ? "PCT Notes: " : ""}</p>
+                            {
+                                patent.pct_notes.split(/\n+/).map((line, index) => (
+                                    <p key={index} className='NPE-notes'>
+                                        {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                        {line}
+                                    </p>
+                                ))
+                            }
+                        </div>
                     </div>
                 </Tab>
                 

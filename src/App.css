@@ -1832,6 +1832,25 @@ Breadcrumb.Item{
   border-color: #0e6e59;
 }
 
+.pct-input-box textarea{
+  height: 200px;
+  width: 60%;
+  outline: none;
+  font-size: 1.05vw;
+  border-radius: 5px;
+  color: #282c34;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  margin-top: 1%;
+  padding-top: 5px;
+}
+
+.pct-input-box textarea:focus{
+  border-color: #0e6e59;
+}
+
 @media screen and (max-width: 600px) {
   .input-box-container{
     margin-left: 10% !important;
@@ -1875,6 +1894,12 @@ Breadcrumb.Item{
 
   .input-box textarea{
     width: 110% !important;
+    height: 150px !important;
+    font-size: 1.5vh !important;
+  }
+
+  .pct-input-box textarea{
+    width: 100% !important;
     height: 150px !important;
     font-size: 1.5vh !important;
   }
