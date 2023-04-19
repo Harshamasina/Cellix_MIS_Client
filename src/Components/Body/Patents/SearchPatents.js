@@ -42,6 +42,9 @@ const SearchPatents = () => {
         </Popover>
     );
 
+    console.log(searchTerm);
+    console.log(searchPatent);
+
     return(
         <div>
             <div class="search-box">
@@ -58,7 +61,6 @@ const SearchPatents = () => {
             <div className='search-container'>
                 <div className='box-container'>
                     {error && <div style={{color: '#0E6E59', fontSize: '40px' }}><span style={{fontSize: "50px", color: "#FF4433"}}><BiErrorAlt /></span>{error}</div>}
-                    
                     {
                         (searchPatent && searchPatent.length === 0 && searchTerm) ? 
                         <div className='searchPatentImg-container'>
@@ -67,7 +69,7 @@ const SearchPatents = () => {
                         searchPatent && searchPatent.map((patent, i) => (
                             <div className='box' key={i}>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
-                                <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4>
+                                {/* <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4> */}
                                 {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
 
                                 <uL className='country-ul'>
