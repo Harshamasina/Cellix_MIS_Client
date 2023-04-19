@@ -42,9 +42,6 @@ const SearchPatents = () => {
         </Popover>
     );
 
-    console.log(searchTerm);
-    console.log(searchPatent);
-
     return(
         <div>
             <div class="search-box">
@@ -72,7 +69,7 @@ const SearchPatents = () => {
                                 {/* <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4> */}
                                 {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
 
-                                <uL className='country-ul'>
+                                <ul className='country-ul'>
                                     {
                                         patent.npe && patent.npe.map((npe) => (
                                             <li>
@@ -84,7 +81,7 @@ const SearchPatents = () => {
                                             </li>
                                         ))
                                     }
-                                </uL>
+                                </ul>
 
                                 <OverlayTrigger 
                                     placement="auto" 
