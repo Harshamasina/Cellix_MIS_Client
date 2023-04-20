@@ -30,12 +30,15 @@ import CountryNPE from '../Body/Firms/CountryNPE';
 import { VscSignOut, VscSignIn } from 'react-icons/vsc';
 import NPEApplications from '../Body/Patents/NPEApplications/NPEApplications';
 import NPEApplicationsDashboard from '../Body/Patents/NPEApplications/NPEApplicationsDashboard';
+import axios from 'axios';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
     const [changeNavbar, setChangeNavbar] = useState(false);
     const [sessionTimeoutModal, setSessionTimeoutModal] = useState(false); 
     const [modal, setModal] = useState(false);
+    const [phone, setPhone] = useState(login ? login.phoneNumber : "");
+    const [empData, setEmpData] = useState({});
     const navigate = useNavigate();
     
     const changeBackground = () => {
@@ -68,6 +71,8 @@ function NavBar() {
             window.alert("Signed Out Successfully");
             localStorage.removeItem('user');
             setModal(false);
+            setEmpData("");
+            setPhone("");
             setSessionTimeoutModal(false);
             navigate('/login');
         }).catch((err) => {
@@ -86,6 +91,22 @@ function NavBar() {
             }
         }
     }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!phone) {
+                setEmpData(null);
+                return;
+            }
+            try{
+                const res = await axios.get(`https://misbackend.cellixbio.info/api/getemployee/${phone}`);
+                setEmpData(res.data[0]); 
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchData();
+    }, [phone]);
 
     return (
         <>
@@ -108,12 +129,22 @@ function NavBar() {
                                         <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="3">Firms</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="4">New Entry</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="5">Notifications</Nav.Link>
-                                        <NavDropdown title={<span>{login ? login.displayName : ""} <MdKeyboardArrowDown /></span>} id="basic-nav-dropdown" className='nav-dropdown'>
+
+                                        <NavDropdown title={<span>{login ? empData.last_name : ""} <MdKeyboardArrowDown /></span>} id="basic-nav-dropdown" className='nav-dropdown'>
                                             <NavDropdown title={<span>About <MdKeyboardArrowDown /></span>} className='subnav-dropdown'>
-                                                <NavDropdown.Item className='subdropdown-link'>{login.displayName}</NavDropdown.Item>
-                                                <NavDropdown.Item className='subdropdown-link'>{login.email}</NavDropdown.Item>
+                                                <NavDropdown.Item className='subdropdown-link'>{empData.first_name } {empData.last_name}</NavDropdown.Item>
+                                                <NavDropdown.Item className='subdropdown-link'>{empData.email}</NavDropdown.Item>
+                                                <NavDropdown.Item className='subdropdown-link'>{empData.designation}</NavDropdown.Item>
+                                                <NavDropdown.Item className='subdropdown-link'>{empData.phone}</NavDropdown.Item>
+                                                <NavDropdown.Item className='subdropdown-link'>{empData.emp_id}</NavDropdown.Item>
                                             </NavDropdown>
-                                        <NavDropdown.Item><Nav.Link as={Link} to='updatepassword' className='dropdown-link' eventKey="6">Change Password</Nav.Link></NavDropdown.Item>
+
+                                            {
+                                                empData.phone === "+919032330333" ? (
+                                                    <NavDropdown.Item><Nav.Link as={Link} to='register' className='dropdown-link' eventKey="6">Create New User</Nav.Link></NavDropdown.Item>
+                                                ) : ""
+                                            }
+
                                             {
                                                 login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
                                                     <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
@@ -146,7 +177,7 @@ function NavBar() {
                     <Route path='/npeapplications' element={login ? <NPEApplications /> : <Navigate to='/login' />} />
                     <Route path='/npeapplicationsdashboard/:desc' element={login ? <NPEApplicationsDashboard /> : <Navigate to='/login' />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
+                    <Route path='/register' element={login ? <Register /> : <Navigate to='/login' />} />
                     <Route path='/forgotpassword' element={<ForgotPassword />} />
                     <Route path='/updatepassword' element={login ? <UpdatePassword /> : <Navigate to='/login' />} />
                     <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />} />
@@ -158,7 +189,7 @@ function NavBar() {
             <div>
                 <Modal show={modal} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
                     <Modal.Header>
-                        <Modal.Title className='Modal-header'><span>{login ? login.displayName : ""},</span> Are you Sure you Want To Log Out?</Modal.Title>
+                        <Modal.Title className='Modal-header'><span>{login ? empData.last_name : ""},</span> Are you Sure you Want To Log Out?</Modal.Title>
                     </Modal.Header>
                     <Modal.Footer>
                         <Button className = "close-button" onClick={handleClose}>close</Button>
@@ -170,7 +201,7 @@ function NavBar() {
             <div>
                 <Modal show={sessionTimeoutModal} onHide={handleSignOut} backdrop="static" keyboard={false} centered size='lg'>
                     <Modal.Header>
-                        <Modal.Title className='session-timeout-header'><span>{login ? login.displayName : ""}</span>, Your Session Expired</Modal.Title>
+                        <Modal.Title className='session-timeout-header'>Your Session Expired</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <p className='session-timeout-msg'>Your session was expired. Please Login again to continue using the Cellix Bio MIS.</p>

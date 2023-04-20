@@ -2631,3 +2631,47 @@ Breadcrumb.Item{
     margin-top: 3% !important;
   }
 }
+
+.otp-input-box input{
+  height: 45px;
+  width: 50%;
+  outline: none;
+  font-size: 1.05vw;
+  border-radius: 5px;
+  color: #282c34;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  margin-top: 1%;
+  letter-spacing: 30px;
+}
+
+.otp-input-box input:focus{
+  border-color: #0e6e59;
+}
+
+.resend-otp-box{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.resend-otp-button{
+  background: transparent !important;
+  border: 2px solid #0E6E59 !important;
+  color: #0E6E59 !important;
+  font-weight: 550 !important;
+  transition: .3s !important;
+}
+
+.resend-otp-button:disabled{
+  border: 2px solid #ffffff !important;
+  color: #4e545f !important;
+}
+
+.resend-otp-button:hover{
+  background: #0E6E59 !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
