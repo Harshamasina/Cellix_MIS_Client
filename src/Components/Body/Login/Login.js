@@ -175,13 +175,7 @@ const Login = () => {
                           {
                             showOTP ? (
                               <>
-                                <label
-                                  htmlFor="otp"
-                                  className="font-bold text-xl text-white text-center"
-                                >
-                                  Enter your OTP
-                                </label>
-
+                                <h5 style={{marginTop: '2%'}}>Enter OTP</h5>
                                 <div className='otp-input-box'>
                                   <input 
                                     type="text" 

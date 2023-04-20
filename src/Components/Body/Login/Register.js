@@ -99,8 +99,6 @@ const Register = () => {
         };
     }, []);
 
-    console.log(employee);
-
     return(
         <div>
             <Helmet>
