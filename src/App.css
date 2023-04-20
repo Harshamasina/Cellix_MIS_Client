@@ -1406,6 +1406,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   .remove-npe{
     font-size: 1.7vh !important;
   }
+
+  .error-message{
+    font-size: 1.7vh !important;
+  }
 }
 
 .Login-Container{
