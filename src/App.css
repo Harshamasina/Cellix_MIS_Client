@@ -2655,6 +2655,13 @@ Breadcrumb.Item{
   border-color: #0e6e59;
 }
 
+@media screen and (max-width: 600px) {
+  .otp-input-box input{
+    width: 80% !important;
+    font-size: 1.7vh !important;
+  }
+}
+
 .resend-otp-box{
   display: flex;
   justify-content: center;

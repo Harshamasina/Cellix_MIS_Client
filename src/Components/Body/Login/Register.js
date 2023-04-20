@@ -159,12 +159,12 @@ const Register = () => {
                         inputProps={{
                             className: "phone-input",
                         }}
-                        inputStyle={{ paddingLeft: "50px", marginTop: "30px" }}
+                        inputStyle={{ paddingLeft: "50px", marginTop: "3%" }}
                         buttonStyle={{
                             height: "40px",
                             marginLeft: "13px",
                             borderRadius: "5px",
-                            marginTop: "32px",
+                            marginTop: "3.5%",
                         }}
                     />  
 
