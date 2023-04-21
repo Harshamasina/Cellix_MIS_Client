@@ -66,7 +66,7 @@ const UpdateCustomNotif = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         setShowModal(true);
-    }
+    };
 
     const handleUpdateModal = async () => {
         try{
@@ -85,12 +85,12 @@ const UpdateCustomNotif = () => {
             setConfirmCode('');
             setShowModal(false);
         }
-    }
+    };
 
     const handleModalClose= () => {
         setShowModal(false);
         setShowPassword(false);
-    }
+    };
 
     const toggleShowPassword = () => setShowPassword(!showPassword);
 
@@ -113,11 +113,11 @@ const UpdateCustomNotif = () => {
                 />
             </div>
         );
-    }
+    };
 
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
-    }
+    };
 
     return(
         <div>

@@ -48,6 +48,10 @@ const NPEApplicationsDashboard = () => {
     const itemsPerPage = pageSize;
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
+
+    const handleMenuItemClick = () => {
+        setPage(1);
+    };
     
     if(loading){
         return <div>
@@ -133,22 +137,22 @@ const NPEApplicationsDashboard = () => {
                 >
                     <MenuItem value="" disabled>Select Country</MenuItem>
                     <MenuItem value={null}>All Countries</MenuItem>
-                    <MenuItem value={'US'}>United States</MenuItem>
-                    <MenuItem value={'EP'}>Europe</MenuItem>
-                    <MenuItem value={'ES'}>Spain</MenuItem>
-                    <MenuItem value={'JP'}>Japan</MenuItem>
-                    <MenuItem value={'SG'}>Singapore</MenuItem>
-                    <MenuItem value={'KR'}>South Korea</MenuItem>
-                    <MenuItem value={'NZ'}>New Zealand</MenuItem>
-                    <MenuItem value={'AU'}>Australia</MenuItem>
-                    <MenuItem value={'BR'}>Brazil</MenuItem>
-                    <MenuItem value={'MX'}>Mexico</MenuItem>
-                    <MenuItem value={'ZA'}>South Africa</MenuItem> 
-                    <MenuItem value={'IL'}>Israel</MenuItem> 
-                    <MenuItem value={'CA'}>Canada</MenuItem> 
-                    <MenuItem value={'RU'}>Russia</MenuItem>
-                    <MenuItem value={'IN'}>India</MenuItem> 
-                    <MenuItem value={'CN'}>China</MenuItem>   
+                    <MenuItem value={'US'} onClick={handleMenuItemClick}>United States</MenuItem>
+                    <MenuItem value={'EP'} onClick={handleMenuItemClick}>Europe</MenuItem>
+                    <MenuItem value={'ES'} onClick={handleMenuItemClick}>Spain</MenuItem>
+                    <MenuItem value={'JP'} onClick={handleMenuItemClick}>Japan</MenuItem>
+                    <MenuItem value={'SG'} onClick={handleMenuItemClick}>Singapore</MenuItem>
+                    <MenuItem value={'KR'} onClick={handleMenuItemClick}>South Korea</MenuItem>
+                    <MenuItem value={'NZ'} onClick={handleMenuItemClick}>New Zealand</MenuItem>
+                    <MenuItem value={'AU'} onClick={handleMenuItemClick}>Australia</MenuItem>
+                    <MenuItem value={'BR'} onClick={handleMenuItemClick}>Brazil</MenuItem>
+                    <MenuItem value={'MX'} onClick={handleMenuItemClick}>Mexico</MenuItem>
+                    <MenuItem value={'ZA'} onClick={handleMenuItemClick}>South Africa</MenuItem> 
+                    <MenuItem value={'IL'} onClick={handleMenuItemClick}>Israel</MenuItem> 
+                    <MenuItem value={'CA'} onClick={handleMenuItemClick}>Canada</MenuItem> 
+                    <MenuItem value={'RU'} onClick={handleMenuItemClick}>Russia</MenuItem>
+                    <MenuItem value={'IN'} onClick={handleMenuItemClick}>India</MenuItem> 
+                    <MenuItem value={'CN'} onClick={handleMenuItemClick}>China</MenuItem>   
                 </Select>
             </div>
 

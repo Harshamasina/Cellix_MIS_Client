@@ -55,11 +55,11 @@ const CountryNPE = () => {
                 />
             </div>
         );
-    }
+    };
 
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
-    }
+    };
 
     return(
         <div>
