@@ -12,6 +12,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import { Helmet } from 'react-helmet';
 import { Breadcrumbs } from '@mui/material';
+import { RiEditLine } from 'react-icons/ri';
 
 const NPEApplicationsDashboard = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Pie+Graph.jpg";
@@ -76,16 +77,20 @@ const NPEApplicationsDashboard = () => {
         </Popover>
     );
 
+    const updatePopover = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Edit NPE</Popover.Body>
+        </Popover>
+    );
+
     return(
         <div>
             <Helmet>
                 <title>
                     {
                        desc === "1" ? " Granted" :
-                       desc === "2" ? " Lapsed" :
-                       desc === "3" ? " Abandoned" :
-                       desc === "4" ? " Under examination" :
-                       desc === "0" ? " Rejected" : "NA" 
+                       desc === "2" ? " Under examination" :
+                       desc === "0" ? " Dead" : "NA" 
                     } NPE Applications | MIS
                 </title>
                 <meta name="description" content="Cellix Bio MIS NPE Applications Families page"></meta>
@@ -98,10 +103,8 @@ const NPEApplicationsDashboard = () => {
                             <h1>
                                 {
                                     desc === "1" ? " Granted" :
-                                    desc === "2" ? " Lapsed" :
-                                    desc === "3" ? " Abandoned" :
-                                    desc === "4" ? " Under examination" :
-                                    desc === "0" ? " Rejected" : "NA"
+                                    desc === "2" ? " Under examination" :
+                                    desc === "0" ? " Dead" : "NA"
                                 } NPE Applications
                             </h1>
                         </div>
@@ -115,9 +118,7 @@ const NPEApplicationsDashboard = () => {
                 <Link to={"/npeapplicationsdashboard/"+desc} className='BC-Links'>
                     {
                         desc === "1" ? " Granted" :
-                        desc === "2" ? " Lapsed" :
-                        desc === "3" ? " Abandoned" :
-                        desc === "4" ? " Under examination" :
+                        desc === "2" ? " Under examination" :
                         desc === "0" ? " Rejected" : "NA"
                     } NPE Applications
                 </Link>
@@ -180,13 +181,21 @@ const NPEApplicationsDashboard = () => {
                                     <h3>Grant Date: <span>{npe.npe.npe_grant ? npe.npe.npe_grant : "NA"}</span></h3>
                                     <h3>Patent No: <span>{npe.npe.npe_patent ? npe.npe.npe_patent : "NA"}</span></h3>
                                     <OverlayTrigger 
-                                    placement="auto" 
-                                    delay={{ show: 250, hide: 400 }}
-                                    trigger={['hover', 'focus']}
-                                    overlay={popover}
-                                >
+                                        placement="left" 
+                                        trigger={['hover', 'focus']}
+                                        overlay={popover}
+                                    >
                                     <Link className='btn' to={"/patentinfo/"+npe.ref_no} target="_blank">
                                         <TbFileDatabase />
+                                    </Link>
+                                </OverlayTrigger>
+                                <OverlayTrigger
+                                    placement="right"
+                                    trigger={['hover', 'focus']}
+                                    overlay={updatePopover}
+                                >
+                                    <Link className='btn' to={"/patentupdate/"+npe.id} target="_blank">
+                                        <RiEditLine />
                                     </Link>
                                 </OverlayTrigger>
                                 </div>

@@ -156,18 +156,20 @@ const PatentInfo = () => {
                                 <p>PRV Date of Filing: <span>{prvData.prv_dof}</span></p>
                                 <div>
                                     <p>{patent.prv_notes ? "PRV Notes: " : ""}</p>
-                                    {
-                                        patent.prv_notes.split(/\n+/).map((line, index) => (
-                                            <p key={index} className='NPE-notes'>
-                                                {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
-                                                {line}
-                                            </p>
-                                        ))
-                                    }
                                 </div>
                             </div>
                         ))
                     }
+                    <div className='tab-data'>
+                        {
+                            patent.prv_notes.split(/\n+/).map((line, index) => (
+                                <p className='NPE-notes' key={index}>
+                                    {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
+                                    {line}
+                                </p>
+                            ))
+                        }
+                    </div>
                 </Tab>
                 
                 <Tab eventKey="PCT" title="Patent Corporation Treaty (PCT) Data" tabClassName='tab-item'>
@@ -250,10 +252,8 @@ const PatentInfo = () => {
                                                 <span>
                                                     {
                                                         npeData.npe_grant_desc === "1" ? " Granted" :
-                                                        npeData.npe_grant_desc === "2" ? " Lapsed" :
-                                                        npeData.npe_grant_desc === "3" ? " Abandoned" :
-                                                        npeData.npe_grant_desc === "4" ? " Under examination" :
-                                                        npeData.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                                        npeData.npe_grant_desc === "2" ? " Under examination" :
+                                                        npeData.npe_grant_desc === "0" ? " Dead" : "NA"
                                                     }
                                                 </span>
                                             </p>

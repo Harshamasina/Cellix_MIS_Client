@@ -158,10 +158,8 @@ const DeletedApplicationInfo = () => {
                                                 <span>
                                                     {
                                                         npeData.npe_grant_desc === "1" ? " Granted" :
-                                                        npeData.npe_grant_desc === "2" ? " Lapsed" :
-                                                        npeData.npe_grant_desc === "3" ? " Abandon" :
-                                                        npeData.npe_grant_desc === "4" ? " Under examination" :
-                                                        npeData.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                                        npeData.npe_grant_desc === "2" ? " Under examination" :
+                                                        npeData.npe_grant_desc === "0" ? " Dead" : "NA"
                                                     }
                                                 </span>
                                             </p>

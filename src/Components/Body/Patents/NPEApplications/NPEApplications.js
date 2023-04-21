@@ -11,24 +11,14 @@ const NPEApplications = () => {
             grant_desc: "Granted"
         },
         {
-            sno: 2,
-            grant_desc_code: 2,
-            grant_desc: "Lapsed"
-        },
-        {
             sno: 3,
-            grant_desc_code: 4,
+            grant_desc_code: 2,
             grant_desc: "Under examination"
         },
         {
-            sno: 4,
-            grant_desc_code: 3,
-            grant_desc: "Abandoned"
-        },
-        {
-            sno: 5,
+            sno: 3,
             grant_desc_code: 0,
-            grant_desc: "Rejected"
+            grant_desc: "Dead"
         },
     ];
 
