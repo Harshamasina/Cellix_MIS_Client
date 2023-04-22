@@ -201,7 +201,7 @@ a:hover::after { width: 100%; }
 .nav-dropdown .dropdown-menu {
 	background: #0E6E59;
 	border: 2px solid #0E6E59;
-	margin-left: -20%;
+	margin-left: -30%;
 	margin-top: 15% !important;
 }
 
@@ -240,8 +240,8 @@ a:hover::after { width: 100%; }
 .subnav-dropdown .dropdown-menu {
 	background: #0E6E59;
 	border: 2px solid #0E6E59 !important;
-	margin-left: -20% !important;
-	/* margin-top: 15% !important; */
+	margin-left: 3% !important;
+	margin-top: -5% !important;
 }
 
 .subnav-dropdown .nav-link{

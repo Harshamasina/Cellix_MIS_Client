@@ -37,7 +37,7 @@ const Register = () => {
     let handleSubmit = (e) => {
         e.preventDefault();
         setShowModal(true);
-    }
+    };
 
     let handleSubmitModal = async () => {
         if( !employee.first_name || !employee.last_name || !employee.email || !employee.phone || !employee.emp_id || !employee.designation){
@@ -67,7 +67,7 @@ const Register = () => {
                     designation: ""
                 });
                 alert('New Employee created Successfully');
-                navigate('/home');
+                navigate('/employeedashboard');
                 setConfirmCode('');
                 setShowModal(false);
                 setButtonDisabled(false);
@@ -75,9 +75,10 @@ const Register = () => {
             }
         } catch (err) {
             console.log(err);
-            setErrorMsg(err.response.data.message);
+            setErrorMsg(err.response.data.error);
             setConfirmCode('');
             setButtonDisabled(false);
+            setShowModal(false);
         }
     };
 
@@ -211,7 +212,7 @@ const Register = () => {
                                     {showPassword ? <BsEyeSlash /> : <BsEye />}
                                 </div>
                             </div>
-                            <p className="text-danger mt-3">{errorMsg}</p>
+                            {errorMsg && ( <p className="text-danger mt-3">{errorMsg}</p> )}
                             <span className='forgot-code' onClick={() => alert("Please contact your Admin")}>Forgot Confirmation Code?</span>
                         </Modal.Body>
 

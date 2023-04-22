@@ -252,7 +252,7 @@ const PatentInfo = () => {
                                                 <span>
                                                     {
                                                         npeData.npe_grant_desc === "1" ? " Granted" :
-                                                        npeData.npe_grant_desc === "2" ? " Under examination" :
+                                                        npeData.npe_grant_desc === "2" ? " Under Examination" :
                                                         npeData.npe_grant_desc === "0" ? " Dead" : "NA"
                                                     }
                                                 </span>

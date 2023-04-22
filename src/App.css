@@ -2388,6 +2388,20 @@ Breadcrumb.Item{
 
 .delete-notification:hover{
   transform: scale(1.1);
+  color: #707070 !important;
+}
+
+.delete-employee{
+  color: #FF4433;
+  font-size: 1.5vw;
+  transition: .3s;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.delete-employee:hover{
+  transform: scale(1.1);
+  color: #707070 !important;
 }
 
 .delete-update-notification{
@@ -2407,6 +2421,10 @@ Breadcrumb.Item{
   }
 
   .delete-notification{
+    font-size: 2.5vh !important;
+  }
+
+  .delete-employee{
     font-size: 2.5vh !important;
   }
 
@@ -2685,4 +2703,10 @@ Breadcrumb.Item{
   background: #0E6E59 !important;
   color: #ffffff !important;
   transform: scale(1.1) !important;
+}
+
+.employee-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -103,7 +103,7 @@ const NPEApplicationsDashboard = () => {
                             <h1>
                                 {
                                     desc === "1" ? " Granted" :
-                                    desc === "2" ? " Under examination" :
+                                    desc === "2" ? " Under Examination" :
                                     desc === "0" ? " Dead" : "NA"
                                 } NPE Applications
                             </h1>
@@ -118,7 +118,7 @@ const NPEApplicationsDashboard = () => {
                 <Link to={"/npeapplicationsdashboard/"+desc} className='BC-Links'>
                     {
                         desc === "1" ? " Granted" :
-                        desc === "2" ? " Under examination" :
+                        desc === "2" ? " Under Examination" :
                         desc === "0" ? " Rejected" : "NA"
                     } NPE Applications
                 </Link>
@@ -185,19 +185,19 @@ const NPEApplicationsDashboard = () => {
                                         trigger={['hover', 'focus']}
                                         overlay={popover}
                                     >
-                                    <Link className='btn' to={"/patentinfo/"+npe.ref_no} target="_blank">
-                                        <TbFileDatabase />
-                                    </Link>
-                                </OverlayTrigger>
-                                <OverlayTrigger
-                                    placement="right"
-                                    trigger={['hover', 'focus']}
-                                    overlay={updatePopover}
-                                >
-                                    <Link className='btn' to={"/patentupdate/"+npe.id} target="_blank">
-                                        <RiEditLine />
-                                    </Link>
-                                </OverlayTrigger>
+                                        <Link className='btn' to={"/patentinfo/"+npe.ref_no} target="_blank">
+                                            <TbFileDatabase />
+                                        </Link>
+                                    </OverlayTrigger>
+                                    <OverlayTrigger
+                                        placement="right"
+                                        trigger={['hover', 'focus']}
+                                        overlay={updatePopover}
+                                    >
+                                        <Link className='btn' to={"/patentupdate/"+npe.id} target="_blank">
+                                            <RiEditLine />
+                                        </Link>
+                                    </OverlayTrigger>
                                 </div>
                             ))
                         }

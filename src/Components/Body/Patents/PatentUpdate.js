@@ -620,7 +620,7 @@ const PatentUpdate = () => {
                                                     >
                                                         <option value="NA">Select NPE Status</option>
                                                         <option value="1">Granted</option>
-                                                        <option value="2">Under examination</option>
+                                                        <option value="2">Under Examination</option>
                                                         <option value="0">Dead</option>
                                                     </select>
                                                 </div>

@@ -57,6 +57,7 @@ const CreateCustomNotif = () => {
             console.log(err);
             setErrorMessage(err.response.data.error);
             setConfirmCode('');
+            setShowModal(false);
         }
     };
 

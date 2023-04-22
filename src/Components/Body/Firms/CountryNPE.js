@@ -8,6 +8,10 @@ import { Helmet } from "react-helmet";
 import { Pagination } from '@mui/material';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from "react-router-dom";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+import { RiEditLine } from 'react-icons/ri';
+import { TbFileDatabase } from 'react-icons/tb';
 
 const CountryNPE = () => {
     const {countrycode} = useParams();
@@ -21,8 +25,8 @@ const CountryNPE = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getfirms/${countrycode}`);
-                setNPECountry(patentData.data);
+                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getcountry/${countrycode}`);
+                setNPECountry(patentData.data[0].countryData);
                 setLoading(false);
             } catch (err) {
                 console.error(err);
@@ -60,6 +64,18 @@ const CountryNPE = () => {
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
     };
+
+    const popover = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Get More Info</Popover.Body>
+        </Popover>
+    );
+
+    const updatePopover = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Edit NPE</Popover.Body>
+        </Popover>
+    );
 
     return(
         <div>
@@ -137,12 +153,42 @@ const CountryNPE = () => {
                     {
                         npeCountry && npeCountry.slice(startIndex, endIndex).map((npe, index) => (
                             <div className="box" key={index}>
-                                <h4>{npe.npe_country}</h4>
-                                <h4>NPE Firm: <span>{npe.npe_firms ? npe.npe_firms : "NA"}</span></h4>
-                                <h4>NPE Application: <span>{npe.npe_appno}</span></h4>
-                                <h4>NPE Date of Filing: <span>{npe.npe_dof ? npe.npe_dof : "NA"}</span></h4>
-                                <h4>NPE Patent: <span>{ npe.npe_patent ? npe.npe_patent : "NA" }</span></h4>
-                                <h4>NPE Grant Date: <span>{npe.npe_grant ? npe.npe_grant : "NA"}</span></h4>
+                                <h3><span>{npe.npe.npe_country}</span></h3>
+                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+npe.ref_no}>{npe.ref_no}</Link></h3>
+                                <h3>PCT Filing Date: <span>{npe.pct_dof}</span></h3>
+                                <h3>Firm: <span>{npe.npe.npe_firms}</span></h3>
+                                <h3>App No: <span>{npe.npe.npe_appno}</span></h3>
+                                <h3>Filing Date: <span>{npe.npe.npe_dof ? npe.npe.npe_dof : "NA"}</span></h3>
+                                <h3>
+                                    Grant Desc: 
+                                    <span>
+                                        {
+                                            npe.npe.npe_grant_desc === "1" ? " Granted" :
+                                            npe.npe.npe_grant_desc === "2" ? " Under Examination" :
+                                            npe.npe.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                        }
+                                    </span>
+                                </h3>
+
+                                <OverlayTrigger 
+                                    placement="left" 
+                                    trigger={['hover', 'focus']}
+                                    overlay={popover}
+                                >
+                                    <Link className='btn' to={"/patentinfo/"+npe.ref_no} target="_blank">
+                                        <TbFileDatabase />
+                                    </Link>
+                                </OverlayTrigger>
+
+                                <OverlayTrigger
+                                    placement="right"
+                                    trigger={['hover', 'focus']}
+                                    overlay={updatePopover}
+                                >
+                                    <Link className='btn' to={"/patentupdate/"+npe.id} target="_blank">
+                                        <RiEditLine />
+                                    </Link>
+                                </OverlayTrigger>
                             </div>
                         ))
                     }

@@ -1,6 +1,7 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { Link, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Home from "../Body/Home/Home";
 import Patents from "../Body/Patents/Patents";
 import Firms from "../Body/Firms/Firms";
@@ -30,7 +31,8 @@ import CountryNPE from '../Body/Firms/CountryNPE';
 import { VscSignOut, VscSignIn } from 'react-icons/vsc';
 import NPEApplications from '../Body/Patents/NPEApplications/NPEApplications';
 import NPEApplicationsDashboard from '../Body/Patents/NPEApplications/NPEApplicationsDashboard';
-import axios from 'axios';
+import EmployeesDashboard from '../Body/Login/Employees/EmployeesDashboard';
+import UpdateEmployee from '../Body/Login/Employees/UpdateEmployee';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -140,8 +142,8 @@ function NavBar() {
                                             </NavDropdown>
 
                                             {
-                                                empData.phone === "+919032330333" ? (
-                                                    <NavDropdown.Item><Nav.Link as={Link} to='register' className='dropdown-link' eventKey="6">Create New User</Nav.Link></NavDropdown.Item>
+                                                empData.phone === "+919032330333" || "+917780199139" ? (
+                                                    <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
                                                 ) : ""
                                             }
 
@@ -181,6 +183,8 @@ function NavBar() {
                     <Route path='/forgotpassword' element={<ForgotPassword />} />
                     <Route path='/updatepassword' element={login ? <UpdatePassword /> : <Navigate to='/login' />} />
                     <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />} />
+                    <Route path='/employeedashboard' element={login ? <EmployeesDashboard /> : <Navigate to='/login' />} />
+                    <Route path='/updateemployee/:id' element={login ? <UpdateEmployee /> : <Navigate to='/login' />} />
                     <Route path='/' element={login ? <Home /> : <Navigate to='/login' />} />
                     <Route path='*' element={<Error404 />} />
                 </Routes>

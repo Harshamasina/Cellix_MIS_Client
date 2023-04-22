@@ -103,7 +103,7 @@ const CustomNotifications = () => {
             <Breadcrumbs separator="\" className='bread-crumb'>
                 <Link to='/home' className='BC-Links'>Home</Link>
                 <Link to='/notifications' className='BC-Links'>Notifications</Link>
-                <Link t0='/customnotifications' className='BC-Links'>Custom Notifications</Link>
+                <Link to='/customnotifications' className='BC-Links'>Custom Notifications</Link>
             </Breadcrumbs>
 
             <Table striped hover responsive className='mt-3 shadow-lg notification-table'>
