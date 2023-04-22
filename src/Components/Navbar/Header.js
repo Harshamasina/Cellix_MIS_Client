@@ -142,7 +142,7 @@ function NavBar() {
                                             </NavDropdown>
 
                                             {
-                                                empData.phone === "+919032330333" || "+917780199139" ? (
+                                                empData.phone === "+919032330333" || empData.phone === "+917780199139" ? (
                                                     <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
                                                 ) : ""
                                             }
