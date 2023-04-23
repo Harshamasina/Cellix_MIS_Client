@@ -70,6 +70,7 @@ const PCTNotifications = () => {
                         <th>Days Left</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     {
                         PCTNotifications && PCTNotifications.map((PCTNotification, index) => (

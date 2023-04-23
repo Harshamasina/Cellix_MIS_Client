@@ -72,6 +72,7 @@ const NPENotifications = () => {
                         <th>Days Left</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     {
                         npeNotifications && npeNotifications.map((npeNotification, index) => (

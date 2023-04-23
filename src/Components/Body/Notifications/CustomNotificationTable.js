@@ -59,6 +59,8 @@ const CustomNotificationTable = () => {
 
     return(
         <div>
+            <h3 className="notification-header">Custom Notifications</h3>
+
             <Table striped hover responsive className='mt-3 shadow-lg notification-table'>
                 <thead>
                     <tr>
@@ -70,6 +72,7 @@ const CustomNotificationTable = () => {
                         <th>Days Left</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     {
                         notifications.map((notification, index) => (

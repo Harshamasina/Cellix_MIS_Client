@@ -9,6 +9,7 @@ import { MdSignalWifiConnectedNoInternet0 } from 'react-icons/md';
 import { Dna } from 'react-loader-spinner';
 import { FaUserEdit } from 'react-icons/fa';
 import DeleteEmployee from './DeleteEmployee';
+import { Breadcrumbs } from '@mui/material';
 
 const EmployeesDashboard = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Employees.jpg";
@@ -85,7 +86,12 @@ const EmployeesDashboard = () => {
                 </div>
             </Parallax>
 
-            <Table striped hover responsive className='mt-3 shadow-lg notification-table'>
+            <Breadcrumbs separator="\" className='bread-crumb'>
+                <Link to='/home' className='BC-Links'>Home</Link>
+                <Link to='/employeedashboard' className='BC-Links'>Employee Dashboard</Link>
+            </Breadcrumbs>
+
+            <Table striped hover responsive className='mt-3 shadow-sm notification-table'>
                 <thead>
                     <tr>
                         <th>First Name</th>
