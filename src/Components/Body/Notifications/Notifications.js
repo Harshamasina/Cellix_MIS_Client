@@ -8,6 +8,7 @@ import NPENotifications from './NPENotifications';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Helmet } from 'react-helmet';
+import CustomNotificationTable from './CustomNotificationTable';
 
 const Notifications = () => {
     const img="https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/calender.jpg";
@@ -21,7 +22,7 @@ const Notifications = () => {
         <div>
             <Helmet>
                 <title>PCT, NPE Notifications | MIS</title>
-                <meta name="description" content="Cellix Bio MIS Application PCT, NPE and Custom notifications"></meta>
+                <meta name="description" content="Cellix Bio MIS Application PCT, NPE, Custom and Custom notifications"></meta>
             </Helmet>
             
             <Parallax bgImage={ img } strength={300} bgImageAlt="parallaximg">
@@ -55,6 +56,9 @@ const Notifications = () => {
                 </Tab>
                 <Tab eventKey="npe" title="NPE Notifications" tabClassName='tab-item'>
                     <NPENotifications />
+                </Tab>
+                <Tab eventKey="custom" title="Custom Notifications" tabClassName='tab-item'>
+                    <CustomNotificationTable />
                 </Tab>
             </Tabs>
         </div>
