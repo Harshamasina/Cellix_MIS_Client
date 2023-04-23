@@ -89,7 +89,7 @@ const NPEApplicationsDashboard = () => {
                 <title>
                     {
                        desc === "1" ? " Granted" :
-                       desc === "2" ? " Under examination" :
+                       desc === "2" ? " Under Examination" :
                        desc === "0" ? " Dead" : "NA" 
                     } NPE Applications | MIS
                 </title>
@@ -168,6 +168,15 @@ const NPEApplicationsDashboard = () => {
             </div>
 
             <div>
+                <div className='npe-info'>
+                    <h3>
+                        {filteredNPEData.length} Applications {
+                            desc === "1" ? " Granted" :
+                            desc === "2" ? " Under Examination" :
+                            desc === "0" ? " Rejected" : "NA"
+                        } in {selectedCountry ? selectedCountry : "All Countries"}
+                    </h3>
+                </div>
                 <div className='container'>
                     <div className='box-container'>
                         {

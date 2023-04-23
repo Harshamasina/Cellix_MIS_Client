@@ -2710,3 +2710,24 @@ Breadcrumb.Item{
   flex-direction: row;
   justify-content: center;
 }
+
+.npe-info{
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.npe-info h3{
+  color: #0E6E59;
+  font-size: 1.25vw;
+}
+
+@media screen and (max-width: 600px) {
+  .npe-info{
+    margin-top: 5%;
+  }
+
+  .npe-info h3{
+    font-size: 1.7vh !important;
+  }
+}
