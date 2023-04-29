@@ -177,6 +177,7 @@ const NPEApplicationsDashboard = () => {
                         } in {selectedCountry ? selectedCountry : "All Countries"}
                     </h3>
                 </div>
+
                 <div className='container'>
                     <div className='box-container'>
                         {
@@ -189,6 +190,7 @@ const NPEApplicationsDashboard = () => {
                                     <h3>Filing Date: <span>{npe.npe.npe_dof ? npe.npe.npe_dof : "NA"}</span></h3>
                                     <h3>Grant Date: <span>{npe.npe.npe_grant ? npe.npe.npe_grant : "NA"}</span></h3>
                                     <h3>Patent No: <span>{npe.npe.npe_patent ? npe.npe.npe_patent : "NA"}</span></h3>
+                                    
                                     <OverlayTrigger 
                                         placement="left" 
                                         trigger={['hover', 'focus']}
@@ -198,6 +200,7 @@ const NPEApplicationsDashboard = () => {
                                             <TbFileDatabase />
                                         </Link>
                                     </OverlayTrigger>
+
                                     <OverlayTrigger
                                         placement="right"
                                         trigger={['hover', 'focus']}

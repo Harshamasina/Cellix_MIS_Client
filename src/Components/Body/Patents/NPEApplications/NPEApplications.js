@@ -8,17 +8,20 @@ const NPEApplications = () => {
         {
             sno: 1,
             grant_desc_code: 1,
-            grant_desc: "Granted"
+            grant_desc: "Granted",
+            name: "grant-npe-link"
         },
         {
             sno: 3,
             grant_desc_code: 2,
-            grant_desc: "Under examination"
+            grant_desc: "Under examination",
+            name: "exam-npe-link"
         },
         {
             sno: 3,
             grant_desc_code: 0,
-            grant_desc: "Dead"
+            grant_desc: "Dead",
+            name: "dead-npe-link"
         },
     ];
 
@@ -37,7 +40,7 @@ const NPEApplications = () => {
                             <div className='npe-links'>
                                 {
                                     data.map((desc, index) => (
-                                        <Link key={index} className='npe-link' to={"/npeapplicationsdashboard/"+desc.grant_desc_code}>{desc.grant_desc}</Link>
+                                        <Link key={index} className={desc.name} to={"/npeapplicationsdashboard/"+desc.grant_desc_code}>{desc.grant_desc}</Link>
                                     ))
                                 }
                             </div>

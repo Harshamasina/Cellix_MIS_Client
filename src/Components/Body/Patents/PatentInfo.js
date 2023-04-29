@@ -49,11 +49,11 @@ const PatentInfo = () => {
                 />
             </div>
         );
-    }
+    };
 
     if(error){
         return <div className='error-container'><MdSignalWifiConnectedNoInternet0 className='error-icon' /><p>{error.message}</p></div>;
-    }
+    };
 
     const renderPopover = (date) => {
         try{
@@ -94,6 +94,22 @@ const PatentInfo = () => {
                 return('orange');
             } else if (daysDiff > 30 && daysDiff <= 60){
                 return('yellow');
+            } else {
+                return('black');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const changeColorNPEStatus = (status) => {
+        try{
+            if(status === '1'){
+                return('green');
+            } else if (status === '2'){
+                return('grey');
+            } else if (status === '0') {
+                return('red');
             } else {
                 return('black');
             }
@@ -249,7 +265,7 @@ const PatentInfo = () => {
                                                 ))
                                             }
                                             <p>NPE Status: 
-                                                <span>
+                                                <span className={changeColorNPEStatus(npeData.npe_grant_desc)}>
                                                     {
                                                         npeData.npe_grant_desc === "1" ? " Granted" :
                                                         npeData.npe_grant_desc === "2" ? " Under Examination" :

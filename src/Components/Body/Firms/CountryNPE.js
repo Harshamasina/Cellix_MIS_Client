@@ -46,6 +46,22 @@ const CountryNPE = () => {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
+    const changeColorNPEStatus = (status) => {
+        try{
+            if(status === '1'){
+                return('green');
+            } else if (status === '2'){
+                return('grey');
+            } else if (status === '0') {
+                return('red');
+            } else {
+                return('black');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     if(loading){
         return (
             <div>
@@ -148,24 +164,24 @@ const CountryNPE = () => {
                 />
             </div>
 
-            <div className='container'>
+            <div className='firms-container'>
                 <div className='box-container'>
                     {
                         npeCountry && npeCountry.slice(startIndex, endIndex).map((npe, index) => (
                             <div className="box" key={index}>
-                                <h3><span>{npe.npe.npe_country}</span></h3>
+                                <h3><span className="firm-span">{npe.npe.npe_country}</span></h3>
                                 <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+npe.ref_no}>{npe.ref_no}</Link></h3>
-                                <h3>PCT Filing Date: <span>{npe.pct_dof}</span></h3>
-                                <h3>Firm: <span>{npe.npe.npe_firms}</span></h3>
-                                <h3>App No: <span>{npe.npe.npe_appno}</span></h3>
-                                <h3>Filing Date: <span>{npe.npe.npe_dof ? npe.npe.npe_dof : "NA"}</span></h3>
+                                <h3>PCT Filing Date: <span className="firm-span">{npe.pct_dof}</span></h3>
+                                <h3>Firm: <span className="firm-span">{npe.npe.npe_firms}</span></h3>
+                                <h3>App No: <span className="firm-span">{npe.npe.npe_appno}</span></h3>
+                                <h3>Filing Date: <span className="firm-span">{npe.npe.npe_dof ? npe.npe.npe_dof : "NA"}</span></h3>
                                 <h3>
                                     Grant Desc: 
-                                    <span>
+                                    <span className={changeColorNPEStatus(npe.npe.npe_grant_desc)}>
                                         {
                                             npe.npe.npe_grant_desc === "1" ? " Granted" :
                                             npe.npe.npe_grant_desc === "2" ? " Under Examination" :
-                                            npe.npe.npe_grant_desc === "0" ? " Rejected" : "NA"
+                                            npe.npe.npe_grant_desc === "0" ? " Dead" : " NA"
                                         }
                                     </span>
                                 </h3>
