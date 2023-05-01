@@ -78,7 +78,7 @@ const NPENotifications = () => {
                         npeNotifications && npeNotifications.map((npeNotification, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><Link className='reference-links' to={"/patentinfo/"+npeNotification.ref_no} target="_blank">{npeNotification.ref_no}</Link></td>
+                                <td><Link className='reference-links' to={"/patentinfo/"+npeNotification.id} target="_blank">{npeNotification.ref_no}</Link></td>
                                 <td>{npeNotification.npe_country}</td>
                                 <td>{npeNotification.npe_patent ? npeNotification.npe_patent : npeNotification.npe_appno}</td>
                                 <td>{npeNotification.fieldName}</td>

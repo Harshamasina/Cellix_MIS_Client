@@ -183,7 +183,7 @@ const NPEApplicationsDashboard = () => {
                         {
                             filteredNPEData.slice(startIndex, endIndex).map((npe, index) => (
                                 <div className='box' key={index}>
-                                    <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+npe.ref_no}>{npe.ref_no}</Link></h3>
+                                    <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+npe.id}>{npe.ref_no}</Link></h3>
                                     <h3>PCT Filing Date: <span>{npe.pct_dof}</span></h3>
                                     <h3>Country: <span>{npe.npe.npe_country}</span></h3>
                                     <h3>App No: <span>{npe.npe.npe_appno}</span></h3>
@@ -196,7 +196,7 @@ const NPEApplicationsDashboard = () => {
                                         trigger={['hover', 'focus']}
                                         overlay={popover}
                                     >
-                                        <Link className='btn' to={"/patentinfo/"+npe.ref_no} target="_blank">
+                                        <Link className='btn' to={"/patentinfo/"+npe.id} target="_blank">
                                             <TbFileDatabase />
                                         </Link>
                                     </OverlayTrigger>

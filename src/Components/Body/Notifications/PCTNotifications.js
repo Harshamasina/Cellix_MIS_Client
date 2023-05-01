@@ -76,7 +76,7 @@ const PCTNotifications = () => {
                         PCTNotifications && PCTNotifications.map((PCTNotification, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><Link className='reference-links' to={"/patentinfo/"+PCTNotification.ref_no} target="_blank">{PCTNotification.ref_no}</Link></td>
+                                <td><Link className='reference-links' to={"/patentinfo/"+PCTNotification.id} target="_blank">{PCTNotification.ref_no}</Link></td>
                                 <td>{PCTNotification.fieldName}</td>
                                 <td>{PCTNotification.fieldValue}</td>
                                 <td className={changeColor(PCTNotification.daysLeft)}>{PCTNotification.daysLeft}</td>

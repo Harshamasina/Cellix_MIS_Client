@@ -6,6 +6,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import axios from 'axios';
 import { BiErrorAlt } from 'react-icons/bi';
+import { MdOutlineEditNote } from 'react-icons/md';
 
 const SearchPatents = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -42,6 +43,12 @@ const SearchPatents = () => {
         </Popover>
     );
 
+    const updatePopover = (
+        <Popover className='popover'>
+          <Popover.Body as="p" className='popover-msg'>Update Application Family</Popover.Body>
+        </Popover>
+    );
+
     return(
         <div>
             <div class="search-box">
@@ -65,7 +72,7 @@ const SearchPatents = () => {
                         </div> :                     
                         searchPatent && searchPatent.map((patent, i) => (
                             <div className='box' key={i}>
-                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
+                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent._id}>{patent.ref_no}</Link></h3>
                                 {/* <h4>PRV Filing: <span>{patent.prv[0].prv_dof}</span></h4> */}
                                 {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
 
@@ -84,13 +91,22 @@ const SearchPatents = () => {
                                 </ul>
 
                                 <OverlayTrigger 
-                                    placement="auto" 
-                                    delay={{ show: 250, hide: 400 }}
+                                    placement="left"
                                     trigger={['hover', 'focus']}
                                     overlay={popover}
                                 >
-                                    <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">
+                                    <Link className='btn' to={"/patentinfo/"+patent._id} target="_blank">
                                         <HiInformationCircle />
+                                    </Link>
+                                </OverlayTrigger>
+
+                                <OverlayTrigger 
+                                    placement="right"
+                                    trigger={['hover', 'focus']}
+                                    overlay={updatePopover}
+                                >
+                                    <Link className='btn' to={"/patentupdate/"+patent._id} target="_blank">
+                                        <MdOutlineEditNote />
                                     </Link>
                                 </OverlayTrigger>
                             </div>

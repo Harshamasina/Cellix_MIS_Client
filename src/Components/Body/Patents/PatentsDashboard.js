@@ -104,7 +104,7 @@ const PatentsDashboard = () => {
                     {
                         patents && patents.map((patent, i) => (
                             <div className='box' key={i}>
-                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent.ref_no}>{patent.ref_no}</Link></h3>
+                                <h3>Ref No: <Link className='refLink' to={"/patentinfo/"+patent._id}>{patent.ref_no}</Link></h3>
                                 <h4>PRV Filing: <span>{patent.prv && patent.prv.length > 0 && patent.prv[0].prv_dof}</span></h4>
                                 {patent.pct_appno ? (<h4>PCT Number: <span>{patent.pct_appno}</span></h4>) : ""}
                                 
@@ -126,7 +126,7 @@ const PatentsDashboard = () => {
                                     trigger={['hover', 'focus']}
                                     overlay={popover}
                                 >
-                                    <Link className='btn' to={"/patentinfo/"+patent.ref_no} target="_blank">
+                                    <Link className='btn' to={"/patentinfo/"+patent._id} target="_blank">
                                         <CgDatabase />
                                     </Link>
                                 </OverlayTrigger>
