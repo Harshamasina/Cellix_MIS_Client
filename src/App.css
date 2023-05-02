@@ -410,6 +410,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 5%;
 }
 
+.FirmPageContent h4{
+  text-align: center;
+	font-size: 4vh;
+	width: 100%;
+	color: #2c444e;
+}
+
 .UpdatePageContent h1{
   text-align: center;
 	font-size: 10vh;
@@ -430,6 +437,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   } 
   .FirmPageContent h2{
     font-size: 3vh !important;
+  }
+  .FirmPageContent h4{
+    font-size: 2vh !important;
   }
   .UpdatePageContent h1{
     font-size: 5.5vh !important;
@@ -2913,5 +2923,74 @@ Breadcrumb.Item{
   
   .grey-notification{
     font-size: 1.5vh !important;
+  }
+}
+
+.search-form{
+  position: relative;
+  border-radius: .3em;
+  width: 300px;
+  margin-top: 0.6%;
+}
+
+.search-form input, button {
+  border: 0;
+  color: #282c34;
+}
+
+.search-form input[type="text"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-form input[type="text"] {
+  outline: 0; 
+  width: 100%;
+  background: #ffffff;
+  padding: 0 1rem;
+  border-radius: 0.8rem;
+  appearance: none;
+  transition: all .3s cubic-bezier(0, 0, 0.43, 1.49);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+  height: 29px;
+}
+
+.search-form button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  font-weight: bold;
+  background: #15B39D;
+  color: #ffffff;
+  border-radius: 0 .7em .7em 0;
+  height: 29px;
+  transition: .2s;
+}
+
+.search-form button:hover{
+  background: #707070;
+}
+
+.search-form input:not(:placeholder-shown) {
+  border-radius: .7em 0 0 .7em;
+  width: calc(100% - 3rem);
+}
+
+.search-form input:not(:placeholder-shown) + button {
+  display: block;
+}
+
+.search-link-icon{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 600px) {
+  .search-form{
+    margin-left: 12% !important;
   }
 }

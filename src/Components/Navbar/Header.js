@@ -33,6 +33,8 @@ import NPEApplications from '../Body/Patents/NPEApplications/NPEApplications';
 import NPEApplicationsDashboard from '../Body/Patents/NPEApplications/NPEApplicationsDashboard';
 import EmployeesDashboard from '../Body/Login/Employees/EmployeesDashboard';
 import UpdateEmployee from '../Body/Login/Employees/UpdateEmployee';
+import SearchApplications from './SearchApplications';
+import { MdOutlineSearch } from 'react-icons/md';
 
 function NavBar() {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
@@ -41,6 +43,7 @@ function NavBar() {
     const [modal, setModal] = useState(false);
     const [phone, setPhone] = useState(login ? login.phoneNumber : "");
     const [empData, setEmpData] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
     
     const changeBackground = () => {
@@ -110,6 +113,17 @@ function NavBar() {
         fetchData();
     }, [phone]);
 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (searchTerm) {
+            navigate(`/searchapplications/${searchTerm.replaceAll("/", "%2F")}`);
+        }
+    };
+
     return (
         <>
             <div>
@@ -131,6 +145,22 @@ function NavBar() {
                                         <Nav.Link className='navbar_link' as={Link} to="/firms" eventKey="3">Firms</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/newpatent" eventKey="4">New Entry</Nav.Link>
                                         <Nav.Link className='navbar_link' as={Link} to="/notifications" eventKey="5">Notifications</Nav.Link>
+                                        <div className='search-form'>
+                                            <form onSubmit={handleSubmit}>
+                                                <input
+                                                    type="text"
+                                                    placeholder='Search for Ref / PRV / PCT / NPE'
+                                                    value={searchTerm}
+                                                    onChange={handleSearchChange}
+                                                    autoFocus
+                                                    autoComplete="off"
+                                                    required
+                                                />
+                                                <button type='submit'>
+                                                    <span className='search-link-icon'><MdOutlineSearch /></span>
+                                                </button>
+                                            </form>
+                                        </div>
 
                                         <NavDropdown title={<span>{login ? empData.last_name : ""} <MdKeyboardArrowDown /></span>} id="basic-nav-dropdown" className='nav-dropdown'>
                                             <NavDropdown title={<span>About <MdKeyboardArrowDown /></span>} className='subnav-dropdown'>
@@ -140,7 +170,6 @@ function NavBar() {
                                                 <NavDropdown.Item className='subdropdown-link'>{empData.phone}</NavDropdown.Item>
                                                 <NavDropdown.Item className='subdropdown-link'>{empData.emp_id}</NavDropdown.Item>
                                             </NavDropdown>
-
                                             {
                                                 empData.phone === "+919032330333" || empData.phone === "+917780199139" ? (
                                                     <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
@@ -185,6 +214,7 @@ function NavBar() {
                     <Route path='/pctpatentform' element={login ? <PCTPatentForm /> : <Navigate to='/login' />} />
                     <Route path='/employeedashboard' element={login ? <EmployeesDashboard /> : <Navigate to='/login' />} />
                     <Route path='/updateemployee/:id' element={login ? <UpdateEmployee /> : <Navigate to='/login' />} />
+                    <Route path='/searchapplications/:key' element={login ? <SearchApplications /> : <Navigate to='/login' />}  />
                     <Route path='/' element={login ? <Home /> : <Navigate to='/login' />} />
                     <Route path='*' element={<Error404 />} />
                 </Routes>

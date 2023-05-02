@@ -313,7 +313,7 @@ const PatentInfo = () => {
                                                 ))
                                             }
                                             <OverlayTrigger trigger={['hover', 'focus']}  placement="auto" overlay={renderPopover(npeData.npe_if)}><p>NPE Issue Fee Date: <span className={changeColorDates(npeData.npe_if)}>{npeData.npe_if}</span></p></OverlayTrigger>
-                                            <h4>Notes</h4>
+                                            {npeData.npe_notes ? <h4>Notes</h4> : ""}
                                             <div>
                                                 {
                                                     npeData.npe_notes.split(/\n+/).map((line, index) => (
