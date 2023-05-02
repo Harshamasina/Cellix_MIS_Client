@@ -122,6 +122,7 @@ function NavBar() {
         if (searchTerm) {
             navigate(`/searchapplications/${searchTerm.replaceAll("/", "%2F")}`);
         }
+        setSearchTerm('');
     };
 
     return (
@@ -149,7 +150,7 @@ function NavBar() {
                                             <form onSubmit={handleSubmit}>
                                                 <input
                                                     type="text"
-                                                    placeholder='Search for Ref / PRV / PCT / NPE'
+                                                    placeholder='Search Ref / PRV / PCT / NPE'
                                                     value={searchTerm}
                                                     onChange={handleSearchChange}
                                                     autoFocus
