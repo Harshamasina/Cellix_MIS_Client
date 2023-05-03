@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Dna } from  'react-loader-spinner';
-import { MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
-import { Table } from "react-bootstrap";
+import { MdOutlineEditNotifications, MdSignalWifiConnectedNoInternet0 } from "react-icons/md";
+import { OverlayTrigger, Popover, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CustomNotificationTable = () => {
@@ -40,6 +40,12 @@ const CustomNotificationTable = () => {
         }
     };
 
+    const updatePopover = (
+        <Popover id="update-popover">
+            <Popover.Body as="span" className='popover-msg'>update notification</Popover.Body>
+        </Popover>
+    );
+
     if(loading){
         return <div>
             <Dna
@@ -70,6 +76,7 @@ const CustomNotificationTable = () => {
                         <th>Date</th>
                         <th style={{ width: '45%' }}>Description</th>
                         <th>Days Left</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 
@@ -83,6 +90,13 @@ const CustomNotificationTable = () => {
                                 <td style={{textAlign: 'center'}}>{notification.date}</td>
                                 <td>{notification.descp}</td>
                                 <td className={changeColor(notification.daysLeft)}>{notification.daysLeft}</td>
+                                <td>
+                                    <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={updatePopover}>
+                                        <Link to={"/updatenotifications/"+notification._id} className="update-notification">
+                                            <MdOutlineEditNotifications />
+                                        </Link>
+                                    </OverlayTrigger>
+                                </td>
                             </tr>
                         ))
                     }

@@ -2462,7 +2462,7 @@ Breadcrumb.Item{
 .session-timeout-header{
   color: #FF4433;
   font-size: 2vw !important;
-  margin-left: 15%;
+  margin-left: 28%;
 }
 
 .session-timeout-header span{
@@ -2938,11 +2938,11 @@ Breadcrumb.Item{
   color: #282c34;
 }
 
-.search-form input[type="text"]::-webkit-search-cancel-button {
+.search-form input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
-.search-form input[type="text"] {
+.search-form input[type="search"] {
   outline: 0; 
   width: 100%;
   background: #ffffff;

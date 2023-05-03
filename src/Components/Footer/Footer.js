@@ -20,6 +20,11 @@ const Footer = () => {
                 <a href="https://www.cellixbio.com/" target="_blank" rel="noreferrer">
                     <img src="https://cellixbio-assets.s3.ap-south-1.amazonaws.com/Web+Images/CellixBio.Icon.png" alt="footer-logo" style={{marginBottom: '10%'}} />
                 </a>
+
+                <a href="https://www.avacapharma.com/" target="_blank" rel="noreferrer">
+                    <img src="https://avaca-pharma-assets.s3.ap-south-1.amazonaws.com/Avaca+Pharma+Main+Logo.png" alt="footer-logo" style={{marginBottom: '10%', marginLeft: '7%'}} />
+                </a>
+
                 {
                     user && user ?
                     <ul className="footer-links">

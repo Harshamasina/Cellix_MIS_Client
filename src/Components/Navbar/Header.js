@@ -124,7 +124,7 @@ function NavBar() {
         }
         setSearchTerm('');
     };
-
+    
     return (
         <>
             <div>
@@ -149,7 +149,7 @@ function NavBar() {
                                         <div className='search-form'>
                                             <form onSubmit={handleSubmit}>
                                                 <input
-                                                    type="text"
+                                                    type="search"
                                                     placeholder='Search Ref / PRV / PCT / NPE'
                                                     value={searchTerm}
                                                     onChange={handleSearchChange}
