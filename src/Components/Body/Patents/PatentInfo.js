@@ -24,7 +24,7 @@ const PatentInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getapplication/${ref}`);
+                const patentData = await axios.get(`${process.env.REACT_APP_API_URL}/api/getapplication/${ref}`);
                 setPatent(patentData.data);
                 setLoading(false);
             } catch (err) {

@@ -35,7 +35,7 @@ const CreateCustomNotif = () => {
 
     const handleSubmitModal = async () => {
         try {
-            const res = await axios.post('https://misbackend.cellixbio.info/api/cnotification', notification, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/cnotification`, notification, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

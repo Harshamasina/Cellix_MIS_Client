@@ -104,7 +104,7 @@ function NavBar() {
                 return;
             }
             try{
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/getemployee/${phone}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getemployee/${phone}`);
                 setEmpData(res.data[0]); 
             } catch (err) {
                 console.log(err);

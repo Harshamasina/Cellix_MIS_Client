@@ -13,7 +13,7 @@ const NPENotifications = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://misbackend.cellixbio.info/api/npenotifications');
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/npenotifications`);
                 setNPENotifications(res.data);
                 setLoading(false);
             } catch (err) {

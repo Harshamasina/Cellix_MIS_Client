@@ -17,7 +17,7 @@ const SearchPatents = () => {
         const fetchSearchResults = async () => {
             if (searchTerm) {
                 try {
-                    const response = await axios.get(`https://misbackend.cellixbio.info/api/searchpatents/${searchTerm.replaceAll("/", "%2F")}`);
+                    const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/searchpatents/${searchTerm.replaceAll("/", "%2F")}`);
                     setSearchPatent(response.data);
                     setError('');
                 } catch (error) {

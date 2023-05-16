@@ -30,7 +30,7 @@ const UpdateCustomNotif = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/getcnotification/${id}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getcnotification/${id}`);
                 setNotification(res.data);
                 setError(res.data.message);
                 setLoading(false);
@@ -70,7 +70,7 @@ const UpdateCustomNotif = () => {
 
     const handleUpdateModal = async () => {
         try{
-            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updatecnotification/${id}`, notification, {
+            const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/updatecnotification/${id}`, notification, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

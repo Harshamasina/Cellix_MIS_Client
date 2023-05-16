@@ -43,7 +43,7 @@ const PCTPatentForm = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/pctpatent', PCTPatent, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/pctpatent`, PCTPatent, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

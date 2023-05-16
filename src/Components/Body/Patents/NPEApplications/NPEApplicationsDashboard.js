@@ -27,7 +27,7 @@ const NPEApplicationsDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/getnpe/${desc}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getnpe/${desc}`);
                 setNPEData(res.data);
                 setLoading(false);
             } catch (err) {

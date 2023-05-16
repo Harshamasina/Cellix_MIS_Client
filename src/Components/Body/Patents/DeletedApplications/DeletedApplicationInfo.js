@@ -20,7 +20,7 @@ const DeletedApplicationInfo = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/deletedapplication/${ref}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/deletedapplication/${ref}`);
                 setPatent(res.data);
                 setLoading(false);
             } catch (err) {

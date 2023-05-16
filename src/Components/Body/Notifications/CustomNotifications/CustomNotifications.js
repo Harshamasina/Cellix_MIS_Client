@@ -18,7 +18,7 @@ const CustomNotifications = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://misbackend.cellixbio.info/api/getcnotifications');
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getcnotifications`);
                 setNotifications(res.data);
                 setLoading(false);
             } catch (err) {

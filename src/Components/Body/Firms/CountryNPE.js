@@ -25,7 +25,7 @@ const CountryNPE = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const patentData = await axios.get(`https://misbackend.cellixbio.info/api/getcountry/${countrycode}`);
+                const patentData = await axios.get(`${process.env.REACT_APP_API_URL}/api/getcountry/${countrycode}`);
                 setNPECountry(patentData.data[0].countryData);
                 setLoading(false);
             } catch (err) {

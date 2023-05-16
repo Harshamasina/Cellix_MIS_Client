@@ -14,7 +14,7 @@ const DeleteApplicationFamily = ({PatentId}) => {
 
     const handleDelete = async () => {
         try {
-            const res = await axios.delete(`https://misbackend.cellixbio.info/api/deletepatent/${PatentId}`, {
+            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/deletepatent/${PatentId}`, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

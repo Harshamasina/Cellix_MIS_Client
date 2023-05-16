@@ -24,7 +24,7 @@ const PatentsDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try{
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/patents/${pageIndex}?pagesize=${pageSize}&sort=${sort}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/patents/${pageIndex}?pagesize=${pageSize}&sort=${sort}`);
                 setPatents(res.data.Patents);
                 setCount(res.data.count);
                 setTotalPages(res.data.totalPages);

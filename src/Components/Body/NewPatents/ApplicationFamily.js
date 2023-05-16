@@ -185,7 +185,7 @@ const ApplicationFamily = () => {
         setSubmitting(true);
         setSubmissionError(null);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/patent', patentData, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/patent`, patentData, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

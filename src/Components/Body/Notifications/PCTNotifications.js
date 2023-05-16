@@ -13,7 +13,7 @@ const PCTNotifications = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://misbackend.cellixbio.info/api/pctnotifications');
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/pctnotifications`);
                 setPCTNotifications(res.data);
                 setLoading(false);
             } catch (err) {
