@@ -14,7 +14,7 @@ const DeleteEmployee = ({employeeId}) => {
 
     const handleDelete = async () => {
         try {
-            const res = await axios.delete(`https://misbackend.cellixbio.info/api/deleteemployee/${employeeId}`, {
+            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/deleteemployee/${employeeId}`, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

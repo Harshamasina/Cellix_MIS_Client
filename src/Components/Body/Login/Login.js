@@ -27,7 +27,7 @@ const Login = () => {
     useEffect(() => {
       const fetchData = async () => {
         try{
-          const res = await axios.get('https://misbackend.cellixbio.info/api/getnumbers');
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getnumbers`);
           setEmpData(res.data);
         } catch (err) {
           console.error(err);

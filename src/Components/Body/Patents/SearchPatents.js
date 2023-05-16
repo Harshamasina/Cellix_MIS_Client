@@ -58,8 +58,7 @@ const SearchPatents = () => {
                     className="input-search" 
                     placeholder="Enter Ref / PRV / PCT / NPE Numbers"
                     onChange={handleSearch}
-                >
-                </input>
+                />
             </div>
             
             <div className='search-container'>
@@ -116,6 +115,6 @@ const SearchPatents = () => {
             </div>
         </div>
     );
-}
+};
 
 export default SearchPatents;

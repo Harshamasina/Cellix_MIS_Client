@@ -52,7 +52,7 @@ const Register = () => {
         setErrorMsg("");
         setButtonDisabled(true);
         try{
-            const res = await axios.post('https://misbackend.cellixbio.info/api/login', employee, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, employee, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){

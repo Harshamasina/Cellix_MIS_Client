@@ -20,7 +20,7 @@ const EmployeesDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('https://misbackend.cellixbio.info/api/getemployees');
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getemployees`);
                 setEmployeesData(res.data);
                 setLoading(false);
             } catch (err) {
@@ -107,8 +107,8 @@ const EmployeesDashboard = () => {
 
                 <tbody>
                     {
-                        employeesData.map((employee) => (
-                            <tr key={employee.id}>
+                        employeesData.map((employee, index) => (
+                            <tr key={index}>
                                 <td>{employee.first_name}</td>
                                 <td>{employee.last_name}</td>
                                 <td>{employee.email}</td>

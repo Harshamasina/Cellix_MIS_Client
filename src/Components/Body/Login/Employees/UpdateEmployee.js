@@ -30,7 +30,7 @@ const UpdateEmployee = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`https://misbackend.cellixbio.info/api/getemployeeid/${id}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/getemployeeid/${id}`);
                 setEmployeeData(res.data);
                 setError(res.data.message);
                 setLoading(false);
@@ -70,7 +70,7 @@ const UpdateEmployee = () => {
 
     const handleUpdateModal = async () => {
         try{
-            const res = await axios.patch(`https://misbackend.cellixbio.info/api/updateemployee/${id}`, employeeData, {
+            const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/updateemployee/${id}`, employeeData, {
                 headers: { 'confirmCode': confirmCode },
             });
             if(res.status === 201){
