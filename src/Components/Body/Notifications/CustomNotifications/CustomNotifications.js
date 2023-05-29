@@ -145,7 +145,7 @@ const CustomNotifications = () => {
                                             <MdOutlineEditNotifications />
                                         </Link>
                                     </OverlayTrigger>
-                                    {notification.calculateDaysLeft(notification.date) <= 0 ? (<div className="delete-notification"><DeleteCustomNotif notificationId = {notification._id} /></div>) : ""}
+                                    {<div className="delete-notification"><DeleteCustomNotif notificationId = {notification._id} /></div>}
                                 </td>
                             </tr>
                         ))
