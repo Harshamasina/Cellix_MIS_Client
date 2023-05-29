@@ -8,6 +8,7 @@ import axios from 'axios';
 import DeleteCustomNotif from './DeleteCustomNotif';
 import { Breadcrumbs } from '@mui/material';
 import { Helmet } from 'react-helmet';
+import moment from 'moment-timezone';
 
 const CustomNotifications = () => {
     const img = "https://cellix-bio-mis.s3.ap-south-1.amazonaws.com/web+assets/Todos.jpg";
@@ -29,20 +30,30 @@ const CustomNotifications = () => {
         fetchData();
     }, []);
 
-    const changeColor = (days) => {
+    const changeColor = (date) => {
         try {
+            const currentDate = moment().tz('Asia/Kolkata');
+            const notificationDate = moment(date);
+            const days = notificationDate.diff(currentDate, 'days');
             if (days >= 0 && days <= 3) {
-              return 'red-notification';
+                return 'red-notification';
             } else if (days > 3 && days <= 15) {
                 return 'orange-notification';
             } else if (days < 0) {
-              return 'grey-notification';
+                return 'grey-notification';
             } else {
                 return 'black';
             }
         } catch (err) {
-            console.error(err);
+          console.error(err);
         }
+    };
+
+    const calculateDaysLeft = (date) => {
+        const currentDate = moment().tz('Asia/Kolkata');
+        const notificationDate = moment(date);
+        const daysLeft = notificationDate.diff(currentDate, 'days');
+        return daysLeft;
     };
 
     if(loading){
@@ -127,14 +138,14 @@ const CustomNotifications = () => {
                                 <td>{notification.field}</td>
                                 <td>{notification.date}</td>
                                 <td>{notification.descp}</td>
-                                <td className={changeColor(notification.daysLeft)}>{notification.daysLeft}</td>
+                                <td className={changeColor(notification.date)}>{calculateDaysLeft(notification.date)}</td>
                                 <td>
                                     <OverlayTrigger trigger={['hover', 'focus']} placement="auto" overlay={updatePopover}>
                                         <Link to={"/updatenotifications/"+notification._id} className="update-notification">
                                             <MdOutlineEditNotifications />
                                         </Link>
                                     </OverlayTrigger>
-                                    {notification.daysLeft <= 0 ? (<div className="delete-notification"><DeleteCustomNotif notificationId = {notification._id} /></div>) : ""}
+                                    {notification.calculateDaysLeft(notification.date) <= 0 ? (<div className="delete-notification"><DeleteCustomNotif notificationId = {notification._id} /></div>) : ""}
                                 </td>
                             </tr>
                         ))
