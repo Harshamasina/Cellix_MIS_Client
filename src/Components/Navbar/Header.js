@@ -34,9 +34,10 @@ import NPEApplicationsDashboard from '../Body/Patents/NPEApplications/NPEApplica
 import EmployeesDashboard from '../Body/Login/Employees/EmployeesDashboard';
 import UpdateEmployee from '../Body/Login/Employees/UpdateEmployee';
 import SearchApplications from './SearchApplications';
+import UserMessages from '../Body/UserMessages/UserMessages';
 import { MdOutlineSearch } from 'react-icons/md';
 
-function NavBar() {
+const NavBar = () => {
     const [login, setLogin] = useState(JSON.parse(localStorage.getItem('login')));
     const [changeNavbar, setChangeNavbar] = useState(false);
     const [sessionTimeoutModal, setSessionTimeoutModal] = useState(false); 
@@ -94,7 +95,7 @@ function NavBar() {
             if (Date.now() - user.lastLoginAt > warningTime) {
                 setSessionTimeoutModal(true);
             }
-        }
+        };
     }, []);
 
     useEffect(() => {
@@ -172,11 +173,13 @@ function NavBar() {
                                                 <NavDropdown.Item className='subdropdown-link'>{empData.emp_id}</NavDropdown.Item>
                                             </NavDropdown>
                                             {
-                                                empData.phone === "+919032330333" || empData.phone === "+917780199139" ? (
-                                                    <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
+                                                empData.phone === process.env.REACT_APP_PHONE_1 || empData.phone === process.env.REACT_APP_PHONE_2 ? (
+                                                    <>
+                                                        <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
+                                                        <NavDropdown.Item><Nav.Link as={Link} to='usermessages' className='dropdown-link' eventKey="7">User Queries</Nav.Link></NavDropdown.Item>
+                                                    </>
                                                 ) : ""
                                             }
-
                                             {
                                                 login ? ( <Button className='signout-button' onClick={handleShow}>Sign Out</Button> ) : (
                                                     <Button className='signin-button' onClick={() => navigate('/login')}>Log In</Button>
@@ -216,6 +219,7 @@ function NavBar() {
                     <Route path='/employeedashboard' element={login ? <EmployeesDashboard /> : <Navigate to='/login' />} />
                     <Route path='/updateemployee/:id' element={login ? <UpdateEmployee /> : <Navigate to='/login' />} />
                     <Route path='/searchapplications/:key' element={login ? <SearchApplications /> : <Navigate to='/login' />}  />
+                    <Route path='/usermessages' element={login ? <UserMessages /> : <Navigate to='/login' />}  />
                     <Route path='/' element={login ? <Home /> : <Navigate to='/login' />} />
                     <Route path='*' element={<Error404 />} />
                 </Routes>

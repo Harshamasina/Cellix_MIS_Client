@@ -213,7 +213,7 @@ const PatentInfo = () => {
                 </Tab>
                 
                 <Tab eventKey="NPE" title="National Phase Entry (NPE) Data" tabClassName='tab-item'>
-                    <Accordion alwaysOpen className='mb-4 custom-accordion'>
+                    <Accordion className='mb-4 custom-accordion'>
                         {
                             patent.npe && patent.npe.map((npeData, i) => (
                                 <Accordion.Item eventKey={i} key={i}>
