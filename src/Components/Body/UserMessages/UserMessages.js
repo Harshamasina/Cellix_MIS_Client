@@ -70,7 +70,7 @@ const UserMessages = () => {
                                 <h3>Email: <span className="message-span">{message.email}</span></h3>
                                 <h3>Phone: <span className="message-span">{message.phone}</span></h3>
                                 <h3>Subject: <span className="message-span">{message.subject}</span></h3>
-                                <h3>Sent Time: <span className="message-span">
+                                <h3>Received At: <span className="message-span">
                                         {new Date(message.createdAt).getDate().toString().padStart(2, '0')}-
                                         {(new Date(message.createdAt).getMonth()+1).toString().padStart(2, '0')}-
                                         {new Date(message.createdAt).getFullYear().toString()}, {new Date(message.createdAt).getHours().toString().padStart(2, '0')}:
@@ -79,7 +79,7 @@ const UserMessages = () => {
                                 </h3>
                                 <Accordion defaultActiveKey="0" className='mb-4'>
                                     <Accordion.Item>
-                                        <Accordion.Header>Message</Accordion.Header>
+                                        <Accordion.Header>Click to see message from {message.name}</Accordion.Header>
                                         <Accordion.Body>
                                             <span className="message-span">
                                                 {message.message}

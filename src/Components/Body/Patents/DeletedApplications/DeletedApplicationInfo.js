@@ -91,7 +91,7 @@ const DeletedApplicationInfo = () => {
                                 <div>
                                     <p>{patent.prv_notes ? "PRV Notes: " : ""}</p>
                                     {
-                                        patent.prv_notes.split(/\n+/).map((line, index) => (
+                                        patent.prv_notes && patent.prv_notes.split(/\n+/).map((line, index) => (
                                             <p key={index} className='NPE-notes'>
                                                 {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
                                                 {line}
@@ -116,7 +116,7 @@ const DeletedApplicationInfo = () => {
                         <div>
                             <p>{patent.pct_notes ? "PCT Notes: " : ""}</p>
                             {
-                                patent.pct_notes.split(/\n+/).map((line, index) => (
+                                patent.pct_notes &&  patent.pct_notes.split(/\n+/).map((line, index) => (
                                     <p key={index} className='NPE-notes'>
                                         {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
                                         {line}
@@ -185,7 +185,7 @@ const DeletedApplicationInfo = () => {
                                             <p><span>{npeData.npe_if}</span></p>
                                             <h4>Notes</h4>
                                             {
-                                                npeData.npe_notes.split(/\n+/).map((line, index) => (
+                                                npeData.npe_notes && npeData.npe_notes.split(/\n+/).map((line, index) => (
                                                     <p key={index} className='NPE-notes'>
                                                         {line ? (<span className='NPE-notes-icon'><HiArrowSmRight /></span>) : ""} 
                                                         {line}
