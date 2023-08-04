@@ -3086,9 +3086,3 @@ Breadcrumb.Item{
     padding:20px;
   }
 }
-
-@media (max-width:768px){
-  .mess-container{
-    padding:20px;
-  }
-}
