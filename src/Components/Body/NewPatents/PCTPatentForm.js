@@ -67,7 +67,7 @@ const PCTPatentForm = () => {
         } catch (err) {
             console.log(err);
             setSubmissionError(err.response.data.message);
-            setErrorMessage(err.response.data.error);
+            setErrorMessage(err.response.data.message);
             setConfirmCode('');
         } finally {
             setSubmitting(false);
