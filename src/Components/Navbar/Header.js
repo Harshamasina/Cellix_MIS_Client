@@ -173,7 +173,7 @@ const NavBar = () => {
                                                 <NavDropdown.Item className='subdropdown-link'>{empData.emp_id}</NavDropdown.Item>
                                             </NavDropdown>
                                             {
-                                                empData.phone === process.env.REACT_APP_PHONE_1 || empData.phone === process.env.REACT_APP_PHONE_2 ? (
+                                                empData.phone === process.env.REACT_APP_PHONE_1 || empData.phone === process.env.REACT_APP_PHONE_2 || empData.phone === process.env.REACT_APP_PHONE_3 ? (
                                                     <>
                                                         <NavDropdown.Item><Nav.Link as={Link} to='employeedashboard' className='dropdown-link' eventKey="6">Manage Employees</Nav.Link></NavDropdown.Item>
                                                         <NavDropdown.Item><Nav.Link as={Link} to='usermessages' className='dropdown-link' eventKey="7">User Queries</Nav.Link></NavDropdown.Item>
